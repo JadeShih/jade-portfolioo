@@ -45,7 +45,8 @@ a.jade-primary-button,a.jade-secondary-button{text-decoration:none}
 .frame__handle:nth-of-type(6){left:-7px;bottom:-7px}.frame__handle:nth-of-type(7){left:calc(50% - 6px);bottom:-7px}.frame__handle:nth-of-type(8){right:-7px;bottom:-7px}
 .frame__size{position:absolute;left:20%;top:-34px;padding:3px 8px;border-radius:6px;background:var(--jade-sys-color-secondary);color:var(--jade-sys-color-on-secondary);font:600 12px/16px var(--font-plain);letter-spacing:.04em;font-variant-numeric:tabular-nums;animation:fade .4s var(--ease) .6s both}
 
-.hero__title{margin:0;font:400 clamp(52px,13vw,172px)/.88 var(--font-brand);letter-spacing:-.005em;text-transform:uppercase}
+/* 字級同時看視窗寬與高：矮螢幕自動縮小，確保第一屏看得到按鈕 */
+.hero__title{margin:0;font:400 clamp(52px,min(13vw,calc(37svh - 145px)),172px)/.88 var(--font-brand);letter-spacing:-.005em;text-transform:uppercase}
 .hero__title .ln{display:block;overflow:hidden;padding-bottom:.04em}
 .hero__title .ln>span{display:block;animation:rise .8s var(--ease) both}
 .hero__title .ln:nth-child(2)>span{animation-delay:.08s}.hero__title .ln:nth-child(3)>span{animation-delay:.16s}
