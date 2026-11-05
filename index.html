@@ -234,7 +234,7 @@ html.has-ycur .ycur.is-on{opacity:1}
 
 <div class="navrow"><nav class="jade-navigation-bar" data-theme="brand" aria-label="主選單">
 <a class="jade-navigation-bar__brand" href="#top"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1c.6 5.6 2.4 8.4 11 11-8.6 2.6-10.4 5.4-11 11-.6-5.6-2.4-8.4-11-11 8.6-2.6 10.4-5.4 11-11z"/></svg><span>JADE SHIH</span></a>
-<ul class="jade-navigation-bar__links"><li><a class="jade-navigation-bar__link" href="#work">Works</a></li><li><a class="jade-navigation-bar__link" href="#about">About</a></li><li><a class="jade-navigation-bar__link" href="#playground">Playground</a></li><li><a class="jade-navigation-bar__link" href="#contact">Contact</a></li></ul>
+<ul class="jade-navigation-bar__links"><li><a class="jade-navigation-bar__link" href="#work">Works</a></li><li><a class="jade-navigation-bar__link" href="#about">About</a></li><li><a class="jade-navigation-bar__link" href="#playground">Playground</a></li></ul>
 <a class="jade-secondary-button jade-secondary-button--text-only" href="#contact"><span>Let's talk</span></a></nav></div>
 
 <main id="main">
@@ -244,7 +244,7 @@ html.has-ycur .ycur.is-on{opacity:1}
   <div class="wrap">
     <div class="frame" id="heroFrame">
       <span class="frame__handle" aria-hidden="true"></span><span class="frame__handle" aria-hidden="true"></span><span class="frame__handle" aria-hidden="true"></span><span class="frame__handle" aria-hidden="true"></span><span class="frame__handle" aria-hidden="true"></span><span class="frame__handle" aria-hidden="true"></span><span class="frame__handle" aria-hidden="true"></span><span class="frame__handle" aria-hidden="true"></span>
-      <span class="frame__size" id="frameSize" aria-hidden="true">Hero 1232 × 540</span>
+      <span class="frame__size" id="frameSize" aria-hidden="true">Size 1232 × 540</span>
 
       <nav class="badges" aria-label="快速前往">
         <a class="badge b-exp" href="#experience" aria-label="經歷：10 年資歷，查看經歷"><span class="badge__float"><img src="public/sticker-experience.svg" width="237" height="162" alt="" draggable="false"></span></a>
@@ -379,7 +379,7 @@ html.has-ycur .ycur.is-on{opacity:1}
 (function(){
   var f=document.getElementById('heroFrame'),l=document.getElementById('frameSize');
   if(!f||!l||!('ResizeObserver' in window))return;
-  new ResizeObserver(function(){l.textContent='Hero '+Math.round(f.offsetWidth)+' × '+Math.round(f.offsetHeight)}).observe(f);
+  new ResizeObserver(function(){l.textContent='Size '+Math.round(f.offsetWidth)+' × '+Math.round(f.offsetHeight)}).observe(f);
 })();
 /* 整頁 YOU 游標：只在有滑鼠、且沒開「減少動態效果」時啟用 */
 (function(){
@@ -414,6 +414,26 @@ html.has-ycur .ycur.is-on{opacity:1}
     if('onscrollend' in window){window.addEventListener('scrollend',go,{once:true});setTimeout(go,1600)}else setTimeout(go,800);
   });
   document.querySelectorAll('.sec__title').forEach(function(h){h.addEventListener('animationend',function(){h.classList.remove('is-arriving')})});
+})();
+
+/* 第一屏一定看得到按鈕：字型載入後量實際位置，太低就把大標題縮小 */
+(function(){
+  var t=document.querySelector('.hero__title'),a=document.querySelector('.hero__actions');
+  if(!t||!a)return;
+  function absBottom(el){var y=el.offsetHeight;while(el){y+=el.offsetTop;el=el.offsetParent}return y}
+  function fit(){
+    t.style.fontSize='';
+    var fs=parseFloat(getComputedStyle(t).fontSize),
+        bottom=absBottom(a),
+        over=bottom+24-window.innerHeight;
+    if(over<=0)return;
+    var perPx=t.offsetHeight/fs;
+    t.style.fontSize=Math.max(52,Math.floor(fs-over/perPx))+'px';
+  }
+  var raf;function q(){cancelAnimationFrame(raf);raf=requestAnimationFrame(fit)}
+  fit();
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(q);
+  window.addEventListener('load',q);window.addEventListener('resize',q);
 })();
 </script>
 </body>
