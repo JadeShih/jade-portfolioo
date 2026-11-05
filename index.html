@@ -98,7 +98,7 @@ a.jade-primary-button,a.jade-secondary-button{text-decoration:none}
 
 /* ── 徽章貼紙（Jade 的 SVG）：點擊往下捲到對應簡介 ── */
 .badges{position:absolute;inset:0;pointer-events:none;z-index:2}
-.badge{position:absolute;display:block;width:clamp(210px,19vw,280px);pointer-events:auto;transform:rotate(var(--r,0deg));animation:pop .6s var(--ease) both;border-radius:24px;-webkit-tap-highlight-color:transparent}
+.badge{position:absolute;display:block;width:clamp(200px,min(23vw,36svh),340px);pointer-events:auto;transform:rotate(var(--r,0deg));animation:pop .6s var(--ease) both;border-radius:24px;-webkit-tap-highlight-color:transparent}
 .badge__float{display:block;animation:float 5s ease-in-out infinite alternate}
 .badge img{display:block;width:100%;height:auto;user-select:none;
   filter:drop-shadow(3px 0 0 var(--kc)) drop-shadow(-3px 0 0 var(--kc)) drop-shadow(0 3px 0 var(--kc)) drop-shadow(0 -3px 0 var(--kc)) drop-shadow(0 12px 12px var(--kc-shadow));
@@ -106,13 +106,14 @@ a.jade-primary-button,a.jade-secondary-button{text-decoration:none}
 .badge:hover img{transform:translateY(-6px) rotate(-2deg) scale(1.04)}
 .badge:active img{transform:translateY(1px) scale(.98)}
 .badge:focus-visible{outline:3px solid var(--jade-sys-color-secondary);outline-offset:6px}
-/* 往框外突出的距離：視窗越寬突出越多，最多 48px，且永遠留在畫面內 */
-.badges{--out:clamp(16px,calc((100vw - 1232px) / 2 - 8px),48px)}
-.b-exp{left:calc(-1 * var(--out));top:-110px;--r:-6deg;animation-delay:.7s}
-.b-ai{right:calc(-1 * var(--out));top:-120px;--r:5deg;animation-delay:.8s}
-.b-contact{right:calc(-1 * var(--out));top:36%;--r:6deg;animation-delay:.85s}
-.b-brands{left:calc(-1 * var(--out));bottom:6%;--r:5deg;animation-delay:.95s}
-.b-project{right:calc(var(--out) * .5);bottom:-14%;--r:-5deg;animation-delay:1s}
+/* 徽章寬度同時看視窗寬與高：矮螢幕縮小，右側兩張才不會疊在一起 */
+/* 往框外突出的距離：視窗越寬突出越多，最多 160px，且永遠留在畫面內 */
+.badges{--out:clamp(16px,calc((100vw - 1232px) / 2 - 8px),160px)}
+.b-exp{left:calc(-1 * var(--out));top:-128px;--r:-6deg;animation-delay:.7s}
+.b-ai{right:calc(-1 * var(--out));top:-136px;--r:5deg;animation-delay:.8s}
+.b-contact{right:calc(-1 * var(--out));top:34%;--r:6deg;animation-delay:.85s}
+.b-brands{left:calc(-1 * var(--out));bottom:2%;--r:5deg;animation-delay:.95s}
+.b-project{right:calc(-.5 * var(--out));bottom:2%;--r:-5deg;animation-delay:1s}
 .b-ai .badge__float{animation-delay:-1.2s}.b-contact .badge__float{animation-delay:-2.4s}.b-brands .badge__float{animation-delay:-3.1s}.b-project .badge__float{animation-delay:-.6s}
 
 /* ── 整頁「YOU」游標 ── */
@@ -196,7 +197,7 @@ html.has-ycur .ycur.is-on{opacity:1}
 @media (max-width:900px){
   .badges{position:static;display:flex;align-self:stretch;min-width:0;gap:var(--jade-sys-spacing-4);overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--jade-sys-spacing-4);margin:var(--jade-sys-spacing-8) calc(-1 * var(--jade-sys-spacing-4)) 0;padding:var(--jade-sys-spacing-4);pointer-events:auto;order:5;scrollbar-width:none}
   .badges::-webkit-scrollbar{display:none}
-  .badge{position:static;flex:none;width:212px;scroll-snap-align:start;--r:0deg}
+  .badge{position:static;flex:none;width:240px;scroll-snap-align:start;--r:0deg}
   .badge__float{animation:none}
   .frame{display:flex;flex-direction:column;align-items:center}
   .tl{grid-template-columns:1fr;gap:8px;padding:var(--jade-sys-spacing-6)}
@@ -424,7 +425,7 @@ html.has-ycur .ycur.is-on{opacity:1}
   function fit(){
     t.style.fontSize='';
     var fs=parseFloat(getComputedStyle(t).fontSize),
-        bottom=absBottom(a),
+        bottom=Math.max.apply(null,[absBottom(a)].concat([].map.call(document.querySelectorAll('.badges .badge'),absBottom))),
         over=bottom+32-window.innerHeight;
     if(over<=0)return;
     var perPx=t.offsetHeight/fs;
