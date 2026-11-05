@@ -416,23 +416,23 @@ html.has-ycur .ycur.is-on{opacity:1}
   document.querySelectorAll('.sec__title').forEach(function(h){h.addEventListener('animationend',function(){h.classList.remove('is-arriving')})});
 })();
 
-/* 第一屏一定看得到按鈕：字型載入後量實際位置，太低就把大標題縮小 */
+/* 第一屏一定看得到完整的 Hero 框（含按鈕與下緣虛線）：字型載入後量實際位置，太低就把大標題縮小 */
 (function(){
-  var t=document.querySelector('.hero__title'),a=document.querySelector('.hero__actions');
+  var t=document.querySelector('.hero__title'),a=document.getElementById('heroFrame');
   if(!t||!a)return;
   function absBottom(el){var y=el.offsetHeight;while(el){y+=el.offsetTop;el=el.offsetParent}return y}
   function fit(){
     t.style.fontSize='';
     var fs=parseFloat(getComputedStyle(t).fontSize),
         bottom=absBottom(a),
-        over=bottom+24-window.innerHeight;
+        over=bottom+32-window.innerHeight;
     if(over<=0)return;
     var perPx=t.offsetHeight/fs;
     t.style.fontSize=Math.max(52,Math.floor(fs-over/perPx))+'px';
   }
   var raf;function q(){cancelAnimationFrame(raf);raf=requestAnimationFrame(fit)}
   fit();
-  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(q);
+  if(document.fonts){if(document.fonts.ready)document.fonts.ready.then(q);if(document.fonts.addEventListener)document.fonts.addEventListener('loadingdone',q)}
   window.addEventListener('load',q);window.addEventListener('resize',q);
 })();
 </script>
