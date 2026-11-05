@@ -109,10 +109,10 @@ a.jade-primary-button,a.jade-secondary-button{text-decoration:none}
 /* 徽章寬度同時看視窗寬與高：矮螢幕縮小，右側兩張才不會疊在一起 */
 /* 往框外突出的距離：視窗越寬突出越多，最多 160px，且永遠留在畫面內 */
 .badges{--out:clamp(0px,calc((100vw - 1232px) / 2 - 36px),160px)}
-.b-exp{left:calc(-1 * var(--out));top:-104px;--r:-6deg;animation-delay:.7s}
+.b-exp{left:calc(-1 * var(--out));top:-64px;--r:-6deg;animation-delay:.7s}
 .b-ai{right:calc(-1 * var(--out));top:-108px;--r:5deg;animation-delay:.8s}
 .b-contact{right:calc(-1 * var(--out));top:34%;--r:6deg;animation-delay:.85s}
-.b-brands{left:calc(-1 * var(--out));bottom:2%;--r:5deg;animation-delay:.95s}
+.b-brands{left:calc(-1 * var(--out));bottom:12%;--r:5deg;animation-delay:.95s}
 .b-project{right:calc(-.5 * var(--out));bottom:2%;--r:-5deg;animation-delay:1s}
 .b-ai .badge__float{animation-delay:-1.2s}.b-contact .badge__float{animation-delay:-2.4s}.b-brands .badge__float{animation-delay:-3.1s}.b-project .badge__float{animation-delay:-.6s}
 
