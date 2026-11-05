@@ -98,7 +98,7 @@ a.jade-primary-button,a.jade-secondary-button{text-decoration:none}
 
 /* ── 徽章貼紙（Jade 的 SVG）：點擊往下捲到對應簡介 ── */
 .badges{position:absolute;inset:0;pointer-events:none;z-index:2}
-.badge{position:absolute;display:block;width:clamp(200px,min(23vw,36svh),340px);pointer-events:auto;transform:rotate(var(--r,0deg));animation:pop .6s var(--ease) both;border-radius:24px;-webkit-tap-highlight-color:transparent}
+.badge{position:absolute;display:block;width:var(--bw,clamp(200px,min(23vw,36svh),340px));pointer-events:auto;transform:rotate(var(--r,0deg));animation:pop .6s var(--ease) both;border-radius:24px;-webkit-tap-highlight-color:transparent}
 .badge__float{display:block;animation:float 5s ease-in-out infinite alternate}
 .badge img{display:block;width:100%;height:auto;user-select:none;
   filter:drop-shadow(3px 0 0 var(--kc)) drop-shadow(-3px 0 0 var(--kc)) drop-shadow(0 3px 0 var(--kc)) drop-shadow(0 -3px 0 var(--kc)) drop-shadow(0 12px 12px var(--kc-shadow));
@@ -108,9 +108,9 @@ a.jade-primary-button,a.jade-secondary-button{text-decoration:none}
 .badge:focus-visible{outline:3px solid var(--jade-sys-color-secondary);outline-offset:6px}
 /* 徽章寬度同時看視窗寬與高：矮螢幕縮小，右側兩張才不會疊在一起 */
 /* 往框外突出的距離：視窗越寬突出越多，最多 160px，且永遠留在畫面內 */
-.badges{--out:clamp(16px,calc((100vw - 1232px) / 2 - 8px),160px)}
-.b-exp{left:calc(-1 * var(--out));top:-128px;--r:-6deg;animation-delay:.7s}
-.b-ai{right:calc(-1 * var(--out));top:-136px;--r:5deg;animation-delay:.8s}
+.badges{--out:clamp(0px,calc((100vw - 1232px) / 2 - 36px),160px)}
+.b-exp{left:calc(-1 * var(--out));top:-104px;--r:-6deg;animation-delay:.7s}
+.b-ai{right:calc(-1 * var(--out));top:-108px;--r:5deg;animation-delay:.8s}
 .b-contact{right:calc(-1 * var(--out));top:34%;--r:6deg;animation-delay:.85s}
 .b-brands{left:calc(-1 * var(--out));bottom:2%;--r:5deg;animation-delay:.95s}
 .b-project{right:calc(-.5 * var(--out));bottom:2%;--r:-5deg;animation-delay:1s}
@@ -192,7 +192,7 @@ html.has-ycur .ycur.is-on{opacity:1}
 /* 桌機：框內上方留空間，讓上方兩張徽章不壓到大標題 */
 @media (min-width:901px){.frame{padding-top:calc(var(--jade-sys-spacing-8) + 56px)}}
 @media (max-width:1100px) and (min-width:901px){
-  .badge{width:176px}.b-exp{top:-48px}.b-ai{top:-56px}
+  .badge{width:var(--bw,176px)}.b-exp{top:-48px}.b-ai{top:-56px}
 }
 @media (max-width:900px){
   .badges{position:static;display:flex;align-self:stretch;min-width:0;gap:var(--jade-sys-spacing-4);overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--jade-sys-spacing-4);margin:var(--jade-sys-spacing-8) calc(-1 * var(--jade-sys-spacing-4)) 0;padding:var(--jade-sys-spacing-4);pointer-events:auto;order:5;scrollbar-width:none}
@@ -422,14 +422,45 @@ html.has-ycur .ycur.is-on{opacity:1}
   var t=document.querySelector('.hero__title'),a=document.getElementById('heroFrame');
   if(!t||!a)return;
   function absBottom(el){var y=el.offsetHeight;while(el){y+=el.offsetTop;el=el.offsetParent}return y}
+  var box=document.querySelector('.badges'),
+      badges=box?[].slice.call(box.querySelectorAll('.badge')):[],
+      btns=[].slice.call(document.querySelectorAll('.hero__actions a'));
+  /* 以實際幾何檢查：含旋轉後的外框、上下漂浮的幅度；位置以頁面座標計算 */
+  function geo(el){
+    var f=a.getBoundingClientRect(),x=f.left+window.scrollX,y=f.top+window.scrollY,
+        w=el.offsetWidth,h=el.offsetHeight,cx=x+el.offsetLeft+w/2,cy=y+el.offsetTop+h/2,
+        deg=parseFloat(getComputedStyle(el).getPropertyValue('--r'))||0,rad=Math.abs(deg)*Math.PI/180,
+        hw=(w*Math.cos(rad)+h*Math.sin(rad))/2,hh=(w*Math.sin(rad)+h*Math.cos(rad))/2+6;
+    return {l:cx-hw,t:cy-hh,r:cx+hw,b:cy+hh};
+  }
+  function btnGeo(el){var r=el.getBoundingClientRect();return {l:r.left+window.scrollX,t:r.top+window.scrollY-24,r:r.right+window.scrollX,b:r.bottom+window.scrollY}}
+  function hit(p,q,m){return p.l<q.r+m&&q.l<p.r+m&&p.t<q.b+m&&q.t<p.b+m}
+  function problems(){
+    var R=badges.map(geo),B=btns.map(btnGeo),W=document.documentElement.clientWidth,H=window.innerHeight,i,j;
+    for(i=0;i<R.length;i++){
+      if(R[i].l<4||R[i].r>W-4||R[i].t<4||R[i].b>H-4)return true;
+      for(j=i+1;j<R.length;j++)if(hit(R[i],R[j],12))return true;
+      for(j=0;j<B.length;j++)if(hit(R[i],B[j],16))return true;
+    }
+    return false;
+  }
+  /* 徽章不可互相重疊、不可蓋到按鈕、要完整在第一屏：有問題就一起縮小，直到解決 */
+  function separate(){
+    if(!box||getComputedStyle(box).position!=='absolute')return;
+    var w=badges[0].offsetWidth;
+    while(problems()&&w>120){w-=4;box.style.setProperty('--bw',w+'px')}
+  }
   function fit(){
     t.style.fontSize='';
+    if(box)box.style.removeProperty('--bw');
     var fs=parseFloat(getComputedStyle(t).fontSize),
         bottom=Math.max.apply(null,[absBottom(a)].concat([].map.call(document.querySelectorAll('.badges .badge'),absBottom))),
         over=bottom+32-window.innerHeight;
-    if(over<=0)return;
-    var perPx=t.offsetHeight/fs;
-    t.style.fontSize=Math.max(52,Math.floor(fs-over/perPx))+'px';
+    if(over>0){
+      var perPx=t.offsetHeight/fs;
+      t.style.fontSize=Math.max(52,Math.floor(fs-over/perPx))+'px';
+    }
+    separate();
   }
   var raf;function q(){cancelAnimationFrame(raf);raf=requestAnimationFrame(fit)}
   fit();
