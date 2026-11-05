@@ -45,12 +45,12 @@ a.jade-primary-button,a.jade-secondary-button{text-decoration:none}
 .frame__handle:nth-of-type(6){left:-7px;bottom:-7px}.frame__handle:nth-of-type(7){left:calc(50% - 6px);bottom:-7px}.frame__handle:nth-of-type(8){right:-7px;bottom:-7px}
 .frame__size{position:absolute;left:20%;top:-34px;padding:3px 8px;border-radius:6px;background:var(--jade-sys-color-secondary);color:var(--jade-sys-color-on-secondary);font:600 12px/16px var(--font-plain);letter-spacing:.04em;font-variant-numeric:tabular-nums;animation:fade .4s var(--ease) .6s both}
 
-.hero__title{margin:0;font:400 clamp(52px,7.6vw,116px)/.9 var(--font-brand);letter-spacing:-.005em;text-transform:uppercase}
+.hero__title{margin:0;font:400 clamp(52px,13vw,172px)/.88 var(--font-brand);letter-spacing:-.005em;text-transform:uppercase}
 .hero__title .ln{display:block;overflow:hidden;padding-bottom:.04em}
 .hero__title .ln>span{display:block;animation:rise .8s var(--ease) both}
 .hero__title .ln:nth-child(2)>span{animation-delay:.08s}.hero__title .ln:nth-child(3)>span{animation-delay:.16s}
 .hero__title em{font-style:normal;color:var(--jade-sys-color-secondary)}
-.hero__sub{margin:var(--jade-sys-spacing-4) 0 0;font:900 clamp(22px,2.6vw,36px)/1.1 "Noto Sans TC",sans-serif;letter-spacing:.06em;animation:up .6s var(--ease) .3s both}
+.hero__sub{margin:var(--jade-sys-spacing-6) 0 0;font:700 clamp(15px,1.4vw,19px)/1.4 "Noto Sans TC",var(--font-plain),sans-serif;letter-spacing:.08em;animation:up .6s var(--ease) .3s both}
 .hero__lead{max-width:34em;text-wrap:pretty;margin:var(--jade-sys-spacing-6) auto 0;font:500 clamp(16px,1.4vw,19px)/1.7 var(--font-plain);color:var(--jade-sys-color-on-surface-variant);animation:up .6s var(--ease) .4s both}
 .hero__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--jade-sys-spacing-4);margin-top:var(--jade-sys-spacing-8);animation:up .6s var(--ease) .5s both}
 
@@ -187,6 +187,8 @@ html.has-ycur .ycur.is-on{opacity:1}
 .foot{padding:var(--jade-sys-spacing-8) 0;background:var(--jade-sys-color-surface-contrast);color:var(--jade-sys-color-on-surface-contrast);font:500 14px/1.5 var(--font-plain)}
 .foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
+/* 桌機：框內上方留空間，讓上方兩張徽章不壓到大標題 */
+@media (min-width:901px){.frame{padding-top:calc(var(--jade-sys-spacing-8) + 56px)}}
 @media (max-width:1100px) and (min-width:901px){
   .badge{width:150px}.b-exp{top:-40px}.b-ai{top:-48px}
 }
@@ -256,8 +258,7 @@ html.has-ycur .ycur.is-on{opacity:1}
         <span class="ln"><span>that people</span></span>
         <span class="ln"><span><em>remember.</em></span></span>
       </h1>
-      <p class="hero__sub">品牌平面設計 / 整合設計</p>
-      <p class="hero__lead">專注於品牌平面視覺與整合設計，結合客戶需求與專業設計思維，在溝通與創意之間取得平衡，打造兼具美感與實用性的視覺作品。</p>
+      <p class="hero__sub">品牌平面設計 / 整合設計 / UI/UX</p>
       <div class="hero__actions">
         <a class="jade-primary-button" href="#work"><span>View my work</span><span class="jade-primary-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
         <a class="jade-secondary-button" href="#contact"><span>Let's work together</span><span class="jade-secondary-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
