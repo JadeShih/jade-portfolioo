@@ -208,6 +208,17 @@ html.has-ycur .ycur.is-on{opacity:1}
   .marquee__track[aria-hidden]{display:none}
 }
 
+
+/* 合作品牌插圖：整張圖鑑一起彈出（捲到這裡才播放），之後輕微漂浮 */
+.brands-art{flex:none;width:min(500px,44%);aspect-ratio:1021/762;margin:-150px calc(-1 * clamp(0px,(100vw - 1300px) / 2,24px)) -40px 0}
+.brands-art__item{display:block;transform:rotate(-2deg)}
+.brands-art img{display:block;width:100%;height:auto;user-select:none;animation:float 5s ease-in-out infinite alternate}
+.brands-art.is-armed .brands-art__item{opacity:0}
+.brands-art.is-in .brands-art__item{animation:book-pop 700ms cubic-bezier(.34,1.56,.64,1) both}
+@keyframes book-pop{0%{opacity:0;transform:rotate(-12deg) scale(.3)}60%{opacity:1;transform:rotate(1deg) scale(1.06)}100%{opacity:1;transform:rotate(-2deg) scale(1)}}
+@media (max-width:900px){.brands-art{width:min(420px,100%);margin:var(--jade-sys-spacing-4) auto 0}}
+@media (prefers-reduced-motion:reduce){.brands-art.is-armed .brands-art__item{opacity:1}.brands-art.is-in .brands-art__item{animation:none}.brands-art img{animation:none}}
+
 /* 作品 */
 .work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--jade-sys-spacing-6)}
 .jade-project-card__media{display:grid;place-items:center;background:color-mix(in srgb,var(--jade-sys-color-outline) 88%,transparent);color:var(--jade-sys-color-on-surface-contrast);font:600 14px/1 var(--font-plain);letter-spacing:.08em}
@@ -364,6 +375,7 @@ html.has-ycur .ycur.is-on{opacity:1}
           <p class="eyebrow">Experience · Co-brands</p>
           <h2 class="sec__title" id="t-brands">50+ Brands<small>合作品牌</small></h2>
         </div>
+        <div class="brands-art" aria-hidden="true"><span class="brands-art__item"><img src="public/brands-book.svg" width="1021" height="762" alt="" draggable="false"></span></div>
       </div>
       <!-- 產業分類卡：每張一列品牌跑馬燈，滑鼠移上去會暫停 -->
       <div class="ind-grid">
@@ -546,13 +558,12 @@ html.has-ycur .ycur.is-on{opacity:1}
   window.addEventListener('load',q);window.addEventListener('resize',q);
 })();
 
-/* 經歷插圖：捲到畫面中才依序跳出；不支援或要求減少動態時直接顯示 */
+/* 經歷與合作品牌插圖：捲到畫面中才跳出；不支援或要求減少動態時直接顯示 */
 (function(){
-  var art=document.querySelector('.exp-art');
-  if(!art||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  art.classList.add('is-armed');
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){art.classList.add('is-in');art.classList.remove('is-armed');io.disconnect()}})},{threshold:.35});
-  io.observe(art);
+  var arts=document.querySelectorAll('.exp-art,.brands-art');
+  if(!arts.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');e.target.classList.remove('is-armed');io.unobserve(e.target)}})},{threshold:.35});
+  [].forEach.call(arts,function(a){a.classList.add('is-armed');io.observe(a)});
 })();
 </script>
 </body>
