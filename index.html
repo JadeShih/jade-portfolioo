@@ -187,7 +187,7 @@ html.has-ycur .ycur.is-on{opacity:1}
 @media (prefers-reduced-motion:reduce){.exp-art.is-armed>*{opacity:1}.exp-art.is-in>*{animation:none}.exp-art__item img{animation:none}}
 
 /* 合作品牌：四張產業卡，每張一列品牌緩慢水平移動 */
-.brands{margin-top:var(--jade-sys-spacing-24)}
+.brands{margin-top:0}
 .ind-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--jade-sys-spacing-8) var(--jade-sys-spacing-12)}
 .ind{min-width:0;padding:var(--jade-sys-spacing-8);border-radius:var(--jade-sys-shape-corner-large);background:var(--jade-ref-palette-neutral100);overflow:hidden}
 .ind__label{display:flex;justify-content:space-between;gap:12px;margin:0;font:500 17px/1.3 var(--font-plain);color:var(--jade-sys-color-primary);letter-spacing:.02em}
@@ -210,7 +210,7 @@ html.has-ycur .ycur.is-on{opacity:1}
 
 
 /* 合作品牌插圖：整張圖鑑一起彈出（捲到這裡才播放），之後輕微漂浮 */
-.brands-art{flex:none;width:min(500px,44%);aspect-ratio:1021/762;margin:-150px calc(-1 * clamp(0px,(100vw - 1300px) / 2,24px)) -40px 0}
+.brands-art{flex:none;width:min(500px,44%);aspect-ratio:1021/762;margin:-72px calc(-1 * clamp(0px,(100vw - 1300px) / 2,24px)) -40px 0}
 .brands-art__item{display:block;transform:rotate(-2deg)}
 .brands-art img{display:block;width:100%;height:auto;user-select:none;animation:float 5s ease-in-out infinite alternate}
 .brands-art.is-armed .brands-art__item{opacity:0}
@@ -369,50 +369,6 @@ html.has-ycur .ycur.is-on{opacity:1}
       <p class="edu">學歷：世新大學 數位多媒體設計學系（動畫組）・加拿大 ILSC 語言學校</p>
     </div>
 
-    <div class="sub brands" id="brands">
-      <div class="sec__head">
-        <div>
-          <p class="eyebrow">Experience · Co-brands</p>
-          <h2 class="sec__title" id="t-brands">50+ Brands<small>合作品牌</small></h2>
-        </div>
-        <div class="brands-art" aria-hidden="true"><span class="brands-art__item"><img src="public/brands-book.svg" width="1021" height="762" alt="" draggable="false"></span></div>
-      </div>
-      <!-- 產業分類卡：每張一列品牌跑馬燈，滑鼠移上去會暫停 -->
-      <div class="ind-grid">
-        <article class="ind" style="--n:10">
-          <p class="ind__label"><span>01/ FINANCE</span><span class="ind__count">10 個品牌</span></p>
-          <h3 class="ind__title">金融財經</h3>
-          <div class="marquee"><div class="marquee__view">
-            <ul class="marquee__track"><li>大眾銀行</li><li>永豐銀行</li><li>華南銀行</li><li>富邦銀行</li><li>合作金庫</li><li>野村投信</li><li>明台產險</li><li>國泰金控</li><li>歐力士 ORIX</li><li>籌碼K線</li></ul>
-            <ul class="marquee__track" aria-hidden="true"><li>大眾銀行</li><li>永豐銀行</li><li>華南銀行</li><li>富邦銀行</li><li>合作金庫</li><li>野村投信</li><li>明台產險</li><li>國泰金控</li><li>歐力士 ORIX</li><li>籌碼K線</li></ul>
-          </div></div>
-        </article>
-        <article class="ind" style="--n:24">
-          <p class="ind__label"><span>02/ HEALTHCARE</span><span class="ind__count">24 個品牌</span></p>
-          <h3 class="ind__title">醫療保健</h3>
-          <div class="marquee"><div class="marquee__view">
-            <ul class="marquee__track"><li>東洋藥品</li><li>OMRON</li><li>博士倫</li><li>ORBIS</li><li>正官庄</li><li>長春藤生技</li><li>GSK</li><li>台酒生技</li><li>禾亞國際健康診所</li><li>全星診所</li><li>米鴻</li><li>沙威隆</li><li>泌密會客室</li><li>英橋</li><li>飛跑</li><li>娘家</li><li>國衛院</li><li>添寧</li><li>無比寶貝止癢液</li><li>愛爾康</li><li>衛采</li><li>聯新運醫</li><li>寶島眼科</li><li>寶齡富錦</li></ul>
-            <ul class="marquee__track" aria-hidden="true"><li>東洋藥品</li><li>OMRON</li><li>博士倫</li><li>ORBIS</li><li>正官庄</li><li>長春藤生技</li><li>GSK</li><li>台酒生技</li><li>禾亞國際健康診所</li><li>全星診所</li><li>米鴻</li><li>沙威隆</li><li>泌密會客室</li><li>英橋</li><li>飛跑</li><li>娘家</li><li>國衛院</li><li>添寧</li><li>無比寶貝止癢液</li><li>愛爾康</li><li>衛采</li><li>聯新運醫</li><li>寶島眼科</li><li>寶齡富錦</li></ul>
-          </div></div>
-        </article>
-        <article class="ind" style="--n:8">
-          <p class="ind__label"><span>03/ TECHNOLOGY</span><span class="ind__count">8 個品牌</span></p>
-          <h3 class="ind__title">科技電子</h3>
-          <div class="marquee"><div class="marquee__view">
-            <ul class="marquee__track"><li>台灣大哥大</li><li>Panasonic</li><li>Brother</li><li>BenQ</li><li>AVITA</li><li>Coway</li><li>方鼎</li><li>展碁</li></ul>
-            <ul class="marquee__track" aria-hidden="true"><li>台灣大哥大</li><li>Panasonic</li><li>Brother</li><li>BenQ</li><li>AVITA</li><li>Coway</li><li>方鼎</li><li>展碁</li></ul>
-          </div></div>
-        </article>
-        <article class="ind" style="--n:8">
-          <p class="ind__label"><span>04/ OTHER INDUSTRIES</span><span class="ind__count">8 個品牌</span></p>
-          <h3 class="ind__title">其他產業</h3>
-          <div class="marquee"><div class="marquee__view">
-            <ul class="marquee__track"><li>橘子工坊</li><li>BRITA</li><li>立邦</li><li>DULUX 得利</li><li>TEMPO</li><li>SHELL</li><li>KIA</li><li>黑松 FIN</li></ul>
-            <ul class="marquee__track" aria-hidden="true"><li>橘子工坊</li><li>BRITA</li><li>立邦</li><li>DULUX 得利</li><li>TEMPO</li><li>SHELL</li><li>KIA</li><li>黑松 FIN</li></ul>
-          </div></div>
-        </article>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -434,7 +390,56 @@ html.has-ycur .ycur.is-on{opacity:1}
   </div>
 </section>
 
-<section class="sec" data-theme="light" id="playground" aria-labelledby="t-play">
+<section class="sec" data-theme="light" id="brands" aria-labelledby="t-brands">
+  <div class="wrap">
+<div class="brands" id="brands-inner">
+    <div class="sec__head">
+      <div>
+        <p class="eyebrow">Experience · Co-brands</p>
+        <h2 class="sec__title" id="t-brands">50+ Brands<small>合作品牌</small></h2>
+      </div>
+      <div class="brands-art" aria-hidden="true"><span class="brands-art__item"><img src="public/brands-book.svg" width="1021" height="762" alt="" draggable="false"></span></div>
+    </div>
+    <!-- 產業分類卡：每張一列品牌跑馬燈，滑鼠移上去會暫停 -->
+    <div class="ind-grid">
+      <article class="ind" style="--n:10">
+        <p class="ind__label"><span>01/ FINANCE</span><span class="ind__count">10 個品牌</span></p>
+        <h3 class="ind__title">金融財經</h3>
+        <div class="marquee"><div class="marquee__view">
+          <ul class="marquee__track"><li>大眾銀行</li><li>永豐銀行</li><li>華南銀行</li><li>富邦銀行</li><li>合作金庫</li><li>野村投信</li><li>明台產險</li><li>國泰金控</li><li>歐力士 ORIX</li><li>籌碼K線</li></ul>
+          <ul class="marquee__track" aria-hidden="true"><li>大眾銀行</li><li>永豐銀行</li><li>華南銀行</li><li>富邦銀行</li><li>合作金庫</li><li>野村投信</li><li>明台產險</li><li>國泰金控</li><li>歐力士 ORIX</li><li>籌碼K線</li></ul>
+        </div></div>
+      </article>
+      <article class="ind" style="--n:24">
+        <p class="ind__label"><span>02/ HEALTHCARE</span><span class="ind__count">24 個品牌</span></p>
+        <h3 class="ind__title">醫療保健</h3>
+        <div class="marquee"><div class="marquee__view">
+          <ul class="marquee__track"><li>東洋藥品</li><li>OMRON</li><li>博士倫</li><li>ORBIS</li><li>正官庄</li><li>長春藤生技</li><li>GSK</li><li>台酒生技</li><li>禾亞國際健康診所</li><li>全星診所</li><li>米鴻</li><li>沙威隆</li><li>泌密會客室</li><li>英橋</li><li>飛跑</li><li>娘家</li><li>國衛院</li><li>添寧</li><li>無比寶貝止癢液</li><li>愛爾康</li><li>衛采</li><li>聯新運醫</li><li>寶島眼科</li><li>寶齡富錦</li></ul>
+          <ul class="marquee__track" aria-hidden="true"><li>東洋藥品</li><li>OMRON</li><li>博士倫</li><li>ORBIS</li><li>正官庄</li><li>長春藤生技</li><li>GSK</li><li>台酒生技</li><li>禾亞國際健康診所</li><li>全星診所</li><li>米鴻</li><li>沙威隆</li><li>泌密會客室</li><li>英橋</li><li>飛跑</li><li>娘家</li><li>國衛院</li><li>添寧</li><li>無比寶貝止癢液</li><li>愛爾康</li><li>衛采</li><li>聯新運醫</li><li>寶島眼科</li><li>寶齡富錦</li></ul>
+        </div></div>
+      </article>
+      <article class="ind" style="--n:8">
+        <p class="ind__label"><span>03/ TECHNOLOGY</span><span class="ind__count">8 個品牌</span></p>
+        <h3 class="ind__title">科技電子</h3>
+        <div class="marquee"><div class="marquee__view">
+          <ul class="marquee__track"><li>台灣大哥大</li><li>Panasonic</li><li>Brother</li><li>BenQ</li><li>AVITA</li><li>Coway</li><li>方鼎</li><li>展碁</li></ul>
+          <ul class="marquee__track" aria-hidden="true"><li>台灣大哥大</li><li>Panasonic</li><li>Brother</li><li>BenQ</li><li>AVITA</li><li>Coway</li><li>方鼎</li><li>展碁</li></ul>
+        </div></div>
+      </article>
+      <article class="ind" style="--n:8">
+        <p class="ind__label"><span>04/ OTHER INDUSTRIES</span><span class="ind__count">8 個品牌</span></p>
+        <h3 class="ind__title">其他產業</h3>
+        <div class="marquee"><div class="marquee__view">
+          <ul class="marquee__track"><li>橘子工坊</li><li>BRITA</li><li>立邦</li><li>DULUX 得利</li><li>TEMPO</li><li>SHELL</li><li>KIA</li><li>黑松 FIN</li></ul>
+          <ul class="marquee__track" aria-hidden="true"><li>橘子工坊</li><li>BRITA</li><li>立邦</li><li>DULUX 得利</li><li>TEMPO</li><li>SHELL</li><li>KIA</li><li>黑松 FIN</li></ul>
+        </div></div>
+      </article>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="sec" data-theme="brand" id="playground" aria-labelledby="t-play">
   <div class="wrap">
     <div class="quest">
       <div>
@@ -448,7 +453,7 @@ html.has-ycur .ycur.is-on{opacity:1}
   </div>
 </section>
 
-<section class="sec contact" data-theme="brand" id="contact" aria-labelledby="t-contact">
+<section class="sec contact" data-theme="light" id="contact" aria-labelledby="t-contact">
   <div class="wrap">
     <p class="eyebrow">Contact</p>
     <h2 class="sec__title" id="t-contact">Open for work<small>歡迎聊聊合作或職缺</small></h2>
