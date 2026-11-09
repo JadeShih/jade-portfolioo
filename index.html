@@ -22,7 +22,6 @@ a.jade-primary-button,a.jade-secondary-button{text-decoration:none}
 .hero{
   --line:color-mix(in srgb,var(--jade-sys-color-on-surface) 9%,transparent);
   --tick:color-mix(in srgb,var(--jade-sys-color-on-surface) 45%,transparent);
-  --ease:cubic-bezier(0.2,0,0,1);
   position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
   padding:calc(var(--jade-comp-navigation-bar-container-height) + var(--jade-comp-navigation-bar-container-offset) + var(--jade-sys-spacing-12)) 0 var(--jade-sys-spacing-16);
   background-color:var(--jade-sys-color-surface);color:var(--jade-sys-color-on-surface);overflow:hidden;
@@ -76,6 +75,7 @@ a.jade-primary-button,a.jade-secondary-button{text-decoration:none}
 
 /* ── Kiss-cut 貼紙樣式（實驗中，定案後再寫回設計系統 token） ── */
 :root{
+  --ease:cubic-bezier(0.2,0,0,1);               /* 全頁共用的動態曲線（M3 emphasized） */
   --kc:var(--jade-sys-color-on-primary);            /* 白色模切邊 */
   --kc-shadow:color-mix(in srgb,var(--jade-sys-color-outline) 38%,transparent);
   --kc-ring:0 0 0 2.5px var(--jade-sys-color-outline),0 0 0 8px var(--kc),0 12px 20px -6px var(--kc-shadow);
@@ -162,6 +162,29 @@ html.has-ycur .ycur.is-on{opacity:1}
 .tl:hover .tl__go,.tl:focus-visible .tl__go{transform:rotate(45deg)}
 .tl:active{transform:translateY(0);box-shadow:0 2px 0 var(--jade-sys-color-outline)}
 .edu{margin:var(--jade-sys-spacing-6) 0 0;font:500 15px/1.7 var(--font-plain);color:var(--jade-sys-color-on-surface-variant)}
+
+
+/* 經歷插圖：skills → palette → deco → narrow 依序跳出（捲到這裡才播放） */
+.exp-art{position:relative;flex:none;width:min(663px,54%);aspect-ratio:663/279;margin-bottom:-24px}
+.exp-art img{display:block;width:100%;height:auto;user-select:none}
+.exp-art>*{position:absolute}
+.exp-art__deco{left:0;top:26%;width:24%!important}
+.exp-art__skills{left:28%;top:9%;width:52%;--r:7deg}
+.exp-art__palette{left:81%;top:0;width:19%;--r:-8deg}
+.exp-art__narrow{left:80%;top:51%;width:14%!important;mix-blend-mode:multiply}
+.exp-art__item{transform:rotate(var(--r))}
+.exp-art__item img{animation:float 5s ease-in-out infinite alternate}
+.exp-art__palette img{animation-delay:-2s}
+.exp-art.is-armed>*{opacity:0}
+.exp-art.is-in>*{animation:exp-pop 640ms cubic-bezier(.34,1.56,.64,1) both}
+.exp-art.is-in .exp-art__skills{animation-delay:0ms}
+.exp-art.is-in .exp-art__palette{animation-delay:220ms}
+.exp-art.is-in .exp-art__deco{animation-delay:440ms}
+.exp-art.is-in .exp-art__narrow{animation:exp-draw 700ms cubic-bezier(.2,0,0,1) 680ms both}
+@keyframes exp-pop{0%{opacity:0;transform:rotate(var(--r,0deg)) scale(.3)}60%{opacity:1;transform:rotate(var(--r,0deg)) scale(1.08)}100%{opacity:1;transform:rotate(var(--r,0deg)) scale(1)}}
+@keyframes exp-draw{0%{opacity:0;clip-path:inset(0 0 0 100%)}20%{opacity:1}100%{opacity:1;clip-path:inset(0 0 0 0)}}
+@media (max-width:900px){.exp-art{width:100%;margin:var(--jade-sys-spacing-4) 0 0}}
+@media (prefers-reduced-motion:reduce){.exp-art.is-armed>*{opacity:1}.exp-art.is-in>*{animation:none}.exp-art__item img{animation:none}}
 
 /* 合作品牌牆 */
 .brands{margin-top:var(--jade-sys-spacing-24)}
@@ -302,6 +325,12 @@ html.has-ycur .ycur.is-on{opacity:1}
         <div>
           <p class="eyebrow">Designer · LV.10</p>
           <h2 class="sec__title" id="t-exp">Experience<small>十年品牌與整合設計經歷</small></h2>
+        </div>
+        <div class="exp-art" aria-hidden="true">
+          <img class="exp-art__deco" src="public/exp-deco.svg" width="326" height="296" alt="" draggable="false">
+          <span class="exp-art__item exp-art__skills"><img src="public/exp-skills.svg" width="237" height="162" alt="" draggable="false"></span>
+          <span class="exp-art__item exp-art__palette"><img src="public/exp-palette.svg" width="220" height="215" alt="" draggable="false"></span>
+          <img class="exp-art__narrow" src="public/exp-narrow.svg" width="175" height="173" alt="" draggable="false">
         </div>
       </div>
       <!-- 經歷卡：之後 About 頁完成，把每張的 data-href 改成 href 即可啟用連結 -->
@@ -472,6 +501,15 @@ html.has-ycur .ycur.is-on{opacity:1}
   fit();
   if(document.fonts){if(document.fonts.ready)document.fonts.ready.then(q);if(document.fonts.addEventListener)document.fonts.addEventListener('loadingdone',q)}
   window.addEventListener('load',q);window.addEventListener('resize',q);
+})();
+
+/* 經歷插圖：捲到畫面中才依序跳出；不支援或要求減少動態時直接顯示 */
+(function(){
+  var art=document.querySelector('.exp-art');
+  if(!art||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  art.classList.add('is-armed');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){art.classList.add('is-in');art.classList.remove('is-armed');io.disconnect()}})},{threshold:.35});
+  io.observe(art);
 })();
 </script>
 </body>

@@ -1,0 +1,33 @@
+<svg width="220" height="215" viewBox="0 0 220 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M39.7249 20.1829L44.3919 17.9336L181.629 18.7926L203.703 51.0779V164.308L175.172 196.748H44.9813L37.0227 187.634L30.2654 179.447C27.7627 177.645 22.6072 174.071 22.0065 174.195C21.4059 174.318 18.753 167.758 17.5017 164.463L15.6992 53.5495L22.4568 43.0452L39.7249 20.1829Z" fill="#FDFBE5"/>
+<rect x="18.2619" y="34.5598" width="14.9217" height="12.1568" fill="black"/>
+<rect x="190.791" y="34.5598" width="11.8174" height="12.1568" fill="black"/>
+<rect x="186.816" y="168.283" width="18.7751" height="12.1568" fill="black"/>
+<rect x="18.0691" y="168.284" width="15.1145" height="12.1568" fill="black"/>
+<rect x="29.592" y="180.44" width="15.4168" height="12.1568" fill="black"/>
+<rect x="9.55373" y="46.7153" width="11.8174" height="121.568" fill="black"/>
+<rect x="198.629" y="46.7153" width="11.8174" height="121.568" fill="black"/>
+<rect x="181.998" y="22.4011" width="11.8174" height="12.1568" fill="black"/>
+<rect x="28.043" y="22.4011" width="11.8174" height="12.1568" fill="black"/>
+<rect x="174.991" y="180.441" width="18.8224" height="12.1568" fill="black"/>
+<rect x="37.0671" y="10.2454" width="148.6" height="12.1568" fill="black"/>
+<rect x="39.0945" y="192.598" width="143.177" height="12.1568" fill="black"/>
+<path d="M42.9932 40.2695H108.033V105.309H42.9932V40.2695Z" fill="#FF3688"/>
+<mask id="stroke0_24_6227" fill="white">
+<path d="M42.9932 40.2695H108.033V105.309H42.9932V40.2695Z"/>
+</mask>
+<path d="M42.9932 40.2695H108.033V105.309H42.9932V40.2695Z" stroke-width="8" stroke="black" mask="url(#stroke0_24_6227)"/>
+<path d="M42.9932 110.253H108.033V175.292H42.9932V110.253Z" fill="#18EA44"/>
+<mask id="stroke1_24_6227" fill="white">
+<path d="M42.9932 110.253H108.033V175.292H42.9932V110.253Z"/>
+</mask>
+<path d="M42.9932 110.253H108.033V175.292H42.9932V110.253Z" stroke-width="8" stroke="black" mask="url(#stroke1_24_6227)"/>
+<path d="M114.7 40.2698H179.74V105.309H114.7V40.2698Z" fill="#64D0FF"/>
+<mask id="stroke2_24_6227" fill="white">
+<path d="M114.7 40.2698H179.74V105.309H114.7V40.2698Z"/>
+</mask>
+<path d="M114.7 40.2698H179.74V105.309H114.7V40.2698Z" stroke-width="8" stroke="black" mask="url(#stroke2_24_6227)"/>
+<rect x="116.7" y="112.253" width="61.0395" height="61.0395" fill="#FFD12A" stroke-width="4" stroke="black"/>
+<rect x="53.082" y="58.8589" width="9.11231" height="9.37404" fill="white"/>
+<rect x="59.8281" y="49.5491" width="9.11231" height="9.37404" fill="white"/>
+</svg>
