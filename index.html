@@ -94,7 +94,7 @@ a.jade-primary-button,a.jade-secondary-button{text-decoration:none}
 .hero .jade-primary-button:active,.hero .jade-secondary-button:active{transform:translateY(1px);box-shadow:0 0 0 2.5px var(--jade-sys-color-outline),0 0 0 8px var(--kc),0 4px 8px -4px var(--kc-shadow)}
 .hero .jade-primary-button:focus-visible,.hero .jade-secondary-button:focus-visible{outline-offset:11px}
 .hero__actions{gap:var(--jade-sys-spacing-6)}
-@media (prefers-reduced-motion:reduce){.hero .jade-primary-button:hover,.hero .jade-secondary-button:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){.hero .jade-primary-button:hover,.hero .jade-secondary-button:hover,.tl:hover,.tl:active{transform:none}.tl:hover .tl__go{transform:none}}
 
 /* ── 徽章貼紙（Jade 的 SVG）：點擊往下捲到對應簡介 ── */
 .badges{position:absolute;inset:0;pointer-events:none;z-index:2}
@@ -147,15 +147,20 @@ html.has-ycur .ycur.is-on{opacity:1}
 [data-theme="light"] .sec__title.is-arriving{animation-name:arrive-l}
 @keyframes arrive-l{0%{transform:translateX(-10px)}25%{transform:translateX(6px);text-shadow:6px 6px 0 var(--jade-sys-color-tertiary)}55%{transform:translateX(-3px)}100%{transform:none}}
 
-/* 經歷時間軸 */
-.timeline{display:grid;gap:var(--jade-sys-spacing-4);margin:0;padding:0;list-style:none}
-.tl{display:grid;grid-template-columns:150px minmax(0,1fr);gap:var(--jade-sys-spacing-6);align-items:baseline;padding:var(--jade-sys-spacing-6) var(--jade-sys-spacing-8);border-radius:var(--jade-sys-shape-corner-large);background:var(--jade-ref-palette-neutral100);border:2px solid var(--jade-sys-color-outline)}
-.tl__when{font:400 26px/1 var(--font-brand);font-variant-numeric:tabular-nums}
-.tl__role{margin:0;font:600 20px/1.35 var(--font-plain)}
-.tl__org{margin:2px 0 0;font:500 15px/1.6 var(--font-plain);color:var(--jade-sys-color-on-surface-variant)}
-.tl__note{margin:8px 0 0;font:400 15px/1.7 var(--font-plain);color:var(--jade-sys-color-on-surface-variant)}
-.tl.is-now{background:var(--jade-sys-color-secondary);color:var(--jade-sys-color-on-secondary)}
-.tl.is-now .tl__org,.tl.is-now .tl__note{color:var(--jade-sys-color-on-secondary)}
+/* 經歷時間軸：每張卡是按鈕外觀，滑過變萊姆綠（連結待 About 頁完成後啟用） */
+.timeline{display:grid;gap:var(--jade-sys-spacing-6);margin:0;padding:0;list-style:none}
+.tl{container-type:inline-size;display:grid;grid-template-columns:168px minmax(0,1fr) 48px;gap:var(--jade-sys-spacing-6);align-items:start;padding:var(--jade-sys-spacing-12) var(--jade-sys-spacing-12);border-radius:var(--jade-sys-shape-corner-large);background:var(--jade-ref-palette-neutral100);border:2px solid var(--jade-sys-color-outline);color:var(--jade-sys-color-on-surface);text-decoration:none;cursor:pointer;transition:background-color 220ms var(--ease),transform 220ms var(--ease),box-shadow 220ms var(--ease)}
+.tl__when{font:400 32px/1 var(--font-brand);font-variant-numeric:tabular-nums;letter-spacing:.01em}
+.tl__body{min-width:0}
+.tl__role{margin:0;font:900 22px/1.3 "Noto Sans TC",var(--font-plain),sans-serif;letter-spacing:.02em}
+.tl__org{margin:6px 0 0;font:500 16px/1.6 var(--font-plain),"Noto Sans TC",sans-serif;color:var(--jade-sys-color-on-surface-variant)}
+.tl__note{margin:var(--jade-sys-spacing-4) 0 0;max-width:calc(66cqw - 192px);font:400 16px/1.8 var(--font-plain),"Noto Sans TC",sans-serif;color:var(--jade-sys-color-on-surface-variant)}
+.tl__go{display:grid;place-items:center;width:48px;height:48px;border-radius:var(--jade-sys-shape-corner-full);background:var(--jade-sys-color-surface-contrast);color:var(--jade-sys-color-secondary);transition:transform 220ms var(--ease)}
+.tl__go svg{width:20px;height:20px}
+.tl:hover,.tl:focus-visible{background:var(--jade-sys-color-secondary);color:var(--jade-sys-color-on-secondary);transform:translateY(-3px);box-shadow:0 6px 0 var(--jade-sys-color-outline)}
+.tl:hover .tl__org,.tl:hover .tl__note,.tl:focus-visible .tl__org,.tl:focus-visible .tl__note{color:var(--jade-sys-color-on-secondary)}
+.tl:hover .tl__go,.tl:focus-visible .tl__go{transform:rotate(45deg)}
+.tl:active{transform:translateY(0);box-shadow:0 2px 0 var(--jade-sys-color-outline)}
 .edu{margin:var(--jade-sys-spacing-6) 0 0;font:500 15px/1.7 var(--font-plain);color:var(--jade-sys-color-on-surface-variant)}
 
 /* 合作品牌牆 */
@@ -200,7 +205,8 @@ html.has-ycur .ycur.is-on{opacity:1}
   .badge{position:static;flex:none;width:240px;scroll-snap-align:start;--r:0deg}
   .badge__float{animation:none}
   .frame{display:flex;flex-direction:column;align-items:center}
-  .tl{grid-template-columns:1fr;gap:8px;padding:var(--jade-sys-spacing-6)}
+  .tl{grid-template-columns:minmax(0,1fr) 40px;gap:12px;padding:var(--jade-sys-spacing-8) var(--jade-sys-spacing-6)}
+  .tl__when{grid-column:1;font-size:26px}.tl__go{grid-column:2;grid-row:1;width:40px;height:40px}.tl__body{grid-column:1 / -1}.tl__note{max-width:none}
   .brand-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .work-grid{grid-template-columns:1fr}
   .quest{grid-template-columns:1fr;padding:var(--jade-sys-spacing-8)}
@@ -297,13 +303,13 @@ html.has-ycur .ycur.is-on{opacity:1}
           <p class="eyebrow">Designer · LV.10</p>
           <h2 class="sec__title" id="t-exp">Experience<small>十年品牌與整合設計經歷</small></h2>
         </div>
-        <p class="sec__lead">從銀行平面、品牌整合到財經產品介面，十年間累積平面、行銷與 UI/UX 的完整設計經驗。</p>
       </div>
+      <!-- 經歷卡：之後 About 頁完成，把每張的 data-href 改成 href 即可啟用連結 -->
       <ol class="timeline">
-        <li class="tl is-now"><span class="tl__when">2024–2026</span><div><p class="tl__role">平面設計師</p><p class="tl__org">全曜財經有限公司・財經投資內容</p><p class="tl__note">投資平台的直播、KOL 分析師內容、新手引導與站內訊息設計，並撰寫 UX 規格與設計決策文件。</p></div></li>
-        <li class="tl"><span class="tl__when">2022–2024</span><div><p class="tl__role">設計經理</p><p class="tl__org">愛他命創醫行銷</p><p class="tl__note"><span class="todo">待補：主要職責與代表成果</span></p></div></li>
-        <li class="tl"><span class="tl__when">2018–2022</span><div><p class="tl__role">創意設計</p><p class="tl__org">藝術形態整合應用</p><p class="tl__note"><span class="todo">待補：主要職責與代表成果</span></p></div></li>
-        <li class="tl"><span class="tl__when">2015–2017</span><div><p class="tl__role">平面設計師</p><p class="tl__org">宣巧社網版・銀行客戶</p><p class="tl__note"><span class="todo">待補：主要職責與代表成果</span></p></div></li>
+        <li><a class="tl" data-href="about.html#exp-2024" aria-disabled="true"><span class="tl__when">2024-2026</span><div class="tl__body"><p class="tl__role">平面視覺設計師</p><p class="tl__org">全曜財經有限公司 / 財金科技軟體</p><p class="tl__note">負責統籌 7 位股市財經創作者專屬 App 的視覺設計與活動素材製作，參與 App UI/UX 功能優化與迭代，並運用 GPT 建立廣告素材產製流程，提升設計效率與工作流程自動化。</p></div><span class="tl__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></li>
+        <li><a class="tl" data-href="about.html#exp-2022" aria-disabled="true"><span class="tl__when">2022-2024</span><div class="tl__body"><p class="tl__role">設計經理</p><p class="tl__org">愛他命創醫行銷有限公司 / 健康保健食品行銷</p><p class="tl__note">帶領 2 人設計團隊，負責 32 個品牌的視覺設計與專案管理，以醫療保健產業為主。主導記者會、醫學展會等大型活動視覺與展場設計，並統籌品牌提案、平面設計、影片及網站製作。</p></div><span class="tl__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></li>
+        <li><a class="tl" data-href="about.html#exp-2018" aria-disabled="true"><span class="tl__when">2018-2022</span><div class="tl__body"><p class="tl__role">創意設計</p><p class="tl__org">藝術形態整合應用 / 廣告設計公司</p><p class="tl__note">負責 18 個品牌的平面視覺設計，服務客戶包含 Panasonic、Brother、Shell、KIA 及野村投信等等，執行數位與實體設計專案，並協助培訓 3 位新進設計師。</p></div><span class="tl__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></li>
+        <li><a class="tl" data-href="about.html#exp-2015" aria-disabled="true"><span class="tl__when">2015-2017</span><div class="tl__body"><p class="tl__role">平面設計助理</p><p class="tl__org">宣巧社網版有限公司 / 廣告設計公司</p><p class="tl__note">執行 6 家金融與電信品牌的視覺設計專案，服務客戶包含大眾銀行、永豐銀行、富邦銀行及台灣大哥大等等。設計範疇涵蓋品牌文宣、戶外廣告、信用卡卡面及數位活動視覺。</p></div><span class="tl__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></li>
       </ol>
       <p class="edu">學歷：世新大學 數位多媒體設計學系（動畫組）・加拿大 ILSC 語言學校</p>
     </div>
