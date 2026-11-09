@@ -189,19 +189,21 @@ html.has-ycur .ycur.is-on{opacity:1}
 /* 合作品牌：四張產業卡，每張一列品牌緩慢水平移動 */
 .brands{margin-top:var(--jade-sys-spacing-24)}
 .ind-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--jade-sys-spacing-8) var(--jade-sys-spacing-12)}
-.ind{min-width:0;padding:var(--jade-sys-spacing-8) 0 var(--jade-sys-spacing-8) var(--jade-sys-spacing-8);border-radius:var(--jade-sys-shape-corner-large);background:var(--jade-ref-palette-neutral100);overflow:hidden}
-.ind__label{display:flex;justify-content:space-between;gap:12px;margin:0;padding-right:var(--jade-sys-spacing-8);font:500 17px/1.3 var(--font-plain);color:var(--jade-sys-color-primary);letter-spacing:.02em}
+.ind{min-width:0;padding:var(--jade-sys-spacing-8);border-radius:var(--jade-sys-shape-corner-large);background:var(--jade-ref-palette-neutral100);overflow:hidden}
+.ind__label{display:flex;justify-content:space-between;gap:12px;margin:0;font:500 17px/1.3 var(--font-plain);color:var(--jade-sys-color-primary);letter-spacing:.02em}
 .ind__count{font:600 13px/1.3 var(--font-plain),"Noto Sans TC",sans-serif;color:var(--jade-sys-color-on-surface-variant);letter-spacing:.06em;white-space:nowrap}
-.ind__title{margin:var(--jade-sys-spacing-2) 0 var(--jade-sys-spacing-6);font:900 clamp(32px,3.2vw,44px)/1.15 "Noto Sans TC",sans-serif;letter-spacing:.02em;color:var(--jade-sys-color-on-surface)}
-.marquee{display:flex;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 64px),transparent);mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 64px),transparent)}
+.ind__title{margin:var(--jade-sys-spacing-2) 0 var(--jade-sys-spacing-6);font:900 clamp(22px,2vw,28px)/1.25 "Noto Sans TC",sans-serif;letter-spacing:.02em;color:var(--jade-sys-color-on-surface)}
+.marquee{padding:var(--jade-sys-spacing-3) var(--jade-sys-spacing-4);border-radius:var(--jade-sys-shape-corner-full);background:var(--jade-sys-color-primary)}
+.marquee__view{display:flex;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent)}
 .marquee__track{flex:none;display:flex;align-items:center;margin:0;padding:0;list-style:none;animation:marquee calc(var(--n) * 3.2s) linear infinite}
-.marquee__track li{display:flex;align-items:center;white-space:nowrap;font:500 18px/1.4 var(--font-plain),"Noto Sans TC",sans-serif;text-transform:uppercase;letter-spacing:.02em;color:var(--jade-sys-color-on-surface-variant)}
-.marquee__track li::after{content:"✦";margin:0 22px;color:var(--jade-sys-color-primary);font-size:15px}
+.marquee__track li{display:flex;align-items:center;white-space:nowrap;font:600 17px/1.4 var(--font-plain),"Noto Sans TC",sans-serif;text-transform:uppercase;letter-spacing:.02em;color:var(--jade-sys-color-on-primary)}
+.marquee__track li::after{content:"✦";margin:0 22px;color:var(--jade-sys-color-secondary);font-size:15px}
 .ind:hover .marquee__track{animation-play-state:paused}
 @keyframes marquee{to{transform:translateX(-100%)}}
-@media (max-width:900px){.ind-grid{grid-template-columns:1fr;gap:var(--jade-sys-spacing-4)}.ind{padding:var(--jade-sys-spacing-6) 0 var(--jade-sys-spacing-6) var(--jade-sys-spacing-6)}.ind__label{padding-right:var(--jade-sys-spacing-6)}}
+@media (max-width:900px){.ind-grid{grid-template-columns:1fr;gap:var(--jade-sys-spacing-4)}.ind{padding:var(--jade-sys-spacing-6)}}
 @media (prefers-reduced-motion:reduce){
-  .marquee{-webkit-mask-image:none;mask-image:none;padding-right:var(--jade-sys-spacing-8)}
+  .marquee{padding-inline:var(--jade-sys-spacing-6);border-radius:var(--jade-sys-shape-corner-medium)}
+  .marquee__view{-webkit-mask-image:none;mask-image:none}
   .marquee__track{flex:1;flex-wrap:wrap;row-gap:6px;animation:none}
   .marquee__track[aria-hidden]{display:none}
 }
@@ -368,34 +370,34 @@ html.has-ycur .ycur.is-on{opacity:1}
         <article class="ind" style="--n:10">
           <p class="ind__label"><span>01/ FINANCE</span><span class="ind__count">10 個品牌</span></p>
           <h3 class="ind__title">金融財經</h3>
-          <div class="marquee">
+          <div class="marquee"><div class="marquee__view">
             <ul class="marquee__track"><li>大眾銀行</li><li>永豐銀行</li><li>華南銀行</li><li>富邦銀行</li><li>合作金庫</li><li>野村投信</li><li>明台產險</li><li>國泰金控</li><li>歐力士 ORIX</li><li>籌碼K線</li></ul>
             <ul class="marquee__track" aria-hidden="true"><li>大眾銀行</li><li>永豐銀行</li><li>華南銀行</li><li>富邦銀行</li><li>合作金庫</li><li>野村投信</li><li>明台產險</li><li>國泰金控</li><li>歐力士 ORIX</li><li>籌碼K線</li></ul>
-          </div>
+          </div></div>
         </article>
         <article class="ind" style="--n:24">
           <p class="ind__label"><span>02/ HEALTHCARE</span><span class="ind__count">24 個品牌</span></p>
           <h3 class="ind__title">醫療保健</h3>
-          <div class="marquee">
+          <div class="marquee"><div class="marquee__view">
             <ul class="marquee__track"><li>東洋藥品</li><li>OMRON</li><li>博士倫</li><li>ORBIS</li><li>正官庄</li><li>長春藤生技</li><li>GSK</li><li>台酒生技</li><li>禾亞國際健康診所</li><li>全星診所</li><li>米鴻</li><li>沙威隆</li><li>泌密會客室</li><li>英橋</li><li>飛跑</li><li>娘家</li><li>國衛院</li><li>添寧</li><li>無比寶貝止癢液</li><li>愛爾康</li><li>衛采</li><li>聯新運醫</li><li>寶島眼科</li><li>寶齡富錦</li></ul>
             <ul class="marquee__track" aria-hidden="true"><li>東洋藥品</li><li>OMRON</li><li>博士倫</li><li>ORBIS</li><li>正官庄</li><li>長春藤生技</li><li>GSK</li><li>台酒生技</li><li>禾亞國際健康診所</li><li>全星診所</li><li>米鴻</li><li>沙威隆</li><li>泌密會客室</li><li>英橋</li><li>飛跑</li><li>娘家</li><li>國衛院</li><li>添寧</li><li>無比寶貝止癢液</li><li>愛爾康</li><li>衛采</li><li>聯新運醫</li><li>寶島眼科</li><li>寶齡富錦</li></ul>
-          </div>
+          </div></div>
         </article>
         <article class="ind" style="--n:8">
           <p class="ind__label"><span>03/ TECHNOLOGY</span><span class="ind__count">8 個品牌</span></p>
           <h3 class="ind__title">科技電子</h3>
-          <div class="marquee">
+          <div class="marquee"><div class="marquee__view">
             <ul class="marquee__track"><li>台灣大哥大</li><li>Panasonic</li><li>Brother</li><li>BenQ</li><li>AVITA</li><li>Coway</li><li>方鼎</li><li>展碁</li></ul>
             <ul class="marquee__track" aria-hidden="true"><li>台灣大哥大</li><li>Panasonic</li><li>Brother</li><li>BenQ</li><li>AVITA</li><li>Coway</li><li>方鼎</li><li>展碁</li></ul>
-          </div>
+          </div></div>
         </article>
         <article class="ind" style="--n:8">
           <p class="ind__label"><span>04/ OTHER INDUSTRIES</span><span class="ind__count">8 個品牌</span></p>
           <h3 class="ind__title">其他產業</h3>
-          <div class="marquee">
+          <div class="marquee"><div class="marquee__view">
             <ul class="marquee__track"><li>橘子工坊</li><li>BRITA</li><li>立邦</li><li>DULUX 得利</li><li>TEMPO</li><li>SHELL</li><li>KIA</li><li>黑松 FIN</li></ul>
             <ul class="marquee__track" aria-hidden="true"><li>橘子工坊</li><li>BRITA</li><li>立邦</li><li>DULUX 得利</li><li>TEMPO</li><li>SHELL</li><li>KIA</li><li>黑松 FIN</li></ul>
-          </div>
+          </div></div>
         </article>
       </div>
     </div>
