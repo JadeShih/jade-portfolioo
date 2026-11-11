@@ -262,8 +262,10 @@ html,body{overflow-x:clip}
 .quest{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--jade-sys-spacing-8);align-items:center;padding:var(--jade-sys-spacing-12);border-radius:var(--jade-sys-shape-corner-extra-large);background:var(--jade-sys-color-surface-contrast);color:var(--jade-sys-color-on-surface-contrast)}
 .quest .eyebrow,.quest .sec__lead{color:var(--jade-sys-color-on-surface-contrast)}
 .quest .sec__lead{opacity:.85}
-.quest__tags{display:flex;flex-wrap:wrap;gap:8px;margin:var(--jade-sys-spacing-6) 0 0;padding:0;list-style:none}
-.quest__tags li{padding:6px 14px;border-radius:var(--jade-sys-shape-corner-full);background:var(--jade-sys-color-secondary);color:var(--jade-sys-color-on-secondary);font:600 14px/20px var(--font-plain)}
+/* 標籤：✦ 分隔的純文字，不用實心膠囊，避免跟萊姆綠按鈕混淆 */
+.quest__tags{display:flex;flex-wrap:wrap;align-items:center;row-gap:6px;margin:var(--jade-sys-spacing-6) 0 0;padding:0;list-style:none}
+.quest__tags li{display:flex;align-items:center;color:var(--jade-sys-color-on-surface-contrast);font:600 16px/1.5 var(--font-plain),"Noto Sans TC",sans-serif;letter-spacing:.02em}
+.quest__tags li:not(:last-child)::after{content:"✦";margin:0 16px;color:var(--jade-sys-color-secondary);font-size:13px}
 .quest__soon{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:var(--jade-sys-shape-corner-full);border:2px solid var(--jade-sys-color-secondary);color:var(--jade-sys-color-secondary);font:600 15px/1 var(--font-plain);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
 .quest__soon::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor;animation:blink 2s ease-in-out infinite}
 
