@@ -266,11 +266,12 @@ html,body{overflow-x:clip}
 .quest__soon::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor;animation:blink 2s ease-in-out infinite}
 
 
-/* Playground 像素貼紙：捲到這裡彈出，之後輕微漂浮；準備中膠囊放在下方 */
+/* Playground 像素貼紙：捲到這裡彈出，之後輕微漂浮，外圍白色模切邊同首屏貼紙 */
 .quest__side{display:flex;flex-direction:column;align-items:center;gap:var(--jade-sys-spacing-4)}
 .pg-art{width:min(440px,36vw);aspect-ratio:765/484}
 .pg-art__item{display:block;transform:rotate(3deg)}
-.pg-art img{display:block;width:100%;height:auto;user-select:none;animation:float 5s ease-in-out infinite alternate}
+.pg-art img{display:block;width:100%;height:auto;user-select:none;animation:float 5s ease-in-out infinite alternate;
+  filter:drop-shadow(3px 0 0 var(--kc)) drop-shadow(-3px 0 0 var(--kc)) drop-shadow(0 3px 0 var(--kc)) drop-shadow(0 -3px 0 var(--kc)) drop-shadow(0 12px 12px var(--kc-shadow))}
 .pg-art.is-armed .pg-art__item{opacity:0}
 .pg-art.is-in .pg-art__item{animation:pg-pop 700ms cubic-bezier(.34,1.56,.64,1) both}
 @keyframes pg-pop{0%{opacity:0;transform:rotate(-8deg) scale(.3)}60%{opacity:1;transform:rotate(5deg) scale(1.06)}100%{opacity:1;transform:rotate(3deg) scale(1)}}
@@ -526,7 +527,6 @@ html,body{overflow-x:clip}
       </div>
       <div class="quest__side">
         <div class="pg-art" aria-hidden="true"><span class="pg-art__item"><img src="public/playground-sticker.svg" width="765" height="484" alt="" draggable="false"></span></div>
-        <span class="quest__soon">Quest accepted · 準備中</span>
       </div>
     </div>
   </div>
