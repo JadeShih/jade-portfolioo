@@ -87,17 +87,17 @@ a.jade-primary-button,a.jade-secondary-button{text-decoration:none}
 .hero .jade-sticker__shape>.cut{fill:var(--kc);stroke:var(--kc);stroke-width:15px}
 .hero .jade-sticker[data-shape="pill"]{box-shadow:0 0 0 6px var(--kc),0 12px 20px -6px var(--kc-shadow)}
 /* 貼紙按鈕 */
-.hero .jade-primary-button,.work-more .jade-primary-button,.hero .jade-secondary-button{
+.hero .jade-primary-button,.work-more .jade-primary-button,.quest__more .jade-primary-button,.hero .jade-secondary-button{
   --jade-comp-secondary-button-outline-color:transparent;
   overflow:visible;box-shadow:var(--kc-ring);
   transition:transform 200ms var(--ease),box-shadow 200ms var(--ease)}
-.hero .jade-primary-button::before,.work-more .jade-primary-button::before,.hero .jade-secondary-button::before{border-radius:inherit}
-.hero .jade-primary-button:hover,.work-more .jade-primary-button:hover{transform:rotate(-2deg) translateY(-2px)}
+.hero .jade-primary-button::before,.work-more .jade-primary-button::before,.quest__more .jade-primary-button::before,.hero .jade-secondary-button::before{border-radius:inherit}
+.hero .jade-primary-button:hover,.work-more .jade-primary-button:hover,.quest__more .jade-primary-button:hover{transform:rotate(-2deg) translateY(-2px)}
 .hero .jade-secondary-button:hover{transform:rotate(2deg) translateY(-2px)}
-.hero .jade-primary-button:active,.work-more .jade-primary-button:active,.hero .jade-secondary-button:active{transform:translateY(1px);box-shadow:0 0 0 2.5px var(--jade-sys-color-outline),0 0 0 8px var(--kc),0 4px 8px -4px var(--kc-shadow)}
-.hero .jade-primary-button:focus-visible,.work-more .jade-primary-button:focus-visible,.hero .jade-secondary-button:focus-visible{outline-offset:11px}
+.hero .jade-primary-button:active,.work-more .jade-primary-button:active,.quest__more .jade-primary-button:active,.hero .jade-secondary-button:active{transform:translateY(1px);box-shadow:0 0 0 2.5px var(--jade-sys-color-outline),0 0 0 8px var(--kc),0 4px 8px -4px var(--kc-shadow)}
+.hero .jade-primary-button:focus-visible,.work-more .jade-primary-button:focus-visible,.quest__more .jade-primary-button:focus-visible,.hero .jade-secondary-button:focus-visible{outline-offset:11px}
 .hero__actions{gap:var(--jade-sys-spacing-6)}
-@media (prefers-reduced-motion:reduce){.hero .jade-primary-button:hover,.work-more .jade-primary-button:hover,.hero .jade-secondary-button:hover,.tl:hover,.tl:active{transform:none}.tl:hover .tl__go{transform:none}}
+@media (prefers-reduced-motion:reduce){.hero .jade-primary-button:hover,.work-more .jade-primary-button:hover,.quest__more .jade-primary-button:hover,.hero .jade-secondary-button:hover,.tl:hover,.tl:active{transform:none}.tl:hover .tl__go{transform:none}}
 
 /* ── 徽章貼紙（Jade 的 SVG）：點擊往下捲到對應簡介 ── */
 .badges{position:absolute;inset:0;pointer-events:none;z-index:2}
@@ -255,6 +255,8 @@ html,body{overflow-x:clip}
 .work-intro .sec__lead{margin:0}
 .work-more{display:flex;justify-content:center;margin-top:var(--jade-sys-spacing-12)}
 .work-more .jade-primary-button{cursor:pointer}
+.quest__more{margin-top:var(--jade-sys-spacing-8)}
+.quest__more .jade-primary-button{cursor:pointer}
 
 /* Playground 預告 */
 .quest{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--jade-sys-spacing-8);align-items:center;padding:var(--jade-sys-spacing-12);border-radius:var(--jade-sys-shape-corner-extra-large);background:var(--jade-sys-color-surface-contrast);color:var(--jade-sys-color-on-surface-contrast)}
@@ -524,6 +526,10 @@ html,body{overflow-x:clip}
         <h2 class="sec__title" id="t-play">Playground<small>AI 實驗場</small></h2>
         <p class="sec__lead">集合個人創作計畫、AI 視覺自動化與 Vibe Coding 開發，探索設計、創意與技術之間的更多可能。</p>
         <ul class="quest__tags"><li>創作實驗</li><li>AI × Design</li><li>Vibe Coding</li><li>AI 自動化</li></ul>
+        <div class="quest__more">
+          <!-- 之後 Playground 頁完成，把 data-href 改成 href 即可啟用 -->
+          <a class="jade-primary-button" data-href="playground.html" aria-disabled="true"><span>Enter Playground</span><span class="jade-primary-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+        </div>
       </div>
       <div class="quest__side">
         <div class="pg-art" aria-hidden="true"><span class="pg-art__item"><img src="public/playground-sticker.svg" width="765" height="484" alt="" draggable="false"></span></div>
