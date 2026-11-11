@@ -87,17 +87,17 @@ a.jade-primary-button,a.jade-secondary-button{text-decoration:none}
 .hero .jade-sticker__shape>.cut{fill:var(--kc);stroke:var(--kc);stroke-width:15px}
 .hero .jade-sticker[data-shape="pill"]{box-shadow:0 0 0 6px var(--kc),0 12px 20px -6px var(--kc-shadow)}
 /* 貼紙按鈕 */
-.hero .jade-primary-button,.hero .jade-secondary-button{
+.hero .jade-primary-button,.work-more .jade-primary-button,.hero .jade-secondary-button{
   --jade-comp-secondary-button-outline-color:transparent;
   overflow:visible;box-shadow:var(--kc-ring);
   transition:transform 200ms var(--ease),box-shadow 200ms var(--ease)}
-.hero .jade-primary-button::before,.hero .jade-secondary-button::before{border-radius:inherit}
-.hero .jade-primary-button:hover{transform:rotate(-2deg) translateY(-2px)}
+.hero .jade-primary-button::before,.work-more .jade-primary-button::before,.hero .jade-secondary-button::before{border-radius:inherit}
+.hero .jade-primary-button:hover,.work-more .jade-primary-button:hover{transform:rotate(-2deg) translateY(-2px)}
 .hero .jade-secondary-button:hover{transform:rotate(2deg) translateY(-2px)}
-.hero .jade-primary-button:active,.hero .jade-secondary-button:active{transform:translateY(1px);box-shadow:0 0 0 2.5px var(--jade-sys-color-outline),0 0 0 8px var(--kc),0 4px 8px -4px var(--kc-shadow)}
-.hero .jade-primary-button:focus-visible,.hero .jade-secondary-button:focus-visible{outline-offset:11px}
+.hero .jade-primary-button:active,.work-more .jade-primary-button:active,.hero .jade-secondary-button:active{transform:translateY(1px);box-shadow:0 0 0 2.5px var(--jade-sys-color-outline),0 0 0 8px var(--kc),0 4px 8px -4px var(--kc-shadow)}
+.hero .jade-primary-button:focus-visible,.work-more .jade-primary-button:focus-visible,.hero .jade-secondary-button:focus-visible{outline-offset:11px}
 .hero__actions{gap:var(--jade-sys-spacing-6)}
-@media (prefers-reduced-motion:reduce){.hero .jade-primary-button:hover,.hero .jade-secondary-button:hover,.tl:hover,.tl:active{transform:none}.tl:hover .tl__go{transform:none}}
+@media (prefers-reduced-motion:reduce){.hero .jade-primary-button:hover,.work-more .jade-primary-button:hover,.hero .jade-secondary-button:hover,.tl:hover,.tl:active{transform:none}.tl:hover .tl__go{transform:none}}
 
 /* ── 徽章貼紙（Jade 的 SVG）：點擊往下捲到對應簡介 ── */
 .badges{position:absolute;inset:0;pointer-events:none;z-index:2}
