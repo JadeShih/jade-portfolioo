@@ -150,6 +150,23 @@ html.has-ycur .ycur.is-on{opacity:1}
 [data-theme="light"] .sec__title.is-arriving{animation-name:arrive-l}
 @keyframes arrive-l{0%{transform:translateX(-10px)}25%{transform:translateX(6px);text-shadow:6px 6px 0 var(--jade-sys-color-tertiary)}55%{transform:translateX(-3px)}100%{transform:none}}
 
+
+/* About：拱形照片 + 自我介紹（照片待補） */
+.about>.about__grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--jade-sys-spacing-16);align-items:center;padding-block:var(--jade-sys-spacing-24) var(--jade-sys-spacing-12)}
+.about__media{position:relative;width:min(100%,480px);justify-self:center}
+.about__photo{display:grid;place-items:center;aspect-ratio:4/5;overflow:hidden;border:2.5px solid var(--jade-sys-color-outline);border-radius:999px 999px var(--jade-sys-shape-corner-extra-large) var(--jade-sys-shape-corner-extra-large);background:var(--jade-sys-color-surface-contrast)}
+.about__photo img{display:block;width:100%;height:100%;object-fit:cover}
+.about__placeholder{font:600 15px/1 var(--font-plain),"Noto Sans TC",sans-serif;letter-spacing:.08em;color:var(--jade-sys-color-on-surface-contrast);opacity:.7}
+.about{overflow-x:clip}
+html,body{overflow-x:clip}
+.about__hi{position:absolute;right:-48px;top:14%;font-size:20px}
+.about__tag{position:absolute;left:-28px;bottom:16%}
+.about__title{margin:var(--jade-sys-spacing-4) 0 0;font:400 clamp(44px,5.6vw,84px)/.95 var(--font-brand);text-transform:uppercase;text-wrap:balance}
+.about__text .sec__lead{max-width:30em}
+.about__more{margin-top:var(--jade-sys-spacing-8);cursor:pointer}
+#career>.wrap{padding-top:var(--jade-sys-spacing-12)}
+@media (max-width:900px){.about>.about__grid{grid-template-columns:1fr;gap:var(--jade-sys-spacing-12)}.about__media{width:min(100%,340px)}.about__hi{right:-16px}.about__tag{left:-8px}}
+
 /* 經歷時間軸：每張卡是按鈕外觀，滑過變萊姆綠（連結待 About 頁完成後啟用） */
 .timeline{display:grid;gap:var(--jade-sys-spacing-6);margin:0;padding:0;list-style:none}
 .tl{container-type:inline-size;display:grid;grid-template-columns:168px minmax(0,1fr) 48px;gap:var(--jade-sys-spacing-6);align-items:start;padding:var(--jade-sys-spacing-12) var(--jade-sys-spacing-12);border-radius:var(--jade-sys-shape-corner-large);background:var(--jade-ref-palette-neutral100);border:2px solid var(--jade-sys-color-outline);color:var(--jade-sys-color-on-surface);text-decoration:none;cursor:pointer;transition:background-color 220ms var(--ease),transform 220ms var(--ease),box-shadow 220ms var(--ease)}
@@ -357,8 +374,26 @@ html.has-ycur .ycur.is-on{opacity:1}
   </div>
 </header>
 
-<section class="sec" data-theme="light" id="about" aria-labelledby="t-exp">
+<section class="sec about" data-theme="light" id="about" aria-labelledby="t-about">
   <div class="wave" aria-hidden="true"><svg viewBox="0 0 1440 64" preserveAspectRatio="none"><path d="M0 40 C 240 0, 480 0, 720 28 S 1200 64, 1440 20 V64 H0 Z" fill="currentColor"/></svg></div>
+  <div class="wrap about__grid">
+    <div class="about__media">
+      <!-- 照片：之後放 public/about-photo.webp，把下面的 about__placeholder 換成 <img> -->
+      <div class="about__photo"><span class="about__placeholder">照片待補</span></div>
+      <span class="jade-sticker about__hi" data-shape="burst" data-tone="lime" data-size="large" style="--jade-sticker-rotation:8deg"><svg class="jade-sticker__shape" viewBox="0 0 128 128" aria-hidden="true"><polygon points="64.0,2.0 73.4,16.9 87.7,6.7 90.7,24.1 107.8,20.2 103.9,37.3 121.3,40.3 111.1,54.6 126.0,64.0 111.1,73.4 121.3,87.7 103.9,90.7 107.8,107.8 90.7,103.9 87.7,121.3 73.4,111.1 64.0,126.0 54.6,111.1 40.3,121.3 37.3,103.9 20.2,107.8 24.1,90.7 6.7,87.7 16.9,73.4 2.0,64.0 16.9,54.6 6.7,40.3 24.1,37.3 20.2,20.2 37.3,24.1 40.3,6.7 54.6,16.9"/></svg><span class="jade-sticker__label">Hi, I’m Jade</span></span>
+      <span class="jade-sticker about__tag" data-shape="pill" data-tone="ink" style="--jade-sticker-rotation:-5deg"><span class="jade-sticker__label">Brand × UI/UX</span></span>
+    </div>
+    <div class="about__text">
+      <p class="eyebrow">About</p>
+      <h2 class="sec__title about__title" id="t-about">Brand design, from print to product.</h2>
+      <p class="sec__lead">好的設計，是客戶需求與專業判斷的交集。在兩者之間找到平衡，做出雙方都滿意的作品，是我一直努力的事。</p>
+      <!-- 之後 About 頁完成，把 data-href 改成 href 即可啟用 -->
+      <a class="jade-primary-button about__more" data-href="about.html" aria-disabled="true"><span>More about me</span><span class="jade-primary-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" data-theme="light" id="career" aria-labelledby="t-exp">
   <div class="wrap">
     <div class="sub" id="experience">
       <div class="sec__head">
