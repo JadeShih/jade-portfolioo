@@ -158,6 +158,11 @@ html.has-ycur .ycur.is-on{opacity:1}
 .about__photo img{display:block;width:100%;height:100%;object-fit:cover}
 .about__placeholder{font:600 15px/1 var(--font-plain),"Noto Sans TC",sans-serif;letter-spacing:.08em;color:var(--jade-sys-color-on-surface-contrast);opacity:.7}
 .about{overflow-x:clip}
+/* 兩張貼紙：上下浮動 + 微微擺動，速度錯開才不會同步 */
+.about__hi{animation:sticker-bob 3.4s ease-in-out infinite alternate}
+.about__tag{animation:sticker-bob 4.2s ease-in-out -1.6s infinite alternate}
+@keyframes sticker-bob{from{transform:translateY(0) rotate(calc(var(--jade-sticker-rotation) - 3deg))}to{transform:translateY(-10px) rotate(calc(var(--jade-sticker-rotation) + 3deg))}}
+@media (prefers-reduced-motion:reduce){.about__hi,.about__tag{animation:none}}
 html,body{overflow-x:clip}
 .about__hi{position:absolute;right:-48px;top:14%;font-size:20px}
 .about__tag{position:absolute;left:-28px;bottom:16%}
@@ -378,8 +383,7 @@ html,body{overflow-x:clip}
   <div class="wave" aria-hidden="true"><svg viewBox="0 0 1440 64" preserveAspectRatio="none"><path d="M0 40 C 240 0, 480 0, 720 28 S 1200 64, 1440 20 V64 H0 Z" fill="currentColor"/></svg></div>
   <div class="wrap about__grid">
     <div class="about__media">
-      <!-- 照片：之後放 public/about-photo.webp，把下面的 about__placeholder 換成 <img> -->
-      <div class="about__photo"><span class="about__placeholder">照片待補</span></div>
+      <div class="about__photo"><img src="public/about-photo.webp" width="1200" height="1500" alt="Jade Shih 的個人照片" loading="lazy" decoding="async"></div>
       <span class="jade-sticker about__hi" data-shape="burst" data-tone="lime" data-size="large" style="--jade-sticker-rotation:8deg"><svg class="jade-sticker__shape" viewBox="0 0 128 128" aria-hidden="true"><polygon points="64.0,2.0 73.4,16.9 87.7,6.7 90.7,24.1 107.8,20.2 103.9,37.3 121.3,40.3 111.1,54.6 126.0,64.0 111.1,73.4 121.3,87.7 103.9,90.7 107.8,107.8 90.7,103.9 87.7,121.3 73.4,111.1 64.0,126.0 54.6,111.1 40.3,121.3 37.3,103.9 20.2,107.8 24.1,90.7 6.7,87.7 16.9,73.4 2.0,64.0 16.9,54.6 6.7,40.3 24.1,37.3 20.2,20.2 37.3,24.1 40.3,6.7 54.6,16.9"/></svg><span class="jade-sticker__label">Hi, I’m Jade</span></span>
       <span class="jade-sticker about__tag" data-shape="pill" data-tone="ink" style="--jade-sticker-rotation:-5deg"><span class="jade-sticker__label">Brand × UI/UX</span></span>
     </div>
