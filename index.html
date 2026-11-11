@@ -250,7 +250,11 @@ html.has-ycur .ycur.is-on{opacity:1}
 .contact__card{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:var(--jade-sys-spacing-4);margin-top:var(--jade-sys-spacing-8)}
 .contact__item{display:flex;flex-direction:column;gap:6px;min-width:220px;padding:var(--jade-sys-spacing-6) var(--jade-sys-spacing-8);border-radius:var(--jade-sys-shape-corner-large);background:var(--jade-sys-color-primary-emphasis);color:var(--jade-sys-color-on-primary-emphasis);text-align:left}
 .contact__item b{font:600 13px/16px var(--font-plain);letter-spacing:.14em;text-transform:uppercase;color:var(--jade-sys-color-secondary)}
-.contact__item span{font:600 18px/1.4 var(--font-plain)}
+.contact__mail{font:600 clamp(18px,2vw,22px)/1.4 var(--font-plain);color:inherit;text-decoration:underline;text-decoration-color:var(--jade-sys-color-secondary);text-decoration-thickness:2px;text-underline-offset:4px;overflow-wrap:anywhere}
+.contact__mail:hover{color:var(--jade-sys-color-secondary)}
+.contact__copy{align-self:flex-start;margin-top:6px;padding:6px 14px;border:2px solid var(--jade-sys-color-secondary);border-radius:var(--jade-sys-shape-corner-full);background:transparent;color:var(--jade-sys-color-secondary);font:600 13px/1.2 var(--font-plain),"Noto Sans TC",sans-serif;letter-spacing:.04em;cursor:pointer;transition:background-color 200ms var(--ease),color 200ms var(--ease)}
+.contact__copy:hover,.contact__copy.is-done{background:var(--jade-sys-color-secondary);color:var(--jade-sys-color-on-secondary)}
+.contact__copy:focus-visible,.contact__mail:focus-visible{outline:3px solid var(--jade-sys-color-secondary);outline-offset:3px}
 .foot{padding:var(--jade-sys-spacing-8) 0;background:var(--jade-sys-color-surface-contrast);color:var(--jade-sys-color-on-surface-contrast);font:500 14px/1.5 var(--font-plain)}
 .foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
@@ -481,8 +485,7 @@ html.has-ycur .ycur.is-on{opacity:1}
     <h2 class="sec__title" id="t-contact">Open for work<small>歡迎聊聊合作或職缺</small></h2>
     <p class="sec__lead">正在尋找品牌設計、整合設計或 UI/UX 的新機會，也接受接案合作。</p>
     <div class="contact__card">
-      <div class="contact__item"><b>Email</b><span class="todo">待補</span></div>
-      <div class="contact__item"><b>LinkedIn / 其他</b><span class="todo">待補</span></div>
+      <div class="contact__item"><b>Email</b><a class="contact__mail" href="mailto:jiesmc1938@gmail.com">jiesmc1938@gmail.com</a><button class="contact__copy" type="button" data-copy="jiesmc1938@gmail.com">複製 Email</button></div>
     </div>
   </div>
 </section>
@@ -593,6 +596,19 @@ html.has-ycur .ycur.is-on{opacity:1}
   if(!arts.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');e.target.classList.remove('is-armed');io.unobserve(e.target)}})},{threshold:.35});
   [].forEach.call(arts,function(a){a.classList.add('is-armed');io.observe(a)});
+})();
+
+/* 複製 Email：剪貼簿被擋時改成選取文字，讓使用者自己按 Ctrl+C */
+(function(){
+  document.querySelectorAll('.contact__copy').forEach(function(b){
+    var label=b.textContent;
+    function done(t){b.textContent=t;b.classList.add('is-done');setTimeout(function(){b.textContent=label;b.classList.remove('is-done')},1800)}
+    b.addEventListener('click',function(){
+      var v=b.getAttribute('data-copy'),mail=b.parentNode.querySelector('.contact__mail');
+      function fallback(){var r=document.createRange();r.selectNodeContents(mail);var sel=getSelection();sel.removeAllRanges();sel.addRange(r);done('已選取，按 Ctrl+C')}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(function(){done('已複製')},fallback)}else fallback();
+    });
+  });
 })();
 </script>
 </body>
