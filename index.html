@@ -225,7 +225,11 @@ html.has-ycur .ycur.is-on{opacity:1}
 /* 作品 */
 .work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--jade-sys-spacing-6)}
 .jade-project-card__media{display:grid;place-items:center;background:color-mix(in srgb,var(--jade-sys-color-outline) 88%,transparent);color:var(--jade-sys-color-on-surface-contrast);font:600 14px/1 var(--font-plain);letter-spacing:.08em}
-.jade-project-card__title{font-size:clamp(34px,3.6vw,48px)}
+.jade-project-card__title{font:900 clamp(28px,2.8vw,42px)/1.2 "Noto Sans TC",var(--font-plain),sans-serif;text-transform:none;letter-spacing:.01em}
+.jade-project-card__media img{display:block;width:100%;height:100%;object-fit:cover}
+.work-intro{display:flex;flex-direction:column;align-items:flex-start;gap:var(--jade-sys-spacing-6);max-width:32em}
+.work-intro .sec__lead{margin:0}
+.work-intro .jade-primary-button{cursor:pointer}
 
 /* Playground 預告 */
 .quest{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--jade-sys-spacing-8);align-items:center;padding:var(--jade-sys-spacing-12);border-radius:var(--jade-sys-shape-corner-extra-large);background:var(--jade-sys-color-surface-contrast);color:var(--jade-sys-color-on-surface-contrast)}
@@ -383,13 +387,19 @@ html.has-ycur .ycur.is-on{opacity:1}
         <p class="eyebrow">Experience · 400+ Projects</p>
         <h2 class="sec__title" id="t-work">Selected Works<small>精選作品</small></h2>
       </div>
-      <p class="sec__lead">從四百多件專案中挑出的代表作品。<span class="todo">待補：正式作品圖與名稱</span></p>
+      <div class="work-intro">
+        <p class="sec__lead">不同的題目，不同的解法，持續探索設計的各種可能。</p>
+        <!-- 之後 Works 頁完成，把 data-href 改成 href 即可啟用 -->
+        <a class="jade-primary-button" data-href="works.html" aria-disabled="true"><span>View my work</span><span class="jade-primary-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+      </div>
     </div>
     <div class="work-grid">
-      <article class="jade-project-card" data-tone="lime"><div class="jade-project-card__head"><span class="jade-project-card__index">01</span><span class="jade-project-card__rule" aria-hidden="true"></span><span class="jade-project-card__label">財經投資平台</span></div><div class="jade-project-card__media">作品圖待補</div><div class="jade-project-card__body"><h3 class="jade-project-card__title">Livestream &amp; KOL</h3><p class="jade-project-card__tags">UI/UX · 直播 · 新手引導</p></div></article>
-      <article class="jade-project-card" data-tone="pink"><div class="jade-project-card__head"><span class="jade-project-card__index">02</span><span class="jade-project-card__rule" aria-hidden="true"></span><span class="jade-project-card__label">醫美行銷</span></div><div class="jade-project-card__media">作品圖待補</div><div class="jade-project-card__body"><h3 class="jade-project-card__title">Clinic Campaign</h3><p class="jade-project-card__tags">整合行銷 · 社群 · 平面</p></div></article>
-      <article class="jade-project-card" data-tone="cyan"><div class="jade-project-card__head"><span class="jade-project-card__index">03</span><span class="jade-project-card__rule" aria-hidden="true"></span><span class="jade-project-card__label">品牌整合</span></div><div class="jade-project-card__media">作品圖待補</div><div class="jade-project-card__body"><h3 class="jade-project-card__title">Brand Identity</h3><p class="jade-project-card__tags">識別系統 · 品牌應用</p></div></article>
-      <article class="jade-project-card" data-tone="yellow"><div class="jade-project-card__head"><span class="jade-project-card__index">04</span><span class="jade-project-card__rule" aria-hidden="true"></span><span class="jade-project-card__label">金融銀行</span></div><div class="jade-project-card__media">作品圖待補</div><div class="jade-project-card__body"><h3 class="jade-project-card__title">Bank Print</h3><p class="jade-project-card__tags">平面 · 宣傳物</p></div></article>
+      <article class="jade-project-card" data-tone="cyan"><div class="jade-project-card__head"><span class="jade-project-card__index">01</span><span class="jade-project-card__rule" aria-hidden="true"></span><span class="jade-project-card__label">國泰金控</span></div><div class="jade-project-card__media"><img src="public/works/work-01-report.webp" width="1600" height="900" alt="國泰金控 2021 年報封面，數位與城市意象的立體插畫" loading="lazy" decoding="async"></div><div class="jade-project-card__body"><h3 class="jade-project-card__title">國泰金控年報</h3><p class="jade-project-card__tags">視覺設計 · 現場提案</p></div></article>
+      <article class="jade-project-card" data-tone="yellow"><div class="jade-project-card__head"><span class="jade-project-card__index">02</span><span class="jade-project-card__rule" aria-hidden="true"></span><span class="jade-project-card__label">國泰金控</span></div><div class="jade-project-card__media"><img src="public/works/work-02-card.webp" width="1600" height="900" alt="三本新春電子月刊封面：五福臨門、鴻圖大展、花開富貴" loading="lazy" decoding="async"></div><div class="jade-project-card__body"><h3 class="jade-project-card__title">2020新春電子月刊</h3><p class="jade-project-card__tags">視覺設計</p></div></article>
+      <article class="jade-project-card" data-tone="lime"><div class="jade-project-card__head"><span class="jade-project-card__index">03</span><span class="jade-project-card__rule" aria-hidden="true"></span><span class="jade-project-card__label">艾沛膚</span></div><div class="jade-project-card__media"><img src="public/works/work-03-package.webp" width="1600" height="900" alt="Elpis 艾沛膚系列洗髮與保養產品包裝" loading="lazy" decoding="async"></div><div class="jade-project-card__body"><h3 class="jade-project-card__title">系列產品包裝</h3><p class="jade-project-card__tags">包裝設計</p></div></article>
+      <article class="jade-project-card" data-tone="pink"><div class="jade-project-card__head"><span class="jade-project-card__index">04</span><span class="jade-project-card__rule" aria-hidden="true"></span><span class="jade-project-card__label">PERSONAL PROJECT</span></div><div class="jade-project-card__media"><img src="public/works/work-04-drawing.webp" width="1600" height="900" alt="30 Day Drawing 素描本，人物鉛筆速寫" loading="lazy" decoding="async"></div><div class="jade-project-card__body"><h3 class="jade-project-card__title">30日繪畫計畫</h3><p class="jade-project-card__tags">插畫創作 · 風格探索 · 每日練習</p></div></article>
+      <article class="jade-project-card" data-tone="lime"><div class="jade-project-card__head"><span class="jade-project-card__index">05</span><span class="jade-project-card__rule" aria-hidden="true"></span><span class="jade-project-card__label">YouTuber Better Leaf 好葉</span></div><div class="jade-project-card__media"><img src="public/works/work-05-kolapp.webp" width="1600" height="900" alt="好葉智能選股 App 啟動畫面" loading="lazy" decoding="async"></div><div class="jade-project-card__body"><h3 class="jade-project-card__title">好葉智能選股APP</h3><p class="jade-project-card__tags">APP主視覺規劃</p></div></article>
+      <article class="jade-project-card" data-tone="pink"><div class="jade-project-card__head"><span class="jade-project-card__index">06</span><span class="jade-project-card__rule" aria-hidden="true"></span><span class="jade-project-card__label">YouTuber Mike是麥克</span></div><div class="jade-project-card__media"><img src="public/works/work-06-chat.webp" width="1600" height="900" alt="App 聊天室關鍵字搜尋畫面" loading="lazy" decoding="async"></div><div class="jade-project-card__body"><h3 class="jade-project-card__title">APP功能優化</h3><p class="jade-project-card__tags">聊天室關鍵字搜尋</p></div></article>
     </div>
   </div>
 </section>
