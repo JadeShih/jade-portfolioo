@@ -265,6 +265,18 @@ html,body{overflow-x:clip}
 .quest__soon{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:var(--jade-sys-shape-corner-full);border:2px solid var(--jade-sys-color-secondary);color:var(--jade-sys-color-secondary);font:600 15px/1 var(--font-plain);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
 .quest__soon::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor;animation:blink 2s ease-in-out infinite}
 
+
+/* Playground 像素貼紙：捲到這裡彈出，之後輕微漂浮；準備中膠囊放在下方 */
+.quest__side{display:flex;flex-direction:column;align-items:center;gap:var(--jade-sys-spacing-4)}
+.pg-art{width:min(440px,36vw);aspect-ratio:765/484}
+.pg-art__item{display:block;transform:rotate(3deg)}
+.pg-art img{display:block;width:100%;height:auto;user-select:none;animation:float 5s ease-in-out infinite alternate}
+.pg-art.is-armed .pg-art__item{opacity:0}
+.pg-art.is-in .pg-art__item{animation:pg-pop 700ms cubic-bezier(.34,1.56,.64,1) both}
+@keyframes pg-pop{0%{opacity:0;transform:rotate(-8deg) scale(.3)}60%{opacity:1;transform:rotate(5deg) scale(1.06)}100%{opacity:1;transform:rotate(3deg) scale(1)}}
+@media (max-width:900px){.quest__side{align-items:flex-start}.pg-art{width:min(100%,420px)}}
+@media (prefers-reduced-motion:reduce){.pg-art.is-armed .pg-art__item{opacity:1}.pg-art.is-in .pg-art__item,.pg-art img{animation:none}}
+
 /* 聯絡 */
 .contact{text-align:center}
 .contact .sec__lead{margin-inline:auto}
@@ -512,7 +524,10 @@ html,body{overflow-x:clip}
         <p class="sec__lead">集合個人創作計畫、AI 視覺自動化與 Vibe Coding 開發，探索設計、創意與技術之間的更多可能。</p>
         <ul class="quest__tags"><li>創作實驗</li><li>AI × Design</li><li>Vibe Coding</li><li>AI 自動化</li></ul>
       </div>
-      <span class="quest__soon">Quest accepted · 準備中</span>
+      <div class="quest__side">
+        <div class="pg-art" aria-hidden="true"><span class="pg-art__item"><img src="public/playground-sticker.svg" width="765" height="484" alt="" draggable="false"></span></div>
+        <span class="quest__soon">Quest accepted · 準備中</span>
+      </div>
     </div>
   </div>
 </section>
@@ -629,9 +644,9 @@ html,body{overflow-x:clip}
   window.addEventListener('load',q);window.addEventListener('resize',q);
 })();
 
-/* 經歷與合作品牌插圖：捲到畫面中才跳出；不支援或要求減少動態時直接顯示 */
+/* 經歷、合作品牌與 Playground 插圖：捲到畫面中才跳出；不支援或要求減少動態時直接顯示 */
 (function(){
-  var arts=document.querySelectorAll('.exp-art,.brands-art');
+  var arts=document.querySelectorAll('.exp-art,.brands-art,.pg-art');
   if(!arts.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');e.target.classList.remove('is-armed');io.unobserve(e.target)}})},{threshold:.35});
   [].forEach.call(arts,function(a){a.classList.add('is-armed');io.observe(a)});
