@@ -120,3 +120,28 @@
   }
   openFromHash();window.addEventListener('hashchange',openFromHash);
 })();
+
+/* Let's talk 表單：檢查必填欄位，通過後用訪客的郵件程式寄到 Jade 的信箱
+   （網站是靜態網頁，沒有伺服器；之後若接表單服務，改這裡的 send() 即可） */
+(function(){
+  var f=document.getElementById('inquiry');if(!f)return;
+  var TO='jiesmc1938@gmail.com';
+  var rules=[['f-name','e-name',function(v){return v?'':'請填寫你的名字'}],
+             ['f-email','e-email',function(v){return !v?'請填寫 Email':(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)?'':'Email 格式不正確，請再確認')}],
+             ['f-msg','e-msg',function(v){return v?'':'請簡單說明你的需求'}]];
+  function check(r){var el=document.getElementById(r[0]),er=document.getElementById(r[1]),m=r[2](el.value.trim());er.textContent=m;el.classList.toggle('is-invalid',!!m);el.setAttribute('aria-invalid',m?'true':'false');if(m)el.setAttribute('aria-describedby',r[1]);return !m}
+  rules.forEach(function(r){var el=document.getElementById(r[0]);el.addEventListener('input',function(){if(el.classList.contains('is-invalid'))check(r)})});
+  function v(id){return document.getElementById(id).value.trim()}
+  function send(){
+    var subject='合作需求｜'+v('f-type')+'｜'+v('f-name');
+    var body=['名字：'+v('f-name'),'Email：'+v('f-email'),'公司 / 品牌：'+(v('f-company')||'—'),'需求類型：'+v('f-type'),'預算範圍：'+v('f-budget'),'','需求說明：',v('f-msg')].join('\n');
+    location.href='mailto:'+TO+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  }
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var ok=rules.map(check).every(Boolean),st=document.getElementById('f-status');
+    if(!ok){var first=f.querySelector('.is-invalid');if(first)first.focus();st.textContent='';return}
+    send();
+    st.textContent='正在開啟你的郵件程式，內容已幫你填好，按寄出就完成。如果沒有反應，請直接寄信到 '+TO+'。';
+  });
+})();
