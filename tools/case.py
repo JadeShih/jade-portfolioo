@@ -29,6 +29,12 @@ def render(w):
     inner=f'<picture><source srcset="public/works/{g["img"]}.webp" type="image/webp"><img src="public/works/{g["img"]}.jpg" width="2000" height="1333" alt="{html.escape(g["alt"])}" loading="lazy" decoding="async"></picture>' if g.get('img') else f'<span class="cs-shot__ph">{g["ph"]}</span>'
     cap=f'<figcaption>{g["cap"]}</figcaption>' if g.get('cap') else ''
     gal+=f'<figure class="cs-shot" data-tone="{g["tone"]}"><div class="cs-shot__frame">{inner}</div>{cap}</figure>'
+  imgs=[g for g in w['gallery'] if g.get('img')]
+  if w.get('gallery_style')=='stack' and imgs:
+    items=''.join(f'<button type="button" class="cs-stack__item" data-i="{i}" aria-label="放大檢視：{html.escape(g["alt"])}"><picture><source srcset="public/works/{g["img"]}.webp" type="image/webp"><img src="public/works/{g["img"]}.jpg" width="2000" height="1333" alt="{html.escape(g["alt"])}" loading="lazy" decoding="async" draggable="false"></picture></button>' for i,g in enumerate(imgs))
+    galhtml=f'<div class="cs-stack" data-n="{len(imgs)}">{items}</div>'
+  else:
+    galhtml=f'<div class="cs-gallery">{gal}</div>'
   nx=w['next']
   body=f'''<a class="skip" href="#main">跳到主要內容</a>
 
@@ -53,7 +59,7 @@ def render(w):
       <div class="cs-overview__body">{w["overview"]}</div>
     </div>
     <div class="cs-cards">{cards}</div>
-    <div class="cs-gallery">{gal}</div>
+    {galhtml}
   </div>
 </section>
 

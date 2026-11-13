@@ -172,3 +172,28 @@
   btns.forEach(function(b){b.addEventListener('click',function(){apply(b.getAttribute('data-filter'),b.firstChild.textContent)})});
   apply('all');
 })();
+
+/* 作品詳細頁：點擊照片放大檢視（可用左右鍵切換、Esc 關閉） */
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.cs-stack__item'));if(!items.length)return;
+  var ic=function(d){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+d+'"/></svg>'};
+  var lb=document.createElement('dialog');lb.className='lb';lb.setAttribute('aria-label','作品圖片檢視');
+  lb.innerHTML='<img class="lb__img" alt=""><button type="button" class="lb__btn lb__close" aria-label="關閉">'+ic('M6 6l12 12M18 6 6 18')+'</button><button type="button" class="lb__btn lb__prev" aria-label="上一張">'+ic('M15 6l-6 6 6 6')+'</button><button type="button" class="lb__btn lb__next" aria-label="下一張">'+ic('M9 6l6 6-6 6')+'</button><p class="lb__count" aria-live="polite"></p>';
+  document.body.appendChild(lb);
+  var img=lb.querySelector('.lb__img'),count=lb.querySelector('.lb__count'),cur=0,opener=null;
+  if(items.length<2)lb.setAttribute('data-single','');
+  function show(i){
+    cur=(i+items.length)%items.length;var s=items[cur].querySelector('img');
+    img.src=s.currentSrc||s.src;img.alt=s.alt;count.textContent=(cur+1)+' / '+items.length;
+    img.style.animation='none';void img.offsetWidth;img.style.animation='';
+  }
+  function open(i){opener=items[i];show(i);if(lb.showModal)lb.showModal();else lb.setAttribute('open','');document.documentElement.style.overflow='hidden'}
+  function close(){if(lb.open){lb.close?lb.close():lb.removeAttribute('open')}}
+  lb.addEventListener('close',function(){document.documentElement.style.overflow='';if(opener)opener.focus()});
+  items.forEach(function(b,i){b.addEventListener('click',function(){open(i)})});
+  lb.querySelector('.lb__close').addEventListener('click',close);
+  lb.querySelector('.lb__prev').addEventListener('click',function(){show(cur-1)});
+  lb.querySelector('.lb__next').addEventListener('click',function(){show(cur+1)});
+  lb.addEventListener('click',function(e){if(e.target===lb)close()});
+  lb.addEventListener('keydown',function(e){if(items.length>1&&e.key==='ArrowLeft')show(cur-1);else if(items.length>1&&e.key==='ArrowRight')show(cur+1)});
+})();
