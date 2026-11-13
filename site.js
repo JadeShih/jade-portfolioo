@@ -92,7 +92,7 @@
 
 /* 經歷、合作品牌與 Playground 插圖：捲到畫面中才跳出；不支援或要求減少動態時直接顯示 */
 (function(){
-  var arts=document.querySelectorAll('.exp-art,.brands-art,.pg-art');
+  var arts=document.querySelectorAll('.exp-art,.brands-art,.pg-art,.skill-cards');
   if(!arts.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');e.target.classList.remove('is-armed');io.unobserve(e.target)}})},{threshold:.35});
   [].forEach.call(arts,function(a){a.classList.add('is-armed');io.observe(a)});
