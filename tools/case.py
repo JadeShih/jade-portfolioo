@@ -3,7 +3,7 @@ import re,math,html,sys
 SITE='/home/claude/site'
 ab=open(f'{SITE}/about.html').read()
 def up(s):
-  s=re.sub(r'(?<![\w-])(href|src)="(?!https?:|mailto:|#|\.\./)([^"]+)"',r'\1="../\2"',s)
+  s=re.sub(r'(?<![\w-])(href|src|srcset)="(?!https?:|mailto:|#|\.\./)([^"]+)"',r'\1="../\2"',s)
   return s
 head=ab[:ab.index('<a class="skip"')]
 nav=ab[ab.index('<div class="navrow">'):ab.index('</nav></div>')+len('</nav></div>')].replace(' aria-current="page"','')
@@ -26,7 +26,7 @@ def render(w):
   cards=''.join(f'<article class="cs-card" data-tone="{c["tone"]}"><h2 class="cs-card__title">{c["title"]}<small>{c["zh"]}</small></h2><p class="cs-card__text">{c["text"]}</p><svg class="cs-card__deco" viewBox="0 0 128 128" aria-hidden="true"><polygon points="{burst(14,62,46)}"/></svg></article>' for c in w['cards'])
   gal=''
   for g in w['gallery']:
-    inner=f'<img src="public/works/{g["img"]}" width="1600" height="900" alt="{html.escape(g["alt"])}" loading="lazy" decoding="async">' if g.get('img') else f'<span class="cs-shot__ph">{g["ph"]}</span>'
+    inner=f'<picture><source srcset="public/works/{g["img"]}.webp" type="image/webp"><img src="public/works/{g["img"]}.jpg" width="2000" height="1333" alt="{html.escape(g["alt"])}" loading="lazy" decoding="async"></picture>' if g.get('img') else f'<span class="cs-shot__ph">{g["ph"]}</span>'
     cap=f'<figcaption>{g["cap"]}</figcaption>' if g.get('cap') else ''
     gal+=f'<figure class="cs-shot" data-tone="{g["tone"]}"><div class="cs-shot__frame">{inner}</div>{cap}</figure>'
   nx=w['next']
@@ -40,7 +40,7 @@ def render(w):
   <div class="wrap">
     <ul class="cs-tags">{tags}</ul>
     <h1 class="cs-title">{w["title_en"]}<span>{w["title_zh"]}</span></h1>
-{tagline}    <div class="cs-cover" data-tone="{w["tone"]}"><span class="jade-sticker cs-hero__st" data-shape="burst" data-tone="lime" style="--jade-sticker-rotation:-10deg" aria-hidden="true"><svg class="jade-sticker__shape" viewBox="0 0 128 128"><polygon points="{burst(16,62,47)}"/></svg><span class="jade-sticker__label"><b>{w["num"]}</b>Case</span></span><img src="public/works/{w["cover"]}" width="1600" height="900" alt="{html.escape(w["cover_alt"])}" decoding="async"></div>
+{tagline}    <div class="cs-cover" data-tone="{w["tone"]}"><span class="jade-sticker cs-hero__st" data-shape="burst" data-tone="lime" style="--jade-sticker-rotation:-10deg" aria-hidden="true"><svg class="jade-sticker__shape" viewBox="0 0 128 128"><polygon points="{burst(16,62,47)}"/></svg><span class="jade-sticker__label"><b>{w["num"]}</b>Case</span></span><picture><source srcset="public/works/{w["cover"]}.webp" type="image/webp"><img src="public/works/{w["cover"]}.jpg" width="2000" height="1333" alt="{html.escape(w["cover_alt"])}" decoding="async" fetchpriority="high"></picture></div>
   </div>
 </header>
 
