@@ -174,7 +174,7 @@
 .jade-project-card__media { aspect-ratio: var(--jade-comp-project-card-media-aspect-ratio); border-radius: var(--jade-sys-shape-corner-large); overflow: hidden; }
 .jade-project-card__media > * { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 400ms cubic-bezier(0.2, 0, 0, 1); }
 .jade-project-card__body { padding: 0 var(--jade-sys-spacing-4); }
-.jade-project-card__title { margin: 0; color: var(--jade-comp-project-card-headline-color); font: 400 56px/.95 var(--font-brand); text-transform: uppercase; }
+.jade-project-card__title { margin: 0; color: var(--jade-comp-project-card-headline-color); font: 400 56px/1 var(--font-brand); text-transform: uppercase; }
 .jade-project-card__tags { margin: var(--jade-sys-spacing-2) 0 0; color: var(--jade-comp-project-card-supporting-text-color); font: 400 17px/26px var(--font-plain); }
 .jade-project-card:hover .jade-project-card__icon { transform: rotate(45deg); }
 .jade-project-card:hover .jade-project-card__media > * { transform: scale(1.03); }

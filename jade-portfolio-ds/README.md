@@ -106,6 +106,7 @@
 - 標題用 Anton（Google Fonts），全大寫。它只有一個字重，本身就是黑體級的重量。
 - 內文與介面用 Space Grotesk（Google Fonts）400 / 500 / 600。
 - 中文 fallback 用 Noto Sans TC：標題 900、內文 400/500；中文內文行高 1.7、中文標題行高 1.1。
+- Display / Headline（Anton 全大寫）行高統一為 1（2026-11 由 0.9–0.95 放寬，避免多行標題太擠）。
 
 ## 形狀與高度
 
