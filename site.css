@@ -664,6 +664,6 @@ html,body{overflow-x:clip}
 @keyframes cs-st-spin{to{rotate:360deg}}
 @media (prefers-reduced-motion:reduce){.cs-hero__st .jade-sticker__shape{animation:none}}
 .cs-hero .wrap{position:relative}
-.cs-hero__st2{position:absolute;right:clamp(0px,2vw,40px);top:clamp(70px,8vw,110px);z-index:3;animation:sticker-bob 4.2s ease-in-out -1.6s infinite alternate}
-@media (max-width:720px){.cs-hero__st2{right:-18px;top:150px;scale:.5}}
+.cs-hero__st2{position:absolute;right:clamp(0px,2vw,40px);top:clamp(70px,8vw,110px);scale:.7;z-index:3;animation:sticker-bob 4.2s ease-in-out -1.6s infinite alternate}
+@media (max-width:720px){.cs-hero__st2{right:-24px;top:150px;scale:.4}}
 @media (prefers-reduced-motion:reduce){.cs-hero__st2{animation:none}}
