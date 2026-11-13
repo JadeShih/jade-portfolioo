@@ -507,6 +507,12 @@ html,body{overflow-x:clip}
 @media (max-width:600px){.ct-row{grid-template-columns:1fr;gap:0}.ct-form{padding:var(--jade-sys-spacing-6)}}
 @media (prefers-reduced-motion:reduce){.ct-hero__st,.ct-status__label span{animation:none}}
 
+/* 聯絡頁狀態圖：Jade 的像素貼紙，白色模切邊、輕微漂浮 */
+.ct-status-art{width:min(100%,440px);margin-top:var(--jade-sys-spacing-12);transform:rotate(-3deg)}
+.ct-status-art img{display:block;width:100%;height:auto;user-select:none;animation:float 5s ease-in-out infinite alternate;
+  filter:drop-shadow(3px 0 0 var(--kc)) drop-shadow(-3px 0 0 var(--kc)) drop-shadow(0 3px 0 var(--kc)) drop-shadow(0 -3px 0 var(--kc)) drop-shadow(0 12px 12px var(--kc-shadow))}
+@media (prefers-reduced-motion:reduce){.ct-status-art img{animation:none}}
+
 /* ===== Works 頁 ===== */
 .wk-hero{text-align:center;overflow-x:clip}
 .wk-hero>.wrap{position:relative;padding-block:calc(var(--jade-sys-spacing-32) + 24px) var(--jade-sys-spacing-24)}
