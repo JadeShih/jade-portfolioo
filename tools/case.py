@@ -38,7 +38,6 @@ def render(w):
 <!-- 作品詳細頁草稿：標示「待補」的地方請 Jade 提供內容 -->
 <header class="sec cs-hero" data-theme="brand" id="top">
   <div class="wrap">
-    <a class="cs-back" href="works.html"><span aria-hidden="true">←</span> 全部作品</a>
     <ul class="cs-tags">{tags}</ul>
     <h1 class="cs-title">{w["title_en"]}<span>{w["title_zh"]}</span></h1>
 {tagline}    <div class="cs-cover" data-tone="{w["tone"]}"><span class="jade-sticker cs-hero__st" data-shape="burst" data-tone="lime" style="--jade-sticker-rotation:-10deg" aria-hidden="true"><svg class="jade-sticker__shape" viewBox="0 0 128 128"><polygon points="{burst(16,62,47)}"/></svg><span class="jade-sticker__label"><b>{w["num"]}</b>Case</span></span><img src="public/works/{w["cover"]}" width="1600" height="900" alt="{html.escape(w["cover_alt"])}" decoding="async"></div>
