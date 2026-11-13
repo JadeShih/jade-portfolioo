@@ -537,7 +537,7 @@ html,body{overflow-x:clip}
 .wk-filter:focus-visible{outline:3px solid var(--jade-sys-color-focus-ring);outline-offset:3px}
 .wk-filter__n{font:600 12px/1 var(--font-plain);opacity:.6;font-variant-numeric:tabular-nums}
 .wk-count{margin:var(--jade-sys-spacing-4) 0 var(--jade-sys-spacing-12);text-align:center;font:500 14px/1.5 var(--font-plain),"Noto Sans TC",sans-serif;color:var(--jade-sys-color-on-surface-variant)}
-.wk-card{text-decoration:none;cursor:pointer}
+.wk-card,a.jade-project-card{text-decoration:none;cursor:pointer}
 .wk-card .jade-project-card__label{flex:1}
 .wk-card.is-in{animation:wk-in 360ms var(--ease) both}
 @keyframes wk-in{from{opacity:0;transform:translateY(12px)}}
