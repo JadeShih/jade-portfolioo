@@ -495,6 +495,12 @@ html,body{overflow-x:clip}
 .ct-submit .jade-primary-button{cursor:pointer}
 .ct-status-msg{margin:0;flex:1 1 240px;font:500 14px/1.6 var(--font-plain),"Noto Sans TC",sans-serif;color:var(--jade-sys-color-on-surface-variant)}
 .ct-status-msg:empty{display:none}
+.ct-status-msg.is-done{color:var(--jade-sys-color-on-surface);font-weight:600}
+.ct-status-msg.is-done::before{content:"✦ ";color:var(--jade-sys-color-primary)}
+.ct-status-msg.is-error{color:var(--jade-ref-palette-error40);font-weight:600}
+.ct-status-msg a{color:inherit;text-decoration:underline}
+.ct-bot{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.ct-submit .jade-primary-button[disabled]{cursor:progress;opacity:.7}
 
 @media (max-width:900px){.ct-main>.ct-grid{grid-template-columns:1fr;gap:var(--jade-sys-spacing-12)}}
 @media (max-width:1100px){.ct-hero__st{display:none}}

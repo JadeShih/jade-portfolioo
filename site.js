@@ -121,27 +121,39 @@
   openFromHash();window.addEventListener('hashchange',openFromHash);
 })();
 
-/* Let's talk 表單：檢查必填欄位，通過後用訪客的郵件程式寄到 Jade 的信箱
-   （網站是靜態網頁，沒有伺服器；之後若接表單服務，改這裡的 send() 即可） */
+/* Let's talk 表單：檢查必填欄位後，透過 Web3Forms 直接寄到 Jade 的 Gmail
+   （網站是靜態網頁，沒有自己的伺服器，所以用 Web3Forms 代寄。金鑰只能用來寄信到 Jade 的信箱，放在網頁上是正常的） */
 (function(){
   var f=document.getElementById('inquiry');if(!f)return;
-  var TO='jiesmc1938@gmail.com';
+  var TO='jiesmc1938@gmail.com',KEY='5c86ddab-67ae-4f37-9f02-f7ffe59c913f';
+  var btn=f.querySelector('button[type="submit"]'),label=btn.querySelector('span'),st=document.getElementById('f-status');
   var rules=[['f-name','e-name',function(v){return v?'':'請填寫你的名字'}],
              ['f-email','e-email',function(v){return !v?'請填寫 Email':(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)?'':'Email 格式不正確，請再確認')}],
              ['f-msg','e-msg',function(v){return v?'':'請簡單說明你的需求'}]];
   function check(r){var el=document.getElementById(r[0]),er=document.getElementById(r[1]),m=r[2](el.value.trim());er.textContent=m;el.classList.toggle('is-invalid',!!m);el.setAttribute('aria-invalid',m?'true':'false');if(m)el.setAttribute('aria-describedby',r[1]);return !m}
   rules.forEach(function(r){var el=document.getElementById(r[0]);el.addEventListener('input',function(){if(el.classList.contains('is-invalid'))check(r)})});
   function v(id){return document.getElementById(id).value.trim()}
-  function send(){
-    var subject='合作需求｜'+v('f-type')+'｜'+v('f-name');
-    var body=['名字：'+v('f-name'),'Email：'+v('f-email'),'公司 / 品牌：'+(v('f-company')||'—'),'需求類型：'+v('f-type'),'預算範圍：'+v('f-budget'),'','需求說明：',v('f-msg')].join('\n');
-    location.href='mailto:'+TO+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  function busy(on){btn.disabled=on;btn.setAttribute('aria-busy',on?'true':'false');label.textContent=on?'送出中…':'送出需求'}
+  function fail(){
+    st.className='ct-status-msg is-error';
+    st.innerHTML='';st.appendChild(document.createTextNode('送出失敗，可能是網路不穩。請稍後再試，或直接寄信到 '));
+    var a=document.createElement('a');a.href='mailto:'+TO;a.textContent=TO;st.appendChild(a);st.appendChild(document.createTextNode('。'));
   }
   f.addEventListener('submit',function(e){
     e.preventDefault();
-    var ok=rules.map(check).every(Boolean),st=document.getElementById('f-status');
+    if(document.getElementById('f-bot').checked)return;
+    var ok=rules.map(check).every(Boolean);
     if(!ok){var first=f.querySelector('.is-invalid');if(first)first.focus();st.textContent='';return}
-    send();
-    st.textContent='正在開啟你的郵件程式，內容已幫你填好，按寄出就完成。如果沒有反應，請直接寄信到 '+TO+'。';
+    busy(true);st.className='ct-status-msg';st.textContent='';
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({access_key:KEY,subject:'作品集合作需求｜'+v('f-type')+'｜'+v('f-name'),from_name:'Jade Shih 作品集',
+        replyto:v('f-email'),'名字':v('f-name'),'Email':v('f-email'),'公司 / 品牌':v('f-company')||'—','需求類型':v('f-type'),'預算範圍':v('f-budget'),'需求說明':v('f-msg')})})
+    .then(function(r){return r.json().then(function(d){return r.ok&&d.success})})
+    .then(function(sent){
+      busy(false);
+      if(!sent){fail();return}
+      f.reset();st.className='ct-status-msg is-done';st.textContent='已送出，謝謝你！我會盡快回覆到你留下的 Email。';
+    })
+    .catch(function(){busy(false);fail()});
   });
 })();
