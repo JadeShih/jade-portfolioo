@@ -187,9 +187,10 @@
     img.src=s.currentSrc||s.src;img.alt=s.alt;count.textContent=(cur+1)+' / '+items.length;
     img.style.animation='none';void img.offsetWidth;img.style.animation='';
   }
-  function open(i){opener=items[i];show(i);if(lb.showModal)lb.showModal();else lb.setAttribute('open','');document.documentElement.style.overflow='hidden'}
+  var yc=document.getElementById('ycur'),ycHome=yc&&yc.parentNode;
+  function open(i){opener=items[i];show(i);if(yc)lb.appendChild(yc);if(lb.showModal)lb.showModal();else lb.setAttribute('open','');document.documentElement.style.overflow='hidden'}
   function close(){if(lb.open){lb.close?lb.close():lb.removeAttribute('open')}}
-  lb.addEventListener('close',function(){document.documentElement.style.overflow='';if(opener)opener.focus()});
+  lb.addEventListener('close',function(){if(yc&&ycHome)ycHome.appendChild(yc);document.documentElement.style.overflow='';if(opener)opener.focus()});
   items.forEach(function(b,i){b.addEventListener('click',function(){open(i)})});
   lb.querySelector('.lb__close').addEventListener('click',close);
   lb.querySelector('.lb__prev').addEventListener('click',function(){show(cur-1)});

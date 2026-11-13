@@ -12,6 +12,7 @@ CASES={
   cards=[dict(tone='pink',title='What I made',zh='我的設計',text='以「無限符號 ∞」為核心概念，融合自然關懷、金融科技與生活三大意象，象徵國泰金控持續創新、永續前行的企業精神。透過無限延伸的視覺語言，傳遞品牌在環境永續、科技創新與國際金融服務領域不斷拓展的未來願景。'),
          dict(tone='lime',title='What happened next',zh='後續成果',text='透過向國泰金控高階主管進行現場提案，<strong>從三家競爭的設計廣告公司中脫穎而出，成功取得該年度年報設計專案</strong>。後續延伸提案概念，完成整本年報的視覺規劃、設計執行與最終交付。')],
   gallery_style='stack',gallery=[dict(tone='cyan',img='work-01-report-01',alt='2021 國泰金控年報封面與封底攤開，無限符號道路橫跨前後封'),
-           dict(tone='lime',img='work-01-report-02',alt='年報書本特寫，可見綠色書名與無限符號立體插畫細節')],
+           dict(tone='lime',img='work-01-report-02',alt='年報書本特寫，可見綠色書名與無限符號立體插畫細節'),
+           dict(tone='pink',img='work-01-report-03',alt='年報成品直立陳列與平放書堆')],
   next=dict(title='2020新春電子月刊',attr='data-href="work-02-card.html" aria-disabled="true"')),
 }
