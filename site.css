@@ -369,7 +369,11 @@ html,body{overflow-x:clip}
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--jade-sys-spacing-6);margin:0;padding:0 0 var(--jade-sys-spacing-12);list-style:none}
 .stat{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
 .stat img{width:100%;max-width:240px;height:auto;margin-bottom:var(--jade-sys-spacing-3);filter:drop-shadow(0 10px 10px var(--kc-shadow))}
-.stat:nth-child(odd) img{transform:rotate(-3deg)}.stat:nth-child(even) img{transform:rotate(3deg)}
+.stat img{--r:-3deg;transform:rotate(var(--r));animation:stat-float 4.6s ease-in-out infinite alternate}
+.stat:nth-child(even) img{--r:3deg}
+.stat:nth-child(1) img{animation-delay:0s}.stat:nth-child(2) img{animation-delay:-1.7s;animation-duration:5.2s}.stat:nth-child(3) img{animation-delay:-3.1s;animation-duration:4.2s}.stat:nth-child(4) img{animation-delay:-.9s;animation-duration:5s}
+@keyframes stat-float{from{transform:translateY(-7px) rotate(var(--r))}to{transform:translateY(7px) rotate(var(--r))}}
+@media (prefers-reduced-motion:reduce){.stat img{animation:none}}
 .stat__num{font:400 clamp(44px,4.4vw,60px)/1 var(--font-brand);color:var(--jade-sys-color-on-surface)}
 .stat__label{font:600 clamp(15px,1.3vw,18px)/1.4 var(--font-plain),"Noto Sans TC",sans-serif;color:var(--jade-sys-color-on-surface-variant)}
 
