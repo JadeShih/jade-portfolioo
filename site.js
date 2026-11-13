@@ -157,3 +157,18 @@
     .catch(function(){busy(false);fail()});
   });
 })();
+
+/* Works 頁：依類別篩選作品，並顯示數量 */
+(function(){
+  var bar=document.querySelector('.wk-filters');if(!bar)return;
+  var cards=[].slice.call(document.querySelectorAll('.wk-card')),btns=[].slice.call(bar.querySelectorAll('.wk-filter')),out=document.getElementById('wkCount');
+  btns.forEach(function(b){var k=b.getAttribute('data-filter');b.querySelector('.wk-filter__n').textContent=k==='all'?cards.length:cards.filter(function(c){return c.getAttribute('data-cat')===k}).length});
+  function apply(k,label){
+    var n=0;
+    cards.forEach(function(c){var on=k==='all'||c.getAttribute('data-cat')===k;c.hidden=!on;c.classList.remove('is-in');if(on){n++;void c.offsetWidth;c.classList.add('is-in')}});
+    btns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-filter')===k?'true':'false')});
+    out.textContent=(k==='all'?'全部作品':label)+'・共 '+n+' 件';
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){apply(b.getAttribute('data-filter'),b.firstChild.textContent)})});
+  apply('all');
+})();
