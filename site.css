@@ -410,7 +410,7 @@ html,body{overflow-x:clip}
 .tools li{display:flex;align-items:center;font:600 16px/1.5 var(--font-plain);color:var(--jade-sys-color-on-surface)}
 .tools li:not(:last-child)::after{content:"✦";margin:0 14px;color:var(--jade-sys-color-secondary);font-size:12px}
 .ab-work{margin-top:var(--jade-sys-spacing-24)}
-.ab-skills__grid .sec__title{white-space:nowrap;font-size:clamp(40px,5vw,72px)}
+.ab-skills__grid .sec__title{white-space:nowrap}
 .pr-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--jade-sys-spacing-6);margin-top:var(--jade-sys-spacing-12)}
 .pr{display:flex;flex-direction:column;min-height:240px;padding:var(--jade-sys-spacing-8);border-radius:var(--jade-sys-shape-corner-extra-large);background:var(--tone);color:var(--on-tone)}
 .pr__num{font:400 64px/1 var(--font-brand)}
