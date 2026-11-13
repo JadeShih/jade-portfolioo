@@ -660,3 +660,6 @@ html,body{overflow-x:clip}
 .cs-stack__item:hover,.cs-stack__item:focus-visible{animation-play-state:paused}
 @keyframes cs-bob{from{translate:0 -8px}to{translate:0 8px}}
 @media (prefers-reduced-motion:reduce){.cs-stack__item{animation:none}}
+.cs-hero__st .jade-sticker__shape{transform-origin:50% 50%;animation:cs-st-spin 16s linear infinite}
+@keyframes cs-st-spin{to{rotate:360deg}}
+@media (prefers-reduced-motion:reduce){.cs-hero__st .jade-sticker__shape{animation:none}}
