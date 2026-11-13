@@ -127,9 +127,9 @@
   var f=document.getElementById('inquiry');if(!f)return;
   var TO='jiesmc1938@gmail.com',KEY='5c86ddab-67ae-4f37-9f02-f7ffe59c913f';
   var btn=f.querySelector('button[type="submit"]'),label=btn.querySelector('span'),st=document.getElementById('f-status');
-  var rules=[['f-name','e-name',function(v){return v?'':'請填寫你的名字'}],
+  var rules=[['f-name','e-name',function(v){return v?'':'請填寫您的名字'}],
              ['f-email','e-email',function(v){return !v?'請填寫 Email':(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)?'':'Email 格式不正確，請再確認')}],
-             ['f-msg','e-msg',function(v){return v?'':'請簡單說明你的需求'}]];
+             ['f-msg','e-msg',function(v){return v?'':'請簡單說明您的需求'}]];
   function check(r){var el=document.getElementById(r[0]),er=document.getElementById(r[1]),m=r[2](el.value.trim());er.textContent=m;el.classList.toggle('is-invalid',!!m);el.setAttribute('aria-invalid',m?'true':'false');if(m)el.setAttribute('aria-describedby',r[1]);return !m}
   rules.forEach(function(r){var el=document.getElementById(r[0]);el.addEventListener('input',function(){if(el.classList.contains('is-invalid'))check(r)})});
   function v(id){return document.getElementById(id).value.trim()}
@@ -152,7 +152,7 @@
     .then(function(sent){
       busy(false);
       if(!sent){fail();return}
-      f.reset();st.className='ct-status-msg is-done';st.textContent='已送出，謝謝你！我會盡快回覆到你留下的 Email。';
+      f.reset();st.className='ct-status-msg is-done';st.textContent='已送出，謝謝您！我會盡快回覆到您留下的 Email。';
     })
     .catch(function(){busy(false);fail()});
   });
