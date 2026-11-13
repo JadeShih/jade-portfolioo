@@ -667,3 +667,6 @@ html,body{overflow-x:clip}
 .cs-hero__st2{position:absolute;right:clamp(0px,2vw,40px);top:clamp(70px,8vw,110px);scale:.7;z-index:3;animation:sticker-bob 4.2s ease-in-out -1.6s infinite alternate}
 @media (max-width:720px){.cs-hero__st2{right:-24px;top:150px;scale:.4}}
 @media (prefers-reduced-motion:reduce){.cs-hero__st2{animation:none}}
+.cs-stack[data-n="1"]{aspect-ratio:1232/760}
+.cs-stack[data-n="1"] .cs-stack__item{left:14%;top:5%;width:72%;--r:-3deg}
+@media (max-width:720px){.cs-stack[data-n="1"]{aspect-ratio:1/.78}.cs-stack[data-n="1"] .cs-stack__item{left:4%;top:6%;width:92%}}

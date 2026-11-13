@@ -3,7 +3,7 @@ import re,math,html,sys
 SITE='/home/claude/site'
 ab=open(f'{SITE}/about.html').read()
 def up(s):
-  s=re.sub(r'(?<![\w-])(href|src|srcset)="(?!https?:|mailto:|#|\.\./)([^"]+)"',r'\1="../\2"',s)
+  s=re.sub(r'(?<![\w-])(href|src|srcset)="(?!https?:|mailto:|#|\.\./|\./)([^"]+)"',r'\1="../\2"',s)
   return s
 head=ab[:ab.index('<a class="skip"')]
 nav=ab[ab.index('<div class="navrow">'):ab.index('</nav></div>')+len('</nav></div>')].replace(' aria-current="page"','')
