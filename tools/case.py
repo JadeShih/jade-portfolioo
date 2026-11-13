@@ -22,7 +22,8 @@ def render(w):
     'content="Jade Shih 的完整介紹：十年品牌平面、整合設計與 UI/UX 經歷、能力與工作方式。"',f'content="{html.escape(w["desc"])}"')
   tags=''.join(f'<li>{t}</li>' for t in w['tags'])
   meta=''.join(f'<div class="cs-meta__item"><dt>{k}</dt><dd>{v}</dd></div>' for k,v in w['meta'])
-  notes=''.join(f'<h2 class="cs-notes__h">{k}</h2><p class="cs-notes__p">{v}</p>' for k,v in w['notes'])
+  tagline=f'    <p class="cs-tagline">{w["tagline"]}</p>\n' if w.get('tagline') else ''
+  cards=''.join(f'<article class="cs-card" data-tone="{c["tone"]}"><h2 class="cs-card__title">{c["title"]}<small>{c["zh"]}</small></h2><p class="cs-card__text">{c["text"]}</p><svg class="cs-card__deco" viewBox="0 0 128 128" aria-hidden="true"><polygon points="{burst(14,62,46)}"/></svg></article>' for c in w['cards'])
   gal=''
   for g in w['gallery']:
     inner=f'<img src="public/works/{g["img"]}" width="1600" height="900" alt="{html.escape(g["alt"])}" loading="lazy" decoding="async">' if g.get('img') else f'<span class="cs-shot__ph">{g["ph"]}</span>'
@@ -40,9 +41,7 @@ def render(w):
     <a class="cs-back" href="works.html"><span aria-hidden="true">←</span> 全部作品</a>
     <ul class="cs-tags">{tags}</ul>
     <h1 class="cs-title">{w["title_en"]}<span>{w["title_zh"]}</span></h1>
-    <p class="cs-tagline">{w["tagline"]}</p>
-    <p class="cs-services">{w["services"]}</p>
-    <div class="cs-cover" data-tone="{w["tone"]}"><span class="jade-sticker cs-hero__st" data-shape="burst" data-tone="lime" style="--jade-sticker-rotation:-10deg" aria-hidden="true"><svg class="jade-sticker__shape" viewBox="0 0 128 128"><polygon points="{burst(16,62,47)}"/></svg><span class="jade-sticker__label"><b>{w["num"]}</b>Case</span></span><img src="public/works/{w["cover"]}" width="1600" height="900" alt="{html.escape(w["cover_alt"])}" decoding="async"></div>
+{tagline}    <div class="cs-cover" data-tone="{w["tone"]}"><span class="jade-sticker cs-hero__st" data-shape="burst" data-tone="lime" style="--jade-sticker-rotation:-10deg" aria-hidden="true"><svg class="jade-sticker__shape" viewBox="0 0 128 128"><polygon points="{burst(16,62,47)}"/></svg><span class="jade-sticker__label"><b>{w["num"]}</b>Case</span></span><img src="public/works/{w["cover"]}" width="1600" height="900" alt="{html.escape(w["cover_alt"])}" decoding="async"></div>
   </div>
 </header>
 
@@ -50,10 +49,11 @@ def render(w):
   {WAVE.format(c='')}
   <div class="wrap">
     <dl class="cs-meta">{meta}</dl>
-    <div class="cs-notes">
-      <p class="eyebrow cs-notes__label">Case notes</p>
-      <div class="cs-notes__body">{notes}</div>
+    <div class="cs-overview">
+      <p class="eyebrow cs-overview__label">Overview</p>
+      <div class="cs-overview__body">{w["overview"]}</div>
     </div>
+    <div class="cs-cards">{cards}</div>
     <div class="cs-gallery">{gal}</div>
   </div>
 </section>
