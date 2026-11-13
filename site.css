@@ -618,7 +618,7 @@ html,body{overflow-x:clip}
 /* 作品詳細頁：照片錯落疊放，點擊放大 */
 .cs-stack{position:relative;margin-top:var(--jade-sys-spacing-16);aspect-ratio:1232/680}
 .cs-stack[data-n="3"]{aspect-ratio:1232/640}
-.cs-stack__item{position:absolute;display:block;margin:0;padding:0;border:0;background:none;border-radius:clamp(16px,2.6vw,36px);overflow:hidden;cursor:zoom-in;transform:rotate(var(--r));transition:transform .35s var(--ease),z-index 0s .1s;-webkit-tap-highlight-color:transparent}
+.cs-stack__item{position:absolute;display:block;margin:0;padding:0;border:clamp(4px,.45vw,6px) solid var(--jade-ref-palette-neutral100);background:var(--jade-ref-palette-neutral100);border-radius:clamp(16px,2.6vw,36px);overflow:hidden;cursor:zoom-in;transform:rotate(var(--r));transition:transform .35s var(--ease),z-index 0s .1s;-webkit-tap-highlight-color:transparent}
 .cs-stack__item img{display:block;width:100%;height:auto;user-select:none}
 .cs-stack__item:hover{z-index:5;transform:rotate(0deg) scale(1.03);transition:transform .35s var(--ease)}
 .cs-stack__item:focus-visible{z-index:5;outline:3px solid var(--jade-sys-color-secondary);outline-offset:4px}
