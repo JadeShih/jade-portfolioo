@@ -1,7 +1,7 @@
 T=lambda t:f'<span class="todo">待補：{t}</span>'
 CASES={
  'work-01-report':dict(
-  num='01',tone='cyan',
+  num='01',tone='cyan',deco=(('flower','yellow'),('scallop','pink')),
   title_en='Annual Report',title_zh='國泰金控年報',
   desc='Jade Shih 作品：國泰金控 2021 年報視覺設計與現場提案。',
   tags=['金融財經','國泰金控','2021'],
@@ -16,7 +16,7 @@ CASES={
            dict(tone='pink',img='work-01-report-03',alt='年報成品直立陳列與平放書堆')],
   next=dict(title='2020新春電子月刊',attr='href="./work-02-card.html"')),
  'work-02-card':dict(
-  num='02',tone='yellow',
+  num='02',tone='yellow',deco=(('blob','cyan'),('flower','coral')),
   title_en='New Year EDM',title_zh='新春電子月刊',
   desc='Jade Shih 作品：國泰金控 2020 新春電子月刊 EDM 視覺設計。',
   tags=['金融財經','國泰金控','2020'],
@@ -30,7 +30,7 @@ CASES={
            dict(tone='pink',img='work-02-newyearcard-02',alt='五福臨門與花開富貴兩款新春海報並列，藍綠色調搭配飛燕與牡丹')],
   next=dict(title='艾沛膚系列產品包裝',attr='href="./work-03-package.html"')),
  'work-03-package':dict(
-  num='03',tone='cyan',
+  num='03',tone='cyan',deco=(('circle','pink'),('blob','yellow')),
   title_en='EczCare SD',title_zh='舒緩脂癢系列產品包裝',
   desc='Jade Shih 作品：Elpis 艾沛膚 EczCare SD 舒緩脂癢系列產品包裝設計。',
   tags=['美妝保養','Elpis 艾沛膚','2025'],
