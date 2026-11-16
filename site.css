@@ -1017,3 +1017,20 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 @media (max-width:900px){.kl-num{width:40px;height:40px;left:-10px;top:-10px}.kl-num b{font-size:17px}}
 .kl-num svg,.kl-num svg *{fill:#2CF8B4!important;stroke:#0C1E20!important}
 @media (max-width:900px){.kl-onb2{--h:clamp(300px,calc(100vh - 420px),500px)}}
+
+/* 通用橫向展示牆（露出下一張、Dot、滑鼠拖曳） */
+.hcar{--g:clamp(14px,1.6vw,22px);--per:4.3;display:grid;gap:20px;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)))}
+.hcar__track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 4 * var(--g)) / var(--per));gap:var(--g);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:4px max(16px,env(safe-area-inset-left,0px));scroll-padding-inline:max(16px,env(safe-area-inset-left,0px));cursor:grab;user-select:none;-webkit-mask-image:linear-gradient(90deg,#000 90%,transparent);mask-image:linear-gradient(90deg,#000 90%,transparent)}
+.hcar__track::-webkit-scrollbar{display:none}
+.hcar__track.is-drag{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
+.hcar__item{margin:0;scroll-snap-align:start}
+.hcar__item .ph{border-radius:22px;padding:12px}
+.hcar__item figcaption{margin-top:14px;text-align:center;font:600 13px/1.4 var(--font-plain),"Noto Sans TC",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--jade-sys-color-on-surface)}
+.hcar__item figcaption::before{content:"✦ ";color:var(--jade-sys-color-primary)}
+.hcar__dots{justify-self:center;margin:0}
+.cs-body--ink .kl-dot{background:rgba(255,255,255,.4)!important}
+.cs-body--ink .kl-dot.is-on{background:#A99BFF!important}
+@media (max-width:900px){.hcar{--per:1.6}}
+@media (prefers-reduced-motion:reduce){.hcar__track{scroll-behavior:auto}}
+.hcar{grid-template-columns:minmax(0,1fr)}
+.hcar .hcar__dots{grid-column:1;margin-top:0}

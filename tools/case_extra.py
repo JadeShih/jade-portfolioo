@@ -130,19 +130,15 @@ def chat():
   decs=(dec(1,'Smart Snippet','搜尋結果摘要',[
             '每則結果最多兩行，以「關鍵句＋前後句平均擴展」組成摘要，一眼看出上下文',
             '關鍵字以主色高亮；同一則訊息有多組關鍵字只算一筆結果，但全部高亮',
-            '裁切時絕不切斷關鍵字，超出部分以「…」收尾'],phone('results','搜尋結果列表：關鍵字高亮、兩行摘要'))+
+            '裁切時絕不切斷關鍵字，超出部分以「…」收尾'],ph('Decision 01 配圖：搜尋結果摘要（建議 1200×1200 px）','1/1'))+
         dec(2,'Two Tabs','作者／全部 雙頁籤',[
             '把作者（Mike是麥克）的發言獨立成第一個 Tab，最有價值的觀點優先看到',
             '預設頁籤規則：作者有結果先選作者；作者無結果自動切到「全部」',
-            '結果上方標註「僅顯示近三個月結果」，讓搜尋範圍透明'],phone('one','作者頁籤與搜尋範圍提示'),True)+
+            '結果上方標註「僅顯示近三個月結果」，讓搜尋範圍透明'],ph('Decision 02 配圖：作者／全部雙頁籤（建議 1200×1200 px）','1/1'),True)+
         dec(3,'Highlight Mode','跳回原訊息檢視',[
             '點擊結果直接跳回聊天室中的原位置，關鍵字以色塊標示',
             '底部提供 ↑↓ 切換上一則／下一則結果，到頭尾時自動 disable',
-            '「返回搜尋結果」一鍵回到列表，不必重新搜尋'],phone('jump','Highlight 模式：跳回原訊息，可切換上下則'))+
-        dec(4,'Edge Cases','無結果與邊界情境',[
-            '查無結果時明確顯示「查無結果」，不留白、不載入骨架',
-            '空格分隔多個關鍵字視為 OR；單一字元的關鍵字自動忽略',
-            '輸入或貼上超過 500 字時，搜尋框只保留前 500 字'],phone('empty','查無結果的空狀態'),True))
+            '「返回搜尋結果」一鍵回到列表，不必重新搜尋'],ph('Decision 03 配圖：Highlight 跳回原訊息（建議 1200×1200 px）','1/1')))
   states=['搜尋錯誤','查詢無結果','Loading','只輸入一個關鍵字','Tab 最大寬度','Tab 名稱過長','往下載入','搜尋結果滿屏','載入至最底部','訊息為一行','訊息兩行以上','被引用訊息不 highlight','第一則：上一則 disable','最後一則：下一則 disable']
   st=''.join(f'<li>{x}</li>' for x in states)
   return (
@@ -155,6 +151,7 @@ def chat():
     f'{ph("UI Flow 流程圖：聊天模式 ↔ 搜尋模式 ↔ Highlight 檢視模式（可從 Figma「UI flow」區塊匯出）","21/9")}</section>'
     f'<section class="cs-sec">{sh("Key decisions","Design Decisions","關鍵設計決策")}{decs}</section>'
     f'<section class="cs-sec">{sh("Spec","Every State Covered","完整狀態與規格","交付給工程的不只畫面，還包含 14 種 UI 狀態、iOS／Android 長按流程與搜尋規則。")}'
-    f'<ul class="ch-states">{st}</ul>{ph("UI State 總覽圖（可從 Figma「UI State」區塊匯出整排畫面）","21/9")}</section>'
-    f'<section class="cs-sec ch-result">{sh("Outcome","What Happened Next","後續成果")}<p class="ch-big ch-big--sm"><span class="todo">待補：上線後的結果，例如使用率、回饋、或團隊採用情形</span></p></section>'
+    f'<div class="hcar"><div class="hcar__track">'+''.join(f'<figure class="hcar__item">{ph("畫面待提供","390/844")}<figcaption>{x}</figcaption></figure>' for x in states)+'</div><div class="kl-dots hcar__dots"></div></div></section>'
+
+    f'<section class="cs-sec ch-result">{sh("Outcome","What Happened Next","後續成果")}<p class="ch-big ch-big--sm">規格完整交付工程，<em>iOS／Android 雙平台上線。</em></p></section>'
   )

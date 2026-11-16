@@ -270,3 +270,28 @@
     }
   });
 })();
+
+/* 通用橫向展示牆：Dot＋滑鼠拖曳＋DRAG 游標 */
+(function(){
+  [].forEach.call(document.querySelectorAll('.hcar'),function(box){
+    var track=box.querySelector('.hcar__track'),items=track.children,dotsEl=box.querySelector('.hcar__dots');
+    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function step(){return items[0].getBoundingClientRect().width+(parseFloat(getComputedStyle(track).columnGap)||0)}
+    function per(){return Math.max(1,Math.floor(track.clientWidth/step()))}
+    function pages(){return Math.ceil((items.length-per())/per())+1}
+    function cur(){if(track.scrollLeft+track.clientWidth>=track.scrollWidth-4)return pages()-1;return Math.round(track.scrollLeft/step()/per())}
+    function go(pg){pg=Math.max(0,Math.min(pages()-1,pg));track.scrollTo({left:pg*per()*step(),behavior:reduce?'auto':'smooth'})}
+    function build(){var n=pages();dotsEl.innerHTML='';for(var j=0;j<n;j++){var d=document.createElement('button');d.type='button';d.className='kl-dot';d.setAttribute('aria-label','第 '+(j+1)+' 組，共 '+n+' 組');(function(j){d.addEventListener('click',function(){go(j)})})(j);dotsEl.appendChild(d)}dotsEl.hidden=n<2;sync()}
+    function sync(){var c=cur();[].forEach.call(dotsEl.children,function(d,j){d.classList.toggle('is-on',j===c)})}
+    var t;track.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(sync,80)});
+    window.addEventListener('resize',build);build();
+    var down=false,moved=false,sx=0,sl=0;
+    track.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse'||e.button!==0)return;down=true;moved=false;sx=e.clientX;sl=track.scrollLeft});
+    window.addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-sx;if(!moved&&Math.abs(dx)>4){moved=true;track.classList.add('is-drag')}if(moved)track.scrollLeft=sl-dx});
+    window.addEventListener('pointerup',function(e){if(!down)return;down=false;track.classList.remove('is-drag');if(moved){var dx=e.clientX-sx,c=Math.round(sl/step()/per());go(Math.abs(dx)>40?c+(dx<0?1:-1):c)}});
+    track.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopImmediatePropagation();moved=false}},true);
+    track.addEventListener('dragstart',function(e){e.preventDefault()});
+    var y=document.getElementById('ycur'),tag=y&&y.querySelector('.ycur__tag');
+    if(tag){track.addEventListener('mouseenter',function(){tag.textContent='DRAG ↔';y.classList.add('is-drag')});track.addEventListener('mouseleave',function(){tag.textContent='YOU';y.classList.remove('is-drag')})}
+  });
+})();

@@ -58,5 +58,15 @@ CASES={
          dict(tone='yellow',title='What happened next',zh='後續成果',text='品牌主視覺定案後，進一步延伸應用至各類數位行銷素材與活動視覺，並透過網路平台持續曝光。以一致的視覺語言串聯不同宣傳內容，讓品牌識別不僅停留於單一標誌，更成為後續行銷溝通與視覺延伸的基礎。')],
   gallery_style='none',gallery=[],
   after=case_extra.kolapp2(),
+  next=dict(title='聊天室搜尋功能優化',attr='href="./work-06-chat.html"')),
+ 'work-06-chat':dict(
+  num='06',tone='pink',body_cls=' cs-body--ink',deco=(('flower','cyan'),('blob','pink')),
+  title_en='Chat Search',title_zh='聊天室搜尋功能優化',
+  desc='Jade Shih 作品：APP 聊天室訊息搜尋功能優化，從問題定義到解法設計與規格交付。',
+  tags=['UI/UX','YouTuber Mike是麥克','功能優化'],tagline='',
+  cover='work-06-chat',cover_w=1600,cover_h=900,cover_alt='聊天室搜尋功能畫面',
+  meta=[('Client','YouTuber Mike是麥克'),('Role','UI/UX 設計・功能規劃'),('Deliverables','聊天室訊息搜尋・UI Spec'),('Year','2026')],
+  overview='<p>APP 聊天室是用戶與作者交流投資觀點的主要場所。隨著訊息量快速累積，用戶需要一個能快速找回重要訊息的方式。</p><p>本專案從用戶痛點出發，規劃聊天室內的訊息全文搜尋，從搜尋、結果摘要到跳回原訊息檢視，並撰寫完整的 UI 狀態與規格交付工程。</p>',
+  cards=[],gallery_style='none',gallery=[],extra=case_extra.chat(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
