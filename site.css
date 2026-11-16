@@ -853,3 +853,6 @@ html,body{overflow-x:clip}
 .kl-feat[data-n="1"] .kl-feat__shot{border-radius:0}
 .kl-end__txt{white-space:nowrap;font-size:clamp(36px,5.4vw,84px)}
 .cs-body--dark .cs-card__deco{fill:#0C1E20;stroke:#fff;stroke-width:3}
+article.kl-prop{cursor:default}
+article.kl-prop:hover{transform:none;border-color:rgba(255,255,255,.08)!important}
+article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}

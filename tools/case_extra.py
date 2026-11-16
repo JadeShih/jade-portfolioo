@@ -59,9 +59,9 @@ def kolapp2():
   for k,n,name,desc,final in props:
     sets='|'.join(f'../{P}{B}{24+n-1}-{i}.webp' for i in range(1,4))
     fin='<span class="kl-prop__final">Final</span>' if final else ''
-    pc+=(f'<button type="button" class="kl-prop{" is-final" if final else ""}" data-lb-set="{sets}" data-lb-alt="提案 {k.upper()} 款：{name}" aria-label="查看提案 {k.upper()} 款「{name}」完整提案">'
+    pc+=(f'<article class="kl-prop{" is-final" if final else ""}">'
          f'<span class="kl-prop__img">{pic(B+str(n),1203,740,f"提案 {k.upper()} 款：{name}")}{fin}</span>'
-         f'<span class="kl-prop__txt"><b><i>{k.upper()}</i>{name}</b><span>{desc}</span></span></button>')
+         f'<span class="kl-prop__txt"><b><i>{k.upper()}</i>{name}</b><span>{desc}</span></span></article>')
   onb=[(10,'啟動畫面','品牌 Logo 與 CMoney 標示'),(12,'三大選股策略','壓倉股、潛力成長、多元配置'),(13,'智能演算 × 策略','關鍵指標一眼找出潛力標的'),
        (14,'個股體質雷達','五大面向、五階等級'),(15,'專屬互動空間','與好葉直接交流、共學成長'),(16,'獨家內容','VIP 深度分析一站收錄')]
   onbh=''.join(f'<figure class="kl-onb__item">{zoom(B+str(n),1170,2532,t,"onb")}<figcaption><span>{i:02d}</span><b>{t}</b>{d}</figcaption></figure>' for i,(n,t,d) in enumerate(onb,1))
