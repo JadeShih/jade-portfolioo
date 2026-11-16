@@ -1006,3 +1006,5 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 @media (max-width:900px){.kl-onb2{--h:clamp(300px,calc(100vh - 380px),520px)}.kl-onb2__track{justify-self:start;width:min(100%,calc(var(--peek) * var(--h) * .4621 + var(--g)))}}
 .kl-dot{background:rgba(255,255,255,.5)!important;width:10px;height:10px;flex:none}
 .kl-dot.is-on{background:var(--kl-ac)!important;width:32px}
+.kl-steps{gap:12px}
+.kl-steps button{padding:14px 18px!important;row-gap:4px}
