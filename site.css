@@ -941,3 +941,20 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .kl-car__count{min-width:56px;text-align:center;font:600 15px/1 var(--font-plain);letter-spacing:.12em;color:var(--kl-mu)}
 @media (max-width:900px){.kl-car .kl-onb{grid-auto-columns:72%}}
 @media (prefers-reduced-motion:reduce){.kl-car .kl-onb{scroll-behavior:auto}}
+/* 輪播：一屏看完（圖片高度跟視窗走，按鈕在左右） */
+.kl-car{--h:min(54vh,520px);--w:calc(var(--h) * .4621);--g:clamp(14px,1.8vw,24px);display:grid;grid-template-columns:auto auto auto;justify-content:center;align-items:center;column-gap:clamp(16px,2.4vw,32px);row-gap:16px;max-width:none}
+.kl-car .kl-onb{grid-column:2;width:calc(var(--w) * 3 + var(--g) * 2);grid-auto-columns:var(--w);gap:var(--g)}
+.kl-car .kl-onb__item figcaption{margin-top:12px;font-size:14px}
+.kl-car .kl-onb__item figcaption b{font-size:16px}
+.kl-car .kl-car__btn[data-dir="-1"]{grid-column:1;grid-row:1}
+.kl-car .kl-car__btn[data-dir="1"]{grid-column:3;grid-row:1}
+.kl-car__count{grid-column:2;grid-row:2;justify-self:center}
+.kl-car[data-single] .kl-car__btn,.kl-car[data-single] .kl-car__count{visibility:hidden}
+@media (max-width:900px){
+  .kl-car{--h:min(58vh,480px);column-gap:10px}
+  .kl-car .kl-onb{width:var(--w);grid-auto-columns:var(--w)}
+  .kl-car__btn{width:40px;height:40px}
+}
+.kl-car{--h:clamp(260px,calc(100vh - 390px),520px)}
+@media (max-width:900px){.kl-car{--h:clamp(260px,calc(100vh - 360px),480px)}}
+.kl-car{--h:clamp(240px,calc(100vh - 430px),520px)}
