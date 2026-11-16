@@ -46,7 +46,7 @@ CASES={
            dict(tone='pink',img='work-03-package-03-web',alt='舒緩脂癢水凝乳外盒與軟管並列，外盒印有金色花朵線條')],
   next=dict(title='30日繪畫計畫',attr='data-href="work-04-drawing.html" aria-disabled="true"')),
  'work-05-kolapp':dict(
-  num='05',tone='lime',deco=(('circle','yellow'),('scallop','coral')),
+  num='05',tone='lime',body_cls=' cs-body--dark',deco=(('circle','yellow'),('scallop','coral')),
   title_en='Better Leaf App',title_zh='好葉智能選股APP',
   desc='Jade Shih 作品：YouTuber Better Leaf 好葉「好葉智能選股」APP 主視覺規劃、品牌識別與介面視覺。',
   tags=['金融投資','Better Leaf 好葉','2025'],

@@ -56,7 +56,7 @@ def render(w):
   </div>
 </header>
 
-<section class="sec cs-body" data-theme="light" aria-label="專案說明">
+<section class="sec cs-body{w.get('body_cls','')}" data-theme="light" aria-label="專案說明">
   {WAVE.format(c='')}
   <div class="wrap">
     <dl class="cs-meta">{meta}</dl>

@@ -834,3 +834,14 @@ html,body{overflow-x:clip}
 @media (max-width:900px){.kl-end__txt{left:auto;right:16px}}
 .kl-logo__formula{padding:clamp(12px,2vw,24px)}
 .kl-logo__formula img:first-child{flex:1}
+
+/* 深色版詳細頁（好葉）：資訊列到內容區沿用品牌深墨綠 */
+.cs-body--dark{--jade-sys-color-surface:#0C1E20;--jade-sys-color-surface-contrast:#0C1E20;--jade-sys-color-on-surface:#E9F6F0;--jade-sys-color-on-surface-variant:#9FB8B1;--jade-sys-color-primary:#2CF8B4;background:#0C1E20;color:#E9F6F0}
+.cs-body--dark .wave{color:#0C1E20}
+.cs-body--dark .cs-meta__item{border-top-color:#2CF8B4}
+.cs-body--dark .cs-meta dd{color:#fff}
+.cs-body--dark .eyebrow{color:#2CF8B4}
+.cs-body--dark .eyebrow::before{background:#2CF8B4}
+.cs-body--dark .cs-overview__body{color:#E9F6F0}
+.cs-body--dark .cs-card__deco{fill:#0C1E20;stroke:#0C1E20}
+.cs-body--dark+.kl .kl-kv{margin-top:0}
