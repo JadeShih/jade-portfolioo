@@ -1,3 +1,4 @@
+import json,os
 import html
 P='public/works/'
 def pic(name,w,h,alt,lazy=True):
@@ -47,6 +48,7 @@ def kolapp():
 
 def kolapp2():
   B='work-05-betterleaf/web-'
+  SH=json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'shapes.json')))
   def kh(eb,en,zh,lead=''):
     l=f'<p class="kl-head__lead">{lead}</p>' if lead else ''
     return f'<header class="kl-head"><p class="kl-eyebrow">{eb}</p><h2 class="kl-title">{en}<small>{zh}</small></h2>{l}</header>'
@@ -94,7 +96,7 @@ def kolapp2():
     f'<div class="kl-onb2__txt">{kh("Onboarding","First Launch","登入頁・新手導覽")}'
     f'<ol class="kl-steps">'+''.join(f'<li data-i="{j}"><button type="button"><span>{j+1:02d}</span><b>{t}</b><em>{d}</em></button></li>' for j,(n,t,d) in enumerate(onb))+'</ol>'
     f'</div>'
-    f'<div class="kl-onb2__track">'+''.join(f'<figure class="kl-onb2__item"><button type="button" data-lb="onb" aria-label="放大檢視：{html.escape(t)}">{pic(B+str(n),1170,2532,t)}</button></figure>' for n,t,d in onb)+'</div>'
+    f'<div class="kl-onb2__track">'+''.join(f'<figure class="kl-onb2__item"><span class="kl-num" aria-hidden="true">{SH["circle"]}<b>{j+1:02d}</b></span><button type="button" data-lb="onb" aria-label="放大檢視：{html.escape(t)}">{pic(B+str(n),1170,2532,t)}</button></figure>' for j,(n,t,d) in enumerate(onb))+'</div>'
     f'<div class="kl-dots" role="tablist" aria-label="切換新手導覽頁面"></div>'
     f'</section>'
     f'<section class="kl-block">{kh("Inside the app","Key Features","核心功能")}{feats}</section>'
