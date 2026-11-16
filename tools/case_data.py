@@ -44,7 +44,7 @@ CASES={
   gallery_style='stack',gallery=[dict(tone='cyan',img='work-03-package-01-web',alt='EczCare SD 三款產品裝在湖水綠購物籃中'),
            dict(tone='lime',img='work-03-package-02-web',alt='舒緩脂癢頭皮噴霧外盒與瓶身並列'),
            dict(tone='pink',img='work-03-package-03-web',alt='舒緩脂癢水凝乳外盒與軟管並列，外盒印有金色花朵線條')],
-  next=dict(title='30日繪畫計畫',attr='data-href="work-04-drawing.html" aria-disabled="true"')),
+  next=dict(title='好葉智能選股APP',attr='href="./work-05-kolapp.html"')),
  'work-05-kolapp':dict(
   num='05',tone='lime',body_cls=' cs-body--dark',deco=(('circle','yellow'),('scallop','coral')),
   title_en='Better Leaf App',title_zh='好葉智能選股APP',
@@ -58,5 +58,5 @@ CASES={
          dict(tone='yellow',title='What happened next',zh='後續成果',text='品牌主視覺定案後，進一步延伸應用至各類數位行銷素材與活動視覺，並透過網路平台持續曝光。以一致的視覺語言串聯不同宣傳內容，讓品牌識別不僅停留於單一標誌，更成為後續行銷溝通與視覺延伸的基礎。')],
   gallery_style='none',gallery=[],
   after=case_extra.kolapp2(),
-  next=dict(title='APP功能優化',attr='data-href="work-06-chat.html" aria-disabled="true"')),
+  next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
