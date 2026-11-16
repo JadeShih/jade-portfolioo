@@ -1,0 +1,97 @@
+import html
+P='public/works/'
+def pic(name,w,h,alt,lazy=True):
+  return (f'<picture><source srcset="{P}{name}.webp" type="image/webp"><img src="{P}{name}.jpg" width="{w}" height="{h}" alt="{html.escape(alt)}"'
+          f'{" loading=\"lazy\"" if lazy else ""} decoding="async"></picture>')
+def head(eyebrow,en,zh,lead=''):
+  l=f'<p class="cs-sec__lead">{lead}</p>' if lead else ''
+  return f'<header class="cs-sec__head"><p class="eyebrow">{eyebrow}</p><h2 class="cs-sec__title">{en}<small>{zh}</small></h2>{l}</header>'
+def strip(group,items,cls=''):
+  out=''.join(f'<button type="button" class="cs-strip__item" data-lb="{group}" aria-label="放大檢視：{html.escape(a)}">{pic(n,w,h,a)}</button>' for n,w,h,a in items)
+  return f'<div class="cs-strip {cls}" style="--n:{len(items)}">{out}</div>'
+
+def kolapp():
+  props=[('a','科技 K 線','葉片融入股市 K 線，呈現正成長姿態，象徵股價上升與穩健增值。',True,'cyan'),
+         ('b','活力綠葉','樹葉結合頻道名稱，圓潤立體字與排版節奏，傳遞溫暖積極的能量。',False,'lime'),
+         ('c','書法藤蔓','樹葉與藤蔓融入書法標準字，以精緻專業塑造高信賴感。',False,'yellow')]
+  cards=''
+  for k,name,desc,final,tone in props:
+    sets='|'.join(f'../{P}work-05-kolapp-prop-{k}{i}.webp' for i in range(1,5))
+    fin='<span class="cs-prop__final">Final</span>' if final else ''
+    cards+=(f'<button type="button" class="cs-prop" data-tone="{tone}" data-lb-set="{sets}" data-lb-alt="提案 {k.upper()} 款：{name}" aria-label="查看提案 {k.upper()} 款「{name}」完整 4 頁">'
+            f'<span class="cs-prop__img">{pic(f"work-05-kolapp-prop-{k}1",2000,1636,f"提案 {k.upper()} 款主視覺：{name}")}{fin}</span>'
+            f'<span class="cs-prop__meta"><span class="cs-prop__key">{k.upper()}</span><span class="cs-prop__txt"><b>{name}</b><span>{desc}</span></span></span>'
+            f'<span class="cs-prop__more">看完整提案 4 頁 <span aria-hidden="true">→</span></span></button>')
+  sw=[('Primary','#2CF8B4'),('Secondary','#24BB88'),('Gradient','linear-gradient(180deg,#D0E9A8,#2CF8B4)','#D0E9A8 → #2CF8B4'),
+      ('Background','#141414'),('Background 2','#212121'),('Line','#2F2F2F'),('Line 2','#595959'),('Text 2nd','#7A7A7A'),('Text 3rd','#ABABAB')]
+  swh=''.join(f'<li><span class="cs-sw__chip" style="background:{s[1]}"></span><b>{s[0]}</b><code>{s[2] if len(s)>2 else s[1]}</code></li>' for s in sw)
+  brand=(f'<div class="cs-brand">'
+         f'<figure class="cs-tile cs-tile--logo"><button type="button" class="cs-tile__zoom" data-lb="brand" aria-label="放大檢視：好葉智能選股 Logo">{pic("work-05-kolapp-logo",512,512,"好葉智能選股 Logo：葉片融合 K 線上升箭頭")}</button><figcaption>Logo 設定</figcaption></figure>'
+         f'<figure class="cs-tile cs-tile--color"><ul class="cs-sw">{swh}</ul><figcaption>顏色設定</figcaption></figure>'
+         f'<figure class="cs-tile cs-tile--icon"><div class="cs-tile__icons"><button type="button" class="cs-tile__zoom" data-lb="brand" aria-label="放大檢視：App Icon">{pic("work-05-kolapp-icon-l",300,300,"好葉智能選股 App Icon")}</button>'
+         f'<button type="button" class="cs-tile__zoom cs-tile__tab" data-lb="brand" aria-label="放大檢視：功能圖示">{pic("work-05-kolapp-tabicons",376,188,"底部導覽列功能圖示：一般與選取狀態")}</button></div><figcaption>Icon 設定</figcaption></figure>'
+         f'</div>')
+  store=[(f'work-05-kolapp-store-{i}',416,736,a) for i,a in enumerate(['商店頁 1：好葉智能選股主視覺','商店頁 2：好葉持股一次看','商店頁 3：好葉持倉／觀察','商店頁 4：三大選股策略','商店頁 5：個股體質雷達','商店頁 6：APP 用戶專屬互動','商店頁 7：獨家內容全收錄'],1)]
+  onb=[('work-05-kolapp-splash',388,848,'APP 啟動畫面')]+[(f'work-05-kolapp-onboard-{i}',388,844,f'新手導覽第 {i} 頁') for i in range(1,7)]
+  inapp=(f'<div class="cs-screens">'
+         f'<button type="button" class="cs-screens__wide" data-lb="inapp" aria-label="放大檢視：選股清單頁">{pic("work-05-kolapp-list",964,844,"選股清單頁：好葉清單、潛力成長等分類與個股指標")}</button>'
+         f'<button type="button" data-lb="inapp" aria-label="放大檢視：VIP 文章列表">{pic("work-05-kolapp-content-1",388,844,"內容頁：VIP 文章列表")}</button>'
+         f'<button type="button" data-lb="inapp" aria-label="放大檢視：影音內容列表">{pic("work-05-kolapp-content-2",388,844,"內容頁：影音內容列表")}</button>'
+         f'</div>')
+  health=[(f'work-05-kolapp-health-{i}',390,844,f'個股體質雷達：{g}') for i,g in enumerate(['A 級成長型','C 級成長型','E 級：股息型','B 級成長型','A 級成長型・獲利面向'],1)]
+  return (f'<section class="cs-sec" aria-label="主視覺提案">{head("Proposal","3 Directions","主視覺提案","從品牌意象、視覺概念到風格定位共提出三款方向，最終由 A 款「科技 K 線」定案。點擊卡片可看完整提案。")}<div class="cs-props">{cards}</div></section>'
+          f'<section class="cs-sec" aria-label="品牌設定">{head("Brand system","Brand System","Logo・顏色・Icon 設定")}{brand}</section>'
+          f'<section class="cs-sec" aria-label="APP 商店頁">{head("App store","Store Screens","APP 商店頁")}{strip("store",store,"cs-strip--store")}</section>'
+          f'<section class="cs-sec" aria-label="啟動與新手導覽">{head("Onboarding","Launch &amp; Onboarding","登入頁・新手導覽頁")}{strip("onb",onb)}</section>'
+          f'<section class="cs-sec" aria-label="APP 內頁">{head("In-app","Inside The App","APP 內頁設計")}{inapp}<p class="cs-sec__sub">個股體質雷達：A–E 五階等級</p>{strip("health",health)}</section>')
+
+def kolapp2():
+  B='work-05-betterleaf/web-'
+  def kh(eb,en,zh,lead=''):
+    l=f'<p class="kl-head__lead">{lead}</p>' if lead else ''
+    return f'<header class="kl-head"><p class="kl-eyebrow">{eb}</p><h2 class="kl-title">{en}<small>{zh}</small></h2>{l}</header>'
+  def zoom(name,w,h,alt,group='kl',cls=''):
+    return f'<button type="button" class="{cls}" data-lb="{group}" aria-label="放大檢視：{html.escape(alt)}">{pic(name,w,h,alt)}</button>'
+  props=[('a',2,'科技 K 線','葉片融入股市 K 線，呈現正成長姿態，象徵股價上升與穩健增值。',True),
+         ('b',3,'活力綠葉','樹葉結合頻道名稱，圓潤立體字與排版節奏，傳遞溫暖積極的能量。',False),
+         ('c',4,'書法藤蔓','樹葉與藤蔓融入書法標準字，以精緻專業塑造高信賴感。',False)]
+  pc=''
+  for k,n,name,desc,final in props:
+    sets='|'.join(f'../{P}{B}{24+n-1}-{i}.webp' for i in range(1,4))
+    fin='<span class="kl-prop__final">Final</span>' if final else ''
+    pc+=(f'<button type="button" class="kl-prop{" is-final" if final else ""}" data-lb-set="{sets}" data-lb-alt="提案 {k.upper()} 款：{name}" aria-label="查看提案 {k.upper()} 款「{name}」完整提案">'
+         f'<span class="kl-prop__img">{pic(B+str(n),1203,740,f"提案 {k.upper()} 款：{name}")}{fin}</span>'
+         f'<span class="kl-prop__txt"><b><i>{k.upper()}</i>{name}</b><span>{desc}</span><em>看完整提案 →</em></span></button>')
+  onb=[(10,'啟動畫面','品牌 Logo 與 CMoney 標示'),(12,'三大選股策略','壓倉股、潛力成長、多元配置'),(13,'智能演算 × 策略','關鍵指標一眼找出潛力標的'),
+       (14,'個股體質雷達','五大面向、五階等級'),(15,'專屬互動空間','與好葉直接交流、共學成長'),(16,'獨家內容','VIP 深度分析一站收錄')]
+  onbh=''.join(f'<figure class="kl-onb__item">{zoom(B+str(n),1170,2532,t,"onb")}<figcaption><span>{i:02d}</span><b>{t}</b>{d}</figcaption></figure>' for i,(n,t,d) in enumerate(onb,1))
+  def feat(num,en,zh,shots,notes,flip=False):
+    sh=''.join(zoom(n,w,h,a,f'feat{num}') for n,w,h,a in shots)
+    nt=''.join(f'<li><span>{j}</span>{t}</li>' for j,t in enumerate(notes,1))
+    return (f'<article class="kl-feat{" kl-feat--flip" if flip else ""}" data-n="{len(shots)}"><div class="kl-feat__shots">{sh}</div>'
+            f'<div class="kl-feat__txt"><p class="kl-eyebrow">Feature {num:02d}</p><h3>{en}<small>{zh}</small></h3><ol>{nt}</ol></div></article>')
+  feats=(feat(1,'Stock Picks','選股清單',[(B+'18',1673,1446,'選股清單頁')],
+              ['分頁切換好葉清單、好葉持倉與三大選股策略','以葉子圖示分級，潛在價值空間一眼看懂','紅綠標籤即時提示連續成長／連續下降'])+
+         feat(2,'Health Radar','個股體質雷達',[(B+'19',1170,2533,'體質雷達：A 級成長型'),(B+'21',1170,2533,'體質雷達：E 級股息型'),(B+'20',1170,2533,'體質雷達：C 級成長型')],
+              ['成長、股息、估值、健康、獲利五大評估面向','A–E 五階等級，綠紅配色直覺區分體質好壞','逐條列出指標是否達標，判斷有依據'],True)+
+         feat(3,'VIP Content','內容專區',[(B+'22',1170,2533,'VIP 文章列表'),(B+'23',1170,2533,'影音內容列表')],
+              ['文章／影音分頁，免費與 VIP 內容清楚區隔','VIP 標籤與主視覺封面強化付費價值','統一封面版型，延續品牌視覺語言']))
+  return (f'<section class="kl" aria-label="好葉智能選股 品牌與介面設計">'
+    f'<figure class="kl-full kl-kv">{zoom(B+"1",2000,1231,"好葉智能選股主視覺：Logo 與標語「你的投資引路人」")}</figure>'
+    f'<div class="wrap">'
+    f'<section class="kl-block">{kh("Proposal","3 Directions","主視覺提案","業主給予高度創作自由，從品牌意象到風格定位提出三款方向，最終由 A 款定案。")}<div class="kl-props">{pc}</div></section>'
+    f'<section class="kl-block kl-logo">{kh("Logo concept","Leaf × K-Line","Logo 設計概念")}'
+    f'<div class="kl-logo__grid"><div class="kl-logo__formula"><img src="{P}{B}5.webp" width="1200" height="329" alt="設計元素：葉片 ＋ K 線 ＝ 好葉智能選股 Logo" loading="lazy">'
+    f'</div>'
+    f'<p class="kl-logo__txt">葉片內部融入股市 K 線元素，呈現正成長的姿態，象徵股價上升、投資增值與穩健發展，傳達智慧投資帶來財富增長的意涵；也讓 Logo 在視覺上更直觀地與金融領域建立聯繫。</p></div>'
+    f'{zoom(B+"6",2000,1002,"Logo 淺色版與深色版","kl","kl-round")}</section>'
+    f'<section class="kl-block">{kh("Brand system","Color &amp; Icon","顏色・Icon・字體設定")}{zoom(B+"7",2000,1205,"品牌色彩、App Icon、功能圖示與 Noto Sans 字體設定","kl","kl-plain")}</section>'
+    f'</div>'
+    f'<figure class="kl-full">{zoom(B+"8",2000,1144,"APP 啟動畫面手機情境圖")}</figure>'
+    f'<div class="wrap">'
+    f'<section class="kl-block">{kh("App store","Store Screens","APP 商店頁","以好葉本人為主角，一張商店圖講一個功能。")}{zoom(B+"9",2000,1144,"APP 商店頁 7 張排列情境圖","kl","kl-round")}</section>'
+    f'<section class="kl-block">{kh("Onboarding","First Launch","登入頁・新手導覽")}<div class="kl-onb">{onbh}</div></section>'
+    f'<section class="kl-block">{kh("Inside the app","Key Features","核心功能")}{feats}</section>'
+    f'</div>'
+    f'<figure class="kl-full kl-end">{zoom(B+"24",2000,1144,"手持手機，資料夾中的好葉智能選股 App Icon")}<figcaption class="kl-end__txt">That’s<br>a wrap<small>感謝觀看</small></figcaption></figure>'
+    f'</section>')

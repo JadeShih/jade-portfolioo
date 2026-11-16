@@ -1,3 +1,4 @@
+import case_extra
 T=lambda t:f'<span class="todo">待補：{t}</span>'
 CASES={
  'work-01-report':dict(
@@ -44,4 +45,18 @@ CASES={
            dict(tone='lime',img='work-03-package-02-web',alt='舒緩脂癢頭皮噴霧外盒與瓶身並列'),
            dict(tone='pink',img='work-03-package-03-web',alt='舒緩脂癢水凝乳外盒與軟管並列，外盒印有金色花朵線條')],
   next=dict(title='30日繪畫計畫',attr='data-href="work-04-drawing.html" aria-disabled="true"')),
+ 'work-05-kolapp':dict(
+  num='05',tone='lime',deco=(('circle','yellow'),('scallop','coral')),
+  title_en='Better Leaf App',title_zh='好葉智能選股APP',
+  desc='Jade Shih 作品：YouTuber Better Leaf 好葉「好葉智能選股」APP 主視覺規劃、品牌識別與介面視覺。',
+  tags=['金融投資','Better Leaf 好葉','2025'],
+  tagline='',
+  cover='work-05-kolapp-cover',cover_w=2400,cover_h=1681,cover_alt='好葉智能選股 APP 啟動畫面與品牌主視覺',
+  meta=[('Client','YouTuber Better Leaf 好葉'),('Role','APP主視覺規劃'),('Deliverables','好葉智能選股APP'),('Year','2025')],
+  overview='<p>「好葉智能選股」是一個以投資分析與選股資訊為核心的品牌，期望建立具備專業感、信賴感與辨識度的視覺形象。</p><p>本次專案業主並未設定明確的設計方向，而是給予高度創作自由，從品牌意象、視覺概念到風格定位皆由設計端自主發想，打造符合金融投資領域特性的品牌識別。</p>',
+  cards=[dict(tone='cyan',title='What I made',zh='我的設計',text='以「樹葉」結合象徵投資成長的上升箭頭，打造兼具品牌名稱意象與金融屬性的識別標誌。透過簡潔俐落的幾何造型，呼應品牌作為投資指引的定位，傳遞引領投資人掌握市場方向的核心概念。整體以深藍與科技綠為主色，搭配金融數據元素，塑造專業、理性且值得信賴的品牌形象。'),
+         dict(tone='yellow',title='What happened next',zh='後續成果',text='品牌主視覺定案後，進一步延伸應用至各類數位行銷素材與活動視覺，並透過網路平台持續曝光。以一致的視覺語言串聯不同宣傳內容，讓品牌識別不僅停留於單一標誌，更成為後續行銷溝通與視覺延伸的基礎。')],
+  gallery_style='none',gallery=[],
+  after=case_extra.kolapp2(),
+  next=dict(title='APP功能優化',attr='data-href="work-06-chat.html" aria-disabled="true"')),
 }

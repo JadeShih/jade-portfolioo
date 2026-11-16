@@ -173,28 +173,38 @@
   apply('all');
 })();
 
-/* 作品詳細頁：點擊照片放大檢視（可用左右鍵切換、Esc 關閉） */
+/* 作品詳細頁：點擊照片放大檢視（可用左右鍵切換、Esc 關閉）
+   - .cs-stack__item 與 [data-lb="群組"]：同群組的圖片可左右切換
+   - [data-lb-set="圖1|圖2|..."]：點擊後瀏覽這組圖片（例如提案的每一頁） */
 (function(){
-  var items=[].slice.call(document.querySelectorAll('.cs-stack__item'));if(!items.length)return;
+  var triggers=[].slice.call(document.querySelectorAll('.cs-stack__item,[data-lb],[data-lb-set]'));if(!triggers.length)return;
   var ic=function(d){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+d+'"/></svg>'};
   var lb=document.createElement('dialog');lb.className='lb';lb.setAttribute('aria-label','作品圖片檢視');
   lb.innerHTML='<img class="lb__img" alt=""><button type="button" class="lb__btn lb__close" aria-label="關閉">'+ic('M6 6l12 12M18 6 6 18')+'</button><button type="button" class="lb__btn lb__prev" aria-label="上一張">'+ic('M15 6l-6 6 6 6')+'</button><button type="button" class="lb__btn lb__next" aria-label="下一張">'+ic('M9 6l6 6-6 6')+'</button><p class="lb__count" aria-live="polite"></p>';
   document.body.appendChild(lb);
-  var img=lb.querySelector('.lb__img'),count=lb.querySelector('.lb__count'),cur=0,opener=null;
-  if(items.length<2)lb.setAttribute('data-single','');
+  var img=lb.querySelector('.lb__img'),count=lb.querySelector('.lb__count'),list=[],cur=0,opener=null;
+  var yc=document.getElementById('ycur'),ycHome=yc&&yc.parentNode;
+  function srcOf(el){var i=el.querySelector('img');return {src:el.getAttribute('data-full')||(i&&(i.currentSrc||i.src)),alt:i?i.alt:''}}
   function show(i){
-    cur=(i+items.length)%items.length;var s=items[cur].querySelector('img');
-    img.src=s.currentSrc||s.src;img.alt=s.alt;count.textContent=(cur+1)+' / '+items.length;
+    cur=(i+list.length)%list.length;img.src=list[cur].src;img.alt=list[cur].alt||'';count.textContent=(cur+1)+' / '+list.length;
+    if(list.length<2)lb.setAttribute('data-single','');else lb.removeAttribute('data-single');
     img.style.animation='none';void img.offsetWidth;img.style.animation='';
   }
-  var yc=document.getElementById('ycur'),ycHome=yc&&yc.parentNode;
-  function open(i){opener=items[i];show(i);if(yc)lb.appendChild(yc);if(lb.showModal)lb.showModal();else lb.setAttribute('open','');document.documentElement.style.overflow='hidden'}
+  function open(l,i,el){list=l;opener=el;show(i);if(yc)lb.appendChild(yc);if(lb.showModal)lb.showModal();else lb.setAttribute('open','');document.documentElement.style.overflow='hidden'}
   function close(){if(lb.open){lb.close?lb.close():lb.removeAttribute('open')}}
   lb.addEventListener('close',function(){if(yc&&ycHome)ycHome.appendChild(yc);document.documentElement.style.overflow='';if(opener)opener.focus()});
-  items.forEach(function(b,i){b.addEventListener('click',function(){open(i)})});
+  triggers.forEach(function(el){
+    el.addEventListener('click',function(){
+      var set=el.getAttribute('data-lb-set');
+      if(set){var alt=el.getAttribute('data-lb-alt')||'';open(set.split('|').map(function(s,k){return {src:s,alt:alt+' '+(k+1)}}),0,el);return}
+      var g=el.classList.contains('cs-stack__item')?'.cs-stack__item':'[data-lb="'+el.getAttribute('data-lb')+'"]';
+      var group=[].slice.call(document.querySelectorAll(g));
+      open(group.map(srcOf),group.indexOf(el),el);
+    });
+  });
   lb.querySelector('.lb__close').addEventListener('click',close);
   lb.querySelector('.lb__prev').addEventListener('click',function(){show(cur-1)});
   lb.querySelector('.lb__next').addEventListener('click',function(){show(cur+1)});
   lb.addEventListener('click',function(e){if(e.target===lb)close()});
-  lb.addEventListener('keydown',function(e){if(items.length>1&&e.key==='ArrowLeft')show(cur-1);else if(items.length>1&&e.key==='ArrowRight')show(cur+1)});
+  lb.addEventListener('keydown',function(e){if(list.length>1&&e.key==='ArrowLeft')show(cur-1);else if(list.length>1&&e.key==='ArrowRight')show(cur+1)});
 })();

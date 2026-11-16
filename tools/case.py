@@ -66,9 +66,11 @@ def render(w):
     </div>
     <div class="cs-cards">{cards}</div>
     {galhtml}
+    {w.get('extra','')}
   </div>
 </section>
 
+{w.get('after','')}
 <section class="sec cs-next" data-theme="brand" aria-labelledby="t-next">
   {WAVE.format(c=' wave--flip')}
   <div class="wrap">
