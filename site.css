@@ -856,3 +856,4 @@ html,body{overflow-x:clip}
 article.kl-prop{cursor:default}
 article.kl-prop:hover{transform:none;border-color:rgba(255,255,255,.08)!important}
 article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
+.contact__cta{display:flex;justify-content:center;margin-top:var(--jade-sys-spacing-8)}
