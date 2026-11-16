@@ -208,3 +208,17 @@
   lb.addEventListener('click',function(e){if(e.target===lb)close()});
   lb.addEventListener('keydown',function(e){if(list.length>1&&e.key==='ArrowLeft')show(cur-1);else if(list.length>1&&e.key==='ArrowRight')show(cur+1)});
 })();
+
+/* 作品詳細頁：橫向輪播（一次一組，按鈕切換） */
+(function(){
+  [].forEach.call(document.querySelectorAll('.kl-car'),function(car){
+    var track=car.querySelector('.kl-onb'),btns=car.querySelectorAll('.kl-car__btn'),count=car.querySelector('.kl-car__count');
+    if(!track)return;
+    function pages(){return Math.max(1,Math.round(track.scrollWidth/track.clientWidth))}
+    function page(){return Math.min(pages(),Math.round(track.scrollLeft/track.clientWidth)+1)}
+    function sync(){var p=page(),n=pages();count.textContent=p+' / '+n;btns[0].disabled=p<=1;btns[1].disabled=p>=n;car.querySelector('.kl-car__nav').hidden=n<2}
+    [].forEach.call(btns,function(b){b.addEventListener('click',function(){var gap=parseFloat(getComputedStyle(track).columnGap)||0;track.scrollBy({left:(+b.getAttribute('data-dir'))*(track.clientWidth+gap),behavior:'smooth'})})});
+    var t;track.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(sync,80)});
+    window.addEventListener('resize',sync);sync();
+  });
+})();

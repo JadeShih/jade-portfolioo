@@ -90,8 +90,63 @@ def kolapp2():
     f'<figure class="kl-full kl-mid">{zoom(B+"8",2000,1144,"APP 啟動畫面手機情境圖")}</figure>'
     f'<div class="wrap">'
     
-    f'<section class="kl-block">{kh("Onboarding","First Launch","登入頁・新手導覽")}<div class="kl-onb">{onbh}</div></section>'
+    f'<section class="kl-block">{kh("Onboarding","First Launch","登入頁・新手導覽")}<div class="kl-car"><div class="kl-onb">{onbh}</div><div class="kl-car__nav"><button type="button" class="kl-car__btn" data-dir="-1" aria-label="上一組"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><span class="kl-car__count" aria-live="polite">1 / 2</span><button type="button" class="kl-car__btn" data-dir="1" aria-label="下一組"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div></div></section>'
     f'<section class="kl-block">{kh("Inside the app","Key Features","核心功能")}{feats}</section>'
     f'</div>'
     f'<figure class="kl-full kl-end">{zoom(B+"24",2400,980,"手持手機，資料夾中的好葉智能選股 App Icon")}<figcaption class="kl-end__txt">That’s a wrap<small>感謝觀看</small></figcaption></figure>'
     f'</section>')
+
+def ph(label,ratio='16/9',note=''):
+  n=f'<small>{note}</small>' if note else ''
+  return f'<div class="ph" style="aspect-ratio:{ratio}"><span><b>配圖</b>{label}{n}</span></div>'
+
+def chat():
+  M='work-06-chat-mock/'
+  def phone(n,alt): return f'<div class="ch-phone">{pic(M+n,390,844,alt)}</div>'
+  def sh(eb,en,zh,lead=''):
+    l=f'<p class="cs-sec__lead">{lead}</p>' if lead else ''
+    return f'<header class="cs-sec__head"><p class="eyebrow">{eb}</p><h2 class="cs-sec__title">{en}<small>{zh}</small></h2>{l}</header>'
+  pains=[('01','找不到','想回顧重要公告、投資事件或作者觀點，只能不斷往上滑，效率低下。'),
+         ('02','被淹沒','關鍵訊息很快被新訊息蓋過，降低了訊息本身的價值。'),
+         ('03','不想留','訊息量快速累積，用戶對聊天室的黏著度可能下降。')]
+  ph_html=''.join(f'<article class="ch-pain"><span class="ch-pain__no">{n}</span><h3>{t}</h3><p>{d}</p></article>' for n,t,d in pains)
+  users=[('一般用戶','訊息數量龐大時，想輸入關鍵字快速找到過往對話。','pink'),
+         ('一般用戶','找到目標訊息後，想點擊直接跳到原位置、回顧上下文。','pink'),
+         ('產品經理／營運','想提供穩定快速的搜尋，提高黏著度並維持競爭力。','cyan'),
+         ('客服／管理者','處理糾紛時，想快速找到相關紀錄、降低人力成本。','cyan')]
+  us=''.join(f'<article class="ch-user" data-tone="{t}"><b>{r}</b><p>身為{r}，{d}</p></article>' for r,d,t in users)
+  def dec(num,title,zh,points,img,flip=False):
+    pts=''.join(f'<li>{p}</li>' for p in points)
+    return (f'<article class="ch-dec{" ch-dec--flip" if flip else ""}"><div class="ch-dec__img">{img}</div>'
+            f'<div class="ch-dec__txt"><p class="eyebrow">Decision {num:02d}</p><h3>{title}<small>{zh}</small></h3><ul>{pts}</ul></div></article>')
+  decs=(dec(1,'Smart Snippet','搜尋結果摘要',[
+            '每則結果最多兩行，以「關鍵句＋前後句平均擴展」組成摘要，一眼看出上下文',
+            '關鍵字以主色高亮；同一則訊息有多組關鍵字只算一筆結果，但全部高亮',
+            '裁切時絕不切斷關鍵字，超出部分以「…」收尾'],phone('results','搜尋結果列表：關鍵字高亮、兩行摘要'))+
+        dec(2,'Two Tabs','作者／全部 雙頁籤',[
+            '把作者（Mike是麥克）的發言獨立成第一個 Tab，最有價值的觀點優先看到',
+            '預設頁籤規則：作者有結果先選作者；作者無結果自動切到「全部」',
+            '結果上方標註「僅顯示近三個月結果」，讓搜尋範圍透明'],phone('one','作者頁籤與搜尋範圍提示'),True)+
+        dec(3,'Highlight Mode','跳回原訊息檢視',[
+            '點擊結果直接跳回聊天室中的原位置，關鍵字以色塊標示',
+            '底部提供 ↑↓ 切換上一則／下一則結果，到頭尾時自動 disable',
+            '「返回搜尋結果」一鍵回到列表，不必重新搜尋'],phone('jump','Highlight 模式：跳回原訊息，可切換上下則'))+
+        dec(4,'Edge Cases','無結果與邊界情境',[
+            '查無結果時明確顯示「查無結果」，不留白、不載入骨架',
+            '空格分隔多個關鍵字視為 OR；單一字元的關鍵字自動忽略',
+            '輸入或貼上超過 500 字時，搜尋框只保留前 500 字'],phone('empty','查無結果的空狀態'),True))
+  states=['搜尋錯誤','查詢無結果','Loading','只輸入一個關鍵字','Tab 最大寬度','Tab 名稱過長','往下載入','搜尋結果滿屏','載入至最底部','訊息為一行','訊息兩行以上','被引用訊息不 highlight','第一則：上一則 disable','最後一則：下一則 disable']
+  st=''.join(f'<li>{x}</li>' for x in states)
+  return (
+    f'<section class="cs-sec ch-problem">{sh("The problem","What Went Wrong","發生了什麼問題")}'
+    f'<p class="ch-big">聊天室沒有搜尋功能，<em>訊息越多，越難找到重要的那一則。</em></p>'
+    f'<div class="ch-problem__grid"><div class="ch-pains">{ph_html}</div>{ph("現況問題示意：舊版聊天室長長的訊息串，用戶一路往上滑找訊息（舊版截圖＋滑動標示）","3/4")}</div></section>'
+    f'<section class="cs-sec">{sh("Who needs it","User Stories","誰需要這個功能")}<div class="ch-users">{us}</div></section>'
+    f'<section class="cs-sec">{sh("The solution","How I Solved It","我怎麼解決","以「找得到 → 看得懂 → 回得去」為主軸：搜尋、看摘要判斷、跳回原訊息檢視上下文。")}'
+    f'<div class="ch-trio">{phone("tabs","搜尋結果")}<span class="ch-arrow">→</span>{phone("jump","跳回原訊息")}</div>'
+    f'{ph("UI Flow 流程圖：聊天模式 ↔ 搜尋模式 ↔ Highlight 檢視模式（可從 Figma「UI flow」區塊匯出）","21/9")}</section>'
+    f'<section class="cs-sec">{sh("Key decisions","Design Decisions","關鍵設計決策")}{decs}</section>'
+    f'<section class="cs-sec">{sh("Spec","Every State Covered","完整狀態與規格","交付給工程的不只畫面，還包含 14 種 UI 狀態、iOS／Android 長按流程與搜尋規則。")}'
+    f'<ul class="ch-states">{st}</ul>{ph("UI State 總覽圖（可從 Figma「UI State」區塊匯出整排畫面）","21/9")}</section>'
+    f'<section class="cs-sec ch-result">{sh("Outcome","What Happened Next","後續成果")}<p class="ch-big ch-big--sm"><span class="todo">待補：上線後的結果，例如使用率、回饋、或團隊採用情形</span></p></section>'
+  )
