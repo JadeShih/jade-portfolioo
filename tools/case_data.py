@@ -35,7 +35,7 @@ CASES={
   desc='Jade Shih 作品：Elpis 艾沛膚 EczCare SD 舒緩脂癢系列產品包裝設計。',
   tags=['美妝保養','Elpis 艾沛膚','2025'],
   tagline='',
-  cover='work-03-package-cover',cover_w=2400,cover_h=1350,cover_alt='Elpis EczCare SD 系列三款產品：洗髮精、頭皮噴霧與水凝乳，白色瓶身搭配湖水綠與金色線條',
+  cover='work-03-package-cover',cover_w=2400,cover_h=1418,cover_alt='Elpis EczCare SD 系列三款產品：洗髮精、頭皮噴霧與水凝乳，白色瓶身搭配湖水綠與金色線條',
   meta=[('Client','Elpis 艾沛膚'),('Role','包裝設計'),('Deliverables','舒緩脂癢系列產品包裝'),('Year','2025')],
   overview='<p>Elpis EczCare SD 系列以頭皮與肌膚的油水平衡為核心訴求，涵蓋洗髮、頭皮護理與肌膚保養產品。</p><p>本次設計希望透過清爽、溫和且具專業感的視覺語言，傳遞產品的舒適保養理念，並建立一致且易於辨識的系列包裝形象。</p>',
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以純淨白色為包裝主色，搭配湖水綠與柔和金色，營造清爽、潔淨且溫和的視覺感受。透過流動的弧線與水滴意象，象徵頭皮與肌膚的油水平衡，並以不同圖形變化區分洗髮精、頭皮噴霧以及水凝乳液。在維持系列一致性的同時，兼顧產品資訊的清晰度與辨識度。'),
