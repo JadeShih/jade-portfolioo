@@ -991,3 +991,4 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .kl-steps li.is-on em{display:block}
 .kl-onb2 .kl-car__nav{margin-top:16px}
 @media (max-width:900px){.kl-onb2{--h:clamp(300px,calc(100vh - 400px),520px)}.kl-onb2 .kl-head{margin-bottom:0}}
+.kl-steps li:not(.is-on){display:none}
