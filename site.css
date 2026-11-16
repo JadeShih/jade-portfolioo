@@ -845,3 +845,11 @@ html,body{overflow-x:clip}
 .cs-body--dark .cs-overview__body{color:#E9F6F0}
 .cs-body--dark .cs-card__deco{fill:#0C1E20;stroke:#0C1E20}
 .cs-body--dark+.kl .kl-kv{margin-top:0}
+.kl-logo__formula{background:none!important;padding-left:0!important}
+.kl-mid{margin-top:clamp(80px,10vw,140px)}
+.kl-feat__shot{flex:1;min-width:0;display:block;border-radius:clamp(12px,1.4vw,18px);overflow:hidden}
+.kl-feat[data-n="3"] .kl-feat__shot:nth-child(2){margin-bottom:clamp(20px,3vw,40px)}
+.kl-feat[data-n="2"] .kl-feat__shot{max-width:260px}
+.kl-feat[data-n="1"] .kl-feat__shot{border-radius:0}
+.kl-end__txt{white-space:nowrap;font-size:clamp(36px,5.4vw,84px)}
+.cs-body--dark .cs-card__deco{fill:#0C1E20;stroke:#fff;stroke-width:3}

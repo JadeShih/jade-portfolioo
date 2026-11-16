@@ -61,12 +61,12 @@ def kolapp2():
     fin='<span class="kl-prop__final">Final</span>' if final else ''
     pc+=(f'<button type="button" class="kl-prop{" is-final" if final else ""}" data-lb-set="{sets}" data-lb-alt="提案 {k.upper()} 款：{name}" aria-label="查看提案 {k.upper()} 款「{name}」完整提案">'
          f'<span class="kl-prop__img">{pic(B+str(n),1203,740,f"提案 {k.upper()} 款：{name}")}{fin}</span>'
-         f'<span class="kl-prop__txt"><b><i>{k.upper()}</i>{name}</b><span>{desc}</span><em>看完整提案 →</em></span></button>')
+         f'<span class="kl-prop__txt"><b><i>{k.upper()}</i>{name}</b><span>{desc}</span></span></button>')
   onb=[(10,'啟動畫面','品牌 Logo 與 CMoney 標示'),(12,'三大選股策略','壓倉股、潛力成長、多元配置'),(13,'智能演算 × 策略','關鍵指標一眼找出潛力標的'),
        (14,'個股體質雷達','五大面向、五階等級'),(15,'專屬互動空間','與好葉直接交流、共學成長'),(16,'獨家內容','VIP 深度分析一站收錄')]
   onbh=''.join(f'<figure class="kl-onb__item">{zoom(B+str(n),1170,2532,t,"onb")}<figcaption><span>{i:02d}</span><b>{t}</b>{d}</figcaption></figure>' for i,(n,t,d) in enumerate(onb,1))
   def feat(num,en,zh,shots,notes,flip=False):
-    sh=''.join(zoom(n,w,h,a,f'feat{num}') for n,w,h,a in shots)
+    sh=''.join(f'<span class="kl-feat__shot">{pic(n,w,h,a)}</span>' for n,w,h,a in shots)
     nt=''.join(f'<li><span>{j}</span>{t}</li>' for j,t in enumerate(notes,1))
     return (f'<article class="kl-feat{" kl-feat--flip" if flip else ""}" data-n="{len(shots)}"><div class="kl-feat__shots">{sh}</div>'
             f'<div class="kl-feat__txt"><p class="kl-eyebrow">Feature {num:02d}</p><h3>{en}<small>{zh}</small></h3><ol>{nt}</ol></div></article>')
@@ -77,7 +77,7 @@ def kolapp2():
          feat(3,'VIP Content','內容專區',[(B+'22',1170,2533,'VIP 文章列表'),(B+'23',1170,2533,'影音內容列表')],
               ['文章／影音分頁，免費與 VIP 內容清楚區隔','VIP 標籤與主視覺封面強化付費價值','統一封面版型，延續品牌視覺語言']))
   return (f'<section class="kl" aria-label="好葉智能選股 品牌與介面設計">'
-    f'<figure class="kl-full kl-kv">{zoom(B+"1",2000,1231,"好葉智能選股主視覺：Logo 與標語「你的投資引路人」")}</figure>'
+    f'<figure class="kl-full kl-kv">{zoom(B+"1",2400,1454,"好葉智能選股主視覺：Logo 與標語「你的投資引路人」")}</figure>'
     f'<div class="wrap">'
     f'<section class="kl-block">{kh("Proposal","3 Directions","主視覺提案","業主給予高度創作自由，從品牌意象到風格定位提出三款方向，最終由 A 款定案。")}<div class="kl-props">{pc}</div></section>'
     f'<section class="kl-block kl-logo">{kh("Logo concept","Leaf × K-Line","Logo 設計概念")}'
@@ -87,11 +87,11 @@ def kolapp2():
     f'{zoom(B+"6",2000,1002,"Logo 淺色版與深色版","kl","kl-round")}</section>'
     f'<section class="kl-block">{kh("Brand system","Color &amp; Icon","顏色・Icon・字體設定")}{zoom(B+"7",2000,1205,"品牌色彩、App Icon、功能圖示與 Noto Sans 字體設定","kl","kl-plain")}</section>'
     f'</div>'
-    f'<figure class="kl-full">{zoom(B+"8",2000,1144,"APP 啟動畫面手機情境圖")}</figure>'
+    f'<figure class="kl-full kl-mid">{zoom(B+"8",2000,1144,"APP 啟動畫面手機情境圖")}</figure>'
     f'<div class="wrap">'
-    f'<section class="kl-block">{kh("App store","Store Screens","APP 商店頁","以好葉本人為主角，一張商店圖講一個功能。")}{zoom(B+"9",2000,1144,"APP 商店頁 7 張排列情境圖","kl","kl-round")}</section>'
+    
     f'<section class="kl-block">{kh("Onboarding","First Launch","登入頁・新手導覽")}<div class="kl-onb">{onbh}</div></section>'
     f'<section class="kl-block">{kh("Inside the app","Key Features","核心功能")}{feats}</section>'
     f'</div>'
-    f'<figure class="kl-full kl-end">{zoom(B+"24",2000,1144,"手持手機，資料夾中的好葉智能選股 App Icon")}<figcaption class="kl-end__txt">That’s<br>a wrap<small>感謝觀看</small></figcaption></figure>'
+    f'<figure class="kl-full kl-end">{zoom(B+"24",2400,980,"手持手機，資料夾中的好葉智能選股 App Icon")}<figcaption class="kl-end__txt">That’s a wrap<small>感謝觀看</small></figcaption></figure>'
     f'</section>')
