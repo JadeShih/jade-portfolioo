@@ -222,3 +222,23 @@
     window.addEventListener('resize',sync);sync();
   });
 })();
+
+/* 新手導覽：左字右圖輪播（左側步驟清單跟著目前畫面亮起） */
+(function(){
+  [].forEach.call(document.querySelectorAll('.kl-onb2'),function(box){
+    var track=box.querySelector('.kl-onb2__track'),items=track.children,steps=box.querySelectorAll('.kl-steps li'),btns=box.querySelectorAll('.kl-car__btn'),count=box.querySelector('.kl-car__count');
+    function per(){return Math.max(1,Math.round(track.clientWidth/items[0].getBoundingClientRect().width))}
+    function step(){return items[0].getBoundingClientRect().width+(parseFloat(getComputedStyle(track).columnGap)||0)}
+    function sync(){
+      var p=per(),n=Math.ceil(items.length/p),first=Math.round(track.scrollLeft/step()),pg=Math.min(n,Math.floor(first/p)+1);
+      if(track.scrollLeft+track.clientWidth>=track.scrollWidth-4)pg=n;
+      count.textContent=pg+' / '+n;btns[0].disabled=pg<=1;btns[1].disabled=pg>=n;
+      [].forEach.call(steps,function(li,i){li.classList.toggle('is-on',i>=first&&i<first+p)});
+    }
+    function go(i){track.scrollTo({left:i*step(),behavior:'smooth'})}
+    [].forEach.call(btns,function(b){b.addEventListener('click',function(){var p=per(),first=Math.round(track.scrollLeft/step());go(Math.max(0,Math.min(items.length-p,first+(+b.getAttribute('data-dir'))*p)))})});
+    [].forEach.call(steps,function(li,i){li.querySelector('button').addEventListener('click',function(){var p=per();go(Math.min(items.length-p,Math.floor(i/p)*p))})});
+    var t;track.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(sync,80)});
+    window.addEventListener('resize',sync);sync();
+  });
+})();

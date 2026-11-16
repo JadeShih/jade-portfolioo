@@ -90,7 +90,12 @@ def kolapp2():
     f'<figure class="kl-full kl-mid">{zoom(B+"8",2000,1144,"APP 啟動畫面手機情境圖")}</figure>'
     f'<div class="wrap">'
     
-    f'<section class="kl-block">{kh("Onboarding","First Launch","登入頁・新手導覽")}<div class="kl-car"><button type="button" class="kl-car__btn" data-dir="-1" aria-label="上一組"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div class="kl-onb">{onbh}</div><button type="button" class="kl-car__btn" data-dir="1" aria-label="下一組"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button><span class="kl-car__count" aria-live="polite">1 / 2</span></div></section>'
+    f'<section class="kl-block kl-onb2">'
+    f'<div class="kl-onb2__txt">{kh("Onboarding","First Launch","登入頁・新手導覽")}'
+    f'<ol class="kl-steps">'+''.join(f'<li data-i="{j}"><button type="button"><span>{j+1:02d}</span><b>{t}</b><em>{d}</em></button></li>' for j,(n,t,d) in enumerate(onb))+'</ol>'
+    f'<div class="kl-car__nav"><button type="button" class="kl-car__btn" data-dir="-1" aria-label="上一組"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><span class="kl-car__count" aria-live="polite">1 / 2</span><button type="button" class="kl-car__btn" data-dir="1" aria-label="下一組"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div></div>'
+    f'<div class="kl-onb2__track">'+''.join(f'<figure class="kl-onb2__item"><button type="button" data-lb="onb" aria-label="放大檢視：{html.escape(t)}">{pic(B+str(n),1170,2532,t)}</button></figure>' for n,t,d in onb)+'</div>'
+    f'</section>'
     f'<section class="kl-block">{kh("Inside the app","Key Features","核心功能")}{feats}</section>'
     f'</div>'
     f'<figure class="kl-full kl-end">{zoom(B+"24",2400,980,"手持手機，資料夾中的好葉智能選股 App Icon")}<figcaption class="kl-end__txt">That’s a wrap<small>感謝觀看</small></figcaption></figure>'
