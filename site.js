@@ -223,22 +223,50 @@
   });
 })();
 
-/* 新手導覽：左字右圖輪播（左側步驟清單跟著目前畫面亮起） */
+/* 新手導覽：左字右圖輪播（露出下一張、可點 Dot、滑鼠拖曳、DRAG 游標、進場示範晃動） */
 (function(){
   [].forEach.call(document.querySelectorAll('.kl-onb2'),function(box){
-    var track=box.querySelector('.kl-onb2__track'),items=track.children,steps=box.querySelectorAll('.kl-steps li'),btns=box.querySelectorAll('.kl-car__btn'),count=box.querySelector('.kl-car__count');
-    function per(){return Math.max(1,Math.round(track.clientWidth/items[0].getBoundingClientRect().width))}
-    function step(){return items[0].getBoundingClientRect().width+(parseFloat(getComputedStyle(track).columnGap)||0)}
-    function sync(){
-      var p=per(),n=Math.ceil(items.length/p),first=Math.round(track.scrollLeft/step()),pg=Math.min(n,Math.floor(first/p)+1);
-      if(track.scrollLeft+track.clientWidth>=track.scrollWidth-4)pg=n;
-      count.textContent=pg+' / '+n;btns[0].disabled=pg<=1;btns[1].disabled=pg>=n;
-      [].forEach.call(steps,function(li,i){li.classList.toggle('is-on',i>=first&&i<first+p)});
+    var track=box.querySelector('.kl-onb2__track'),items=track.children,steps=box.querySelectorAll('.kl-steps li'),dotsEl=box.querySelector('.kl-dots');
+    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function iw(){return items[0].getBoundingClientRect().width}
+    function step(){return iw()+(parseFloat(getComputedStyle(track).columnGap)||0)}
+    function per(){return Math.max(1,Math.floor((track.clientWidth+1)/step()+0.05))}
+    function pages(){return Math.ceil(items.length/per())}
+    function first(){return Math.round(track.scrollLeft/step())}
+    function cur(){var p=per(),n=pages();if(track.scrollLeft+track.clientWidth>=track.scrollWidth-4)return n-1;return Math.min(n-1,Math.round(first()/p))}
+    function go(pg){var p=per();track.scrollTo({left:Math.min(items.length-p,pg*p)*step(),behavior:reduce?'auto':'smooth'})}
+    function build(){
+      var n=pages();dotsEl.innerHTML='';
+      for(var j=0;j<n;j++){var d=document.createElement('button');d.type='button';d.className='kl-dot';d.setAttribute('role','tab');d.setAttribute('aria-label','第 '+(j+1)+' 組，共 '+n+' 組');(function(j){d.addEventListener('click',function(){go(j)})})(j);dotsEl.appendChild(d)}
+      dotsEl.hidden=n<2;sync();
     }
-    function go(i){track.scrollTo({left:i*step(),behavior:'smooth'})}
-    [].forEach.call(btns,function(b){b.addEventListener('click',function(){var p=per(),first=Math.round(track.scrollLeft/step());go(Math.max(0,Math.min(items.length-p,first+(+b.getAttribute('data-dir'))*p)))})});
-    [].forEach.call(steps,function(li,i){li.querySelector('button').addEventListener('click',function(){var p=per();go(Math.min(items.length-p,Math.floor(i/p)*p))})});
+    function sync(){
+      var p=per(),c=cur(),f=c===pages()-1?items.length-p:c*p;
+      [].forEach.call(dotsEl.children,function(d,j){d.classList.toggle('is-on',j===c);d.setAttribute('aria-selected',j===c)});
+      [].forEach.call(steps,function(li,i){li.classList.toggle('is-on',i>=f&&i<f+p)});
+    }
+    [].forEach.call(steps,function(li,i){li.querySelector('button').addEventListener('click',function(){go(Math.floor(i/per()))})});
     var t;track.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(sync,80)});
-    window.addEventListener('resize',sync);sync();
+    window.addEventListener('resize',build);build();
+
+    /* 滑鼠拖曳 */
+    var down=false,moved=false,sx=0,sl=0;
+    track.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse'||e.button!==0)return;down=true;moved=false;sx=e.clientX;sl=track.scrollLeft});
+    window.addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-sx;if(!moved&&Math.abs(dx)>4){moved=true;track.classList.add('is-drag')}if(moved)track.scrollLeft=sl-dx});
+    window.addEventListener('pointerup',function(e){if(!down)return;down=false;track.classList.remove('is-drag');if(moved){var dx=e.clientX-sx,c=Math.round(sl/step()/per());go(Math.abs(dx)>40?c+(dx<0?1:-1):c)}});
+    track.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopImmediatePropagation();moved=false}},true);
+    track.addEventListener('dragstart',function(e){e.preventDefault()});
+
+    /* YOU 游標變成 DRAG */
+    var tag=document.querySelector('#ycur .ycur__tag');
+    if(tag){track.addEventListener('mouseenter',function(){tag.textContent='DRAG ↔';document.getElementById('ycur').classList.add('is-drag')});
+      track.addEventListener('mouseleave',function(){tag.textContent='YOU';document.getElementById('ycur').classList.remove('is-drag')})}
+
+    /* 第一次進到畫面：輕輕示範往左滑再彈回 */
+    if(!reduce&&'IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(en){if(en[0].isIntersecting&&en[0].intersectionRatio>.6){io.disconnect();
+        setTimeout(function(){if(track.scrollLeft>2)return;track.scrollTo({left:step()*.45,behavior:'smooth'});setTimeout(function(){track.scrollTo({left:0,behavior:'smooth'})},650)},500)}},{threshold:[.6]});
+      io.observe(track);
+    }
   });
 })();
