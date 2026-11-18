@@ -157,7 +157,7 @@ def chat():
       f'</div></section>'
     f'<section class="cs-sec">{sh("Key decisions","Design Decisions","關鍵設計決策")}{decs}</section>'
     f'<section class="cs-sec">{sh("Spec","Every State Covered","完整狀態與規格","交付給工程的不只畫面，還包含 12 種 UI 狀態、iOS／Android 長按流程與搜尋規則。")}'
-    f'<div class="hcar"><div class="hcar__track">'+''.join(f'<figure class="hcar__item">{(f"<div class=hcar__img>"+pic(C+c,1200,2147,x)+"</div>") if c else ph("畫面待提供","1200/2147")}<figcaption>{x}</figcaption></figure>' for x,c in states)+'</div><div class="kl-dots hcar__dots"></div></div></section>'
+    f'<div class="hcar"><div class="hcar__track">'+''.join(f'<figure class="hcar__item">{(f"<div class=hcar__img>"+pic(C+c,1200,2465,x)+"</div>") if c else ph("畫面待提供","1200/2465")}<figcaption>{x}</figcaption></figure>' for x,c in states)+'</div><div class="kl-dots hcar__dots"></div></div></section>'
 
     f'<section class="cs-sec ch-result">{sh("Outcome","What Happened Next","後續成果")}<p class="ch-big ch-big--sm">規格完整交付工程，<em>iOS／Android 雙平台上線。</em></p></section>'
   )
