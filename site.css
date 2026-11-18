@@ -1093,3 +1093,5 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .lb[data-long] .lb__img{max-height:none;max-width:none;width:min(760px,92vw);margin:0 auto;border-radius:clamp(10px,1.4vw,18px)}
 .lb[data-long] .lb__close{position:fixed}
 @media (max-width:900px){.pdp-demo{grid-template-columns:minmax(0,1fr)}.pdp-col:first-child{max-width:340px;justify-self:center;width:100%}}
+/* Works 篩選：被篩掉的卡片要隱藏（卡片本身是 flex，會蓋過 hidden） */
+.wk-card[hidden]{display:none!important}
