@@ -64,7 +64,7 @@ CASES={
   title_en='Chat Search',title_zh='聊天室搜尋功能優化',
   desc='Jade Shih 作品：APP 聊天室訊息搜尋功能優化，從問題定義到解法設計與規格交付。',
   tags=['UI/UX','YouTuber Mike是麥克','功能優化'],tagline='',
-  cover='work-06-chat',cover_w=1600,cover_h=900,cover_alt='聊天室搜尋功能畫面',
+  cover='work-06-chat-hero',cover_w=2400,cover_h=1713,cover_alt='聊天室搜尋功能畫面',
   meta=[('Client','YouTuber Mike是麥克'),('Role','UI/UX 設計・功能規劃'),('Deliverables','聊天室訊息搜尋・UI Spec'),('Year','2026')],
   overview='<p>APP 聊天室是用戶與作者交流投資觀點的主要場所。隨著訊息量快速累積，用戶需要一個能快速找回重要訊息的方式。</p><p>本專案從用戶痛點出發，規劃聊天室內的訊息全文搜尋，從搜尋、結果摘要到跳回原訊息檢視，並撰寫完整的 UI 狀態與規格交付工程。</p>',
   cards=[],gallery_style='none',gallery=[],extra=case_extra.chat(),
