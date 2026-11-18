@@ -140,7 +140,7 @@ def chat():
             '點擊結果直接跳回聊天室中的原位置，關鍵字以色塊標示',
             '底部提供 ↑↓ 切換上一則／下一則結果，到頭尾時自動 disable',
             '「返回搜尋結果」一鍵回到列表，不必重新搜尋'],f'<div class="ch-sq">{pic(C+"07",1200,1200,"Highlight 模式：跳回原訊息並可切換上下則")}</div>'))
-  states=[('搜尋錯誤','08'),('查詢無結果','09'),('Loading',''),('只輸入一個關鍵字',''),('Tab 最大寬度',''),('Tab 名稱過長',''),('往下載入',''),('載入至最底部',''),('訊息為一行',''),('被引用訊息不 highlight',''),('第一則：上一則 disable',''),('最後一則：下一則 disable','')]
+  states=[('搜尋錯誤','08'),('查詢無結果','09'),('Loading','10'),('只輸入一個關鍵字','11'),('Tab 最大寬度','12'),('Tab 名稱過長','13'),('往下載入','14'),('載入至最底部','15'),('訊息為一行','16'),('被引用訊息不 highlight','17'),('第一則：上一則 disable','18'),('最後一則：下一則 disable','19')]
   st=''.join(f'<li>{x}</li>' for x in states)
   return (
     f'<section class="cs-sec ch-problem">{sh("The problem","What Went Wrong","發生了什麼問題")}'
@@ -157,7 +157,7 @@ def chat():
       f'</div></section>'
     f'<section class="cs-sec">{sh("Key decisions","Design Decisions","關鍵設計決策")}{decs}</section>'
     f'<section class="cs-sec">{sh("Spec","Every State Covered","完整狀態與規格","交付給工程的不只畫面，還包含 12 種 UI 狀態、iOS／Android 長按流程與搜尋規則。")}'
-    f'<div class="hcar"><div class="hcar__track">'+''.join(f'<figure class="hcar__item">{(f"<div class=hcar__img>"+pic(C+c,1200,2465,x)+"</div>") if c else ph("畫面待提供","1200/2465")}<figcaption>{x}</figcaption></figure>' for x,c in states)+'</div><div class="kl-dots hcar__dots"></div></div></section>'
+    f'<div class="hcar"><div class="hcar__track">'+''.join(f'<figure class="hcar__item">{(f"<div class=hcar__img>"+pic(C+c,1200,2470,x)+"</div>") if c else ph("畫面待提供","1200/2465")}<figcaption>{x}</figcaption></figure>' for x,c in states)+'</div><div class="kl-dots hcar__dots"></div></div></section>'
 
     f'<section class="cs-sec ch-result">{sh("Outcome","What Happened Next","後續成果")}<p class="ch-big ch-big--sm">規格完整交付工程，<em>iOS／Android 雙平台上線。</em></p></section>'
   )
