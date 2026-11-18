@@ -105,5 +105,17 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以日式扭蛋機作為核心視覺概念，結合具有招福寓意的達摩貓角色，將抽獎活動包裝成充滿趣味與期待感的遊戲體驗。透過高彩度黃藍配色、立體標題字、手繪插圖與遊戲化按鈕，營造熱鬧活潑的活動氛圍，並針對活動參與、獎品領取及社群分享等階段，建立一致的視覺語彙。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='將原本以獎勵為導向的行銷活動轉化為具遊戲感的互動體驗，透過明確的資訊層次與行動引導，降低活動規則的理解門檻，同時強化活動的趣味性與視覺記憶點。')],
   gallery_style='none',gallery=[],extra=case_extra.gacha(),
+  next=dict(title='高麗蔘紅石榴飲商品頁設計',attr='href="./work-10-pdp.html"')),
+ 'work-10-pdp':dict(
+  num='10',tone='pink',deco=(('flower','yellow'),('blob','cyan')),
+  title_en='Pomegranate',title_zh='高麗蔘紅石榴飲商品頁設計',
+  desc='Jade Shih 作品：正官庄「高麗蔘紅石榴飲」電商商品詳情頁（PDP）視覺設計。',
+  tags=['平面設計','正官庄','PDP 商店頁'],tagline='',
+  cover='work-10-pdp/web-cover',cover_w=2400,cover_h=1603,cover_alt='正官庄高麗蔘紅石榴飲電商商品頁，粉紅色系多段長圖斜放展示',
+  meta=[('Client','正官庄'),('Role','視覺設計'),('Deliverables','PDP 商店頁設計'),('Year','2026')],
+  overview='<p>為正官庄「高麗蔘紅石榴飲」打造電商商品詳情頁（PDP），以重視日常保養與養顏美容的女性消費者為主要溝通對象，在保留品牌專業形象的同時，建立更貼近女性保養市場的視覺風格，傳遞產品特色與核心成分價值。</p>',
+  cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以美妝保養品的視覺語彙作為設計出發點，運用粉紅漸層、晶透光感、金色點綴與立體成分素材，營造精緻、明亮且富有光澤感的視覺氛圍，跳脫傳統高麗蔘保健食品的既定印象。透過成分圖像化、情境攝影與模組化版面編排，兼顧商品的情感訴求與專業資訊傳遞。'),
+         dict(tone='pink',title='What happened next',zh='後續成果',text='以此次建立的視覺語彙與資訊架構為基礎，進一步延伸至同系列「高麗蔘野櫻莓飲」商品頁設計，在保留個別產品特色的同時，維持系列商品的視覺一致性，建立更具辨識度的品牌形象。')],
+  gallery_style='none',gallery=[],extra=case_extra.pdp('work-10-pdp',9479,'正官庄高麗蔘紅石榴飲商品頁完整長圖'),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
