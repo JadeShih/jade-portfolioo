@@ -129,5 +129,15 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以產品差異化與系列一致性作為設計核心，延伸各商品包裝色彩作為獨立版面的主色調，搭配放大的產品形象、立體成分素材與機能圖示，建立直觀的商品分類方式。同時透過統一的版面結構與資訊編排，兼顧品牌的專業形象、產品辨識度及摺頁展開後的視覺連貫性。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='將五款商品的特色與機能資訊整合為具系統性的品牌銷售素材，強化系列商品之間的辨識度，降低消費者比較產品的資訊門檻，同時兼顧品牌形象展示與商品導購需求。')],
   gallery_style='none',gallery=[],extra=case_extra.dm(),
+  next=dict(title='語音直播免費場轉 VIP 場',attr='href="./work-12-vip.html"')),
+ 'work-12-vip':dict(
+  num='12',tone='cyan',body_cls=' cs-body--ink',deco=(('flower','pink'),('blob','cyan')),
+  title_en='Free to VIP',title_zh='語音直播免費場轉 VIP 場',
+  desc='Jade Shih 作品：APP 語音直播「前段免費、後段 VIP」權限切換功能，從問題定義、轉換設計到邊界情境與規格交付。',
+  tags=['UI/UX','YouTuber Mike是麥克','付費轉換'],tagline='',
+  cover='work-12-vip/cover',cover_w=2400,cover_h=1500,cover_alt='語音直播免費場轉 VIP 場：入口卡片、主持人切換確認、升級彈窗',
+  meta=[('Client','YouTuber Mike是麥克'),('Role','UI/UX 設計・功能規劃'),('Deliverables','語音直播權限切換・UI Spec'),('Year','2026')],
+  overview='<p>APP 的語音直播原本只能選「全部可聽」或「僅限 VIP」，兩種模式都無法有效把免費用戶轉換為付費 VIP，只能靠另開 YouTube 直播前段來導流。</p><p>本專案把這套轉換流程內建到語音直播：一場直播前段免費試聽，由主持人在直播間手動切換為 VIP 場，被移出的免費用戶直接看到升級引導與折扣碼，並完整規劃推播分流、入口標示與邊界情境。</p>',
+  cards=[],gallery_style='none',gallery=[],extra=case_extra.vip(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }

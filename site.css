@@ -1194,3 +1194,4 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .dm-shot__frame:focus-visible{outline:3px solid var(--jade-sys-color-secondary);outline-offset:6px}
 .dm-shot__frame img{display:block;width:100%;height:auto}
 .dm-shot__frame{border-color:#16143A}
+.vp-edges{grid-template-columns:repeat(3,minmax(0,1fr))}@media (max-width:900px){.vp-edges{grid-template-columns:minmax(0,1fr)}}

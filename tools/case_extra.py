@@ -216,3 +216,67 @@ def dm():
          ('02',1680,'In hand','實體展示','EVERYTIME 四摺 DM 立體折疊展示')]
   figs=''.join(f'<figure class="dm-shot"><figcaption class="pdp-label">✦ {en}<span>{zh}</span></figcaption><button type="button" class="dm-shot__frame" data-lb="dm" aria-label="放大檢視：{alt}">{pic(F+n,2400,h,alt)}</button></figure>' for n,h,en,zh,alt in shots)
   return f'<section class="cs-sec pdp-sec dm-sec">{sh("The Spreads","Unfold It","展開頁","四摺 DM 的外側與內側展開，點擊可放大檢視。")}<div class="dm-list">{figs}</div></section>'
+
+def vip():
+  # 12 免費場轉 VIP 場：沿用 06 聊天室搜尋頁的架構（問題 → User Stories → 解法緞帶 → 設計決策 → 邊界情境／狀態 → 成果）
+  import re as _re
+  F='work-12-vip/'
+  def png(n,w,h,alt): return f'<picture><source srcset="{P}{F}{n}.webp" type="image/webp"><img src="{P}{F}{n}.png" width="{w}" height="{h}" alt="{html.escape(alt)}" loading="lazy" decoding="async"></picture>'
+  def m(n,alt): return pic(F+'m-'+n,780,1688,alt)
+  def sh(eb,en,zh,lead=''):
+    l=f'<p class="cs-sec__lead">{lead}</p>' if lead else ''
+    return f'<header class="cs-sec__head"><p class="eyebrow">{eb}</p><h2 class="cs-sec__title">{en}<small>{zh}</small></h2>{l}</header>'
+  rib=_re.search(r'<svg class="ch-rib__bg".*?</svg>',chat(),_re.S).group(0)
+  pains=[('01','兩頭忙','APP 開 VIP 直播的同時，還要另開 YouTube 同步播前 30%，得同時管理兩個平台。'),
+         ('02','斷點多','觀眾要從 YouTube 下載 APP、再升級 VIP 才能聽後半段，每多一步就多一批人流失。'),
+         ('03','二選一','原本權限只有「全部可聽」或「僅限 VIP」，曝光與轉換無法在同一場直播兼得。')]
+  ph_html=''.join(f'<article class="ch-pain"><span class="ch-pain__no">{n}</span><h3>{t}</h3><p>{d}</p></article>' for n,t,d in pains)
+  users=[('產品經理','我希望語音直播支援中途切換權限，在單場直播同時達成曝光與轉換。','cyan'),
+         ('行銷人員','我希望所有用戶都能收到推播並進入收聽，最大化直播的觸及人數。','cyan'),
+         ('KOL','我希望直播前段讓所有粉絲都來聽，維持互動熱度與社群黏著。','cyan'),
+         ('免費用戶','我希望被移出直播時，清楚知道原因以及如何才能繼續收聽。','pink')]
+  us=''.join(f'<article class="ch-user" data-tone="{t}"><b>{r}</b><p>身為{r}，{d}</p></article>' for r,d,t in users)
+  def dec(num,title,zh,points,img,flip=False):
+    pts=''.join(f'<li>{p}</li>' for p in points)
+    return (f'<article class="ch-dec{" ch-dec--flip" if flip else ""}"><div class="ch-dec__img">{img}</div>'
+            f'<div class="ch-dec__txt"><p class="eyebrow">Decision {num:02d}</p><h3>{title}<small>{zh}</small></h3><ul>{pts}</ul></div></article>')
+  decs=(dec(1,'One-way Switch','不可逆的權限切換',[
+            '「更改觀看權限」收在右上「⋯」選單，避免直播中誤觸',
+            '選擇 VIP 場後跳出二次確認，明確說明「切換後僅付費用戶可觀看，且無法再更改」',
+            '切換中以呼吸燈＋Spinner 顯示狀態並暫停操作；成功或失敗（15 秒 timeout）都以 toast 回饋'],
+            f'<div class="ch-sq">{png("d-01",1200,1200,"主持人選擇 VIP 場並二次確認")}</div>')+
+        dec(2,'The Conversion Moment','被移出的瞬間就是轉換點',[
+            '免費用戶被移出時，底部彈窗直接預告下半場內容，說明為什麼不能繼續聽',
+            '折扣碼自動複製；點「前往升級」進入內購頁並自動套用，以 toast 告知',
+            '點外面收合同樣保留折扣碼但不打擾；沒有折扣碼的場次使用精簡版彈窗'],
+            f'<div class="ch-sq">{png("d-02",1200,1200,"升級彈窗與自動套用折扣碼的內購頁")}</div>',True)+
+        dec(3,'Honest Labels','狀態標示要說實話',[
+            '推播依作者設定分流：免費用戶收到「免費語音直播試聽已開始」，付費用戶照常通知',
+            '切換後，入口卡片的 Tag 改為 VIP 並標示「限時公開已結束」，不再誤導免費用戶',
+            '入口頁非即時刷新：點擊時先進入 loading 重新判斷權限，再給正確的導引'],
+            f'<div class="ch-sq">{png("d-03",1200,1200,"免費試聽推播與限時公開已結束的入口卡片")}</div>'))
+  edges=[('晚到的免費用戶','切換已發生才點推播進來：入口顯示「限時公開已結束」，點擊後直接看到升級引導。','pink'),
+         ('入口頁停留的用戶','停在入口頁、剛好在切換前後點擊：先 loading 即時判斷權限，再阻擋並給正確提示。','cyan'),
+         ('入口標示延遲','入口頁不是即時刷新：權限 Tag 隨狀態更新，避免看到「全部可聽」卻進不去。','cyan')]
+  ed=''.join(f'<article class="ch-user" data-tone="{t}"><b>{r}</b><p>{d}</p></article>' for r,d,t in edges)
+  states=[('更改觀看權限選單','host-menu'),('選擇免費場／VIP 場','host-radio'),('二次確認彈窗','host-confirm'),('切換中','host-loading'),('切換失敗','host-error'),('切換成功','host-toast'),
+          ('入口頁 loading','entry-loading'),('限時公開已結束','list-ended'),('升級彈窗（含折扣碼）','sheet'),('升級彈窗（無折扣碼）','sheet-nocoupon'),('自動套用折扣碼','purchase-toast')]
+  return (
+    f'<section class="cs-sec ch-problem">{sh("The problem","What Went Wrong","發生了什麼問題")}'
+    f'<p class="ch-big">想把免費聽眾變成 VIP，<em>只能靠 YouTube 繞一大圈。</em></p>'
+    f'<div class="ch-problem__grid"><div class="ch-pains">{ph_html}</div><div class="ch-pimg">{png("problem",2400,1515,"一場直播：前段免費、主持人切換、免費用戶看到升級引導")}</div></div></section>'
+    f'<section class="cs-sec">{sh("Who needs it","User Stories","誰需要這個功能")}<div class="ch-users">{us}</div></section>'
+    f'<section class="cs-sec">{sh("The solution","How I Solved It","我怎麼解決","把轉換流程搬進 APP：前段免費試聽 → 主持人手動切換 → 被移出的免費用戶直接看到升級引導。")}'
+    f'<div class="ch-rib">{rib}'
+      f'<figure class="ch-rib__step"><figcaption><span>1</span><b>Listen</b>前段所有人都能收聽</figcaption><div class="ch-phone">{m("list-free","Listen：免費場入口，所有人都能進入收聽")}</div></figure>'
+      f'<span class="ch-rib__arrow" aria-hidden="true">→</span>'
+      f'<figure class="ch-rib__step"><figcaption><span>2</span><b>Switch</b>主持人一鍵切換為 VIP 場</figcaption><div class="ch-phone">{m("host-confirm","Switch：主持人確認切換為 VIP 場")}</div></figure>'
+      f'<span class="ch-rib__arrow" aria-hidden="true">→</span>'
+      f'<figure class="ch-rib__step"><figcaption><span>3</span><b>Convert</b>免費用戶看到升級引導</figcaption><div class="ch-phone">{m("sheet","Convert：被移出的免費用戶看到升級彈窗與折扣碼")}</div></figure>'
+      f'</div></section>'
+    f'<section class="cs-sec">{sh("Key decisions","Design Decisions","關鍵設計決策")}{decs}</section>'
+    f'<section class="cs-sec">{sh("Edge cases","Three Tricky Moments","三個邊界情境","切換時間不固定、入口頁又不是即時刷新，最容易讓用戶困惑的就是這三個時刻。")}<div class="ch-users vp-edges">{ed}</div></section>'
+    f'<section class="cs-sec">{sh("Spec","Every State Covered","完整狀態與規格","交付給工程的規格涵蓋幹部端、聽眾端、推播分流與邊界情境的每一種狀態。")}'
+    f'<div class="hcar"><div class="hcar__track">'+''.join(f'<figure class="hcar__item"><div class="hcar__img">{m(c,x)}</div><figcaption>{x}</figcaption></figure>' for x,c in states)+'</div><div class="kl-dots hcar__dots"></div></div></section>'
+    f'<section class="cs-sec ch-result">{sh("Outcome","What Happened Next","後續成果")}<p class="ch-big ch-big--sm">一場直播同時完成曝光與轉換，<em>不再依賴 YouTube 導流。</em></p></section>'
+  )
