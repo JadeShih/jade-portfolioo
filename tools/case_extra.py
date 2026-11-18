@@ -177,3 +177,29 @@ def pdp(folder='work-07-pdp',h=8042,alt='天萃苑益生漾商品頁完整長圖
     f'<figure class="pdp-col pdp-col--full"><figcaption class="pdp-label">✦ Full page<span>整條長圖一次看</span></figcaption>'
     f'<div class="pdp-strip">{cols}</div></figure>'
     f'</div></section>')
+
+def gacha():
+  # 09 扭蛋互動：手機內可點「馬上前往」→ 扭蛋動畫 → 結果頁
+  F='work-09-OPENLAB/web-'
+  def sh(eb,en,zh,lead=''):
+    l=f'<p class="cs-sec__lead">{lead}</p>' if lead else ''
+    return f'<header class="cs-sec__head"><p class="eyebrow">{eb}</p><h2 class="cs-sec__title">{en}<small>{zh}</small></h2>{l}</header>'
+  def apic(n,w,h,cls):
+    return f'<picture><source srcset="{P}{F}{n}.webp" type="image/webp"><img class="{cls}" src="{P}{F}{n}.png" width="{w}" height="{h}" alt="" decoding="async"></picture>'
+  steps=[('landing','01','活動頁','扭蛋機主視覺搭配獎項說明，引導用戶按下「馬上前往」。'),
+         ('anim','02','扭蛋動畫','扭蛋機搖晃、扭蛋滾出並彈開，製造開獎的期待感。'),
+         ('result','03','結果頁','達Q貓帶來財氣好禮，引導領取獎勵與分享活動。')]
+  st=''.join(f'<li class="gc-step" data-step="{k}"><b>{n}</b><div><h3>{t}</h3><p>{d}</p></div></li>' for k,n,t,d in steps)
+  return (f'<section class="cs-sec pdp-sec gc-sec">{sh("Try it","Play the Gacha","玩玩看","按下手機裡的「馬上前往」，體驗扭蛋掉出、開出好禮的完整流程。")}'
+    f'<div class="pdp-demo gc-demo">'
+    f'<figure class="pdp-col"><figcaption class="pdp-label">✦ Tap<span>按「馬上前往」試試</span></figcaption>'
+    f'<div class="pdp-phone gc-phone" data-state="landing"><span class="pdp-phone__island" aria-hidden="true"></span><span class="pdp-phone__bar" aria-hidden="true"><b>9:41</b><i></i></span>'
+    f'<div class="pdp-phone__screen gc-screen" tabindex="0" role="region" aria-label="扭蛋活動頁互動展示">'
+    f'<div class="gc-page gc-page--landing">{pic(F+"landing",750,1691,"貓貓扭蛋拿好康活動頁")}<button type="button" class="gc-hot" aria-label="馬上前往：開始扭蛋"></button></div>'
+    f'<div class="gc-page gc-page--result">{pic(F+"result",750,1849,"達Q貓幫你帶來財氣好禮結果頁")}</div>'
+    f'</div>'
+    f'<div class="gc-anim" aria-hidden="true">{apic("machine",640,729,"gc-machine")}{apic("capsule",560,560,"gc-cap")}{apic("burst",800,799,"gc-burst")}<span class="gc-flash"></span></div>'
+    f'</div></figure>'
+    f'<div class="gc-side"><ol class="gc-steps">{st}</ol>'
+    f'<button type="button" class="jade-secondary-button gc-replay"><span>再玩一次</span><span class="jade-secondary-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg></span></button></div>'
+    f'</div></section>')

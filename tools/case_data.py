@@ -93,5 +93,17 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='主視覺以插圖 IP 作為敘事主角，透過角色在畫布上創作的情境，自然帶出產品登場。整體版面則以筆記本與手寫註記作為核心概念，結合便條紙、膠帶、塗鴉感插圖與卡片式資訊區塊，營造出活潑、親切又具整理感的閱讀節奏。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='透過資訊圖像化與具敘事性的版面設計，將複雜的產品成分與機能資訊轉化為直觀、易於理解的閱讀體驗，同時藉由聯名角色與筆記本的視覺概念，強化商品頁的資訊層次、視覺辨識度與品牌記憶點。')],
   gallery_style='none',gallery=[],extra=case_extra.pdp('work-08-pdp',7170,'正官庄 × Mr. Donothing 凝神99禮盒商品頁完整長圖'),
+  next=dict(title='籌碼K線 拉新用戶活動',attr='href="./work-09-OPENLAB.html"')),
+ 'work-09-OPENLAB':dict(
+  num='09',tone='cyan',deco=(('flower','pink'),('blob','yellow')),
+  title_en='Cat Gacha',title_zh='籌碼K線 拉新用戶活動',
+  desc='Jade Shih 作品：CMoney 籌碼K線拉新用戶活動，日式扭蛋主題的互動式 Landing Page。',
+  tags=['平面設計','CMoney','互動行銷'],tagline='',
+  cover='work-09-OPENLAB/web-cover',cover_w=2400,cover_h=1603,cover_alt='達Q貓幫你帶來財氣好禮：紅色達摩貓從藍色扭蛋中彈出',
+  meta=[('Client','CMoney'),('Role','視覺設計・互動行銷設計'),('Deliverables','互動式 Landing Page'),('Year','2025')],
+  overview='<p>為 CMoney 打造兼具日式風格與節慶氛圍的線上行銷活動頁，運用 Open Lab 扭蛋範本結合占卜元素，透過趣味互動降低投資知識的學習門檻，讓用戶輕鬆取得教學資源，並藉由獎勵機制與社群分享，帶動活動的曝光與擴散。</p>',
+  cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以日式扭蛋機作為核心視覺概念，結合具有招福寓意的達摩貓角色，將抽獎活動包裝成充滿趣味與期待感的遊戲體驗。透過高彩度黃藍配色、立體標題字、手繪插圖與遊戲化按鈕，營造熱鬧活潑的活動氛圍，並針對活動參與、獎品領取及社群分享等階段，建立一致的視覺語彙。'),
+         dict(tone='pink',title='What happened next',zh='後續成果',text='將原本以獎勵為導向的行銷活動轉化為具遊戲感的互動體驗，透過明確的資訊層次與行動引導，降低活動規則的理解門檻，同時強化活動的趣味性與視覺記憶點。')],
+  gallery_style='none',gallery=[],extra=case_extra.gacha(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }

@@ -296,3 +296,26 @@
     if(tag){track.addEventListener('mouseenter',function(){tag.textContent='DRAG ↔';y.classList.add('is-drag')});track.addEventListener('mouseleave',function(){tag.textContent='YOU';y.classList.remove('is-drag')})}
   });
 })();
+
+/* 09 扭蛋互動：點「馬上前往」→ 扭蛋動畫 → 結果頁；「再玩一次」重來 */
+(function(){
+  [].forEach.call(document.querySelectorAll('.gc-demo'),function(demo){
+    var phone=demo.querySelector('.gc-phone'),scr=demo.querySelector('.gc-screen'),anim=demo.querySelector('.gc-anim'),
+        steps=demo.querySelectorAll('.gc-step'),timers=[],reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function set(s){phone.setAttribute('data-state',s);[].forEach.call(steps,function(li){li.classList.toggle('is-on',li.getAttribute('data-step')===s)})}
+    function clear(){timers.forEach(clearTimeout);timers=[];anim.className='gc-anim'}
+    function at(ms,fn){timers.push(setTimeout(fn,ms))}
+    function play(){
+      clear();
+      if(reduce){set('result');scr.scrollTop=0;return}
+      set('anim');void anim.offsetWidth;anim.classList.add('is-shake');
+      at(700,function(){anim.classList.add('is-drop')});
+      at(1650,function(){anim.classList.add('is-pop')});
+      at(2900,function(){set('result');scr.scrollTop=0;clear()});
+    }
+    function reset(){clear();set('landing');scr.scrollTop=0}
+    demo.querySelector('.gc-hot').addEventListener('click',play);
+    var rp=demo.querySelector('.gc-replay');if(rp)rp.addEventListener('click',reset);
+    set('landing');
+  });
+})();
