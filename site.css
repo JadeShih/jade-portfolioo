@@ -1117,3 +1117,4 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .pdp-end__txt{font-size:clamp(36px,4.4vw,68px);top:52%}
 @media (max-width:700px){.pdp-end{display:flex;flex-direction:column-reverse}.pdp-end__txt{position:static;transform:none;padding:clamp(56px,14vw,72px) max(16px,6vw) 20px;font-size:36px}}
 .pdp-end{background:#ECECEC}
+.pdp-end__txt{line-height:1.12}
