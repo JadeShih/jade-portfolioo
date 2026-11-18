@@ -110,6 +110,7 @@ def ph(label,ratio='16/9',note=''):
 
 def chat():
   M='work-06-chat-mock/'
+  C='work-06-chat/web-'
   def phone(n,alt): return f'<div class="ch-phone">{pic(M+n,390,844,alt)}</div>'
   def sh(eb,en,zh,lead=''):
     l=f'<p class="cs-sec__lead">{lead}</p>' if lead else ''
@@ -130,28 +131,33 @@ def chat():
   decs=(dec(1,'Smart Snippet','搜尋結果摘要',[
             '每則結果最多兩行，以「關鍵句＋前後句平均擴展」組成摘要，一眼看出上下文',
             '關鍵字以主色高亮；同一則訊息有多組關鍵字只算一筆結果，但全部高亮',
-            '裁切時絕不切斷關鍵字，超出部分以「…」收尾'],ph('Decision 01 配圖：搜尋結果摘要（建議 1200×1200 px）','1/1'))+
+            '裁切時絕不切斷關鍵字，超出部分以「…」收尾'],f'<div class="ch-sq">{pic(C+"05",1200,1200,"搜尋結果摘要：關鍵字高亮的兩行摘要")}</div>')+
         dec(2,'Two Tabs','作者／全部 雙頁籤',[
             '把作者（Mike是麥克）的發言獨立成第一個 Tab，最有價值的觀點優先看到',
             '預設頁籤規則：作者有結果先選作者；作者無結果自動切到「全部」',
-            '結果上方標註「僅顯示近三個月結果」，讓搜尋範圍透明'],ph('Decision 02 配圖：作者／全部雙頁籤（建議 1200×1200 px）','1/1'),True)+
+            '結果上方標註「僅顯示近三個月結果」，讓搜尋範圍透明'],f'<div class="ch-sq">{pic(C+"06",1200,1200,"作者／全部雙頁籤與搜尋範圍提示")}</div>',True)+
         dec(3,'Highlight Mode','跳回原訊息檢視',[
             '點擊結果直接跳回聊天室中的原位置，關鍵字以色塊標示',
             '底部提供 ↑↓ 切換上一則／下一則結果，到頭尾時自動 disable',
-            '「返回搜尋結果」一鍵回到列表，不必重新搜尋'],ph('Decision 03 配圖：Highlight 跳回原訊息（建議 1200×1200 px）','1/1')))
-  states=['搜尋錯誤','查詢無結果','Loading','只輸入一個關鍵字','Tab 最大寬度','Tab 名稱過長','往下載入','搜尋結果滿屏','載入至最底部','訊息為一行','訊息兩行以上','被引用訊息不 highlight','第一則：上一則 disable','最後一則：下一則 disable']
+            '「返回搜尋結果」一鍵回到列表，不必重新搜尋'],f'<div class="ch-sq">{pic(C+"07",1200,1200,"Highlight 模式：跳回原訊息並可切換上下則")}</div>'))
+  states=[('搜尋錯誤','08'),('查詢無結果','09'),('Loading',''),('只輸入一個關鍵字',''),('Tab 最大寬度',''),('Tab 名稱過長',''),('往下載入',''),('載入至最底部',''),('訊息為一行',''),('被引用訊息不 highlight',''),('第一則：上一則 disable',''),('最後一則：下一則 disable','')]
   st=''.join(f'<li>{x}</li>' for x in states)
   return (
     f'<section class="cs-sec ch-problem">{sh("The problem","What Went Wrong","發生了什麼問題")}'
     f'<p class="ch-big">聊天室沒有搜尋功能，<em>訊息越多，越難找到重要的那一則。</em></p>'
-    f'<div class="ch-problem__grid"><div class="ch-pains">{ph_html}</div>{ph("現況問題示意：舊版聊天室長長的訊息串，用戶一路往上滑找訊息（舊版截圖＋滑動標示）","3/4")}</div></section>'
+    f'<div class="ch-problem__grid"><div class="ch-pains">{ph_html}</div><div class="ch-pimg">{pic(C+"01",2400,1366,"聊天室訊息堆疊，重要訊息被淹沒的示意")}</div></div></section>'
     f'<section class="cs-sec">{sh("Who needs it","User Stories","誰需要這個功能")}<div class="ch-users">{us}</div></section>'
     f'<section class="cs-sec">{sh("The solution","How I Solved It","我怎麼解決","以「找得到 → 看得懂 → 回得去」為主軸：搜尋、看摘要判斷、跳回原訊息檢視上下文。")}'
-    f'<div class="ch-trio">{phone("tabs","搜尋結果")}<span class="ch-arrow">→</span>{phone("jump","跳回原訊息")}</div>'
-    f'{ph("UI Flow 流程圖：聊天模式 ↔ 搜尋模式 ↔ Highlight 檢視模式（可從 Figma「UI flow」區塊匯出）","21/9")}</section>'
+    f'<div class="ch-rib"><svg class="ch-rib__bg" viewBox="0 0 1200 400" preserveAspectRatio="none" aria-hidden="true"><path d="M-20 250 C 180 140, 300 330, 520 290 S 820 150, 1000 260 S 1180 300, 1230 200" fill="none" stroke="#C2FF0A" stroke-width="54" stroke-linecap="round"/></svg>'
+      f'<figure class="ch-rib__step"><figcaption><span>1</span><b>Search</b>輸入關鍵字</figcaption><div class="ch-phone">{pic(C+"02",1170,2532,"Search：輸入關鍵字")}</div></figure>'
+      f'<span class="ch-rib__arrow" aria-hidden="true">→</span>'
+      f'<figure class="ch-rib__step"><figcaption><span>2</span><b>Find</b>看摘要找到目標訊息</figcaption><div class="ch-phone">{pic(C+"03",1170,2532,"Find：看摘要找到目標訊息")}</div></figure>'
+      f'<span class="ch-rib__arrow" aria-hidden="true">→</span>'
+      f'<figure class="ch-rib__step"><figcaption><span>3</span><b>Jump</b>跳回原訊息、回顧上下文</figcaption><div class="ch-phone">{pic(C+"04",1170,2532,"Jump：跳回原訊息、回顧上下文")}</div></figure>'
+      f'</div></section>'
     f'<section class="cs-sec">{sh("Key decisions","Design Decisions","關鍵設計決策")}{decs}</section>'
-    f'<section class="cs-sec">{sh("Spec","Every State Covered","完整狀態與規格","交付給工程的不只畫面，還包含 14 種 UI 狀態、iOS／Android 長按流程與搜尋規則。")}'
-    f'<div class="hcar"><div class="hcar__track">'+''.join(f'<figure class="hcar__item">{ph("畫面待提供","390/844")}<figcaption>{x}</figcaption></figure>' for x in states)+'</div><div class="kl-dots hcar__dots"></div></div></section>'
+    f'<section class="cs-sec">{sh("Spec","Every State Covered","完整狀態與規格","交付給工程的不只畫面，還包含 12 種 UI 狀態、iOS／Android 長按流程與搜尋規則。")}'
+    f'<div class="hcar"><div class="hcar__track">'+''.join(f'<figure class="hcar__item">{(f"<div class=hcar__img>"+pic(C+c,1200,2147,x)+"</div>") if c else ph("畫面待提供","1200/2147")}<figcaption>{x}</figcaption></figure>' for x,c in states)+'</div><div class="kl-dots hcar__dots"></div></div></section>'
 
     f'<section class="cs-sec ch-result">{sh("Outcome","What Happened Next","後續成果")}<p class="ch-big ch-big--sm">規格完整交付工程，<em>iOS／Android 雙平台上線。</em></p></section>'
   )
