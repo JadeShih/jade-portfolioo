@@ -204,3 +204,15 @@ def gacha():
     f'<div class="gc-side"><ol class="gc-steps">{st}</ol>'
     f'<button type="button" class="jade-sticker gc-replay" data-shape="burst" data-tone="pink" style="--jade-sticker-rotation:-8deg" aria-label="再玩一次"><svg class="jade-sticker__shape" viewBox="0 0 128 128" aria-hidden="true"><polygon points="{burst(14,62,48)}"/></svg><span class="jade-sticker__label"><svg class="gc-replay__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg>再玩<br>一次</span></button></div>'
     f'</div></section>')
+
+def dm():
+  # 11 四摺 DM：外側／內側展開大圖（可點擊放大）＋實體展示
+  F='work-11-dm/web-'
+  def sh(eb,en,zh,lead=''):
+    l=f'<p class="cs-sec__lead">{lead}</p>' if lead else ''
+    return f'<header class="cs-sec__head"><p class="eyebrow">{eb}</p><h2 class="cs-sec__title">{en}<small>{zh}</small></h2>{l}</header>'
+  shots=[('03',1584,'Outside','外側展開','EVERYTIME 四摺 DM 外側展開：封面、系列商品總覽'),
+         ('04',1584,'Inside','內側展開','EVERYTIME 四摺 DM 內側展開：四款商品介紹與高麗蔘六大功效'),
+         ('02',1680,'In hand','實體展示','EVERYTIME 四摺 DM 立體折疊展示')]
+  figs=''.join(f'<figure class="dm-shot"><figcaption class="pdp-label">✦ {en}<span>{zh}</span></figcaption><button type="button" class="dm-shot__frame" data-lb="dm" aria-label="放大檢視：{alt}">{pic(F+n,2400,h,alt)}</button></figure>' for n,h,en,zh,alt in shots)
+  return f'<section class="cs-sec pdp-sec dm-sec">{sh("The Spreads","Unfold It","展開頁","四摺 DM 的外側與內側展開，點擊可放大檢視。")}<div class="dm-list">{figs}</div></section>'

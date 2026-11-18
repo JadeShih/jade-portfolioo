@@ -117,5 +117,17 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以美妝保養品的視覺語彙作為設計出發點，運用粉紅漸層、晶透光感、金色點綴與立體成分素材，營造精緻、明亮且富有光澤感的視覺氛圍，跳脫傳統高麗蔘保健食品的既定印象。透過成分圖像化、情境攝影與模組化版面編排，兼顧商品的情感訴求與專業資訊傳遞。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='以此次建立的視覺語彙與資訊架構為基礎，進一步延伸至同系列「高麗蔘野櫻莓飲」商品頁設計，在保留個別產品特色的同時，維持系列商品的視覺一致性，建立更具辨識度的品牌形象。')],
   gallery_style='none',gallery=[],extra=case_extra.pdp('work-10-pdp',9479,'正官庄高麗蔘紅石榴飲商品頁完整長圖'),
+  next=dict(title='EVERYTIME 系列產品四摺 DM',attr='href="./work-11-dm.html"')),
+ 'work-11-dm':dict(
+  num='11',tone='coral',deco=(('flower','yellow'),('blob','cyan')),
+  title_en='EVERYTIME',title_zh='EVERYTIME 系列產品四摺 DM',
+  desc='Jade Shih 作品：正官庄 EVERYTIME 系列產品四摺 DM 視覺設計。',
+  tags=['平面設計','正官庄','四摺 DM'],tagline='',
+  cover='work-11-dm/web-cover',cover_w=2400,cover_h=1800,cover_alt='正官庄 EVERYTIME 系列產品四摺 DM 展開立體展示',
+  meta=[('Client','正官庄'),('Role','視覺設計'),('Deliverables','四摺 DM'),('Year','2020')],
+  overview='<p>EVERYTIME 為正官庄主打產品系列，以單包條裝、方便攜帶及即時補充活力為核心特色。透過摺頁 DM 整合五款系列商品，清楚傳達各產品的成分、機能與差異性，協助消費者快速認識系列特色，並依照自身需求選擇合適的產品。</p>',
+  cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以產品差異化與系列一致性作為設計核心，延伸各商品包裝色彩作為獨立版面的主色調，搭配放大的產品形象、立體成分素材與機能圖示，建立直觀的商品分類方式。同時透過統一的版面結構與資訊編排，兼顧品牌的專業形象、產品辨識度及摺頁展開後的視覺連貫性。'),
+         dict(tone='pink',title='What happened next',zh='後續成果',text='將五款商品的特色與機能資訊整合為具系統性的品牌銷售素材，強化系列商品之間的辨識度，降低消費者比較產品的資訊門檻，同時兼顧品牌形象展示與商品導購需求。')],
+  gallery_style='none',gallery=[],extra=case_extra.dm(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }

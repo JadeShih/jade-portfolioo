@@ -1186,3 +1186,11 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .pdp-phone__screen.is-dragging{cursor:grabbing}
 .pdp-phone__screen img{-webkit-user-drag:none;pointer-events:none}
 .gc-hot{pointer-events:auto}
+/* 11 四摺 DM 展開大圖 */
+.dm-list{display:grid;gap:clamp(40px,5vw,72px);margin-top:clamp(28px,4vw,48px)}
+.dm-shot{margin:0;display:grid;gap:16px}
+.dm-shot__frame{display:block;width:100%;padding:0;border:clamp(4px,.45vw,6px) solid var(--jade-ref-palette-neutral10);border-radius:clamp(16px,2.4vw,32px);overflow:hidden;background:#fff;cursor:zoom-in;transition:transform .35s var(--ease)}
+.dm-shot__frame:hover{transform:translateY(-4px)}
+.dm-shot__frame:focus-visible{outline:3px solid var(--jade-sys-color-secondary);outline-offset:6px}
+.dm-shot__frame img{display:block;width:100%;height:auto}
+.dm-shot__frame{border-color:#16143A}
