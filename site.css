@@ -1167,3 +1167,4 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .gc-anim img.gc-machine{top:24%}
 .gc-anim img.gc-cap{top:30%}
 .gc-anim img.gc-burst{top:24%}
+.gc-flash{display:none}.gc-anim.is-pop .gc-flash{animation:none}
