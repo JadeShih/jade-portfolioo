@@ -145,7 +145,7 @@ def chat():
   return (
     f'<section class="cs-sec ch-problem">{sh("The problem","What Went Wrong","發生了什麼問題")}'
     f'<p class="ch-big">聊天室沒有搜尋功能，<em>訊息越多，越難找到重要的那一則。</em></p>'
-    f'<div class="ch-problem__grid"><div class="ch-pains">{ph_html}</div><div class="ch-pimg">{pic(C+"01",2400,1852,"聊天室訊息堆疊，重要訊息被淹沒的示意")}</div></div></section>'
+    f'<div class="ch-problem__grid"><div class="ch-pains">{ph_html}</div><div class="ch-pimg">{pic(C+"01",2400,1515,"聊天室訊息堆疊，重要訊息被淹沒的示意")}</div></div></section>'
     f'<section class="cs-sec">{sh("Who needs it","User Stories","誰需要這個功能")}<div class="ch-users">{us}</div></section>'
     f'<section class="cs-sec">{sh("The solution","How I Solved It","我怎麼解決","以「找得到 → 看得懂 → 回得去」為主軸：搜尋、看摘要判斷、跳回原訊息檢視上下文。")}'
     f'<div class="ch-rib"><svg class="ch-rib__bg" viewBox="0 0 1200 400" preserveAspectRatio="none" aria-hidden="true"><path d="M-20 250 C 180 140, 300 330, 520 290 S 820 150, 1000 260 S 1180 300, 1230 200" fill="none" stroke="#C2FF0A" stroke-width="54" stroke-linecap="round"/></svg>'
