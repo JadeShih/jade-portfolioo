@@ -17,13 +17,13 @@
 <rect x="114.192" y="97.4355" width="24.0291" height="14.2828" fill="#C2FF0A" stroke-width="3.02341" stroke="black"/>
 <rect x="138.222" y="97.4355" width="24.0291" height="14.2828" fill="#C2FF0A" stroke-width="3.02341" stroke="black"/>
 <rect x="162.25" y="97.4355" width="24.0291" height="14.2828" fill="#C2FF0A" stroke-width="3.02341" stroke="black"/>
-<rect x="186.279" y="97.4355" width="24.0291" height="14.2828" fill="#C2FF0A" stroke-width="3.02341" stroke="black"/>
-<rect x="210.309" y="97.4355" width="24.0291" height="14.2828" fill="#C2FF0A" stroke-width="3.02341" stroke="black"/>
-<rect x="234.277" y="97.4355" width="24.0291" height="14.2828" fill="#C2FF0A" stroke-width="3.02341" stroke="black"/>
+<path d="M186.279 97.4355H210.308V111.718H186.279V97.4355Z" fill="#FDFBE5" stroke-width="3.02341" stroke="black"/>
+<path d="M210.309 97.4355H234.338V111.718H210.309V97.4355Z" fill="#FDFBE5" stroke-width="3.02341" stroke="black"/>
+<path d="M234.277 97.4355H258.306V111.718H234.277V97.4355Z" fill="#FDFBE5" stroke-width="3.02341" stroke="black"/>
 <rect x="258.244" y="97.4355" width="24.0291" height="14.2828" fill="#FDFBE5" stroke-width="3.02341" stroke="black"/>
 <rect x="282.212" y="97.4355" width="24.0291" height="14.2828" fill="#FDFBE5" stroke-width="3.02341" stroke="black"/>
 <g style="mix-blend-mode:multiply">
-<rect x="19.6151" y="108.359" width="236.874" height="2.55305" fill="#95C504"/>
+<rect x="19.6151" y="108.359" width="165.972" height="2.55305" fill="#95C504"/>
 </g>
 <path d="M22.3942 11.2251L24.6181 9.57227L125.246 10.5621L126.169 11.2251L133.666 18.7219L134.328 19.3073L135.062 44.1067L133.666 45.4956L126.169 52.9925L125.388 53.9759L23.4344 53.9759L22.3941 52.9925L14.8972 45.4956L14.3446 44.7233L13.7373 19.6975L14.8973 18.7219L17.3963 16.223L19.8952 13.724L22.3942 11.2251Z" fill="#2138FC"/>
 <rect x="133.616" y="18.7207" width="2.49895" height="26.9654" fill="black"/>
