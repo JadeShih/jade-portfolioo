@@ -1060,3 +1060,4 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .ch-problem__grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);align-items:center}
 .ch-pains{grid-template-columns:1fr}
 @media (max-width:900px){.ch-problem__grid{grid-template-columns:1fr}}
+.ch-pimg{border-radius:0;overflow:visible}
