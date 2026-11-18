@@ -1061,3 +1061,4 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .ch-pains{grid-template-columns:1fr}
 @media (max-width:900px){.ch-problem__grid{grid-template-columns:1fr}}
 .ch-pimg{border-radius:0;overflow:visible}
+.ch-rib__arrow{color:#A99BFF}
