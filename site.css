@@ -1064,3 +1064,7 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .ch-rib__arrow{color:#A99BFF}
 .ch-sq{border-radius:0;overflow:visible}
 .hcar__img{border-radius:0;overflow:visible}
+/* 緞帶延伸到整個螢幕寬 */
+.ch-rib__bg{left:50%;right:auto;width:100vw;transform:translateX(-50%);overflow:visible}
+.ch-rib__bg path{vector-effect:non-scaling-stroke;stroke-width:clamp(34px,4vw,60px)}
+.cs-body--ink{overflow-x:clip}

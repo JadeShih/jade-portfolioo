@@ -148,7 +148,7 @@ def chat():
     f'<div class="ch-problem__grid"><div class="ch-pains">{ph_html}</div><div class="ch-pimg">{pic(C+"01",2400,1515,"聊天室訊息堆疊，重要訊息被淹沒的示意")}</div></div></section>'
     f'<section class="cs-sec">{sh("Who needs it","User Stories","誰需要這個功能")}<div class="ch-users">{us}</div></section>'
     f'<section class="cs-sec">{sh("The solution","How I Solved It","我怎麼解決","以「找得到 → 看得懂 → 回得去」為主軸：搜尋、看摘要判斷、跳回原訊息檢視上下文。")}'
-    f'<div class="ch-rib"><svg class="ch-rib__bg" viewBox="0 0 1200 400" preserveAspectRatio="none" aria-hidden="true"><path d="M-20 250 C 180 140, 300 330, 520 290 S 820 150, 1000 260 S 1180 300, 1230 200" fill="none" stroke="#C2FF0A" stroke-width="54" stroke-linecap="round"/></svg>'
+    f'<div class="ch-rib"><svg class="ch-rib__bg" viewBox="0 0 1200 400" preserveAspectRatio="none" overflow="visible" aria-hidden="true"><path d="M-300 230 C -120 190, 60 150, 220 200 S 380 330, 560 290 S 840 140, 1010 250 S 1260 310, 1500 180" fill="none" stroke="#C2FF0A" stroke-width="54" stroke-linecap="round"/></svg>'
       f'<figure class="ch-rib__step"><figcaption><span>1</span><b>Search</b>輸入關鍵字</figcaption><div class="ch-phone">{pic(C+"02",1170,2532,"Search：輸入關鍵字")}</div></figure>'
       f'<span class="ch-rib__arrow" aria-hidden="true">→</span>'
       f'<figure class="ch-rib__step"><figcaption><span>2</span><b>Find</b>看摘要找到目標訊息</figcaption><div class="ch-phone">{pic(C+"03",1170,2532,"Find：看摘要找到目標訊息")}</div></figure>'
