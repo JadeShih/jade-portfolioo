@@ -1101,3 +1101,7 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .pdp-phone__bar i{width:44px;height:11px;background:linear-gradient(90deg,#16143A 0 60%,transparent 60% 68%,#16143A 68%) ;border-radius:3px;opacity:.9}
 .pdp-phone__screen{flex:1;min-height:0;border-radius:0 0 40px 40px}
 .pdp-strip{cursor:default}.pdp-strip:hover{transform:none}
+/* 07 結尾：系列產品圖滿版收尾 */
+.pdp-end{margin:0;background:var(--jade-ref-palette-neutral100,#F3F1FC)}
+.pdp-end img{display:block;width:100%;height:auto}
+.pdp-end+.cs-next{margin-top:0}
