@@ -323,3 +323,30 @@
     reset();
   });
 })();
+
+/* 手機示意（07／08／09）：除了滾輪，也可以用滑鼠拖拉上下看；游標顯示 DRAG ↕ */
+(function(){
+  [].forEach.call(document.querySelectorAll('.pdp-phone__screen'),function(scr){
+    var down=false,moved=false,y0=0,top0=0,v=0,lastY=0,lastT=0,raf=0;
+    scr.addEventListener('pointerdown',function(e){
+      if(e.pointerType!=='mouse'||e.button!==0)return;
+      cancelAnimationFrame(raf);down=true;moved=false;y0=lastY=e.clientY;top0=scr.scrollTop;v=0;lastT=performance.now();
+    });
+    window.addEventListener('pointermove',function(e){
+      if(!down)return;var dy=e.clientY-y0;
+      if(!moved&&Math.abs(dy)>4){moved=true;scr.classList.add('is-dragging');try{scr.setPointerCapture(e.pointerId)}catch(_){}}
+      if(moved){e.preventDefault();scr.scrollTop=top0-dy;var t=performance.now();v=(lastY-e.clientY)/Math.max(1,t-lastT);lastY=e.clientY;lastT=t}
+    });
+    window.addEventListener('pointerup',function(){
+      if(!down)return;down=false;scr.classList.remove('is-dragging');
+      if(moved){ /* 放開後帶一點慣性 */
+        (function glide(){v*=0.94;if(Math.abs(v)<0.02)return;scr.scrollTop+=v*16;raf=requestAnimationFrame(glide)})();
+      }
+    });
+    /* 拖拉後放開不要觸發點擊（例如 09 的「馬上前往」） */
+    scr.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=false}},true);
+    scr.addEventListener('dragstart',function(e){e.preventDefault()});
+    var y=document.getElementById('ycur'),tag=y&&y.querySelector('.ycur__tag');
+    if(tag){scr.addEventListener('mouseenter',function(){tag.textContent='DRAG ↕';y.classList.add('is-drag')});scr.addEventListener('mouseleave',function(){tag.textContent='YOU';y.classList.remove('is-drag')})}
+  });
+})();

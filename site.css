@@ -1181,3 +1181,8 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .gc-phone[data-page="result"] .gc-page--result{display:block;animation:none}
 .gc-phone .gc-anim{opacity:0;visibility:hidden;transition:opacity .45s ease,visibility 0s .45s}
 .gc-phone.is-anim .gc-anim{opacity:1;visibility:visible;transition:opacity .25s ease}
+/* 手機示意：可拖拉 */
+.pdp-phone__screen{cursor:grab;user-select:none;-webkit-user-select:none}
+.pdp-phone__screen.is-dragging{cursor:grabbing}
+.pdp-phone__screen img{-webkit-user-drag:none;pointer-events:none}
+.gc-hot{pointer-events:auto}
