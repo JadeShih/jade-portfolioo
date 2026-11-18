@@ -178,6 +178,7 @@ def pdp(folder='work-07-pdp',h=8042,alt='天萃苑益生漾商品頁完整長圖
     f'<div class="pdp-strip">{cols}</div></figure>'
     f'</div></section>')
 
+from case import burst
 def gacha():
   # 09 扭蛋互動：手機內可點「馬上前往」→ 扭蛋動畫 → 結果頁
   F='work-09-OPENLAB/web-'
@@ -201,5 +202,5 @@ def gacha():
     f'<div class="gc-anim" aria-hidden="true">{apic("machine",640,729,"gc-machine")}{apic("capsule",560,560,"gc-cap")}{apic("burst",800,799,"gc-burst")}<span class="gc-flash"></span></div>'
     f'</div></figure>'
     f'<div class="gc-side"><ol class="gc-steps">{st}</ol>'
-    f'<button type="button" class="jade-secondary-button gc-replay"><span>再玩一次</span><span class="jade-secondary-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg></span></button></div>'
+    f'<button type="button" class="jade-sticker gc-replay" data-shape="burst" data-tone="pink" style="--jade-sticker-rotation:-8deg" aria-label="再玩一次"><svg class="jade-sticker__shape" viewBox="0 0 128 128" aria-hidden="true"><polygon points="{burst(14,62,48)}"/></svg><span class="jade-sticker__label"><svg class="gc-replay__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg>再玩<br>一次</span></button></div>'
     f'</div></section>')

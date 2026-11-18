@@ -1168,3 +1168,9 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .gc-anim img.gc-cap{top:30%}
 .gc-anim img.gc-burst{top:24%}
 .gc-flash{display:none}.gc-anim.is-pop .gc-flash{animation:none}
+/* 09 再玩一次：DS 貼紙按鈕 */
+.gc-replay.jade-sticker{width:132px;height:132px;padding:0;border:0;background:none;cursor:pointer;font:800 17px/1.15 "Noto Sans TC",sans-serif;transform:rotate(var(--jade-sticker-rotation));transition:transform .3s var(--ease)}
+.gc-replay.jade-sticker:hover{transform:rotate(0deg) scale(1.08)}
+.gc-replay.jade-sticker:focus-visible{outline:3px solid var(--jade-sys-color-primary);outline-offset:4px;border-radius:50%}
+.gc-replay__ic{display:block;width:22px;height:22px;margin:0 auto 4px}
+.gc-replay.jade-sticker{justify-self:end;margin:-64px -14px 0 0;position:relative;z-index:2}
