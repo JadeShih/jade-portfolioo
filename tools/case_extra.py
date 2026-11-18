@@ -161,3 +161,19 @@ def chat():
 
     f'<section class="cs-sec ch-result">{sh("Outcome","What Happened Next","後續成果")}<p class="ch-big ch-big--sm">規格完整交付工程，<em>iOS／Android 雙平台上線。</em></p></section>'
   )
+
+def pdp():
+  # 07 電商商品頁：左手機可捲動、右完整長圖（切 3 欄），點擊放大看整條原圖
+  L='work-07-pdp/web-long'; FULL='../public/works/work-07-pdp/web-full.webp'
+  def sh(eb,en,zh,lead=''):
+    l=f'<p class="cs-sec__lead">{lead}</p>' if lead else ''
+    return f'<header class="cs-sec__head"><p class="eyebrow">{eb}</p><h2 class="cs-sec__title">{en}<small>{zh}</small></h2>{l}</header>'
+  cols=''.join(f'<span class="pdp-strip__col"><img src="{P}{L}.jpg" width="750" height="8042" alt="" loading="lazy" decoding="async" style="top:-{k}00%"></span>' for k in range(3))
+  return (f'<section class="cs-sec pdp-sec">{sh("The Page","Scroll Through","完整商品頁","左邊可以像在手機上一樣上下滑動；右邊是整條長圖的全貌，點擊可放大檢視。")}'
+    f'<div class="pdp-demo">'
+    f'<figure class="pdp-col"><figcaption class="pdp-label">✦ Scroll<span>在手機裡滑動看看</span></figcaption>'
+    f'<div class="pdp-phone"><span class="pdp-phone__island" aria-hidden="true"></span>'
+    f'<div class="pdp-phone__screen" tabindex="0" role="region" aria-label="可捲動的商品頁長圖">{pic(L,750,8042,"天萃苑益生漾商品頁完整長圖")}</div></div></figure>'
+    f'<figure class="pdp-col pdp-col--full"><figcaption class="pdp-label">✦ Full page<span>點擊放大看完整長圖</span></figcaption>'
+    f'<button type="button" class="pdp-strip" data-lb="pdp" data-long data-full="{FULL}" aria-label="放大檢視完整商品頁長圖">{cols}<img class="pdp-strip__src" src="{P}{L}.jpg" alt="天萃苑益生漾商品頁完整長圖" hidden></button></figure>'
+    f'</div></section>')

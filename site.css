@@ -1071,3 +1071,25 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 /* 緞帶：使用 Figma 設計的形狀（1920×500 畫布，等比縮放、橫跨全螢幕） */
 .ch-rib__bg{top:50%;height:auto;aspect-ratio:1920/500;transform:translate(-50%,-38%)}
 .ch-rib__bg path{stroke:none;vector-effect:none}
+/* 07 電商商品頁：手機可捲動 + 完整長圖 */
+.pdp-sec{margin-top:var(--jade-sys-spacing-16)}
+.pdp-demo{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start;margin-top:clamp(28px,4vw,48px)}
+.pdp-col{margin:0;display:grid;gap:16px;min-width:0}
+.pdp-label{font:700 14px/1.2 var(--font-plain);letter-spacing:.12em;text-transform:uppercase;color:var(--jade-ref-palette-neutral10)}
+.pdp-label span{margin-left:10px;font-weight:500;letter-spacing:.04em;text-transform:none;opacity:.7}
+.pdp-phone{position:relative;aspect-ratio:9/19.2;padding:12px;border-radius:52px;background:#16143A;box-shadow:0 0 0 2px #2b2860 inset,0 24px 60px rgba(22,20,58,.25)}
+.pdp-phone__island{position:absolute;z-index:2;top:22px;left:50%;width:30%;height:26px;transform:translateX(-50%);border-radius:20px;background:#16143A}
+.pdp-phone__screen{height:100%;overflow-y:auto;overscroll-behavior:contain;border-radius:40px;background:#fff;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.pdp-phone__screen::-webkit-scrollbar{display:none}
+.pdp-phone__screen:focus-visible{outline:3px solid var(--jade-sys-color-secondary);outline-offset:4px}
+.pdp-phone__screen img{display:block;width:100%;height:auto}
+.pdp-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.4vw,18px);width:100%;padding:0;border:0;background:none;cursor:zoom-in;transition:transform .35s var(--ease)}
+.pdp-strip:hover{transform:translateY(-4px)}
+.pdp-strip:focus-visible{outline:3px solid var(--jade-sys-color-secondary);outline-offset:6px;border-radius:16px}
+.pdp-strip__col{position:relative;display:block;aspect-ratio:750/2681;overflow:hidden;border-radius:clamp(10px,1.2vw,16px);box-shadow:0 0 0 2px #16143A,0 14px 34px rgba(22,20,58,.16)}
+.pdp-strip__col img{position:absolute;left:0;width:100%;height:300%;object-fit:cover;object-position:top}
+/* 燈箱：長圖改成可上下捲動 */
+.lb[data-long][open]{display:block;overflow-y:auto;padding-block:clamp(64px,8vh,96px)}
+.lb[data-long] .lb__img{max-height:none;max-width:none;width:min(760px,92vw);margin:0 auto;border-radius:clamp(10px,1.4vw,18px)}
+.lb[data-long] .lb__close{position:fixed}
+@media (max-width:900px){.pdp-demo{grid-template-columns:minmax(0,1fr)}.pdp-col:first-child{max-width:340px;justify-self:center;width:100%}}

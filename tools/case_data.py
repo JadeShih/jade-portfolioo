@@ -68,5 +68,17 @@ CASES={
   meta=[('Client','YouTuber Mike是麥克'),('Role','UI/UX 設計・功能規劃'),('Deliverables','聊天室訊息搜尋・UI Spec'),('Year','2026')],
   overview='<p>APP 聊天室是用戶與作者交流投資觀點的主要場所。隨著訊息量快速累積，用戶需要一個能快速找回重要訊息的方式。</p><p>本專案從用戶痛點出發，規劃聊天室內的訊息全文搜尋，從搜尋、結果摘要到跳回原訊息檢視，並撰寫完整的 UI 狀態與規格交付工程。</p>',
   cards=[],gallery_style='none',gallery=[],extra=case_extra.chat(),
+  next=dict(title='益生菌電商商品頁設計',attr='href="./work-07-pdp.html"')),
+ 'work-07-pdp':dict(
+  num='07',tone='yellow',deco=(('flower','cyan'),('blob','pink')),
+  title_en='Probiotics PDP',title_zh='益生菌電商商品頁設計',
+  desc='Jade Shih 作品：易廣健康事業 天萃苑益生漾 電商商品詳情頁（PDP）視覺設計。',
+  tags=['平面設計','易廣健康事業','PDP 商店頁'],tagline='',
+  cover='work-07-pdp/web-cover',cover_w=2400,cover_h=1603,cover_alt='天萃苑益生漾電商商品頁，多段長圖斜放展示',
+  meta=[('Client','易廣健康事業'),('Role','視覺設計'),('Deliverables','PDP 商店頁設計'),('Year','2024')],
+  overview='<p>為益生菌保健產品打造面向 C 端消費者的電商商品詳情頁（PDP），以 35–55 歲族群為核心溝通對象，在傳遞產品成分與特色的同時，建立品牌的專業形象與消費者信任感。</p>',
+  cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以產品結合中西醫理念的配方特色作為設計出發點，將東方美學融入現代商業視覺，運用中式紋樣、書法元素、藍綠色調與金色點綴，呈現兼具傳統底蘊與現代科技感的品牌形象。透過資訊圖像化與有層次的版面編排，降低專業保健知識的閱讀門檻。'),
+         dict(tone='pink',title='What happened next',zh='後續成果',text='延續此次建立的視覺語彙與設計架構，陸續發展多款系列產品的 PDP，在保留各產品特色的同時，建立一致且具辨識度的品牌視覺體系。')],
+  gallery_style='none',gallery=[],extra=case_extra.pdp(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
