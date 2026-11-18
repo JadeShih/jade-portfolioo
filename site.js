@@ -297,25 +297,29 @@
   });
 })();
 
-/* 09 扭蛋互動：點「馬上前往」→ 扭蛋動畫 → 結果頁；「再玩一次」重來 */
+/* 09 扭蛋互動：點「馬上前往」→ 扭蛋動畫 → 結果頁；「再玩一次」重來
+   結果頁先在動畫底下換好，再讓動畫淡出，過場不會露出活動頁 */
 (function(){
   [].forEach.call(document.querySelectorAll('.gc-demo'),function(demo){
     var phone=demo.querySelector('.gc-phone'),scr=demo.querySelector('.gc-screen'),anim=demo.querySelector('.gc-anim'),
         steps=demo.querySelectorAll('.gc-step'),timers=[],reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function set(s){phone.setAttribute('data-state',s);[].forEach.call(steps,function(li){li.classList.toggle('is-on',li.getAttribute('data-step')===s)})}
-    function clear(){timers.forEach(clearTimeout);timers=[];anim.className='gc-anim'}
+    function step(s){[].forEach.call(steps,function(li){li.classList.toggle('is-on',li.getAttribute('data-step')===s)})}
+    function page(p){phone.setAttribute('data-page',p);scr.scrollTop=0}
+    function clear(){timers.forEach(clearTimeout);timers=[]}
     function at(ms,fn){timers.push(setTimeout(fn,ms))}
     function play(){
-      clear();
-      if(reduce){set('result');scr.scrollTop=0;return}
-      set('anim');void anim.offsetWidth;anim.classList.add('is-shake');
+      clear();anim.className='gc-anim';
+      if(reduce){page('result');step('result');return}
+      phone.classList.add('is-anim');step('anim');void anim.offsetWidth;anim.classList.add('is-shake');
       at(700,function(){anim.classList.add('is-drop')});
       at(1650,function(){anim.classList.add('is-pop')});
-      at(2900,function(){set('result');scr.scrollTop=0;clear()});
+      at(2800,function(){page('result');step('result')});
+      at(2850,function(){phone.classList.remove('is-anim')});
+      at(3400,function(){anim.className='gc-anim'});
     }
-    function reset(){clear();set('landing');scr.scrollTop=0}
+    function reset(){clear();phone.classList.remove('is-anim');anim.className='gc-anim';page('landing');step('landing')}
     demo.querySelector('.gc-hot').addEventListener('click',play);
     var rp=demo.querySelector('.gc-replay');if(rp)rp.addEventListener('click',reset);
-    set('landing');
+    reset();
   });
 })();

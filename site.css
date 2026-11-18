@@ -1174,3 +1174,10 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .gc-replay.jade-sticker:focus-visible{outline:3px solid var(--jade-sys-color-primary);outline-offset:4px;border-radius:50%}
 .gc-replay__ic{display:block;width:22px;height:22px;margin:0 auto 4px}
 .gc-replay.jade-sticker{justify-self:end;margin:-64px -14px 0 0;position:relative;z-index:2}
+/* 09 過場修正：頁面與動畫分開控制 */
+.gc-phone .gc-page--landing{display:block}
+.gc-phone .gc-page--result{display:none}
+.gc-phone[data-page="result"] .gc-page--landing{display:none}
+.gc-phone[data-page="result"] .gc-page--result{display:block;animation:none}
+.gc-phone .gc-anim{opacity:0;visibility:hidden;transition:opacity .45s ease,visibility 0s .45s}
+.gc-phone.is-anim .gc-anim{opacity:1;visibility:visible;transition:opacity .25s ease}
