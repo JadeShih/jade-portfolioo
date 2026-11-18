@@ -81,5 +81,17 @@ CASES={
          dict(tone='pink',title='What happened next',zh='後續成果',text='延續此次建立的視覺語彙與設計架構，陸續發展多款系列產品的 PDP，在保留各產品特色的同時，建立一致且具辨識度的品牌視覺體系。')],
   gallery_style='none',gallery=[],extra=case_extra.pdp(),
   after='<figure class="pdp-end"><svg class="pdp-end__cut" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V20 C 1200 64, 960 64, 720 36 S 240 0, 0 40 Z" fill="currentColor"/></svg><picture><source srcset="public/works/work-07-pdp/web-end.webp?v=1118v" type="image/webp"><img src="public/works/work-07-pdp/web-end.jpg?v=1118v" width="2400" height="1603" alt="天萃苑系列產品商品頁主視覺：大奧御植酵素、益生漾、安鍵、新鍵-P" loading="lazy" decoding="async"></picture><figcaption class="pdp-end__txt">One look,<br>whole series<small>一套視覺，延伸整個系列</small></figcaption></figure>',
+  next=dict(title='凝神99禮盒聯名商品頁設計',attr='href="./work-08-pdp.html"')),
+ 'work-08-pdp':dict(
+  num='08',tone='coral',deco=(('flower','yellow'),('blob','cyan')),
+  title_en='Ning Shen 99',title_zh='凝神99禮盒聯名商品頁設計',
+  desc='Jade Shih 作品：正官庄 × Mr. Donothing 聯名「凝神99禮盒」電商商品詳情頁（PDP）視覺設計。',
+  tags=['平面設計','正官庄','聯名 PDP'],tagline='',
+  cover='work-08-pdp/web-cover',cover_w=2400,cover_h=1603,cover_alt='正官庄 × Mr. Donothing 凝神99禮盒電商商品頁，多段長圖斜放展示',
+  meta=[('Client','正官庄'),('Role','視覺設計'),('Deliverables','PDP 商店頁設計'),('Year','2026')],
+  overview='<p>為正官庄與插畫 IP「Mr. Donothing」聯名推出的「凝神99禮盒」打造電商商品詳情頁（PDP）。透過聯名角色的趣味性與親和力，打破傳統保健食品較為嚴肅的視覺印象，在保留品牌專業形象的同時，以更活潑、貼近日常生活的方式傳遞產品機能、聯名特色與送禮價值。</p>',
+  cards=[dict(tone='lime',title='What I made',zh='我的設計',text='主視覺以插圖 IP 作為敘事主角，透過角色在畫布上創作的情境，自然帶出產品登場。整體版面則以筆記本與手寫註記作為核心概念，結合便條紙、膠帶、塗鴉感插圖與卡片式資訊區塊，營造出活潑、親切又具整理感的閱讀節奏。'),
+         dict(tone='pink',title='What happened next',zh='後續成果',text='透過資訊圖像化與具敘事性的版面設計，將複雜的產品成分與機能資訊轉化為直觀、易於理解的閱讀體驗，同時藉由聯名角色與筆記本的視覺概念，強化商品頁的資訊層次、視覺辨識度與品牌記憶點。')],
+  gallery_style='none',gallery=[],extra=case_extra.pdp('work-08-pdp',7170,'正官庄 × Mr. Donothing 凝神99禮盒商品頁完整長圖'),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
