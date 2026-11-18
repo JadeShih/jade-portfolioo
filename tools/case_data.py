@@ -80,6 +80,6 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以產品結合中西醫理念的配方特色作為設計出發點，將東方美學融入現代商業視覺，運用中式紋樣、書法元素、藍綠色調與金色點綴，呈現兼具傳統底蘊與現代科技感的品牌形象。透過資訊圖像化與有層次的版面編排，降低專業保健知識的閱讀門檻。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='延續此次建立的視覺語彙與設計架構，陸續發展多款系列產品的 PDP，在保留各產品特色的同時，建立一致且具辨識度的品牌視覺體系。')],
   gallery_style='none',gallery=[],extra=case_extra.pdp(),
-  after='<figure class="pdp-end"><svg class="pdp-end__cut" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V20 C 1200 64, 960 64, 720 36 S 240 0, 0 40 Z" fill="currentColor"/></svg><picture><source srcset="public/works/work-07-pdp/web-end.webp?v=1118v" type="image/webp"><img src="public/works/work-07-pdp/web-end.jpg?v=1118v" width="2400" height="1603" alt="天萃苑系列產品商品頁主視覺：大奧御植酵素、益生漾、安鍵、新鍵-P" loading="lazy" decoding="async"></picture></figure>',
+  after='<figure class="pdp-end"><svg class="pdp-end__cut" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V20 C 1200 64, 960 64, 720 36 S 240 0, 0 40 Z" fill="currentColor"/></svg><picture><source srcset="public/works/work-07-pdp/web-end.webp?v=1118v" type="image/webp"><img src="public/works/work-07-pdp/web-end.jpg?v=1118v" width="2400" height="1603" alt="天萃苑系列產品商品頁主視覺：大奧御植酵素、益生漾、安鍵、新鍵-P" loading="lazy" decoding="async"></picture><figcaption class="pdp-end__txt">One look,<br>whole series<small>一套視覺，延伸整個系列</small></figcaption></figure>',
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
