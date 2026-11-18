@@ -1095,3 +1095,9 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 @media (max-width:900px){.pdp-demo{grid-template-columns:minmax(0,1fr)}.pdp-col:first-child{max-width:340px;justify-self:center;width:100%}}
 /* Works 篩選：被篩掉的卡片要隱藏（卡片本身是 flex，會蓋過 hidden） */
 .wk-card[hidden]{display:none!important}
+/* 07 手機：頂部狀態列，讓動態島不擋到畫面 */
+.pdp-phone{display:flex;flex-direction:column}
+.pdp-phone__bar{position:relative;z-index:1;flex:none;display:flex;align-items:center;justify-content:space-between;height:46px;padding:4px 26px 0 30px;border-radius:40px 40px 0 0;background:#fff;color:#16143A;font:700 14px/1 var(--font-plain)}
+.pdp-phone__bar i{width:44px;height:11px;background:linear-gradient(90deg,#16143A 0 60%,transparent 60% 68%,#16143A 68%) ;border-radius:3px;opacity:.9}
+.pdp-phone__screen{flex:1;min-height:0;border-radius:0 0 40px 40px}
+.pdp-strip{cursor:default}.pdp-strip:hover{transform:none}
