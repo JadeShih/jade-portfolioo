@@ -222,7 +222,7 @@ def vip():
   import re as _re
   F='work-12-vip/'
   def png(n,w,h,alt): return f'<picture><source srcset="{P}{F}{n}.webp" type="image/webp"><img src="{P}{F}{n}.png" width="{w}" height="{h}" alt="{html.escape(alt)}" loading="lazy" decoding="async"></picture>'
-  def m(n,alt): return png('web-'+n,1170,2532,alt)
+  def m(n,alt): return pic(F+'web-'+n,1170,2532,alt) if n in ('03','04') else png('web-'+n,1170,2532,alt)
   def sh(eb,en,zh,lead=''):
     l=f'<p class="cs-sec__lead">{lead}</p>' if lead else ''
     return f'<header class="cs-sec__head"><p class="eyebrow">{eb}</p><h2 class="cs-sec__title">{en}<small>{zh}</small></h2>{l}</header>'
@@ -243,7 +243,7 @@ def vip():
   decs=(dec(1,'One-way Switch','不可逆的權限切換',[
             '「更改觀看權限」收在右上「⋯」選單，避免直播中誤觸',
             '選擇 VIP 場後跳出二次確認，明確說明「切換後僅付費用戶可觀看，且無法再更改」'],
-            f'<div class="ch-sq">{png("web-06",1200,1222,"主持人選擇 VIP 場並二次確認")}</div>')+
+            f'<div class="ch-sq">{png("web-06",1106,1141,"主持人選擇 VIP 場並二次確認")}</div>')+
         dec(2,'The Conversion Moment','被移出的瞬間就是轉換點',[
             '免費用戶被移出時，底部彈窗直接預告下半場內容，說明為什麼不能繼續聽',
             '折扣碼自動複製；點「前往升級」進入內購頁並自動套用，以 toast 告知',
@@ -263,7 +263,7 @@ def vip():
   return (
     f'<section class="cs-sec ch-problem">{sh("The problem","What Went Wrong","發生了什麼問題")}'
     f'<p class="ch-big">想把免費聽眾變成 VIP，<em>只能靠 YouTube 繞一大圈。</em></p>'
-    f'<div class="ch-problem__grid"><div class="ch-pains">{ph_html}</div><div class="ch-pimg">{png("web-02",2400,1896,"不再透過 YouTube 繞路，直接在 APP 內完成轉換")}</div></div></section>'
+    f'<div class="ch-problem__grid"><div class="ch-pains">{ph_html}</div><div class="ch-pimg vp-pimg">{png("web-02",2400,1896,"不再透過 YouTube 繞路，直接在 APP 內完成轉換")}</div></div></section>'
     f'<section class="cs-sec">{sh("Who needs it","User Stories","誰需要這個功能")}<div class="ch-users">{us}</div></section>'
     f'<section class="cs-sec">{sh("The solution","How I Solved It","我怎麼解決","把轉換流程搬進 APP：前段免費試聽 → 主持人手動切換 → 被移出的免費用戶直接看到升級引導。")}'
     f'<div class="ch-rib">{rib}'
