@@ -213,7 +213,7 @@ def dm():
     return f'<header class="cs-sec__head"><p class="eyebrow">{eb}</p><h2 class="cs-sec__title">{en}<small>{zh}</small></h2>{l}</header>'
   shots=[('03',1584,'Outside','外側展開','EVERYTIME 四摺 DM 外側展開：封面、系列商品總覽'),
          ('04',1584,'Inside','內側展開','EVERYTIME 四摺 DM 內側展開：四款商品介紹與高麗蔘六大功效'),
-         ('02',1680,'In hand','實體展示','EVERYTIME 四摺 DM 立體折疊展示')]
+         ('02',1680,'Mockup','合成展示','EVERYTIME 四摺 DM 立體合成展示')]
   figs=''.join(f'<figure class="dm-shot"><figcaption class="pdp-label">✦ {en}<span>{zh}</span></figcaption><button type="button" class="dm-shot__frame" data-lb="dm" aria-label="放大檢視：{alt}">{pic(F+n,2400,h,alt)}</button></figure>' for n,h,en,zh,alt in shots)
   return f'<section class="cs-sec pdp-sec dm-sec">{sh("The Spreads","Unfold It","展開頁","四摺 DM 的外側與內側展開，點擊可放大檢視。")}<div class="dm-list">{figs}</div></section>'
 
