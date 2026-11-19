@@ -139,7 +139,7 @@ CASES={
   meta=[('Client','YouTuber Mike是麥克'),('Role','UI/UX 設計・功能規劃'),('Deliverables','語音直播權限切換・UI Spec'),('Year','2026')],
   overview='<p>APP 的語音直播原本只能選「全部可聽」或「僅限 VIP」，兩種模式都無法有效把免費用戶轉換為付費 VIP，只能靠另開 YouTube 直播前段來導流。</p><p>本專案把這套轉換流程內建到語音直播：一場直播前段免費試聽，由主持人在直播間手動切換為 VIP 場，被移出的免費用戶直接看到升級引導與折扣碼，並完整規劃推播分流、入口標示與邊界情境。</p>',
   cards=[],gallery_style='none',gallery=[],extra=case_extra.vip(),
-  next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
+  next=dict(title='美股事件行事曆',attr='href="./work-15-calendar.html"')),
  'work-14-skill':dict(
   num='14',tone='lime',body_cls=' cs-body--ink',deco=(('flower','cyan'),('blob','pink')),
   title_en='Ad Image Skill',title_zh='AI 廣告圖自動生成 Prompt Skill',
@@ -150,4 +150,14 @@ CASES={
   overview='<p>團隊以四個 AI Agent 串起廣告閉環：Agent A 給內容、Agent B 生成圖片、Agent C 投放、Agent D 追蹤成效。我負責 Agent B 的生圖系統。</p><p>我用 Claude Code 製作 Prompt Skill，把團隊定義的五種 Persona 轉成 AI 能穩定執行的視覺規則與量化版面規範，讓 AI 每次自動產出的廣告圖都維持品牌一致，同時構圖不重複。</p>',
   cards=[],gallery_style='none',gallery=[],extra=case_extra.skill(),
   next=dict(title='Playground',attr='href="../playground.html"')),
+ 'work-15-calendar':dict(
+  num='15',tone='lavender',body_cls=' cs-body--ink',deco=(('flower','yellow'),('blob','cyan')),
+  title_en='US Market Calendar',title_zh='美股事件行事曆',
+  desc='Jade Shih 作品：投資 App 的美股事件行事曆，從首頁提醒擴展為總體與個股事件頁，並定義時區、顯示區間與排序等資訊規則。',
+  tags=['UI/UX','YouTuber Mike是麥克','功能規劃'],tagline='',
+  cover='work-15-calendar/cover',cover_w=2400,cover_h=1500,cover_alt='美股事件行事曆：首頁提醒、總體事件頁與個股事件頁',
+  meta=[('Client','YouTuber Mike是麥克'),('Role','UI/UX 設計・功能規劃'),('Deliverables','美股事件行事曆・UI Spec'),('Year','2025–2026')],
+  overview='<p>台灣投資人對美股的休市、總經數據與財報時間掌握度不足，資訊分散在不同平台，時區換算也容易出錯。</p><p>我從首頁的一條提醒開始規劃，分階段擴展成總體事件頁與個股事件頁，並逐條定義時區換算、顯示區間、排序與空資料等規則，連同各種資料量的畫面一起交付工程。</p>',
+  cards=[],gallery_style='none',gallery=[],extra=case_extra.cal(),
+  next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }

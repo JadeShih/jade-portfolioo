@@ -340,3 +340,44 @@ def skill():
     f'<section class="cs-sec">{sh("Results","Five Personas","五種 Persona 成果","同一個 Persona 色系風格一致，構圖每次不同。")}<div class="sk-gallery">{gal}</div></section>'
     f'<section class="cs-sec ch-result">{sh("Outcome","What Happened Next","後續成果")}<p class="ch-big ch-big--sm">同 Persona 保持色系風格一致、構圖隨機，<em>解決素材重複疲勞，又不破壞品牌感。</em></p></section>'
   )
+
+def cal():
+  # 15 美股事件行事曆：成長時間軸 → 資訊規則 → 密度情境與狀態
+  F='work-15-calendar/m-'
+  def sh(eb,en,zh,lead=''):
+    l=f'<p class="cs-sec__lead">{lead}</p>' if lead else ''
+    return f'<header class="cs-sec__head"><p class="eyebrow">{eb}</p><h2 class="cs-sec__title">{en}<small>{zh}</small></h2>{l}</header>'
+  def m(n,alt): return pic(F+n,780,1688,alt)
+  pains=[('01','資訊分散','休市、CPI、財報各在不同網站，用戶得跨平台自己查。'),
+         ('02','時區混亂','資料是台灣時間，美股看的是美東時間，還有夏令／冬令的一小時差。'),
+         ('03','容易錯過','美股是消息面驅動的市場，事件發生前沒被提醒，就錯過布局時機。')]
+  ph=''.join(f'<article class="ch-pain"><span class="ch-pain__no">{n}</span><h3>{t}</h3><p>{d}</p></article>' for n,t,d in pains)
+  stages=[('Phase 1','首頁提醒條','首頁加入「美股行事曆」與「重要經濟數據」兩條橫滑提醒','many'),
+          ('Phase 2','美股關鍵日程','合併成一個區塊，用頁籤切換經濟數據／個股財報，並加入內頁入口','p2'),
+          ('Page','總體事件頁','依日期列出休市與經濟數據，附預估、實際、前值','macro'),
+          ('Page','個股事件頁','依指數成分股、自選股等條件篩選財報日，代號過多時收合','stock')]
+  tl=''.join(f'<figure class="cl-stage"><figcaption><span>{a}</span><b>{b}</b>{c}</figcaption><div class="ch-phone">{m(n,b)}</div></figure>' for a,b,c,n in stages)
+  rules=(
+    '<article class="cl-rule"><p class="cl-rule__no">Rule 01</p><h3>時區換算<small>一律換成美東時間顯示</small></h3>'
+    '<div class="cl-tz"><div><span>資料庫・台灣時間</span><b>11/25 02:00</b></div><i aria-hidden="true">→</i><div><span>冬令 −13 小時</span><b>11/24 13:00</b></div><i aria-hidden="true">→</i><div class="is-out"><span>App 顯示</span><b>11/24 ET 01:00 PM</b></div></div>'
+    '<p>夏令時差 12 小時、冬令 13 小時；時間後方一律標註 ET，避免用戶誤判。</p></article>'
+    '<article class="cl-rule"><p class="cl-rule__no">Rule 02</p><h3>顯示區間<small>只在需要的時候出現</small></h3>'
+    '<div class="cl-range" aria-hidden="true"><span style="--i:0">D−4</span><span style="--i:1">D−3</span><span style="--i:2">D−2</span><span style="--i:3">D−1</span><span style="--i:4" class="is-d">D</span><span style="--i:5">D+1</span></div>'
+    '<p>事件從公布日前 4 天開始出現、公布後 1 天消失；首頁空間有限，只放近期真正需要注意的事。</p></article>'
+    '<article class="cl-rule"><p class="cl-rule__no">Rule 03</p><h3>排序與同時發生<small>時間優先，同時則依重要性</small></h3>'
+    '<ol class="cl-order"><li>CPI</li><li>非農</li><li>聯準會會議</li><li>GDP</li></ol>'
+    '<p>依公布時間由早到晚排列；時間相同時，依 CPI → 非農 → 聯準會 → GDP 的固定順序。</p></article>'
+    '<article class="cl-rule"><p class="cl-rule__no">Rule 04</p><h3>沒資料時<small>不讓空區塊佔位</small></h3>'
+    '<p>某一類事件沒有資料時，只保留標題並寫明「近期無休市及提早收盤日」，讓入口還在、但不浪費首頁空間。</p></article>')
+  dens=[('事件很多','many','未來 30 天事件密集，左右滑動瀏覽'),('事件一般','normal','只有一筆休市時，卡片撐滿整列'),
+        ('只有市場事件','market','經濟數據區只留標題與說明'),('只有經濟數據','eco','行事曆區只留標題與說明'),
+        ('兩類都沒有','empty','兩個區塊都收合成單行'),('英文版','en','長字串與日期格式另外檢查')]
+  dn=''.join(f'<figure class="hcar__item"><div class="hcar__img">{m(c,x)}</div><figcaption>{x}<small>{d}</small></figcaption></figure>' for x,c,d in dens)
+  return (
+    f'<section class="cs-sec ch-problem">{sh("The problem","Missing the Market","錯過關鍵時刻")}'
+    f'<p class="ch-big">美股看消息吃飯，<em>但消息散落各處。</em></p><div class="ch-pains cl-pains">{ph}</div></section>'
+    f'<section class="cs-sec">{sh("Evolution","From a Strip to a Calendar","從一條提醒到一整套行事曆","先在首頁用最小的版位驗證需求，再逐步擴展成總體事件頁與個股事件頁。")}<div class="cl-timeline">{tl}</div></section>'
+    f'<section class="cs-sec">{sh("The rules","Designing the Logic","資訊規則設計","這個功能的難點不在畫面，而在「什麼時候、用什麼格式、顯示哪一筆」。我把這些規則逐條定義，交給工程直接實作。")}<div class="cl-rules">{rules}</div></section>'
+    f'<section class="cs-sec">{sh("Every scenario","Full or Empty","不同資料量下的畫面","事件數量每天都在變，我依資料多寡設計了不同版本，確保首頁不論多滿或多空都不會跑版。")}'
+    f'<div class="hcar"><div class="hcar__track">{dn}</div><div class="kl-dots hcar__dots"></div></div></section>'
+    f'<section class="cs-sec ch-result">{sh("Outcome","What Happened Next","後續成果")}<p class="ch-big ch-big--sm">分階段規劃與交付，<em>從首頁提醒擴展為總體與個股兩個事件頁。</em></p></section>')
