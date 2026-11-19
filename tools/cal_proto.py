@@ -50,7 +50,7 @@ def proto():
       i=TK.index(first);tk=''.join(f'<span>{x}</span>' for x in TK[i:]+TK[:i])
       out+=(f'<div class="clp-acc{" is-open" if o else ""}"><button type="button" class="clp-acc__h" aria-expanded="{"true" if o else "false"}"><span>{d}{tag(t)}</span>'
             f'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>'
-            f'<div class="clp-tk">{tk}<button type="button" class="clp-tk__more" aria-label="展開全部代號">•••</button></div></div>')
+            f'<div class="clp-tk">{tk}<button type="button" class="clp-tk__more" aria-label="展開全部代號"><svg viewBox="0 0 16 4" aria-hidden="true"><circle cx="2" cy="2" r="2"/><circle cx="8" cy="2" r="2"/><circle cx="14" cy="2" r="2"/></svg></button></div></div>')
     return out
   four=(grp('道瓊工業指數成分股｜財報(預估)',[('2025/12/25','今日',1,'NVDA'),('2025/12/26','明日',0,'AAPL')])+grp('標普 500 指數成分股｜財報(預估)',[('2025/12/29','',0,'TSLA'),('2025/12/30','',0,'GOOG')])
         +grp('那斯達克綜合指數成分股｜財報(預估)',[('2025/12/31','',0,'MSFT')])+grp('羅素 2000 指數成分股｜財報(預估)',[('2026/01/05','',0,'META')]))

@@ -1421,8 +1421,9 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .clp-tk{display:flex;flex-wrap:wrap;gap:8px}
 .clp-tk span{height:28px;display:flex;align-items:center;padding:0 12px;border-radius:14px;background:#2C2C2C;border:.5px solid #444;color:#9A9A9A;font-size:14px}
 .clp-acc:not(.is-open) .clp-tk span:nth-child(n+8){display:none}
-.clp-acc.is-open .clp-tk__more{display:none}
-.clp-tk__more{padding:0 4px!important;color:#9A9A9A!important;letter-spacing:1px;font-size:14px}
+.clp-acc.is-open .clp-tk__more{display:none!important}
+.clp-tk__more{display:flex!important;align-items:center;height:28px;padding:0 4px!important;color:#9A9A9A!important}
+.clp-tk__more svg{width:16px;height:4px;fill:currentColor}
 .clp-sheet{position:absolute;inset:0;z-index:4;display:flex;align-items:flex-end;background:rgba(0,0,0,.55)}
 .clp-sheet[hidden]{display:none}
 .clp-sheet__c{width:100%;padding:24px 20px 40px;border-radius:16px 16px 0 0;background:#212121;animation:clpUp .3s ease}
