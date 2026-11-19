@@ -369,7 +369,7 @@
     function select(i){
       cur=i;prev={};n=0;imgI=0;
       [].forEach.call(tabs,function(t,j){t.setAttribute('aria-pressed',j===i?'true':'false')});
-      var p=P[i];sw.innerHTML=p.colors.map(function(c){return '<span style="background:'+c+'">'+c+'</span>'}).join('');
+      var p=P[i];sw.innerHTML=p.colors.map(function(c){return '<span style="--c:'+c+'">'+c+'</span>'}).join('');
       fx.innerHTML=p.fixed.map(function(f){return '<li>'+esc(f)+'</li>'}).join('');
       roll(true);
     }

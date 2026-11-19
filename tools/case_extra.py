@@ -311,23 +311,13 @@ def skill():
   demo=(f'<div class="sk-demo" data-personas="{data}">'
         f'<div class="sk-tabs" role="group" aria-label="選擇 Persona">{tabs}</div>'
         f'<div class="sk-demo__body"><div class="sk-panel">'
-        f'<div class="sk-box sk-box--fixed"><p class="sk-box__label">✦ 固定元素・不能變</p><div class="sk-sw"></div><ul class="sk-fixed"></ul></div>'
-        f'<div class="sk-box sk-box--var"><p class="sk-box__label">✦ 本次抽選・可以變 <span class="sk-run">第 1 次生成</span></p><dl class="sk-var"></dl>'
+        f'<div class="sk-box sk-box--fixed"><p class="sk-box__label"><b>Locked</b>固定元素・不能變</p><div class="sk-sw"></div><ul class="sk-fixed"></ul></div>'
+        f'<div class="sk-box sk-box--var"><p class="sk-box__label"><b>Rolled</b>本次抽選・可以變<span class="sk-run">第 1 次生成</span></p><dl class="sk-var"></dl>'
         f'<p class="sk-note">規則：上一次用過的選項，下一次一定換掉（previous_selections）。</p></div>'
-        f'<button type="button" class="jade-primary-button sk-roll"><span>重新抽選構圖</span><span class="jade-primary-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg></span></button>'
+        f'<div class="sk-rollwrap" data-theme="brand"><button type="button" class="jade-primary-button sk-roll"><span>重新抽選構圖</span><span class="jade-primary-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg></span></button></div>'
         f'</div><figure class="sk-out">{imgs}<figcaption>實際產出範例</figcaption></figure></div></div>')
-  rules=('<div class="sk-rules"><div class="sk-frame" aria-hidden="true"><span class="sk-frame__dim">1080 × 1080</span><span class="sk-frame__safe"><em>內容區 780 × 780</em>'
-         '<span class="sk-bar sk-bar--l1">LINE 1・5–6%</span><span class="sk-bar sk-bar--l2">LINE 2・12–15%</span><span class="sk-bar sk-bar--sub">副標・5–6%</span><span class="sk-bar sk-bar--cta">CTA・4–5%</span></span><span class="sk-frame__pad">150px 安全邊距</span></div>'
-         '<ul class="sk-rulelist">'
-         '<li><b>150px 安全邊距</b>四邊各留 150px 純背景，人物、面板、文字、光暈都不得超出內容區</li>'
-         '<li><b>文字用比例，不用形容詞</b>主標第二行佔畫面高 12–15%，副標 5–6%，避免 AI 把字縮到看不清</li>'
-         '<li><b>面板最多 3–4 個數據</b>數字要大、標籤 2–4 字，圖表佔面板 60% 以上，不塞密集表格</li>'
-         '<li><b>留出呼吸空間</b>副標與面板間距 ≥ 80px，CTA 底緣不低於 y=930</li></ul></div>')
-  zooms=[('zoom-text',1920,600,'中文標題清楚正確','AI 生圖最常出錯的就是中文字，主標、副標、關鍵字高亮都正確可讀。'),
-         ('zoom-face',1800,600,'同一張臉，不同場景','三種 Persona、三種光線，作者臉部特徵始終一致。'),
-         ('zoom-ui',900,1300,'介面細節可信','手機介面的數字、圖表、漲跌色都合理，像真的 App 畫面。')]
-  zm=''.join(f'<figure class="sk-zoom sk-zoom--{n.split("-")[1]}"><button type="button" class="sk-zoom__img" data-lb="zoom" aria-label="放大檢視：{t}">{pic(F+n,w,h,t)}</button><figcaption><b>{t}</b>{d}</figcaption></figure>' for n,w,h,t,d in zooms)
-  gal=''.join(f'<div class="sk-gcol"><p class="sk-gcol__name"><i style="background:{p["colors"][1]}"></i>Persona {p["id"][1]}<span>{p["name"]}</span></p>'+''.join(f'<button type="button" class="sk-gimg" data-lb="gal" aria-label="放大檢視：{p["name"]}">{pic(F+n,1200,1200,p["name"]+" 廣告圖")}</button>' for n in p['imgs'])+'</div>' for p in P5)
+  rules=f'<div class="sk-rules sk-rules--img"><figure class="sk-rules__img"><picture><source srcset="{P}{F}skill-01.webp" type="image/webp"><img src="{P}{F}skill-01.png" width="2400" height="2399" alt="1080×1080 畫布的安全邊距與文字比例示意" loading="lazy" decoding="async"></picture></figure>'+'<ul class="sk-rulelist">'+''.join(f'<li><b>{t}</b>{d}</li>' for t,d in [('150px 安全邊距','四邊各留 150px 純背景，人物、面板、文字、光暈都不得超出內容區'),('文字用比例，不用形容詞','主標第二行佔畫面高 12–15%，副標 5–6%，避免 AI 把字縮到看不清'),('面板最多 3–4 個數據','數字要大、標籤 2–4 字，圖表佔面板 60% 以上，不塞密集表格'),('留出呼吸空間','副標與面板間距 ≥ 80px，CTA 底緣不低於 y=930')])+'</ul></div>'
+  gal=''.join(f'<figure class="hcar__item sk-pitem"><p class="sk-gcol__name"><i style="background:{p["colors"][1]}"></i>Persona {p["id"][1]}<span>{p["name"]}</span></p><div class="sk-pimgs">'+''.join(f'<button type="button" class="sk-gimg" data-lb="gal" aria-label="放大檢視：{p["name"]}">{pic(F+n,1200,1200,p["name"]+" 廣告圖")}</button>' for n in p['imgs'])+'</div></figure>' for p in P5)
   return (
     f'<section class="cs-sec">{sh("Context","The Ad Loop","廣告閉環","團隊用四個 AI Agent 串起廣告從產出、投放到成效追蹤的閉環。我負責其中的 Agent B：把每個 Persona 轉成 AI 能穩定執行的視覺規則，自動產出廣告圖。")}<ol class="sk-loop">{loop}</ol></section>'
     f'<section class="cs-sec ch-problem">{sh("The problem","The AI Dilemma","AI 生圖的兩難")}'
@@ -336,8 +326,7 @@ def skill():
     f'<div class="sk-layers">{ly}</div><p class="sk-loopnote">✦ 每次抽選結果回傳 Agent D 存檔，下次由 Agent A 帶入 previous_selections，構圖保證不重複。</p></section>'
     f'<section class="cs-sec">{sh("Try it","Roll the Skill","試玩 Skill","選一個 Persona，按下「重新抽選構圖」，看看哪些元素固定、哪些每次都換。")}{demo}</section>'
     f'<section class="cs-sec">{sh("Art direction","Rules in the Prompt","把版面規範寫進 prompt","AI 最常犯的錯是字太小、元素貼邊、資料塞太滿，所以我把設計師的版面判斷寫成量化規則，每份 prompt 都必須帶上。")}{rules}</section>'
-    f'<section class="cs-sec">{sh("Quality","Ready to Publish","成品就能直接投放","點擊圖片可放大檢視細節。")}<div class="sk-zooms">{zm}</div></section>'
-    f'<section class="cs-sec">{sh("Results","Five Personas","五種 Persona 成果","同一個 Persona 色系風格一致，構圖每次不同。")}<div class="sk-gallery">{gal}</div></section>'
+    f'<section class="cs-sec">{sh("Results","Five Personas","五種 Persona 成果","同一個 Persona 色系風格一致，構圖每次不同。")}<div class="hcar sk-pcar"><div class="hcar__track">{gal}</div><div class="kl-dots hcar__dots"></div></div></section>'
     f'<section class="cs-sec ch-result">{sh("Outcome","What Happened Next","後續成果")}<p class="ch-big ch-big--sm">同 Persona 保持色系風格一致、構圖隨機，<em>解決素材重複疲勞，又不破壞品牌感。</em></p></section>'
   )
 

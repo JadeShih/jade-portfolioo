@@ -1309,3 +1309,37 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .cl-order li::before{content:counter(o);display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#A99BFF;color:#16143A;font-size:12px}
 .hcar__item figcaption small{display:block;margin-top:4px;color:#9C99AB;font-size:12.5px;font-weight:400;letter-spacing:0}
 @media (max-width:1000px){.cl-timeline{grid-template-columns:repeat(2,minmax(0,1fr))}.cl-timeline::before{display:none}.cl-rules,.cl-pains{grid-template-columns:minmax(0,1fr)!important}}
+/* 14 試玩面板：改用 DS 貼紙卡片語彙 */
+.sk-box{position:relative;padding:clamp(20px,2.2vw,28px);border:3px solid #16143A;border-radius:26px;box-shadow:6px 6px 0 #16143A;color:#16143A}
+.sk-box--fixed{background:#7DE3FF}
+.sk-box--var{background:#FFD12A;border-color:#16143A}
+.sk-box__label{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;margin:0 0 16px;color:#16143A;font:700 14px/1.3 "Noto Sans TC",sans-serif;letter-spacing:0}
+.sk-box__label b{font:400 clamp(26px,2.4vw,34px)/1 var(--font-brand);letter-spacing:.02em;text-transform:uppercase}
+.sk-run{margin-left:auto;padding:4px 12px;border-radius:999px;background:#16143A;color:#FFD12A;font-weight:700;font-size:12px}
+.sk-sw{gap:10px;margin-bottom:14px}
+.sk-sw span{width:auto;height:auto;padding:8px 12px 8px 36px;position:relative;border-radius:999px;background:#fff!important;box-shadow:inset 0 0 0 2px #16143A;color:#16143A;text-shadow:none;font:700 12px/1 ui-monospace,monospace}
+.sk-sw span::before{content:"";position:absolute;left:8px;top:50%;width:20px;height:20px;border-radius:50%;transform:translateY(-50%);background:var(--c);box-shadow:inset 0 0 0 2px #16143A}
+.sk-fixed li{padding-left:22px;color:#16143A;font-weight:600}
+.sk-fixed li::before{content:"✦";top:0;font-size:13px;color:#16143A}
+.sk-var{gap:10px 14px}
+.sk-var dt{color:#16143A;opacity:.65;font-weight:600}
+.sk-var dd{color:#16143A;font-weight:900}
+.sk-var dd.is-new{animation:sk-pop .5s var(--ease)}
+@keyframes sk-pop{0%{transform:scale(.92);opacity:.3}100%{transform:none;opacity:1}}
+.sk-note{color:#16143A;opacity:.7}
+.sk-roll{margin-top:6px}
+.sk-out img{border:3px solid #16143A;box-shadow:8px 8px 0 #A99BFF}
+/* 版面規範改用圖 */
+.sk-rules__img{margin:0;max-width:480px;width:100%;justify-self:center}
+.sk-rules__img img{display:block;width:100%;height:auto}
+/* 五種 Persona 輪播（一次兩個） */
+.sk-pcar{--per:2;margin-top:clamp(28px,4vw,44px)}
+.sk-pitem{display:grid;gap:14px;align-content:start}
+.sk-pitem figcaption{display:none}
+.sk-pimgs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.2vw,16px)}
+.sk-pitem .sk-gcol__name{font-size:15px}
+.sk-pitem .sk-gcol__name span{font-size:17px}
+@media (max-width:700px){.sk-pcar{--per:1.1}}
+.sk-rollwrap{justify-self:start;background:none!important;padding:6px 0 0}
+/* 詳細頁內的 DS 主要按鈕不被 .cs-sec button 重設蓋掉 */
+.cs-sec .jade-primary-button{background:var(--jade-comp-primary-button-container-color);color:var(--jade-comp-primary-button-label-text-color);padding:var(--jade-comp-primary-button-container-padding,0 4px 0 24px);cursor:pointer;font:600 17px/24px var(--font-plain);border-radius:999px;min-height:48px}
