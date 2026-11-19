@@ -376,3 +376,49 @@
     select(0);
   });
 })();
+/* 15 可操作原型：等比縮放、頁籤切換、首頁 → 事件頁、篩選與展開、滑鼠拖曳捲動 */
+(function(){
+  [].forEach.call(document.querySelectorAll('.clp'),function(root){
+    var fit=root.querySelector('.clp-fit'),app=root.querySelector('.clp-app'),
+        home=app.querySelector('[data-view="home"]'),ev=app.querySelector('[data-view="ev"]'),seg='eco';
+    function size(){app.style.setProperty('--s',fit.clientWidth/390)}
+    size();if('ResizeObserver' in window)new ResizeObserver(size).observe(fit);else window.addEventListener('resize',size);
+    function pick(btns,attr,v,aria){[].forEach.call(btns,function(b){b.setAttribute(aria,b.getAttribute(attr)===v?'true':'false')})}
+    function setSeg(v){seg=v;pick(home.querySelectorAll('[data-seg]'),'data-seg',v,'aria-selected');
+      [].forEach.call(home.querySelectorAll('[data-pane]'),function(p){p.hidden=p.getAttribute('data-pane')!==v})}
+    function setTab(v){pick(ev.querySelectorAll('[data-tab]'),'data-tab',v,'aria-selected');
+      [].forEach.call(ev.querySelectorAll('[data-tpane]'),function(p){p.hidden=p.getAttribute('data-tpane')!==v;p.scrollTop=0})}
+    function open(v){setTab(v);app.classList.add('is-ev');ev.removeAttribute('aria-hidden');home.setAttribute('aria-hidden','true')}
+    function back(){app.classList.remove('is-ev');home.removeAttribute('aria-hidden');ev.setAttribute('aria-hidden','true');ev.querySelector('.clp-sheet').hidden=true}
+    var suppress=false;
+    app.addEventListener('click',function(e){
+      if(suppress){e.preventDefault();e.stopPropagation();suppress=false;return}
+      var t=e.target.closest('button');if(!t||!app.contains(t))return;
+      if(t.hasAttribute('data-seg'))return setSeg(t.getAttribute('data-seg'));
+      if(t.hasAttribute('data-go')){var g=t.getAttribute('data-go');return open(g==='cur'?seg:g)}
+      if(t.classList.contains('clp-back'))return back();
+      if(t.classList.contains('clp-info')){ev.querySelector('.clp-sheet').hidden=false;return}
+      if(t.classList.contains('clp-sheet__x'))return void(ev.querySelector('.clp-sheet').hidden=true);
+      if(t.hasAttribute('data-tab'))return setTab(t.getAttribute('data-tab'));
+      if(t.hasAttribute('data-f')){var f=t.getAttribute('data-f');pick(ev.querySelectorAll('[data-f]'),'data-f',f,'aria-pressed');
+        [].forEach.call(ev.querySelectorAll('[data-g]'),function(g){g.hidden=g.getAttribute('data-g')!==f});return}
+      if(t.classList.contains('clp-acc__h')||t.classList.contains('clp-tk__more')){var a=t.closest('.clp-acc'),o=!a.classList.contains('is-open');
+        if(t.classList.contains('clp-tk__more'))o=true;a.classList.toggle('is-open',o);a.querySelector('.clp-acc__h').setAttribute('aria-expanded',o?'true':'false')}
+    },true);
+    ev.querySelector('.clp-sheet').addEventListener('click',function(e){if(e.target===this)this.hidden=true});
+    /* 滑鼠拖曳：data-dx 橫向、data-dy 縱向；拖過就不觸發點擊 */
+    var drag=null;
+    app.addEventListener('pointerdown',function(e){
+      if(e.pointerType!=='mouse'||e.button!==0)return;
+      var x=e.target.closest('[data-dx]'),y=e.target.closest('[data-dy]');if(!x&&!y)return;
+      drag={x:x,y:y,sx:e.clientX,sy:e.clientY,l:x?x.scrollLeft:0,t:y?y.scrollTop:0,axis:null,s:parseFloat(getComputedStyle(app).getPropertyValue('--s'))||1};
+    });
+    window.addEventListener('pointermove',function(e){
+      if(!drag)return;var dx=(e.clientX-drag.sx)/drag.s,dy=(e.clientY-drag.sy)/drag.s;
+      if(!drag.axis){if(Math.max(Math.abs(dx),Math.abs(dy))<5)return;drag.axis=(drag.x&&Math.abs(dx)>Math.abs(dy))||!drag.y?'x':'y';app.classList.add('is-drag')}
+      if(drag.axis==='x'&&drag.x)drag.x.scrollLeft=drag.l-dx;if(drag.axis==='y'&&drag.y)drag.y.scrollTop=drag.t-dy;
+      e.preventDefault();
+    });
+    window.addEventListener('pointerup',function(){if(drag&&drag.axis)suppress=true;setTimeout(function(){suppress=false},0);drag=null;app.classList.remove('is-drag')});
+  });
+})();

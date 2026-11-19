@@ -330,6 +330,8 @@ def skill():
     f'<section class="cs-sec ch-result">{sh("Outcome","What Happened Next","後續成果")}<p class="ch-big ch-big--sm">同 Persona 保持色系風格一致、構圖隨機，<em>解決素材重複疲勞，又不破壞品牌感。</em></p></section>'
   )
 
+from cal_proto import proto
+GUIDE=[('Swipe', '左右滑動', '美股行事曆與關鍵日程的卡片都可以橫向滑動。'), ('Switch', '切換頁籤', '在「經濟數據／個股財報」之間切換，卡片內容會跟著換。'), ('Tap ›', '進入事件頁', '點右側箭頭或任一張卡片，進到「重要事件」完整列表。'), ('Filter', '篩選與展開', '個股財報可依指數成分股、自選股篩選，代號太多時點「•••」展開。')]
 def cal():
   # 15 美股事件行事曆：成長時間軸 → 資訊規則 → 密度情境與狀態
   F='work-15-calendar/m-'
@@ -351,22 +353,17 @@ def cal():
     '<div class="cl-tz"><div><span>資料庫・台灣時間</span><b>11/25 02:00</b></div><i aria-hidden="true">→</i><div><span>冬令 −13 小時</span><b>11/24 13:00</b></div><i aria-hidden="true">→</i><div class="is-out"><span>App 顯示</span><b>11/24 ET 01:00 PM</b></div></div>'
     '<p>夏令時差 12 小時、冬令 13 小時；時間後方一律標註 ET，避免用戶誤判。</p></article>'
     '<article class="cl-rule"><p class="cl-rule__no">Rule 02</p><h3>顯示區間<small>只在需要的時候出現</small></h3>'
-    '<div class="cl-range" aria-hidden="true"><span style="--i:0">D−4</span><span style="--i:1">D−3</span><span style="--i:2">D−2</span><span style="--i:3">D−1</span><span style="--i:4" class="is-d">D</span><span style="--i:5">D+1</span></div>'
+    '<div class="cl-range" aria-hidden="true"><span style="--i:0">D−4</span><span style="--i:1">D−3</span><span style="--i:2">D−2</span><span style="--i:3">D−1</span><span style="--i:4" class="is-d">Today</span><span style="--i:5">D+1</span></div>'
     '<p>事件從公布日前 4 天開始出現、公布後 1 天消失；首頁空間有限，只放近期真正需要注意的事。</p></article>'
     '<article class="cl-rule"><p class="cl-rule__no">Rule 03</p><h3>排序與同時發生<small>時間優先，同時則依重要性</small></h3>'
     '<ol class="cl-order"><li>CPI</li><li>非農</li><li>聯準會會議</li><li>GDP</li></ol>'
     '<p>依公布時間由早到晚排列；時間相同時，依 CPI → 非農 → 聯準會 → GDP 的固定順序。</p></article>'
     '<article class="cl-rule"><p class="cl-rule__no">Rule 04</p><h3>沒資料時<small>不讓空區塊佔位</small></h3>'
-    '<p>某一類事件沒有資料時，只保留標題並寫明「近期無休市及提早收盤日」，讓入口還在、但不浪費首頁空間。</p></article>')
-  dens=[('事件很多','many','未來 30 天事件密集，左右滑動瀏覽'),('事件一般','normal','只有一筆休市時，卡片撐滿整列'),
-        ('只有市場事件','market','經濟數據區只留標題與說明'),('只有經濟數據','eco','行事曆區只留標題與說明'),
-        ('兩類都沒有','empty','兩個區塊都收合成單行'),('英文版','en','長字串與日期格式另外檢查')]
-  dn=''.join(f'<figure class="hcar__item"><div class="hcar__img">{m(c,x)}</div><figcaption>{x}<small>{d}</small></figcaption></figure>' for x,c,d in dens)
+    '<div class="cl-empty" aria-hidden="true"><b>美股行事曆</b><span>近期無休市及提早收盤日</span></div><p>某一類事件沒有資料時，只保留標題並寫明「近期無休市及提早收盤日」，讓入口還在、但不浪費首頁空間。</p></article>')
   return (
     f'<section class="cs-sec ch-problem">{sh("The problem","Missing the Market","錯過關鍵時刻")}'
     f'<p class="ch-big">美股看消息吃飯，<em>但消息散落各處。</em></p><div class="ch-pains cl-pains">{ph}</div></section>'
     f'<section class="cs-sec">{sh("Evolution","From a Strip to a Calendar","從一條提醒到一整套行事曆","先在首頁用最小的版位驗證需求，再逐步擴展成總體事件頁與個股事件頁。")}<div class="cl-timeline">{tl}</div></section>'
+    f'<section class="cs-sec cl-proto-sec">{sh("Prototype","Try It Yourself","實際操作看看","把首頁與事件頁串成可以操作的原型：滑動、切換、點進去、再返回。")}<div class="cl-proto">{proto()}<ol class="cl-guide">'+''.join(f'<li><span>{a}</span><b>{b}</b>{c}</li>' for a,b,c in GUIDE)+'</ol></div></section>'
     f'<section class="cs-sec">{sh("The rules","Designing the Logic","資訊規則設計","這個功能的難點不在畫面，而在「什麼時候、用什麼格式、顯示哪一筆」。我把這些規則逐條定義，交給工程直接實作。")}<div class="cl-rules">{rules}</div></section>'
-    f'<section class="cs-sec">{sh("Every scenario","Full or Empty","不同資料量下的畫面","事件數量每天都在變，我依資料多寡設計了不同版本，確保首頁不論多滿或多空都不會跑版。")}'
-    f'<div class="hcar"><div class="hcar__track">{dn}</div><div class="kl-dots hcar__dots"></div></div></section>'
     f'<section class="cs-sec ch-result">{sh("Outcome","What Happened Next","後續成果")}<p class="ch-big ch-big--sm">分階段規劃與交付，<em>從首頁提醒擴展為總體與個股兩個事件頁。</em></p></section>')

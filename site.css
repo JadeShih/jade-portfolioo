@@ -1343,3 +1343,120 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .sk-rollwrap{justify-self:start;background:none!important;padding:6px 0 0}
 /* 詳細頁內的 DS 主要按鈕不被 .cs-sec button 重設蓋掉 */
 .cs-sec .jade-primary-button{background:var(--jade-comp-primary-button-container-color);color:var(--jade-comp-primary-button-label-text-color);padding:var(--jade-comp-primary-button-container-padding,0 4px 0 24px);cursor:pointer;font:600 17px/24px var(--font-plain);border-radius:999px;min-height:48px}
+/* 15 可操作原型：390×844 設計稿等比縮放進手機框 */
+.cl-proto{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center;margin-top:clamp(28px,4vw,44px)}
+.clp-phone{position:relative;padding:11px;border-radius:52px;background:#0C0B10;box-shadow:0 0 0 2px #3A3846 inset,0 24px 60px rgba(0,0,0,.45)}
+.clp-phone__island{position:absolute;z-index:5;top:20px;left:50%;width:28%;height:24px;transform:translateX(-50%);border-radius:20px;background:#0C0B10}
+.clp-fit{position:relative;width:100%;aspect-ratio:390/844;overflow:hidden;border-radius:41px;background:#141414}
+.clp-app{position:absolute;left:0;top:0;width:390px;height:844px;transform-origin:0 0;transform:scale(var(--s,.86));font-family:"Noto Sans TC",-apple-system,sans-serif;color:#fff;-webkit-font-smoothing:antialiased}
+.clp-app button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.clp-view{position:absolute;inset:0;display:flex;flex-direction:column;background:#141414;transition:transform .38s cubic-bezier(.2,.8,.2,1)}
+.clp-view--ev{transform:translateX(100%);box-shadow:-12px 0 30px rgba(0,0,0,.4)}
+.clp-app.is-ev .clp-view--ev{transform:none}
+.clp-app.is-ev .clp-view--home{transform:translateX(-28%)}
+.clp-top,.clp-tab{display:block;flex:none;width:390px}
+.clp-top img,.clp-tab img{display:block;width:100%;height:auto;-webkit-user-drag:none;pointer-events:none}
+.clp-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding:12px 12px 20px;cursor:grab;user-select:none;-webkit-user-select:none}
+.clp-body::-webkit-scrollbar,.clp-x::-webkit-scrollbar,.clp-flt::-webkit-scrollbar{display:none}
+.clp-h{display:flex;align-items:center;justify-content:space-between;margin:4px 0 12px}
+.clp-h h4{display:flex;align-items:center;gap:8px;margin:0;font:400 14px/20px "Noto Sans TC",sans-serif;color:#fff}
+.clp-h h4 i{width:4px;height:20px;border-radius:2px;background:#9D8AFF}
+.clp-h span{font-size:12px;color:#9A9A9A}
+.clp-x{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -12px 20px;padding:0 12px;cursor:grab}
+.clp-x[hidden]{display:none}
+.clp-chip{flex:none;display:flex;align-items:center;gap:4px;height:42px;padding:0 8px;border-radius:8px;background:#212121;font-size:14px;white-space:nowrap}
+.clp-chip b{padding:2px 6px;border-radius:9px;background:#4A4A4A;font-size:12px;font-weight:700;line-height:14px}
+.clp-chip b.r{background:#F44648}
+.clp-seg{display:flex;align-items:center;justify-content:space-between;margin:-2px 0 10px}
+.clp-seg__g{display:flex;gap:2px;padding:2px;border-radius:14px;background:#212121}
+.clp-seg__g button{padding:4px 8px;border-radius:12px;font-size:12px;line-height:16px;color:#9A9A9A}
+.clp-seg__g button[aria-selected="true"]{background:#322F40;color:#9D8AFF}
+.clp-more{display:grid;place-items:center;width:24px;height:24px;color:#fff}
+.clp-more svg{width:18px;height:18px}
+.clp-app .clp-card{flex:none;display:grid;gap:8px;width:160px;padding:12px 16px;border-radius:8px;background:#212121;text-align:left}
+.clp-app .clp-card--s{width:100px}
+.clp-card b{font-size:14px;line-height:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.clp-card small{font-size:12px;line-height:14px;color:#9A9A9A;white-space:nowrap}
+.clp-app .clp-card:active{background:#2C2C2C}
+.clp-tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px}
+.clp-tile{height:111px;padding:12px;border-radius:8px;background:#212121;display:grid;align-content:start;gap:2px}
+.clp-tile small{font-size:12px;color:#9A9A9A}
+.clp-tile>b{font:500 16px/19px -apple-system,"Helvetica Neue",sans-serif;margin-bottom:2px}
+.clp-tile__row{display:flex;align-items:flex-end;justify-content:space-between}
+.clp-tile__row p{margin:0;font:400 16px/21px -apple-system,"Helvetica Neue",sans-serif}
+.clp-app .up{color:#F84444}.clp-app .dn{color:#47AB75}.clp-app .pos{color:#47AB75}.clp-app .neg{color:#F84444}
+.clp-spark{width:86px;height:43px}
+.clp-rows{display:grid;gap:8px}
+.clp-row{height:46px;display:flex;align-items:center;padding:0 12px;border-radius:8px;background:#212121;font-size:14px}
+.clp-back,.clp-info{position:absolute;z-index:2;top:44px;width:56px;height:44px}
+.clp-back{left:0}.clp-info{right:0}
+.clp-tabs{flex:none;display:grid;grid-template-columns:1fr 1fr;height:40px;padding:0 12px;background:#212121}
+.clp-tabs button{font-size:16px;color:#9A9A9A;border-bottom:3px solid transparent!important}
+.clp-tabs button[aria-selected="true"]{color:#9D8AFF;border-bottom-color:#9D8AFF!important}
+.clp-body[hidden]{display:none}
+.clp-list{display:grid;gap:12px;padding-top:8px}
+.clp-ev{padding:12px;border-radius:8px;background:#212121}
+.clp-ev.is-past{opacity:.55}
+.clp-ev__d{display:flex;align-items:center;gap:6px;margin:0 0 12px;font-size:14px;color:#9A9A9A;white-space:pre}
+.clp-tag{padding:0 3px;border:.5px solid #9A9A9A;border-radius:2px;font-size:12px;line-height:16px;color:#9A9A9A}
+.clp-tag.is-today{border-color:#47AB75;color:#47AB75;background:rgba(71,171,117,.3)}
+.clp-ev h5{display:flex;align-items:center;gap:8px;margin:0;font:600 16px/20px "Noto Sans TC",sans-serif}
+.clp-ev h5::before{content:"";width:4px;height:20px;border-radius:2px;background:#9D8AFF}
+.clp-stat{display:grid;grid-template-columns:repeat(3,1fr);margin:12px 0 0;padding:8px 0;border-radius:6px;background:#2C2C2C}
+.clp-stat div{padding:0 16px;display:grid;gap:4px}
+.clp-stat div+div{border-left:1px solid #3D3D3D}
+.clp-stat dt{font-size:14px;color:#9A9A9A}
+.clp-stat dd{margin:0;font:600 16px/20px -apple-system,"Helvetica Neue",sans-serif}
+.clp-flt{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -12px 16px;padding:0 12px;cursor:grab}
+.clp-flt button{flex:none;height:28px;padding:0 8px;border-radius:4px;background:#212121;color:#9A9A9A;font-size:16px;white-space:nowrap}
+.clp-flt button[aria-pressed="true"]{background:#9D8AFF;color:#141414;font-weight:600}
+.clp-g[hidden]{display:none}
+.clp-gt{margin:4px 0 12px;font:600 16px/22px "Noto Sans TC",sans-serif}
+.clp-acc{margin-bottom:20px;padding:12px;border-radius:8px;background:#212121}
+.clp-acc+.clp-acc{margin-top:-12px}
+.clp-acc__h{display:flex!important;width:100%;align-items:center;justify-content:space-between;margin-bottom:12px!important}
+.clp-acc__h>span{display:flex;align-items:center;gap:6px;font-size:14px;color:#fff}
+.clp-acc__h svg{width:20px;height:20px;transition:transform .25s}
+.clp-acc.is-open .clp-acc__h svg{transform:rotate(180deg)}
+.clp-tk{display:flex;flex-wrap:wrap;gap:8px}
+.clp-tk span{height:28px;display:flex;align-items:center;padding:0 12px;border-radius:14px;background:#2C2C2C;border:.5px solid #444;color:#9A9A9A;font-size:14px}
+.clp-acc:not(.is-open) .clp-tk span:nth-child(n+8){display:none}
+.clp-acc.is-open .clp-tk__more{display:none}
+.clp-tk__more{padding:0 4px!important;color:#9A9A9A!important;letter-spacing:1px;font-size:14px}
+.clp-sheet{position:absolute;inset:0;z-index:4;display:flex;align-items:flex-end;background:rgba(0,0,0,.55)}
+.clp-sheet[hidden]{display:none}
+.clp-sheet__c{width:100%;padding:24px 20px 40px;border-radius:16px 16px 0 0;background:#212121;animation:clpUp .3s ease}
+.clp-sheet__c h5{margin:0 0 6px;font:600 16px/22px "Noto Sans TC",sans-serif}
+.clp-sheet__c p{margin:0 0 18px;font-size:14px;line-height:1.6;color:#B5B5B5}
+.clp-sheet__x{width:100%;height:44px;border-radius:22px!important;background:#9D8AFF!important;color:#141414!important;font-weight:600!important}
+@keyframes clpUp{from{transform:translateY(100%)}}
+.clp-app .is-drag,.clp-app .is-drag *{cursor:grabbing!important}
+.cl-guide{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:g}
+.cl-guide li{display:grid;gap:4px;padding:18px 22px;border-radius:22px;border:2px solid #34323F;color:#B9B6C8;font-size:14.5px;line-height:1.6}
+.cl-guide span{justify-self:start;padding:3px 12px;border-radius:999px;background:#A99BFF;color:#16143A;font:400 13px/1.2 var(--font-brand);letter-spacing:.08em;text-transform:uppercase}
+.cl-guide b{color:#fff;font:900 18px/1.4 "Noto Sans TC",sans-serif;margin-top:4px}
+@media (max-width:820px){.cl-proto{grid-template-columns:minmax(0,1fr)}.clp{max-width:340px;width:100%;margin-inline:auto}}
+@media (prefers-reduced-motion:reduce){.clp-view{transition:none}.clp-sheet__c{animation:none}}
+/* 15 規則卡：改用 DS 語言（實色底＋墨色粗框＋位移陰影） */
+.cl-rule{border:3px solid #16143A;border-radius:26px;box-shadow:6px 6px 0 #16143A;color:#16143A;background:#7DE3FF}
+.cl-rule:nth-child(2){background:#FFD12A}
+.cl-rule:nth-child(3){background:#FF7AC6}
+.cl-rule:nth-child(4){background:#A99BFF}
+.cl-rule__no{display:flex;align-items:center;gap:8px;color:#16143A;font-size:15px}
+.cl-rule__no::before{content:"✦"}
+.cl-rule h3{color:#16143A}
+.cl-rule h3 small{color:#16143A;opacity:.75}
+.cl-rule>p{color:#16143A;opacity:.85}
+.cl-tz div{background:#fff;border:2px solid #16143A;border-radius:12px}
+.cl-tz span{color:#16143A;opacity:.6}
+.cl-tz b{color:#16143A}
+.cl-tz .is-out{background:#16143A}.cl-tz .is-out span{color:#C2FF0A;opacity:1}.cl-tz .is-out b{color:#C2FF0A}
+.cl-tz i{color:#16143A;font-weight:700}
+.cl-range span{background:#fff;border:2px solid #16143A;border-radius:10px;color:#16143A}
+.cl-range .is-d{background:#16143A;color:#C2FF0A;font-family:var(--font-brand);font-weight:400;font-size:15px;letter-spacing:.04em}
+.cl-order li{border-radius:12px;background:#fff;border:2px solid #16143A;color:#16143A}
+.cl-order li::before{background:#16143A;color:#FF7AC6;border-radius:6px}
+.cl-empty{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-radius:12px;background:#fff;border:2px solid #16143A;font-size:14px}
+.cl-empty b{display:flex;align-items:center;gap:8px;color:#16143A}
+.cl-empty b::before{content:"";width:4px;height:18px;border-radius:2px;background:#A99BFF;outline:1.5px solid #16143A}
+.cl-empty span{color:#16143A;opacity:.6;font-size:13px}

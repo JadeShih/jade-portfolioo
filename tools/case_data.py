@@ -157,7 +157,7 @@ CASES={
   tags=['UI/UX','YouTuber Mike是麥克','功能規劃'],tagline='',
   cover='work-15-calendar/cover',cover_w=2400,cover_h=1500,cover_alt='美股事件行事曆：首頁提醒、總體事件頁與個股事件頁',
   meta=[('Client','YouTuber Mike是麥克'),('Role','UI/UX 設計・功能規劃'),('Deliverables','美股事件行事曆・UI Spec'),('Year','2025–2026')],
-  overview='<p>台灣投資人對美股的休市、總經數據與財報時間掌握度不足，資訊分散在不同平台，時區換算也容易出錯。</p><p>我從首頁的一條提醒開始規劃，分階段擴展成總體事件頁與個股事件頁，並逐條定義時區換算、顯示區間、排序與空資料等規則，連同各種資料量的畫面一起交付工程。</p>',
+  overview='<p>台灣投資人對美股的休市、總經數據與財報時間掌握度不足，資訊分散在不同平台，時區換算也容易出錯。</p><p>我們從首頁的一條提醒開始規劃，分階段擴展成總體事件頁與個股事件頁，並逐條定義時區換算、顯示區間、排序與空資料等規則，連同各種資料量的畫面一起交付工程。</p>',
   cards=[],gallery_style='none',gallery=[],extra=case_extra.cal(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
