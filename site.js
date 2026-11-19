@@ -350,3 +350,31 @@
     if(tag){scr.addEventListener('mouseenter',function(){tag.textContent='DRAG ↕';y.classList.add('is-drag')});scr.addEventListener('mouseleave',function(){tag.textContent='YOU';y.classList.remove('is-drag')})}
   });
 })();
+
+/* 14 Prompt Skill 試玩：選 Persona → 顯示固定元素；按「重新抽選構圖」→ 每個維度換成和上次不同的選項 */
+(function(){
+  [].forEach.call(document.querySelectorAll('.sk-demo'),function(demo){
+    var P;try{P=JSON.parse(demo.getAttribute('data-personas'))}catch(e){return}
+    var tabs=demo.querySelectorAll('.sk-tab'),sw=demo.querySelector('.sk-sw'),fx=demo.querySelector('.sk-fixed'),
+        dl=demo.querySelector('.sk-var'),run=demo.querySelector('.sk-run'),pics=demo.querySelectorAll('.sk-out__img'),
+        cur=0,prev={},n=0,imgI=0;
+    function pick(arr,not){var c=arr.filter(function(x){return x!==not});if(!c.length)c=arr;return c[Math.floor(Math.random()*c.length)]}
+    function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+    function showImg(){var p=P[cur],name=p.imgs[imgI%p.imgs.length];[].forEach.call(pics,function(el){el.hidden=el.getAttribute('data-src')!==name})}
+    function roll(first){
+      var p=P[cur],html='';n++;run.textContent='第 '+n+' 次生成';
+      Object.keys(p.dims).forEach(function(k){var v=pick(p.dims[k],first?null:prev[k]);prev[k]=v;html+='<dt>'+esc(k)+'</dt><dd class="is-new">'+esc(v)+'</dd>'});
+      dl.innerHTML=html;if(!first)imgI++;showImg();
+    }
+    function select(i){
+      cur=i;prev={};n=0;imgI=0;
+      [].forEach.call(tabs,function(t,j){t.setAttribute('aria-pressed',j===i?'true':'false')});
+      var p=P[i];sw.innerHTML=p.colors.map(function(c){return '<span style="background:'+c+'">'+c+'</span>'}).join('');
+      fx.innerHTML=p.fixed.map(function(f){return '<li>'+esc(f)+'</li>'}).join('');
+      roll(true);
+    }
+    [].forEach.call(tabs,function(t,j){t.addEventListener('click',function(){select(j)})});
+    demo.querySelector('.sk-roll').addEventListener('click',function(){roll(false)});
+    select(0);
+  });
+})();

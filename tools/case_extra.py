@@ -220,7 +220,7 @@ def dm():
 def vip():
   # 12 免費場轉 VIP 場：沿用 06 聊天室搜尋頁的架構（問題 → User Stories → 解法緞帶 → 設計決策 → 邊界情境／狀態 → 成果）
   import re as _re
-  F='work-12-vip/'
+  F='work-13-vip/'
   def png(n,w,h,alt): return f'<picture><source srcset="{P}{F}{n}.webp" type="image/webp"><img src="{P}{F}{n}.png" width="{w}" height="{h}" alt="{html.escape(alt)}" loading="lazy" decoding="async"></picture>'
   def m(n,alt): return pic(F+'web-'+n,1170,2532,alt) if n in ('03','04') else png('web-'+n,1170,2532,alt)
   def sh(eb,en,zh,lead=''):
@@ -276,4 +276,67 @@ def vip():
     f'<section class="cs-sec">{sh("Key decisions","Design Decisions","關鍵設計決策")}{decs}</section>'
     f'<section class="cs-sec">{sh("Edge cases","Three Tricky Moments","三個邊界情境","切換時間不固定、入口頁又不是即時刷新，最容易讓用戶困惑的就是這三個時刻。")}<div class="ch-users vp-edges">{ed}</div></section>'
     f'<section class="cs-sec ch-result">{sh("Outcome","What Happened Next","後續成果")}<p class="ch-big ch-big--sm">一場直播同時完成曝光與轉換，<em>不再依賴 YouTube 導流。</em></p></section>'
+  )
+
+def skill():
+  # 14 AI 廣告圖 Prompt Skill（Playground）：閉環背景 → 兩難 → 三層架構 → 互動試玩 → 版面規範 → 成品品質 → 五個 Persona
+  import json as _json
+  F='work-14-skill/web-'
+  def sh(eb,en,zh,lead=''):
+    l=f'<p class="cs-sec__lead">{lead}</p>' if lead else ''
+    return f'<header class="cs-sec__head"><p class="eyebrow">{eb}</p><h2 class="cs-sec__title">{en}<small>{zh}</small></h2>{l}</header>'
+  agents=[('A','Mike 大腦','給予內容','團隊'),('B','生成圖片','Prompt Skill・自動產圖','我負責'),('C','投放 Google','後台執行','團隊'),('D','追蹤成效','分析結果、建議行動','團隊')]
+  loop=''.join(f'<li class="sk-agent{" is-me" if k=="B" else ""}"><span class="sk-agent__tag">{who}</span><b>Agent {k}</b><strong>{t}</strong><small>{d}</small></li>'+('<li class="sk-agent__arrow" aria-hidden="true">→</li>' if k!='D' else '') for k,t,d,who in agents)
+  pains=[('01','每次都一樣','同一套 prompt 反覆產圖，構圖、角度都相同，受眾很快就看膩，廣告素材疲勞。'),
+         ('02','每次都亂變','放任 AI 自由發揮，色系、風格、文字大小每張都不同，品牌感直接走鐘。')]
+  ph=''.join(f'<article class="ch-pain"><span class="ch-pain__no">{n}</span><h3>{t}</h3><p>{d}</p></article>' for n,t,d in pains)
+  layers=[('lime','Persona 固定元素','不能變的','每個 Persona 一套固定規格：色系、背景公式、面板風格、是否使用作者照片、禁用色。','確保品牌一致'),
+          ('cyan','Variation Pool','可以怎麼變','構圖、鏡頭角度、光線、面板數量與排列、人物姿勢、文字對齊、CTA 樣式等 9 個維度，每次各抽一個。','確保視覺多樣'),
+          ('pink','規則與模板','怎麼變','通用構圖規則＋各 Persona 專屬 prompt 模板，組裝成完整英文 prompt 並以 JSON 輸出。','確保穩定可執行')]
+  ly=''.join(f'<article class="sk-layer" data-tone="{t}"><p class="sk-layer__no">Layer {i+1}</p><h3>{a}<small>負責「{b}」</small></h3><p>{c}</p><span class="sk-layer__goal">→ {g}</span></article>' for i,(t,a,b,c,g) in enumerate(layers))
+  P5=[
+   dict(id='01',name='美股策略進階型',colors=['#050D1A','#00FFFF','#002366'],fixed=['Glassmorphism 磨砂玻璃面板','作者照片，保留臉部特徵','深海藍底＋電光青放射光暈'],imgs=['persona1-01','persona1-01-1'],
+        dims={'構圖鏡頭':['正面平視','低角度仰視 15°','微俯視 10°','45 度斜角'],'人物位置':['畫面正中央','偏左 40%','偏右 40%','略偏左居中'],'人物姿勢':['食指向上指向面板','雙手操作左右面板','側邊伸手觸碰面板','雙臂交叉自信站立','手持手機展示螢幕','側身 45 度回望面板'],'面板排列':['四角圍繞人物','右側垂直疊排','左側垂直疊排','人物前方弧形排列','背景大面板＋前景小面板','左右大面板夾住人物'],'光線':['正面面板光','左側強烈側光','右側光＋底部光束','背光輪廓光','頂部戲劇聚光'],'CTA 樣式':['3D 膠囊按鈕','發光膠囊','底部漸層橫條']}),
+   dict(id='02',name='財務翻身焦慮型',colors=['#0D0014','#3B0070','#CC44FF'],fixed=['手機必定出現，紫色交易介面','霓虹紫膠囊 CTA，黃白雙色字','禁用青色與暖色'],imgs=['persona2-01','persona2-02'],
+        dims={'場景類型':['人物主體型','物件主體型（巨型手機）','抽象概念型'],'面板數量':['1 個全幅面板','2 個面板','3 個面板','4 個面板'],'面板內容':['K 線圖＋量能柱狀圖','複利成長＋資產配置圓餅','P/E 儀表盤＋決策流程','投資組合熱力圖＋風險儀表'],'構圖鏡頭':['正面平視','低角度仰視 15°','微俯視 10°','45 度斜角'],'光線':['正面面板光','左側強烈側光','右側光＋底部光束','背光輪廓光','頂部戲劇聚光']}),
+   dict(id='03',name='家庭資產規劃型',colors=['#102030','#99C9F9','#FFD700'],fixed=['單手前伸強透視，85mm 淺景深','多層玻璃平台＋暖金核心光','不使用作者照片與數據面板'],imgs=['persona3-01','persona3-02'],
+        dims={'手上資產':['迷你房產＋金幣堆＋ETF 方塊','金條＋複利時鐘＋植物嫩芽','家庭人偶＋存錢罐＋K 線水晶','保險箱＋牛市雕像＋鈔票束'],'光線':['正面柔光','左側強烈側光','背光輪廓光','頂部戲劇聚光'],'文字對齊':['置中對齊','左對齊（手偏右）','右對齊（手偏左）']}),
+   dict(id='04',name='資訊過載學習型',colors=['#000000','#D4A251','#FCEABD'],fixed=['深色模式股市 App 手機','1–2 條金色光流曲線','極簡奢華，不用玻璃面板'],imgs=['persona4-01','persona4-01-1'],
+        dims={'人物位置':['人物在右、手機在左下','人物在左、手機在右下'],'光流方向':['左下往右上弧','右上往左下弧'],'文字對齊':['跟人物相反側：左側留白','跟人物相反側：右側留白']}),
+   dict(id='05',name='AI／成長機會追蹤型',colors=['#050D1A','#00FFFF','#002366'],fixed=['資料收斂：光帶向主體匯流','85mm f/1.4 極淺景深','不使用任何 UI 面板'],imgs=['persona5-01','persona5-02'],
+        dims={'臉部主光':['正面柔光','左側強烈側光','右側光＋底部光束','背光輪廓光'],'文字對齊':['置中對齊','左對齊','右對齊'],'CTA 樣式':['3D 膠囊按鈕','發光膠囊','底部漸層橫條']})]
+  data=html.escape(_json.dumps(P5,ensure_ascii=False))
+  tabs=''.join(f'<button type="button" class="sk-tab" data-i="{i}" aria-pressed="{"true" if i==0 else "false"}"><i style="background:{p["colors"][1]}"></i>P{p["id"][1]}・{p["name"]}</button>' for i,p in enumerate(P5))
+  imgs=''.join(f'<picture class="sk-out__img" data-src="{n}"{"" if n=="persona1-01" else " hidden"}><source srcset="{P}{F}{n}.webp" type="image/webp"><img src="{P}{F}{n}.jpg" width="1200" height="1200" alt="Persona 產出範例" loading="lazy" decoding="async"></picture>' for p in P5 for n in p['imgs'])
+  demo=(f'<div class="sk-demo" data-personas="{data}">'
+        f'<div class="sk-tabs" role="group" aria-label="選擇 Persona">{tabs}</div>'
+        f'<div class="sk-demo__body"><div class="sk-panel">'
+        f'<div class="sk-box sk-box--fixed"><p class="sk-box__label">✦ 固定元素・不能變</p><div class="sk-sw"></div><ul class="sk-fixed"></ul></div>'
+        f'<div class="sk-box sk-box--var"><p class="sk-box__label">✦ 本次抽選・可以變 <span class="sk-run">第 1 次生成</span></p><dl class="sk-var"></dl>'
+        f'<p class="sk-note">規則：上一次用過的選項，下一次一定換掉（previous_selections）。</p></div>'
+        f'<button type="button" class="jade-primary-button sk-roll"><span>重新抽選構圖</span><span class="jade-primary-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg></span></button>'
+        f'</div><figure class="sk-out">{imgs}<figcaption>實際產出範例</figcaption></figure></div></div>')
+  rules=('<div class="sk-rules"><div class="sk-frame" aria-hidden="true"><span class="sk-frame__dim">1080 × 1080</span><span class="sk-frame__safe"><em>內容區 780 × 780</em>'
+         '<span class="sk-bar sk-bar--l1">LINE 1・5–6%</span><span class="sk-bar sk-bar--l2">LINE 2・12–15%</span><span class="sk-bar sk-bar--sub">副標・5–6%</span><span class="sk-bar sk-bar--cta">CTA・4–5%</span></span><span class="sk-frame__pad">150px 安全邊距</span></div>'
+         '<ul class="sk-rulelist">'
+         '<li><b>150px 安全邊距</b>四邊各留 150px 純背景，人物、面板、文字、光暈都不得超出內容區</li>'
+         '<li><b>文字用比例，不用形容詞</b>主標第二行佔畫面高 12–15%，副標 5–6%，避免 AI 把字縮到看不清</li>'
+         '<li><b>面板最多 3–4 個數據</b>數字要大、標籤 2–4 字，圖表佔面板 60% 以上，不塞密集表格</li>'
+         '<li><b>留出呼吸空間</b>副標與面板間距 ≥ 80px，CTA 底緣不低於 y=930</li></ul></div>')
+  zooms=[('zoom-text',1920,600,'中文標題清楚正確','AI 生圖最常出錯的就是中文字，主標、副標、關鍵字高亮都正確可讀。'),
+         ('zoom-face',1800,600,'同一張臉，不同場景','三種 Persona、三種光線，作者臉部特徵始終一致。'),
+         ('zoom-ui',900,1300,'介面細節可信','手機介面的數字、圖表、漲跌色都合理，像真的 App 畫面。')]
+  zm=''.join(f'<figure class="sk-zoom sk-zoom--{n.split("-")[1]}"><button type="button" class="sk-zoom__img" data-lb="zoom" aria-label="放大檢視：{t}">{pic(F+n,w,h,t)}</button><figcaption><b>{t}</b>{d}</figcaption></figure>' for n,w,h,t,d in zooms)
+  gal=''.join(f'<div class="sk-gcol"><p class="sk-gcol__name"><i style="background:{p["colors"][1]}"></i>Persona {p["id"][1]}<span>{p["name"]}</span></p>'+''.join(f'<button type="button" class="sk-gimg" data-lb="gal" aria-label="放大檢視：{p["name"]}">{pic(F+n,1200,1200,p["name"]+" 廣告圖")}</button>' for n in p['imgs'])+'</div>' for p in P5)
+  return (
+    f'<section class="cs-sec">{sh("Context","The Ad Loop","廣告閉環","團隊用四個 AI Agent 串起廣告從產出、投放到成效追蹤的閉環。我負責其中的 Agent B：把每個 Persona 轉成 AI 能穩定執行的視覺規則，自動產出廣告圖。")}<ol class="sk-loop">{loop}</ol></section>'
+    f'<section class="cs-sec ch-problem">{sh("The problem","The AI Dilemma","AI 生圖的兩難")}'
+    f'<p class="ch-big">每次一樣會膩，<em>每次亂變會走鐘。</em></p><div class="ch-pains sk-pains">{ph}</div></section>'
+    f'<section class="cs-sec">{sh("The system","Three-layer Prompt","三層 Prompt 架構","我把一張廣告圖拆成「不能變」「可以怎麼變」「怎麼變」三層，品牌一致性和視覺多樣性就不再互相衝突。")}'
+    f'<div class="sk-layers">{ly}</div><p class="sk-loopnote">✦ 每次抽選結果回傳 Agent D 存檔，下次由 Agent A 帶入 previous_selections，構圖保證不重複。</p></section>'
+    f'<section class="cs-sec">{sh("Try it","Roll the Skill","試玩 Skill","選一個 Persona，按下「重新抽選構圖」，看看哪些元素固定、哪些每次都換。")}{demo}</section>'
+    f'<section class="cs-sec">{sh("Art direction","Rules in the Prompt","把版面規範寫進 prompt","AI 最常犯的錯是字太小、元素貼邊、資料塞太滿，所以我把設計師的版面判斷寫成量化規則，每份 prompt 都必須帶上。")}{rules}</section>'
+    f'<section class="cs-sec">{sh("Quality","Ready to Publish","成品就能直接投放","點擊圖片可放大檢視細節。")}<div class="sk-zooms">{zm}</div></section>'
+    f'<section class="cs-sec">{sh("Results","Five Personas","五種 Persona 成果","同一個 Persona 色系風格一致，構圖每次不同。")}<div class="sk-gallery">{gal}</div></section>'
+    f'<section class="cs-sec ch-result">{sh("Outcome","What Happened Next","後續成果")}<p class="ch-big ch-big--sm">同 Persona 保持色系風格一致、構圖隨機，<em>解決素材重複疲勞，又不破壞品牌感。</em></p></section>'
   )
