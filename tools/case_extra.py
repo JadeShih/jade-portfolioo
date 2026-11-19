@@ -227,7 +227,7 @@ def vip():
     l=f'<p class="cs-sec__lead">{lead}</p>' if lead else ''
     return f'<header class="cs-sec__head"><p class="eyebrow">{eb}</p><h2 class="cs-sec__title">{en}<small>{zh}</small></h2>{l}</header>'
   rib=_re.search(r'<svg class="ch-rib__bg".*?</svg>',chat(),_re.S).group(0)
-  pains=[('01','兩頭忙','APP 開 VIP 直播的同時，還要另開 YouTube 同步播前 30%，得同時管理兩個平台。'),
+  pains=[('01','兩頭忙','APP 開 VIP 直播的同時，還要另開麥克式MIKE的 YouTube 直播同步播前 30%，得同時管理兩個平台。'),
          ('02','斷點多','觀眾要從 YouTube 下載 APP、再升級 VIP 才能聽後半段，每多一步就多一批人流失。'),
          ('03','二選一','原本權限只有「全部可聽」或「僅限 VIP」，曝光與轉換無法在同一場直播兼得。')]
   ph_html=''.join(f'<article class="ch-pain"><span class="ch-pain__no">{n}</span><h3>{t}</h3><p>{d}</p></article>' for n,t,d in pains)
