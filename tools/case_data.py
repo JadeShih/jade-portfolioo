@@ -135,7 +135,7 @@ CASES={
   title_en='Free to VIP',title_zh='語音直播免費場轉 VIP 場',
   desc='Jade Shih 作品：APP 語音直播「前段免費、後段 VIP」權限切換功能，從問題定義、轉換設計到邊界情境與規格交付。',
   tags=['UI/UX','YouTuber Mike是麥克','付費轉換'],tagline='',
-  cover='work-12-vip/cover',cover_w=2400,cover_h=1500,cover_alt='語音直播免費場轉 VIP 場：入口卡片、主持人切換確認、升級彈窗',
+  cover='work-12-vip/web-01',cover_w=2400,cover_h=1600,cover_alt='語音直播免費場轉 VIP 場：入口卡片、主持人切換確認、升級彈窗',
   meta=[('Client','YouTuber Mike是麥克'),('Role','UI/UX 設計・功能規劃'),('Deliverables','語音直播權限切換・UI Spec'),('Year','2026')],
   overview='<p>APP 的語音直播原本只能選「全部可聽」或「僅限 VIP」，兩種模式都無法有效把免費用戶轉換為付費 VIP，只能靠另開 YouTube 直播前段來導流。</p><p>本專案把這套轉換流程內建到語音直播：一場直播前段免費試聽，由主持人在直播間手動切換為 VIP 場，被移出的免費用戶直接看到升級引導與折扣碼，並完整規劃推播分流、入口標示與邊界情境。</p>',
   cards=[],gallery_style='none',gallery=[],extra=case_extra.vip(),
