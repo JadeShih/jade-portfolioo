@@ -159,5 +159,15 @@ CASES={
   meta=[('Client','YouTuber Mike是麥克'),('Role','UI/UX 設計・功能規劃'),('Deliverables','美股事件行事曆・UI Spec'),('Year','2025–2026')],
   overview='<p>台灣投資人對美股的休市、總經數據與財報時間掌握度不足，資訊分散在不同平台，時區換算也容易出錯。</p><p>我們從首頁的一條提醒開始規劃，分階段擴展成總體事件頁與個股事件頁，並逐條定義時區換算、顯示區間、排序與空資料等規則，連同各種資料量的畫面一起交付工程。</p>',
   cards=[],gallery_style='none',gallery=[],extra=case_extra.cal(),
+  next=dict(title='瞇瞇眼大叔短影音',attr='href="./work-16-mimi.html"')),
+ 'work-16-mimi':dict(
+  num='16',tone='coral',deco=(('flower','yellow'),('blob','pink')),
+  title_en='Dr. Squint Shorts',title_zh='瞇瞇眼大叔短影音',
+  desc='Jade Shih 作品：婦產科鍾國騰醫師粉絲專頁短影音，負責頻道視覺定位與六款影片模板設計，並擔任現場攝影。',
+  tags=['短影音','鍾國騰醫師','模板設計'],tagline='',
+  cover='work-16-mimi/cover',cover_w=2400,cover_h=1500,cover_alt='兩支手機顯示瞇瞇眼大叔短影音：鍾國騰醫師站在診間與「不必動刀、不須穿刺」重點字卡',
+  meta=[('Client','鍾國騰醫師'),('Role','短影音模板設計・現場攝影'),('Deliverables','頻道視覺定位・6 款影片模板'),('Year','2024')],
+  overview='<p>鍾國騰醫師是婦產科醫師，粉絲專頁希望用短影音回答女性常見的婦科問題，讓專業知識更容易被看見。</p><p>我負責頻道的視覺定位與影片模板設計，從「專注、細心、溫暖」三個關鍵字延伸出暖色系、圓體字與 Q 版醫師角色，做成一套每集都能直接套用的字卡系統；拍攝當天也擔任現場攝影。</p>',
+  cards=[],gallery_style='none',gallery=[],extra=case_extra.mimi(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }

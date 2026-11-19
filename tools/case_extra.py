@@ -367,3 +367,36 @@ def cal():
     f'<section class="cs-sec cl-proto-sec">{sh("Prototype","Try It Yourself","實際操作看看","把首頁與事件頁串成可以操作的原型：滑動、切換、點進去、再返回。")}<div class="cl-proto">{proto()}<ol class="cl-guide">'+''.join(f'<li><span>{a}</span><b>{b}</b>{c}</li>' for a,b,c in GUIDE)+'</ol></div></section>'
     f'<section class="cs-sec">{sh("The rules","Designing the Logic","資訊規則設計","這個功能的難點不在畫面，而在「什麼時候、用什麼格式、顯示哪一筆」。我把這些規則逐條定義，交給工程直接實作。")}<div class="cl-rules">{rules}</div></section>'
     f'<section class="cs-sec ch-result">{sh("Outcome","What Happened Next","後續成果")}<p class="ch-big ch-big--sm">分階段規劃與交付，<em>從首頁提醒擴展為總體與個股兩個事件頁。</em></p></section>')
+
+def mimi():
+  # 16 瞇瞇眼大叔短影音：視覺定位 → 六款模板 → 影片示意 → 成片
+  F='work-16-mimi/'
+  def sh(eb,en,zh,lead=''):
+    l=f'<p class="cs-sec__lead">{lead}</p>' if lead else ''
+    return f'<header class="cs-sec__head"><p class="eyebrow">{eb}</p><h2 class="cs-sec__title">{en}<small>{zh}</small></h2>{l}</header>'
+  kw=[('專注','Focus','診間裡的醫師形象：白袍、正面、直視鏡頭。','cyan'),
+      ('細心','Care','字卡用手寫感字體與對話框，像醫師親口回答問題。','yellow'),
+      ('溫暖','Warm','米白、蜜黃、珊瑚粉到可可棕，整體都是暖色。','pink')]
+  kws=''.join(f'<article class="mm-kw" data-tone="{t}"><p class="mm-kw__en">✦ {e}</p><h3>{z}</h3><p>{d}</p></article>' for z,e,d,t in kw)
+  pal=[('#FBF2E9','底色'),('#FED280','強調'),('#F0A185','主色'),('#663333','文字')]
+  sw=''.join(f'<li style="--c:{c}"><span></span><b>{c}</b><small>{n}</small></li>' for c,n in pal)
+  tp=[('t1-cover','01','問題封面','Hook','用一句問題加上大字主題，讓滑過的人停下來。'),
+      ('t2-person','02','人物字卡','Intro','醫師第一次出場時，用 Q 版頭像和「瞇瞇眼大叔」的暱稱建立記憶點。'),
+      ('t3-question','03','問題字卡','Question','用對話框標出這一集要回答的問題。'),
+      ('t4-voice','04','畫外音','Voice-over','手寫感對話框模擬患者發問，拉近醫病距離。'),
+      ('t5-key','05','重點字卡','Key point','描邊大字標出關鍵結論，靜音觀看也看得懂。'),
+      ('t6-end','06','結尾模板','Ending','收尾的主題標籤與英文跑馬燈，帶出「治療新選擇」。')]
+  car=''.join(f'<figure class="hcar__item mm-tp"><button type="button" class="mm-tp__img" data-lb="mm" aria-label="放大檢視：{z}">{pic(F+n,900,1600,"短影音模板："+z)}</button>'
+              f'<figcaption><span>{k} · {e}</span><b>{z}</b>{d}</figcaption></figure>' for n,k,z,e,d in tp)
+  reel='https://www.facebook.com/reel/1546748829204744'
+  embed='https://www.facebook.com/plugins/video.php?href='+'https%3A%2F%2Fwww.facebook.com%2Freel%2F1546748829204744%2F'+'&amp;show_text=false&amp;width=267&amp;t=0'
+  return (
+    f'<section class="cs-sec">{sh("Positioning","Who Is Dr. Squint","頻道視覺定位","先定義醫師給人的感覺，再延伸出色彩、字體與角色。")}'
+    f'<div class="mm-kws">{kws}</div>'
+    f'<div class="mm-spec"><div class="mm-spec__col"><p class="eyebrow">Color</p><ul class="mm-pal">{sw}</ul></div>'
+    f'<div class="mm-spec__col"><p class="eyebrow">Type</p><p class="mm-type">圓體＋手寫感<small>主標用圓潤的圓體，看起來比較親切，拉近醫師和觀眾的距離。</small></p></div></div></section>'
+    f'<section class="cs-sec">{sh("Template system","Six Templates, One Channel","六款影片模板","每支影片都套同一個頻道框：左上的直式標籤加上圓弧畫面，在動態牆上一眼就認得出來。框內再依段落切換六款字卡。")}'
+    f'<div class="hcar mm-car"><div class="hcar__track">{car}</div><div class="kl-dots hcar__dots"></div></div></section>'
+    f'<section class="cs-sec mm-watch">{sh("Watch","The Reel","成片")}'
+    f'<div class="mm-reel"><div class="mm-reel__frame"><iframe src="{embed}" title="瞇瞇眼大叔的婦科診療室 Facebook Reels" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>'
+    f'<p class="mm-reel__alt">看不到影片嗎？<a href="{reel}" target="_blank" rel="noopener">到 Facebook 觀看 ↗</a></p></div></section>')

@@ -1460,3 +1460,38 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .cl-empty b{display:flex;align-items:center;gap:8px;color:#16143A}
 .cl-empty b::before{content:"";width:4px;height:18px;border-radius:2px;background:#A99BFF;outline:1.5px solid #16143A}
 .cl-empty span{color:#16143A;opacity:.6;font-size:13px}
+/* 16 瞇瞇眼大叔短影音 */
+.mm-kws{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.6vw,22px);margin-top:clamp(28px,4vw,44px)}
+.mm-kw{display:grid;gap:8px;align-content:start;padding:clamp(22px,2.4vw,30px);border:3px solid #16143A;border-radius:26px;box-shadow:6px 6px 0 #16143A;color:#16143A;background:#7DE3FF}
+.mm-kw[data-tone="yellow"]{background:#FFD12A}.mm-kw[data-tone="pink"]{background:#FF7AC6}
+.mm-kw__en{margin:0;font:400 15px/1 var(--font-brand);letter-spacing:.1em;text-transform:uppercase}
+.mm-kw h3{margin:0;font:900 clamp(34px,3.6vw,48px)/1.1 "Noto Sans TC",sans-serif}
+.mm-kw p:last-child{margin:0;font-size:14.5px;line-height:1.7;opacity:.85}
+.mm-spec{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(14px,1.6vw,22px);margin-top:clamp(14px,1.6vw,22px)}
+.mm-spec__col{display:grid;gap:14px;align-content:start;padding:clamp(22px,2.4vw,30px);border:3px solid #16143A;border-radius:26px;background:#fff;color:#16143A}
+.mm-spec__col .eyebrow{margin:0}
+.mm-pal{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.mm-pal li{display:grid;gap:4px}
+.mm-pal span{display:block;aspect-ratio:1/1;border-radius:16px;background:var(--c);border:2px solid #16143A}
+.mm-pal b{font:700 13px/1.2 ui-monospace,monospace}
+.mm-pal small{font-size:12.5px;opacity:.65}
+.mm-type{margin:0;display:grid;gap:8px;font:900 clamp(26px,2.6vw,34px)/1.2 "Noto Sans TC",sans-serif;color:#663333}
+.mm-type small{font:400 14.5px/1.7 "Noto Sans TC",sans-serif;color:#16143A;opacity:.8}
+.mm-car{--per:3;margin-top:clamp(28px,4vw,44px)}
+.mm-tp{margin:0;display:grid;gap:14px;align-content:start}
+.cs-sec .mm-tp__img{display:block;width:100%;border-radius:22px;overflow:hidden;border:3px solid #16143A;box-shadow:6px 6px 0 #16143A;cursor:zoom-in}
+.mm-tp__img img{display:block;width:100%;height:auto;-webkit-user-drag:none}
+.mm-tp figcaption{display:grid;gap:4px;font-size:14.5px;line-height:1.65}
+.mm-tp figcaption span{justify-self:start;padding:3px 12px;border-radius:999px;background:#FF7AC6;color:#16143A;font:400 13px/1.2 var(--font-brand);letter-spacing:.08em;text-transform:uppercase}
+.mm-tp figcaption b{font:900 19px/1.35 "Noto Sans TC",sans-serif;margin-top:4px}
+.mm-mock{margin:clamp(28px,4vw,44px) 0 0;border-radius:26px;overflow:hidden;border:3px solid #16143A}
+.mm-mock img{display:block;width:100%;height:auto}
+.mm-reel{display:grid;justify-items:center;gap:14px;margin-top:clamp(28px,4vw,44px)}
+.mm-reel__frame{width:min(100%,320px);aspect-ratio:267/476;border-radius:28px;overflow:hidden;border:8px solid #16143A;background:#16143A;box-shadow:10px 12px 0 rgba(22,20,58,.15)}
+.mm-reel__frame iframe{display:block;width:100%;height:100%;border:0}
+.mm-reel__alt{margin:0;font-size:14px;opacity:.75}
+.mm-reel__alt a{color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:900px){.mm-kws,.mm-spec{grid-template-columns:minmax(0,1fr)}.mm-car{--per:2}}
+@media (max-width:520px){.mm-car{--per:1.3}.mm-pal{gap:8px}.mm-pal span{border-radius:12px}.mm-pal b{font-size:11px}}
+.mm-tp figcaption{margin-top:0;text-align:left;font:400 14.5px/1.65 "Noto Sans TC",sans-serif;letter-spacing:0;text-transform:none}
+.mm-tp figcaption::before{content:none}
