@@ -351,30 +351,28 @@
   });
 })();
 
-/* 14 Prompt Skill 試玩：選 Persona → 顯示固定元素；按「重新抽選構圖」→ 每個維度換成和上次不同的選項 */
+/* 14 Prompt Skill 試玩：選 Persona → 顯示固定元素；按「重新抽選構圖」→ 換到另一張產出，Rolled 條件同步顯示該圖的構圖描述 */
 (function(){
   [].forEach.call(document.querySelectorAll('.sk-demo'),function(demo){
     var P;try{P=JSON.parse(demo.getAttribute('data-personas'))}catch(e){return}
     var tabs=demo.querySelectorAll('.sk-tab'),sw=demo.querySelector('.sk-sw'),fx=demo.querySelector('.sk-fixed'),
-        dl=demo.querySelector('.sk-var'),run=demo.querySelector('.sk-run'),pics=demo.querySelectorAll('.sk-out__img'),
-        cur=0,prev={},n=0,imgI=0;
-    function pick(arr,not){var c=arr.filter(function(x){return x!==not});if(!c.length)c=arr;return c[Math.floor(Math.random()*c.length)]}
+        dl=demo.querySelector('.sk-var'),pics=demo.querySelectorAll('.sk-out__img'),cur=0,imgI=0;
     function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-    function showImg(){var p=P[cur],name=p.imgs[imgI%p.imgs.length];[].forEach.call(pics,function(el){el.hidden=el.getAttribute('data-src')!==name})}
-    function roll(first){
-      var p=P[cur],html='';n++;run.textContent='第 '+n+' 次生成';
-      Object.keys(p.dims).forEach(function(k){var v=pick(p.dims[k],first?null:prev[k]);prev[k]=v;html+='<dt>'+esc(k)+'</dt><dd class="is-new">'+esc(v)+'</dd>'});
-      dl.innerHTML=html;if(!first)imgI++;showImg();
+    function show(){
+      var p=P[cur],k=imgI%p.imgs.length,t=p.tpls[k],html='';
+      Object.keys(t).forEach(function(d){html+='<dt>'+esc(d)+'</dt><dd class="is-new">'+esc(t[d])+'</dd>'});
+      dl.innerHTML=html;
+      [].forEach.call(pics,function(el){el.hidden=el.getAttribute('data-src')!==p.imgs[k]});
     }
     function select(i){
-      cur=i;prev={};n=0;imgI=0;
+      cur=i;imgI=0;
       [].forEach.call(tabs,function(t,j){t.setAttribute('aria-pressed',j===i?'true':'false')});
       var p=P[i];sw.innerHTML=p.colors.map(function(c){return '<span style="--c:'+c+'">'+c+'</span>'}).join('');
       fx.innerHTML=p.fixed.map(function(f){return '<li>'+esc(f)+'</li>'}).join('');
-      roll(true);
+      show();
     }
     [].forEach.call(tabs,function(t,j){t.addEventListener('click',function(){select(j)})});
-    demo.querySelector('.sk-roll').addEventListener('click',function(){roll(false)});
+    demo.querySelector('.sk-roll').addEventListener('click',function(){imgI++;show()});
     select(0);
   });
 })();

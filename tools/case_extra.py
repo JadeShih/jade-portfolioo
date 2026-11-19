@@ -296,15 +296,15 @@ def skill():
   ly=''.join(f'<article class="sk-layer" data-tone="{t}"><p class="sk-layer__no">Layer {i+1}</p><h3>{a}<small>負責「{b}」</small></h3><p>{c}</p><span class="sk-layer__goal">→ {g}</span></article>' for i,(t,a,b,c,g) in enumerate(layers))
   P5=[
    dict(id='01',name='美股策略進階型',colors=['#050D1A','#00FFFF','#002366'],fixed=['Glassmorphism 磨砂玻璃面板','作者照片，保留臉部特徵','深海藍底＋電光青放射光暈'],imgs=['persona1-01','persona1-01-1'],
-        dims={'構圖鏡頭':['正面平視','低角度仰視 15°','微俯視 10°','45 度斜角'],'人物位置':['畫面正中央','偏左 40%','偏右 40%','略偏左居中'],'人物姿勢':['食指向上指向面板','雙手操作左右面板','側邊伸手觸碰面板','雙臂交叉自信站立','手持手機展示螢幕','側身 45 度回望面板'],'面板排列':['四角圍繞人物','右側垂直疊排','左側垂直疊排','人物前方弧形排列','背景大面板＋前景小面板','左右大面板夾住人物'],'光線':['正面面板光','左側強烈側光','右側光＋底部光束','背光輪廓光','頂部戲劇聚光'],'CTA 樣式':['3D 膠囊按鈕','發光膠囊','底部漸層橫條']}),
+        tpls=[{'構圖鏡頭': '正面平視', '人物位置': '畫面中央・人物放大', '人物姿勢': '雙手伸向左右面板', '面板排列': '四角圍繞人物', '光線': '正面面板光', 'CTA 樣式': '底部發光按鈕'}, {'構圖鏡頭': '正面平視', '人物位置': '畫面中央・人物縮小', '人物姿勢': '側身站立、手插口袋', '面板排列': '左右大面板夾住人物', '光線': '背光輪廓光', 'CTA 樣式': '發光膠囊'}]),
    dict(id='02',name='財務翻身焦慮型',colors=['#0D0014','#3B0070','#CC44FF'],fixed=['手機必定出現，紫色交易介面','霓虹紫膠囊 CTA，黃白雙色字','禁用青色與暖色'],imgs=['persona2-01','persona2-02'],
-        dims={'場景類型':['人物主體型','物件主體型（巨型手機）','抽象概念型'],'面板數量':['1 個全幅面板','2 個面板','3 個面板','4 個面板'],'面板內容':['K 線圖＋量能柱狀圖','複利成長＋資產配置圓餅','P/E 儀表盤＋決策流程','投資組合熱力圖＋風險儀表'],'構圖鏡頭':['正面平視','低角度仰視 15°','微俯視 10°','45 度斜角'],'光線':['正面面板光','左側強烈側光','右側光＋底部光束','背光輪廓光','頂部戲劇聚光']}),
+        tpls=[{'場景類型': '物件主體型（巨型手機）', '面板數量': '4 個面板', '面板內容': '複利成長＋資產配置圓餅', '光線': '頂部聚光＋地面光格'}, {'場景類型': '人物主體型（手持平板）', '面板數量': '4 個面板', '面板內容': '選股篩選＋投資組合＋勝率儀表', '光線': '平板光由下照亮人物'}]),
    dict(id='03',name='家庭資產規劃型',colors=['#102030','#99C9F9','#FFD700'],fixed=['單手前伸強透視，85mm 淺景深','多層玻璃平台＋暖金核心光','不使用作者照片與數據面板'],imgs=['persona3-01','persona3-02'],
-        dims={'手上資產':['迷你房產＋金幣堆＋ETF 方塊','金條＋複利時鐘＋植物嫩芽','家庭人偶＋存錢罐＋K 線水晶','保險箱＋牛市雕像＋鈔票束'],'光線':['正面柔光','左側強烈側光','背光輪廓光','頂部戲劇聚光'],'文字對齊':['置中對齊','左對齊（手偏右）','右對齊（手偏左）']}),
+        tpls=[{'手上資產': '迷你房產＋家庭人偶＋金幣＋SPY 方塊', '光線': '頂部戲劇聚光', '文字位置': '右側（手偏左）'}, {'手上資產': '金條＋複利時鐘＋植物嫩芽', '光線': '正面柔光', '文字位置': '上方置中'}]),
    dict(id='04',name='資訊過載學習型',colors=['#000000','#D4A251','#FCEABD'],fixed=['深色模式股市 App 手機','1–2 條金色光流曲線','極簡奢華，不用玻璃面板'],imgs=['persona4-01','persona4-01-1'],
-        dims={'人物位置':['人物在右、手機在左下','人物在左、手機在右下'],'光流方向':['左下往右上弧','右上往左下弧'],'文字對齊':['跟人物相反側：左側留白','跟人物相反側：右側留白']}),
+        tpls=[{'人物位置': '人物在左、手機在右下', '光流方向': '右上往左下弧', '文字位置': '右上留白'}, {'人物位置': '人物在右、手機在左下', '光流方向': '左下往右上弧', '文字位置': '左上留白'}]),
    dict(id='05',name='AI／成長機會追蹤型',colors=['#050D1A','#00FFFF','#002366'],fixed=['資料收斂：光帶向主體匯流','85mm f/1.4 極淺景深','不使用任何 UI 面板'],imgs=['persona5-01','persona5-02'],
-        dims={'臉部主光':['正面柔光','左側強烈側光','右側光＋底部光束','背光輪廓光'],'文字對齊':['置中對齊','左對齊','右對齊'],'CTA 樣式':['3D 膠囊按鈕','發光膠囊','底部漸層橫條']})]
+        tpls=[{'人物位置': '偏右', '臉部主光': '右側光帶匯流', '文字對齊': '左對齊', 'CTA 樣式': '發光膠囊'}, {'人物位置': '畫面正中央', '臉部主光': '正面柔光＋光帶向中央匯流', '文字對齊': '置中對齊', 'CTA 樣式': '底部小型膠囊'}])]
   data=html.escape(_json.dumps(P5,ensure_ascii=False))
   tabs=''.join(f'<button type="button" class="sk-tab" data-i="{i}" aria-pressed="{"true" if i==0 else "false"}"><i style="background:{p["colors"][1]}"></i>P{p["id"][1]}・{p["name"]}</button>' for i,p in enumerate(P5))
   imgs=''.join(f'<picture class="sk-out__img" data-src="{n}"{"" if n=="persona1-01" else " hidden"}><source srcset="{P}{F}{n}.webp" type="image/webp"><img src="{P}{F}{n}.jpg" width="1200" height="1200" alt="Persona 產出範例" loading="lazy" decoding="async"></picture>' for p in P5 for n in p['imgs'])
@@ -312,8 +312,8 @@ def skill():
         f'<div class="sk-tabs" role="group" aria-label="選擇 Persona">{tabs}</div>'
         f'<div class="sk-demo__body"><div class="sk-panel">'
         f'<div class="sk-box sk-box--fixed"><p class="sk-box__label"><b>Locked</b>固定元素・不能變</p><div class="sk-sw"></div><ul class="sk-fixed"></ul></div>'
-        f'<div class="sk-box sk-box--var"><p class="sk-box__label"><b>Rolled</b>本次抽選・可以變<span class="sk-run">第 1 次生成</span></p><dl class="sk-var"></dl>'
-        f'<p class="sk-note">規則：上一次用過的選項，下一次一定換掉（previous_selections）。</p></div>'
+        f'<div class="sk-box sk-box--var"><p class="sk-box__label"><b>Rolled</b>本次抽選・可以變</p><dl class="sk-var"></dl>'
+        f'</div>'
         f'<div class="sk-rollwrap" data-theme="brand"><button type="button" class="jade-primary-button sk-roll"><span>重新抽選構圖</span><span class="jade-primary-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg></span></button></div>'
         f'</div><figure class="sk-out">{imgs}<figcaption>實際產出範例</figcaption></figure></div></div>')
   rules=f'<div class="sk-rules sk-rules--img"><figure class="sk-rules__img"><picture><source srcset="{P}{F}skill-01.webp" type="image/webp"><img src="{P}{F}skill-01.png" width="2400" height="2399" alt="1080×1080 畫布的安全邊距與文字比例示意" loading="lazy" decoding="async"></picture></figure>'+'<ul class="sk-rulelist">'+''.join(f'<li><b>{t}</b>{d}</li>' for t,d in [('150px 安全邊距','四邊各留 150px 純背景，人物、面板、文字、光暈都不得超出內容區'),('文字用比例，不用形容詞','主標第二行佔畫面高 12–15%，副標 5–6%，避免 AI 把字縮到看不清'),('面板最多 3–4 個數據','數字要大、標籤 2–4 字，圖表佔面板 60% 以上，不塞密集表格'),('留出呼吸空間','副標與面板間距 ≥ 80px，CTA 底緣不低於 y=930')])+'</ul></div>'

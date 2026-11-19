@@ -1220,10 +1220,10 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 /* 試玩 */
 .sk-demo{margin-top:clamp(28px,4vw,44px)}
 .sk-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(18px,2vw,26px)}
-.sk-tab{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:2px solid #34323F;border-radius:999px;background:transparent;color:#D9D6E5;font:700 14px/1 "Noto Sans TC",sans-serif;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
-.sk-tab i{width:12px;height:12px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.15)}
-.sk-tab:hover{border-color:#A99BFF}
-.sk-tab[aria-pressed="true"]{background:#fff;border-color:#fff;color:#16143A}
+.sk-tab,.cs-sec .sk-tab{display:inline-flex;align-items:center;gap:10px;padding:10px 24px 10px 20px;border:2px solid #34323F;border-radius:999px;background:transparent;color:#D9D6E5;font:700 14px/1 "Noto Sans TC",sans-serif;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.sk-tab i{flex:none;width:12px;height:12px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.15)}
+.sk-tab:hover,.cs-sec .sk-tab:hover{border-color:#A99BFF}
+.sk-tab[aria-pressed="true"],.cs-sec .sk-tab[aria-pressed="true"]{background:#fff;border-color:#fff;color:#16143A}
 .sk-tab:focus-visible,.sk-roll:focus-visible{outline:3px solid #C2FF0A;outline-offset:3px}
 .sk-demo__body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(20px,3vw,44px);align-items:start}
 .sk-panel{display:grid;gap:16px;min-width:0}
