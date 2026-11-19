@@ -129,6 +129,18 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以產品差異化與系列一致性作為設計核心，延伸各商品包裝色彩作為獨立版面的主色調，搭配放大的產品形象、立體成分素材與機能圖示，建立直觀的商品分類方式。同時透過統一的版面結構與資訊編排，兼顧品牌的專業形象、產品辨識度及摺頁展開後的視覺連貫性。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='將五款商品的特色與機能資訊整合為具系統性的品牌銷售素材，強化系列商品之間的辨識度，降低消費者比較產品的資訊門檻，同時兼顧品牌形象展示與商品導購需求。')],
   gallery_style='none',gallery=[],extra=case_extra.dm(),
+  next=dict(title='BenQ MOBIUZ 電競螢幕 DM',attr='href="./work-12-dm.html"')),
+ 'work-12-dm':dict(
+  num='12',tone='lime',deco=(('flower','cyan'),('blob','pink')),
+  title_en='MOBIUZ',title_zh='BenQ MOBIUZ 電競螢幕 DM',
+  desc='Jade Shih 作品：BenQ MOBIUZ 電競螢幕實體通路 DM 與牆面視覺設計。',
+  tags=['平面設計','BenQ','2017'],tagline='',
+  cover='work-12-dm/web-cover',cover_w=2400,cover_h=1600,cover_alt='BenQ MOBIUZ DM 正面「我的角色 我作主」主視覺與背面規格表',
+  meta=[('Client','BenQ'),('Role','平面設計'),('Deliverables','DM 傳單・通路牆面視覺'),('Year','2017')],
+  overview='<p>為 BenQ MOBIUZ 電競螢幕打造實體銷售通路視覺，圍繞品牌核心標語「我的角色，我作主」，以空間穿越與角色轉換為主題，融入 3A RPG 遊戲風格，傳遞玩家從現實生活進入虛擬世界的沉浸式影音體驗，同時兼顧系列商品的特色與規格資訊。</p>',
+  cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以「傳送門」作為主視覺的核心概念，透過影像合成串聯現實城市與奇幻遊戲角色，將品牌訴求轉化為具敘事性的視覺場景。運用電影海報式構圖、電藍色光效與高反差色調，營造遊戲世界的沉浸感與張力，並透過模組化的資訊編排與規格比較表，兼顧視覺吸引力及產品資訊的閱讀效率。'),
+         dict(tone='pink',title='What happened next',zh='後續成果',text='延續既有主視覺進行多尺寸 Resize 與版面調整，因應不同實體通路的展示空間與應用需求，在維持品牌視覺一致性的同時，確保各尺寸下的資訊完整性與視覺張力。')],
+  gallery_style='none',gallery=[],extra=case_extra.benq(),
   next=dict(title='語音直播免費場轉 VIP 場',attr='href="./work-13-vip.html"')),
  'work-13-vip':dict(
   num='13',tone='cyan',body_cls=' cs-body--ink',deco=(('flower','pink'),('blob','cyan')),

@@ -400,3 +400,11 @@ def mimi():
     f'<section class="cs-sec mm-watch">{sh("Watch","The Reel","成片")}'
     f'<div class="mm-reel"><div class="mm-reel__frame"><iframe src="{embed}" title="瞇瞇眼大叔的婦科診療室 Facebook Reels" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>'
     f'<p class="mm-reel__alt">看不到影片嗎？<a href="{reel}" target="_blank" rel="noopener">到 Facebook 觀看 ↗</a></p></div></section>')
+
+def benq():
+  # 12 BenQ MOBIUZ DM：DM 正反面展示 → 通路牆面延伸
+  F='work-12-dm/'
+  return (f'<section class="cs-sec bq-sec"><figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="bq" aria-label="放大檢視：DM 正反面">{pic(F+"web-01",2400,1421,"BenQ MOBIUZ DM 正面主視覺與背面規格比較表")}</button>'
+          f'<figcaption>✦ DM 正反面<span>正面以傳送門主視覺搭配三個產品系列；背面為完整規格比較表。</span></figcaption></figure>'
+          f'<figure class="bq-fig"><button type="button" class="bq-fig__img bq-fig__img--wide" data-lb="bq" aria-label="放大檢視：通路牆面視覺">{pic(F+"web-wall",2400,388,"BenQ MOBIUZ 通路牆面橫幅視覺")}</button>'
+          f'<figcaption>✦ 通路牆面視覺<span>延伸同一套主視覺，重新排版成實體通路的橫幅尺寸。</span></figcaption></figure></section>')
