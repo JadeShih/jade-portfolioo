@@ -292,7 +292,7 @@ def skill():
   ph=''.join(f'<article class="ch-pain"><span class="ch-pain__no">{n}</span><h3>{t}</h3><p>{d}</p></article>' for n,t,d in pains)
   layers=[('lime','Persona 固定元素','不能變的','每個 Persona 一套固定規格：色系、背景公式、面板風格、是否使用作者照片、禁用色。','確保品牌一致'),
           ('cyan','Variation Pool','可以怎麼變','構圖、鏡頭角度、光線、面板數量與排列、人物姿勢、文字對齊、CTA 樣式等 9 個維度，每次各抽一個。','確保視覺多樣'),
-          ('pink','規則與模板','怎麼變','Persona 的色系與文案必須保留；構圖、比例、場景每次都要變化，禁止重複同一套路，並從作者主視覺型、產品主視覺型等視覺架構中隨機選一種，最後輸出 image_prompt、layout_type、color_palette 等欄位。','確保穩定可執行')]
+          ('pink','規則與模板','怎麼變','Persona 的色系與文案必須保留；構圖、比例、場景每次都要變化，禁止重複同一套路，並從作者主視覺型、產品主視覺型等視覺架構中隨機選一種，最後輸出成 prompt。','確保穩定可執行')]
   ly=''.join(f'<article class="sk-layer" data-tone="{t}"><p class="sk-layer__no">Layer {i+1}</p><h3>{a}<small>負責「{b}」</small></h3><p>{c}</p><span class="sk-layer__goal">→ {g}</span></article>' for i,(t,a,b,c,g) in enumerate(layers))
   P5=[
    dict(id='01',name='美股策略進階型',colors=['#050D1A','#00FFFF','#002366'],fixed=['Glassmorphism 磨砂玻璃面板','作者照片，保留臉部特徵','深海藍底＋電光青放射光暈'],imgs=['persona1-01','persona1-01-1'],
