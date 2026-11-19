@@ -1504,3 +1504,21 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .bq-fig__img img{display:block;width:100%;height:auto;-webkit-user-drag:none}
 .bq-fig figcaption{display:grid;gap:4px;font:900 18px/1.4 "Noto Sans TC",sans-serif}
 .bq-fig figcaption span{font:400 14.5px/1.7 "Noto Sans TC",sans-serif;opacity:.8}
+/* 17 Shell 殼牌：素材 → 成品 */
+.sh-flow{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:clamp(14px,2.4vw,36px);margin-top:clamp(28px,4vw,44px)}
+.sh-step{margin:0;display:grid;gap:14px}
+.sh-step__tag{margin:0;display:flex;align-items:baseline;gap:10px;font:400 clamp(26px,2.6vw,36px)/1 var(--font-brand);text-transform:uppercase;letter-spacing:.04em}
+.sh-step__tag span{font:900 15px/1 "Noto Sans TC",sans-serif;letter-spacing:0;opacity:.75}
+.sh-step__note{margin:0;font-size:14px;opacity:.75}
+.sh-raw{display:flex;align-items:center;justify-content:center;gap:6%;aspect-ratio:3/4;padding:12% 10%;border:3px solid #16143A;border-radius:26px;
+  background-color:#fff;background-image:linear-gradient(45deg,#E9E8EF 25%,transparent 25%,transparent 75%,#E9E8EF 75%),linear-gradient(45deg,#E9E8EF 25%,transparent 25%,transparent 75%,#E9E8EF 75%);background-size:28px 28px;background-position:0 0,14px 14px}
+.sh-raw picture{flex:1;min-width:0}
+.sh-raw img{display:block;width:100%;height:auto}
+.sh-arrow{display:grid;place-items:center;width:clamp(48px,5vw,64px);aspect-ratio:1;border-radius:50%;background:#16143A;color:#C2FF0A}
+.sh-arrow svg{width:56%;height:56%}
+.cs-sec .sh-final,.cs-sec .sh-app__img{display:block;width:100%;border-radius:26px;overflow:hidden;border:3px solid #16143A;box-shadow:6px 6px 0 #16143A;cursor:zoom-in}
+.sh-final img,.sh-app__img img{display:block;width:100%;height:auto;-webkit-user-drag:none}
+.sh-apps{display:grid;grid-template-columns:1.4fr .714fr .707fr;gap:clamp(14px,1.8vw,24px);align-items:start;margin-top:clamp(28px,4vw,44px)}
+.sh-app{margin:0;display:grid;gap:12px;min-width:0}
+.sh-app figcaption{font:900 16px/1.4 "Noto Sans TC",sans-serif}
+@media (max-width:820px){.sh-flow{grid-template-columns:minmax(0,1fr)}.sh-arrow{justify-self:center;transform:rotate(90deg)}.sh-apps{grid-template-columns:1fr 1fr}.sh-app--wide{grid-column:1/-1}}

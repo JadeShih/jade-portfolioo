@@ -408,3 +408,24 @@ def benq():
           f'<figcaption>✦ DM 正反面<span>正面以傳送門主視覺搭配三個產品系列；背面為完整規格比較表。</span></figcaption></figure>'
           f'<figure class="bq-fig"><button type="button" class="bq-fig__img bq-fig__img--wide" data-lb="bq" aria-label="放大檢視：通路牆面視覺">{pic(F+"web-wall",2400,388,"BenQ MOBIUZ 通路牆面橫幅視覺")}</button>'
           f'<figcaption>✦ 通路牆面視覺<span>延伸同一套主視覺，重新排版成實體通路的橫幅尺寸。</span></figcaption></figure></section>')
+
+def shell():
+  # 17 Shell 殼牌海報：素材（僅產品去背圖）→ 合成成品 → 延伸應用
+  F='work-17-shell/'
+  def sh(eb,en,zh,lead=''):
+    l=f'<p class="cs-sec__lead">{lead}</p>' if lead else ''
+    return f'<header class="cs-sec__head"><p class="eyebrow">{eb}</p><h2 class="cs-sec__title">{en}<small>{zh}</small></h2>{l}</header>'
+  def can(n,h,alt): return f'<picture><source srcset="{P}{F}{n}.webp" type="image/webp"><img src="{P}{F}{n}.png" width="640" height="{h}" alt="{alt}" loading="lazy" decoding="async"></picture>'
+  def fig(n,w,h,alt,cap,cls=''):
+    return (f'<figure class="sh-app{cls}"><button type="button" class="sh-app__img" data-lb="sh" aria-label="放大檢視：{cap}">{pic(F+n,w,h,alt)}</button><figcaption>✦ {cap}</figcaption></figure>')
+  return (
+    f'<section class="cs-sec">{sh("Compositing","From a Product Shot","從一張產品圖開始","當時手上只有兩張去背的產品圖，沒有場景，也沒有光影。背景、光束、地面反射與鐵罐的金屬質感，都是靠影像合成一層一層建出來的。")}'
+    f'<div class="sh-flow"><figure class="sh-step sh-step--raw"><p class="sh-step__tag">Before<span>拿到的素材</span></p>'
+    f'<div class="sh-raw">{can("web-raw-purple",984,"殼牌喜力柴油勁能 0W-30 鐵罐去背產品圖")}{can("web-raw-red",979,"殼牌喜力卓越超凡 0W-40 鐵罐去背產品圖")}</div>'
+    f'<p class="sh-step__note">兩張去背產品圖，沒有背景與光影</p></figure>'
+    f'<span class="sh-arrow" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M10 24h26M26 13l11 11-11 11" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'
+    f'<figure class="sh-step sh-step--final"><p class="sh-step__tag">After<span>完成的形象海報</span></p>'
+    f'<button type="button" class="sh-final" data-lb="sh" aria-label="放大檢視：形象海報">{pic(F+"web-poster",1500,2000,"殼牌喜力新品鐵罐形象海報：紅紫雙罐置於深色光束場景")}</button>'
+    f'<p class="sh-step__note">60 × 80 cm 形象海報</p></figure></div></section>'
+    f'<section class="cs-sec">{sh("Applications","One Visual, Many Formats","延伸應用","同一套主視覺延伸到桌曆、筆記本與 A4 文宣，依各尺寸重新安排版面。")}'
+    f'<div class="sh-apps">{fig("web-cover",2400,1714,"殼牌喜力新品桌曆封面","桌曆"," sh-app--wide")}{fig("web-note",1200,1679,"殼牌喜力新品筆記本封面","筆記本")}{fig("web-a4",1200,1697,"殼牌喜力新品 A4 文宣","A4 文宣")}</div></section>')

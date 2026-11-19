@@ -181,5 +181,17 @@ CASES={
   meta=[('Client','鍾國騰醫師'),('Role','短影音模板設計・現場攝影'),('Deliverables','頻道視覺定位・6 款影片模板'),('Year','2024')],
   overview='<p>鍾國騰醫師是婦產科醫師，粉絲專頁希望用短影音回答女性常見的婦科問題，讓專業知識更容易被看見。</p><p>我負責頻道的視覺定位與影片模板設計，從「專注、細心、溫暖」三個關鍵字延伸出暖色系、圓體字與 Q 版醫師角色，做成一套每集都能直接套用的字卡系統；拍攝當天也擔任現場攝影。</p>',
   cards=[],gallery_style='none',gallery=[],extra=case_extra.mimi(),
+  next=dict(title='Shell 殼牌喜力新品海報',attr='href="./work-17-shell.html"')),
+ 'work-17-shell':dict(
+  num='17',tone='yellow',deco=(('flower','pink'),('blob','cyan')),
+  title_en='Shell Helix',title_zh='Shell 殼牌喜力新品海報',
+  desc='Jade Shih 作品：Shell 殼牌喜力新款鐵罐引擎潤滑油上市形象海報，僅以產品圖進行影像合成。',
+  tags=['平面設計','Shell 殼牌','2021'],tagline='',
+  cover='work-17-shell/web-cover',cover_w=2400,cover_h=1714,cover_alt='殼牌喜力新品形象視覺：紫色 0W-30 與紅色 0W-40 鐵罐置於深色光束場景',
+  meta=[('Client','Shell 殼牌'),('Role','平面設計・影像合成'),('Deliverables','海報'),('Year','2021')],
+  overview='<p>為 Shell 殼牌喜力兩款全新鐵罐包裝引擎潤滑油打造新品上市形象海報，有別於前一代產品的視覺風格，以沉穩、高級且精緻的設計調性，凸顯鐵罐包裝的金屬質感，並傳遞零碳環保、節能省油及頂尖歐系車廠認證等核心賣點。</p>',
+  cards=[dict(tone='lime',title='What I made',zh='我的設計',text='在僅有原始產品圖的素材條件下，透過影像合成、光影重塑、材質修飾與環境反射，從無到有建構具備商業攝影質感的產品展示場景。延伸兩款商品的紅、紫包裝色彩，搭配深色背景、漸層光暈與線性光束，強化金屬材質的立體感與空間層次，營造兼具科技感、高性能與高端精品質感的視覺形象。'),
+         dict(tone='pink',title='What happened next',zh='後續成果',text='延續此次建立的新品主視覺，透過 Resize 與版面重構，將形象海報延伸應用至品牌桌曆封面，在維持原有光影質感與高端產品形象的同時，確保不同印刷載體間的視覺一致性。')],
+  gallery_style='none',gallery=[],extra=case_extra.shell(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
