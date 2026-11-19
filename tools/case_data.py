@@ -165,7 +165,7 @@ CASES={
   title_en='Dr. Squint Shorts',title_zh='瞇瞇眼大叔短影音',
   desc='Jade Shih 作品：婦產科鍾國騰醫師粉絲專頁短影音，負責頻道視覺定位與六款影片模板設計，並擔任現場攝影。',
   tags=['短影音','鍾國騰醫師','模板設計'],tagline='',
-  cover='work-16-mimi/cover',cover_w=2400,cover_h=1500,cover_alt='兩支手機顯示瞇瞇眼大叔短影音：鍾國騰醫師站在診間與「不必動刀、不須穿刺」重點字卡',
+  cover='work-16-mimi/web-cover',cover_w=2400,cover_h=1421,cover_alt='兩支手機顯示瞇瞇眼大叔短影音：鍾國騰醫師站在診間與「不必動刀、不須穿刺」重點字卡',
   meta=[('Client','鍾國騰醫師'),('Role','短影音模板設計・現場攝影'),('Deliverables','頻道視覺定位・6 款影片模板'),('Year','2024')],
   overview='<p>鍾國騰醫師是婦產科醫師，粉絲專頁希望用短影音回答女性常見的婦科問題，讓專業知識更容易被看見。</p><p>我負責頻道的視覺定位與影片模板設計，從「專注、細心、溫暖」三個關鍵字延伸出暖色系、圓體字與 Q 版醫師角色，做成一套每集都能直接套用的字卡系統；拍攝當天也擔任現場攝影。</p>',
   cards=[],gallery_style='none',gallery=[],extra=case_extra.mimi(),

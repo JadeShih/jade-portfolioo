@@ -380,12 +380,12 @@ def mimi():
   kws=''.join(f'<article class="mm-kw" data-tone="{t}"><p class="mm-kw__en">✦ {e}</p><h3>{z}</h3><p>{d}</p></article>' for z,e,d,t in kw)
   pal=[('#FBF2E9','底色'),('#FED280','強調'),('#F0A185','主色'),('#663333','文字')]
   sw=''.join(f'<li style="--c:{c}"><span></span><b>{c}</b><small>{n}</small></li>' for c,n in pal)
-  tp=[('t1-cover','01','問題封面','Hook','用一句問題加上大字主題，讓滑過的人停下來。'),
-      ('t2-person','02','人物字卡','Intro','醫師第一次出場時，用 Q 版頭像和「瞇瞇眼大叔」的暱稱建立記憶點。'),
-      ('t3-question','03','問題字卡','Question','用對話框標出這一集要回答的問題。'),
-      ('t4-voice','04','畫外音','Voice-over','手寫感對話框模擬患者發問，拉近醫病距離。'),
-      ('t5-key','05','重點字卡','Key point','描邊大字標出關鍵結論，靜音觀看也看得懂。'),
-      ('t6-end','06','結尾模板','Ending','收尾的主題標籤與英文跑馬燈，帶出「治療新選擇」。')]
+  tp=[('web-t1','01','問題封面','Hook','用一句問題加上大字主題，讓滑過的人停下來。'),
+      ('web-t2','02','人物字卡','Intro','醫師第一次出場時，用 Q 版頭像和「瞇瞇眼大叔」的暱稱建立記憶點。'),
+      ('web-t3','03','問題字卡','Question','用對話框標出這一集要回答的問題。'),
+      ('web-t4','04','畫外音','Voice-over','手寫感對話框模擬患者發問，拉近醫病距離。'),
+      ('web-t5','05','重點字卡','Key point','描邊大字標出關鍵結論，靜音觀看也看得懂。'),
+      ('web-t6','06','結尾模板','Ending','收尾的主題標籤與英文跑馬燈，帶出「治療新選擇」。')]
   car=''.join(f'<figure class="hcar__item mm-tp"><button type="button" class="mm-tp__img" data-lb="mm" aria-label="放大檢視：{z}">{pic(F+n,900,1600,"短影音模板："+z)}</button>'
               f'<figcaption><span>{k} · {e}</span><b>{z}</b>{d}</figcaption></figure>' for n,k,z,e,d in tp)
   reel='https://www.facebook.com/reel/1546748829204744'
