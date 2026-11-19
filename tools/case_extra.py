@@ -256,7 +256,7 @@ def vip():
             '入口頁非即時刷新：點擊時先進入 loading 重新判斷權限，再給正確的導引'],
             f'<div class="ch-sq">{png("d-03",1200,1200,"免費試聽推播與限時公開已結束的入口卡片")}</div>'))
   edges=[('晚到的免費用戶','切換已發生才點推播進來：入口顯示「限時公開已結束」，點擊後直接看到升級引導。','pink'),
-         ('入口頁停留的用戶','停在入口頁、剛好在切換前後點擊：先 loading 即時判斷權限，再阻擋並給正確提示。','cyan'),
+         ('入口頁停留的用戶','停在入口頁、剛好在切換前後點擊：先 loading 即時判斷用戶權限，再阻擋並給正確提示。','cyan'),
          ('入口標示延遲','入口頁不是即時刷新：權限 Tag 隨狀態更新，避免看到「全部可聽」卻進不去。','cyan')]
   ed=''.join(f'<article class="ch-user" data-tone="{t}"><b>{r}</b><p>{d}</p></article>' for r,d,t in edges)
   states=[('更改觀看權限選單','host-menu'),('選擇免費場／VIP 場','host-radio'),('二次確認彈窗','host-confirm'),('切換中','host-loading'),('切換失敗','host-error'),('切換成功','host-toast'),
