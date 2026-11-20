@@ -1567,19 +1567,25 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .ob-hs__dot:hover,.ob-hs.is-open .ob-hs__dot{transform:scale(1.12)}
 .ob-hs__dot:focus-visible{outline:3px solid var(--jade-sys-color-focus-ring);outline-offset:4px}
 @keyframes obPulse{0%{opacity:.9;transform:scale(.8)}100%{opacity:0;transform:scale(1.5)}}
-.ob-hs__tip{position:absolute;left:0;width:min(300px,70vw);padding:var(--jade-sys-spacing-4) var(--jade-sys-spacing-6);border-radius:var(--jade-sys-shape-corner-large);background:var(--jade-sys-color-surface-contrast);color:var(--jade-sys-color-on-surface-contrast);transform:translate(-50%,8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity 200ms cubic-bezier(.2,0,0,1),transform 200ms cubic-bezier(.2,0,0,1),visibility 0s 200ms}
+.ob-hs__tip{position:absolute;left:0;width:min(320px,72vw);padding:var(--jade-sys-spacing-6);border:var(--jade-sys-stroke-width) solid var(--jade-sys-color-outline);border-radius:var(--jade-sys-shape-corner-large);background:var(--jade-sys-color-surface);color:var(--jade-sys-color-on-surface);transform:translate(-50%,8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity 200ms cubic-bezier(.2,0,0,1),transform 200ms cubic-bezier(.2,0,0,1),visibility 0s 200ms}
+.ob-hs__tip[data-tone="cyan"]{background:var(--jade-sys-color-cyan);color:var(--jade-sys-color-on-cyan)}
+.ob-hs__tip[data-tone="pink"]{background:var(--jade-sys-color-tertiary);color:var(--jade-sys-color-on-tertiary)}
+.ob-hs__tip[data-tone="yellow"]{background:var(--jade-sys-color-yellow);color:var(--jade-sys-color-on-yellow)}
+.ob-hs__tip[data-tone="lime"]{background:var(--jade-sys-color-secondary);color:var(--jade-sys-color-on-secondary)}
+.ob-hs__tip[data-tone="coral"]{background:var(--jade-sys-color-coral);color:var(--jade-sys-color-on-coral)}
 .ob-hs[data-pos^="b"] .ob-hs__tip{top:34px}
 .ob-hs[data-pos^="t"] .ob-hs__tip{bottom:34px;transform:translate(-50%,-8px)}
 .ob-hs[data-pos$=" r"] .ob-hs__tip{left:auto;right:-22px;transform:translate(0,8px)}
-.ob-hs:hover .ob-hs__tip,.ob-hs:focus-within .ob-hs__tip,.ob-hs.is-open .ob-hs__tip{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0);transition-delay:0s}
-.ob-hs[data-pos$=" r"]:hover .ob-hs__tip,.ob-hs[data-pos$=" r"]:focus-within .ob-hs__tip,.ob-hs[data-pos$=" r"].is-open .ob-hs__tip{transform:none}
+.ob-hs:hover .ob-hs__tip,.ob-hs:focus-within .ob-hs__tip,.ob-hs.is-open .ob-hs__tip{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0) rotate(-1.5deg);transition-delay:0s}
+.ob-hs[data-pos$=" r"]:hover .ob-hs__tip,.ob-hs[data-pos$=" r"]:focus-within .ob-hs__tip,.ob-hs[data-pos$=" r"].is-open .ob-hs__tip{transform:rotate(1.5deg)}
 .ob-hs__tip p{margin:0}
-.ob-hs__eb{font:600 12px/16px var(--font-plain);letter-spacing:.14em;text-transform:uppercase;color:var(--jade-sys-color-secondary)}
-.ob-hs__t{margin-top:var(--jade-sys-spacing-1)!important;font:900 20px/1.3 "Noto Sans TC",sans-serif}
-.ob-hs__d{margin-top:var(--jade-sys-spacing-2)!important;font:400 14px/1.7 var(--font-plain),"Noto Sans TC",sans-serif}
-.ob-hs__s{margin-top:var(--jade-sys-spacing-3)!important;padding-top:var(--jade-sys-spacing-2);border-top:1px solid rgba(255,255,255,.2);font:600 13px/1.5 var(--font-plain),"Noto Sans TC",sans-serif}
+.ob-hs__eb{color:inherit}
+.ob-hs__eb::before{background:var(--jade-sys-color-surface)!important}
+.ob-hs__t{margin-top:var(--jade-sys-spacing-3)!important;font:900 24px/1.1 "Noto Sans TC",sans-serif}
+.ob-hs__d{margin-top:var(--jade-sys-spacing-2)!important;font:400 15px/1.7 var(--font-plain),"Noto Sans TC",sans-serif}
+.ob-hs__s{margin-top:var(--jade-sys-spacing-4)!important;padding-top:var(--jade-sys-spacing-3);border-top:var(--jade-sys-stroke-width) solid currentColor;font:600 13px/16px var(--font-plain),"Noto Sans TC",sans-serif;letter-spacing:.06em}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-@media (max-width:640px){.ob-hs__dot{width:32px;height:32px;margin:-16px 0 0 -16px;font-size:15px}.ob-hs[data-pos^="b"] .ob-hs__tip{top:24px}.ob-hs[data-pos^="t"] .ob-hs__tip{bottom:24px}.ob-hs__tip{width:220px;padding:var(--jade-sys-spacing-3) var(--jade-sys-spacing-4)}.ob-hs__d{font-size:13px}}
+@media (max-width:640px){.ob-hs__dot{width:32px;height:32px;margin:-16px 0 0 -16px;font-size:15px}.ob-hs[data-pos^="b"] .ob-hs__tip{top:24px}.ob-hs[data-pos^="t"] .ob-hs__tip{bottom:24px}.ob-hs__tip{width:230px;padding:var(--jade-sys-spacing-4)}.ob-hs__d{font-size:13px}}
 @media (prefers-reduced-motion:reduce){.ob-hs__dot::after{animation:none}.ob-hs__tip,.ob-hs__dot{transition:none}}
 /* 21 ORBIS：4 號插槽 → 小卡從插槽抽出、展開成扇形 */
 .ob-hot__stage{container-type:inline-size}
