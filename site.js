@@ -422,3 +422,12 @@
     window.addEventListener('pointerup',function(){if(drag&&drag.axis)suppress=true;setTimeout(function(){suppress=false},0);drag=null;app.classList.remove('is-drag')});
   });
 })();
+/* 21 ORBIS 互動結構圖：點擊（觸控）開關說明，點空白或 Esc 關閉 */
+(function(){
+  var hs=document.querySelectorAll('.ob-hs');if(!hs.length)return;
+  function close(ex){[].forEach.call(hs,function(h){if(h!==ex){h.classList.remove('is-open');h.querySelector('.ob-hs__dot').setAttribute('aria-expanded','false')}})}
+  [].forEach.call(hs,function(h){var b=h.querySelector('.ob-hs__dot');
+    b.addEventListener('click',function(e){e.stopPropagation();var o=!h.classList.contains('is-open');close(h);h.classList.toggle('is-open',o);b.setAttribute('aria-expanded',o?'true':'false')})});
+  document.addEventListener('click',function(){close()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+})();
