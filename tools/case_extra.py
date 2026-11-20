@@ -429,3 +429,9 @@ def shell():
     f'<p class="sh-step__note">背景、光束與地面反射都是合成出來的</p></figure></div></section>'
     f'<section class="cs-sec">{sh("Applications","One Visual, Many Formats","延伸應用","同一套主視覺延伸到桌曆、筆記本與 A4 文宣，依各尺寸重新安排版面。")}'
     f'<div class="sh-apps">{fig("web-calendar",2400,1714,"殼牌喜力新品桌曆封面","桌曆"," sh-app--wide")}{fig("web-note",1200,1679,"殼牌喜力新品筆記本封面","筆記本")}{fig("web-a4",1200,1697,"殼牌喜力新品 A4 文宣","A4 文宣")}</div></section>')
+
+def catalog():
+  # 18 SONIC 簡易型錄：展開頁
+  F='work-18-catalog/'
+  return (f'<section class="cs-sec bq-sec"><figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="ct" aria-label="放大檢視：型錄封面與內頁">{pic(F+"web-01",2400,1697,"SONIC 簡易型錄封面「WORK EFFICIENT WORK WITH SONIC」與產品內頁展開")}</button>'
+          f'<figcaption>✦ 封面與內頁<span>封面以技師形象攝影搭配英文標語；內頁用模組化網格整理工具組與規格。</span></figcaption></figure></section>')

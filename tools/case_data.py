@@ -193,5 +193,17 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='在僅有原始產品圖的素材條件下，透過影像合成、光影重塑、材質修飾與環境反射，從無到有建構具備商業攝影質感的產品展示場景。延伸兩款商品的紅、紫包裝色彩，搭配深色背景、漸層光暈與線性光束，強化金屬材質的立體感與空間層次，營造兼具科技感、高性能與高端精品質感的視覺形象。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='延續此次建立的新品主視覺，透過 Resize 與版面重構，將形象海報延伸應用至品牌桌曆封面，在維持原有光影質感與高端產品形象的同時，確保不同印刷載體間的視覺一致性。')],
   gallery_style='none',gallery=[],extra=case_extra.shell(),
+  next=dict(title='SONIC 汽修工具簡易型錄',attr='href="./work-18-catalog.html"')),
+ 'work-18-catalog':dict(
+  num='18',tone='cyan',deco=(('flower','pink'),('blob','yellow')),
+  title_en='SONIC',title_zh='SONIC 汽修工具簡易型錄',
+  desc='Jade Shih 作品：SONIC 汽修工具品牌簡易產品型錄設計。',
+  tags=['平面設計','大豐集團 SONIC','2022'],tagline='',
+  cover='work-18-catalog/web-cover',cover_w=2400,cover_h=1600,cover_alt='SONIC 汽修工具簡易型錄展開立體展示，紅黑白配色與技師形象攝影',
+  meta=[('Client','大豐集團 SONIC'),('Role','平面設計'),('Deliverables','型錄'),('Year','2022')],
+  overview='<p>為 SONIC 汽修工具品牌打造簡易產品型錄，依循既有品牌視覺規範，整合品牌形象、產品特色與核心功能，以精簡易讀的方式呈現品牌優勢。透過清晰的資訊編排，協助潛在客戶快速認識品牌與產品系列，進一步引導閱讀完整型錄。</p>',
+  cards=[dict(tone='lime',title='What I made',zh='我的設計',text='延續品牌標誌性的紅、黑、白配色，結合專業技師形象攝影與大膽的英文標語，塑造俐落、可靠且具工業感的視覺風格。內頁透過模組化網格、產品分類與圖像化資訊編排，將繁多的汽修工具與規格內容整合為清晰的閱讀架構，兼顧品牌形象與產品資訊的易讀性。'),
+         dict(tone='pink',title='What happened next',zh='後續成果',text='將品牌介紹與產品資訊濃縮為精簡的入門型錄，降低潛在客戶初次接觸品牌時的資訊負擔，並作為完整產品型錄的前導素材，建立從品牌認識到深入了解產品的閱讀路徑。')],
+  gallery_style='none',gallery=[],extra=case_extra.catalog(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
