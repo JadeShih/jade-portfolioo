@@ -1525,3 +1525,6 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 /* 案例頁圖片邊框統一：墨色 2px 外框＋柔和陰影（同益生菌 PDP 長圖），新增案例頁一律沿用 */
 :is(.cs-stack__item,.dm-shot__frame,.bq-fig__img,.mm-tp__img,.sh-app__img,.sh-final,.sh-raw,.sk-gimg,.sk-out,.sk-rules__img,.kl-feat__shot,.kl-round,.kl-plain,.kl-prop__img,.kl-logo__formula,.ch-sq,.ch-pimg,.pdp-strip__col,.cs-shot__frame){border:0!important;box-shadow:0 0 0 2px #16143A,0 14px 34px rgba(22,20,58,.16)!important;overflow:hidden}
 :is(.kl-feat__shot,.kl-plain,.kl-prop__img,.ch-sq,.ch-pimg,.sk-rules__img){border-radius:16px!important}
+/* 成果區一般擺放（取代疊放） */
+.cs-figs{margin-top:clamp(40px,6vw,72px)}
+.cs-figs .bq-fig__img{display:block;width:100%;padding:0;background:none;border-radius:26px;overflow:hidden;cursor:zoom-in}

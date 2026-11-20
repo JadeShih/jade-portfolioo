@@ -32,8 +32,18 @@ def render(w):
     gal+=f'<figure class="cs-shot" data-tone="{g["tone"]}"><div class="cs-shot__frame">{inner}</div>{cap}</figure>'
   imgs=[g for g in w['gallery'] if g.get('img')]
   if w.get('gallery_style')=='stack' and imgs:
-    items=''.join(f'<button type="button" class="cs-stack__item" data-i="{i}" aria-label="放大檢視：{html.escape(g["alt"])}"><picture><source srcset="public/works/{g["img"]}.webp" type="image/webp"><img src="public/works/{g["img"]}.jpg" width="2000" height="1333" alt="{html.escape(g["alt"])}" loading="lazy" decoding="async" draggable="false"></picture></button>' for i,g in enumerate(imgs))
-    galhtml=f'<div class="cs-stack" data-n="{len(imgs)}">{items}</div>'
+    # 一般擺放：一張一行全寬、統一黑色細框、可點擊放大（原本的疊放已停用）
+    from PIL import Image as _I
+    def _dim(p):
+      try: return _I.open(os.path.join('/home/claude/site/public/works',p+'.jpg')).size
+      except Exception: return (2000,1333)
+    figs=''
+    for g in imgs:
+      wd,ht=_dim(g['img']);cap=g.get('cap','')
+      fc=f'<figcaption>✦ {cap}</figcaption>' if cap else ''
+      figs+=(f'<figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="gal" aria-label="放大檢視：{html.escape(cap or g["alt"])}">'
+             f'<picture><source srcset="public/works/{g["img"]}.webp" type="image/webp"><img src="public/works/{g["img"]}.jpg" width="{wd}" height="{ht}" alt="{html.escape(g["alt"])}" loading="lazy" decoding="async"></picture></button>{fc}</figure>')
+    galhtml=f'<div class="bq-sec cs-figs">{figs}</div>'
   else:
     galhtml=f'<div class="cs-gallery">{gal}</div>'
   SH=json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'shapes.json')))
