@@ -219,5 +219,18 @@ CASES={
   gallery_style='stack',gallery=[dict(tone='lime',img='work-19-catalog/web-01',cap='報告書封面',alt='明台產險 2021 企業永續報告書封面，等角視角城市與永續插畫'),
                                  dict(tone='cyan',img='work-19-catalog/web-02',cap='第 04 章 永續藍圖',alt='第 04 章「永續藍圖」章節頁與永續管理內頁'),
                                  dict(tone='pink',img='work-19-catalog/web-03',cap='第 05 章 專欄',alt='第 05 章「專欄」章節頁與綠色創新商品內頁')],
+  next=dict(title='博士倫 LACELLE 雜誌風型錄',attr='href="./work-20-catalog.html"')),
+ 'work-20-catalog':dict(
+  num='20',tone='lavender',deco=(('flower','pink'),('blob','yellow')),
+  title_en='LACELLE',title_zh='博士倫 LACELLE 雜誌風型錄',
+  desc='Jade Shih 作品：博士倫 LACELLE 蕾絲炫眸系列雜誌風格產品型錄設計。',
+  tags=['平面設計','博士倫','2020'],tagline='',
+  cover='work-20-catalog/web-cover',cover_w=2400,cover_h=1600,cover_alt='博士倫 LACELLE 雜誌風型錄封面與內頁展開，人物特寫搭配柔和色塊',
+  meta=[('Client','博士倫'),('Role','平面設計'),('Deliverables','產品型錄'),('Year','2020')],
+  overview='<p>為博士倫 LACELLE 蕾絲炫眸系列打造雜誌風格產品型錄，以年輕女性為主要溝通對象，結合亞太區代言人金所炫與「妍安眼色 7 日挑戰賽」主題，透過時尚雜誌的視覺語言，呈現七款彩色隱形眼鏡的色彩特色與配戴風格，強化品牌的年輕時尚形象。</p>',
+  cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以日韓時尚雜誌作為設計靈感，運用大幅人物攝影、柔和色塊與編輯式排版，營造清新、精緻的閱讀氛圍。將七款鏡片色彩對應一週七天的穿搭情境，透過獨立配色、眼部特寫與生活感照片，呈現不同眼色的個性與魅力，並結合拍立得式編排與色彩比較資訊，讓產品介紹兼具時尚感與實用性。'),
+         dict(tone='pink',title='What happened next',zh='後續成果',text='實際應用於實體門市展示與產品推廣。透過生活風格化的內容編排，協助消費者直觀比較不同鏡片色彩與配戴風格，兼顧品牌形象傳遞與門市導購需求。')],
+  gallery_style='stack',gallery=[dict(tone='lime',img='work-20-catalog/web-01',cap='目錄與封面',alt='LACELLE 型錄目錄頁、夏日新眼色內頁與封面'),
+                                 dict(tone='pink',img='work-20-catalog/web-02',cap='內頁與封面陳列',alt='LACELLE 型錄多本攤開陳列，可見人物特寫與鏡片色彩內頁')],
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }

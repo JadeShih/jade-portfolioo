@@ -1528,3 +1528,4 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 /* 成果區一般擺放（取代疊放） */
 .cs-figs{margin-top:clamp(40px,6vw,72px)}
 .cs-figs .bq-fig__img{display:block;width:100%;padding:0;background:none;border-radius:26px;overflow:hidden;cursor:zoom-in}
+.cs-cover[data-tone="lavender"]{--tone:#A99BFF}
