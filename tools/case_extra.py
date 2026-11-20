@@ -464,6 +464,6 @@ def orbis():
   flow='<ol class="ob-flow" aria-label="開箱順序">'+''.join(f'<li><b>{a}</b><span>{b}</span></li>' for a,b in [('01','抽出袖套'),('02','打開內盒'),('03','精華露置中展示'),('04','抽出小卡')])+'</ol>'
   return (f'<section class="cs-sec">{sh("Unboxing structure","Layer by Layer","開箱結構","禮盒由外到內分成三層：袖套、內盒加內襯卡，以及插在內襯裡的小卡。每一層都延續「肌膚像素」的方塊語彙。")}{flow}<div class="ob-steps">{st}</div></section>'
           f'<section class="cs-sec bq-sec">{sh("Mockup","The Gift Box","合成示意")}'
-          f'<figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="ob2" aria-label="放大檢視：袖套、內盒、外觀並列">{pic(F+"web-mock-main",1600,1137,"禮盒合成示意：袖套、打開的內盒與套上袖套的完整禮盒並列")}</button><figcaption>✦ 袖套、內盒與完整禮盒</figcaption></figure>'
-          f'<div class="ob-pair"><figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="ob2" aria-label="放大檢視：斜角">{pic(F+"web-mock-angle",1200,794,"套上袖套的禮盒斜角視角")}</button><figcaption>✦ 斜角</figcaption></figure>'
-          f'<figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="ob2" aria-label="放大檢視：俯視">{pic(F+"web-mock-top",1200,674,"套上袖套的禮盒俯視")}</button><figcaption>✦ 俯視</figcaption></figure></div></section>')
+          f'<figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="ob2" aria-label="放大檢視：袖套、內盒與完整禮盒">{pic(F+"web-01",2400,1600,"禮盒合成示意：袖套、打開的內盒與套上袖套的完整禮盒並列")}</button><figcaption>✦ 袖套、內盒與完整禮盒</figcaption></figure>'
+          f'<div class="ob-pair"><figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="ob2" aria-label="放大檢視：禮盒斜角">{pic(F+"web-02",2400,1600,"套上袖套的禮盒斜角視角")}</button><figcaption>✦ 禮盒斜角</figcaption></figure>'
+          f'<figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="ob2" aria-label="放大檢視：成分小卡">{pic(F+"web-03",2400,1600,"成分小卡平鋪陳列")}</button><figcaption>✦ 成分小卡</figcaption></figure></div></section>')
