@@ -435,3 +435,35 @@ def catalog():
   F='work-18-catalog/'
   return (f'<section class="cs-sec bq-sec"><figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="ct" aria-label="放大檢視：型錄封面與內頁">{pic(F+"web-01",2400,1697,"SONIC 簡易型錄封面「WORK EFFICIENT WORK WITH SONIC」與產品內頁展開")}</button>'
           f'<figcaption>✦ 封面與內頁<span>封面以技師形象攝影搭配英文標語；內頁用模組化網格整理工具組與規格。</span></figcaption></figure></section>')
+
+def orbis():
+  # 21 ORBIS 公關禮盒：開箱結構拆解（袖套 → 內盒＋內襯卡 → 小卡）＋合成示意
+  F='work-21-orbis/'
+  def sh(eb,en,zh,lead=''):
+    l=f'<p class="cs-sec__lead">{lead}</p>' if lead else ''
+    return f'<header class="cs-sec__head"><p class="eyebrow">{eb}</p><h2 class="cs-sec__title">{en}<small>{zh}</small></h2>{l}</header>'
+  def im(n,w,h,alt,cap=''):
+    c=f'<figcaption>{cap}</figcaption>' if cap else ''
+    return f'<figure class="ob-fig"><button type="button" class="ob-img" data-lb="ob" aria-label="放大檢視：{cap or alt}">{pic(F+n,w,h,alt)}</button>{c}</figure>'
+  def spec(rows): return '<dl class="ob-spec">'+''.join(f'<div><dt>{a}</dt><dd>{b}</dd></div>' for a,b in rows)+'</dl>'
+  steps=[
+    ('01','Sleeve','袖套',
+     im('web-sleeve-front',576,863,'袖套正面：ORBIS 標誌與散落的極光漸層像素方塊','正面')+im('web-sleeve-back',576,863,'袖套背面：ORBIS 標誌與官方社群資訊','背面'),
+     '最外層的霧面 PP 袖套帶有透光感，正面散落大小不一的極光漸層方塊，就是「肌膚像素」概念的第一眼印象；背面維持留白，只放品牌與社群資訊。',
+     [('材質','霧面 PP＋正面 UV 印 4 色＋成型'),('尺寸','W12 × H18 × D6 cm')]),
+    ('02','Inner box & Insert','內盒＋內襯卡',
+     im('web-insert',582,982,'內襯卡：依產品形狀鏤空固定精華露，旁有方形鏤空與下方小卡插槽','內襯卡：鏤空設計與小卡插槽')+im('web-top-view',405,607,'上視示意：套上袖套後，袖套的像素方塊與內襯疊在一起','上視示意'),
+     '抽出袖套後是象牙卡內盒，內襯卡依精華露瓶身鏤空、把產品固定在正中央；旁邊三個小方形鏤空延續像素意象，下方長條鏤空則是插放小卡的插槽。內襯提出鋁箔卡與極光卡兩種材質方案，讓金屬光澤成為產品的背景。',
+     [('內盒','象牙卡＋軋型＋成型｜外 W12 × H18 × D6／內 W10 × H16 × D6 cm'),('內襯卡','A 鋁箔卡／B 極光卡＋軋型＋成型＋鏤空'),('鏤空','方形 1.4–1.7 cm × 3、小卡插槽 W5.5 × H1.4 cm')]),
+    ('03','Cards','成分小卡＋介紹卡',
+     im('web-cards',1600,1013,'七張成分小卡：Skin Pixel 主視覺卡與六款成分插畫卡','成分小卡 × 7')+im('web-fold',1088,763,'介紹對摺小卡：封面、封底 QR code 新聞稿與展開內頁','介紹對摺卡'),
+     '小卡插在內襯下方的插槽裡，開箱時一眼就能抽出。成分小卡共七張：一張極光漸層的「肌膚像素」主視覺卡，加上六張成分卡，每張用同一個版型，左側直排機能、中間成分插畫、右側成分名稱與各自的代表色。介紹對摺卡則用遊戲闖關的語氣介紹產品，封底放新聞稿 QR code，方便媒體延伸報導。',
+     [('成分小卡','霧面 PP＋正面 UV 印 4 色＋裁型｜W6 × H4 cm'),('介紹對摺卡','象牙卡 240P＋正反 4C＋裁型＋對折｜W5.5 × H7.4 cm')]),
+  ]
+  st=''.join(f'<article class="ob-step"><div class="ob-step__vis">{v}</div><div class="ob-step__txt"><p class="ob-step__no">{n}<span>{en}</span></p><h3>{zh}</h3><p>{d}</p>{spec(r)}</div></article>' for n,en,zh,v,d,r in steps)
+  flow='<ol class="ob-flow" aria-label="開箱順序">'+''.join(f'<li><b>{a}</b>{b}</li>' for a,b in [('01','抽出袖套'),('02','打開內盒'),('03','精華露置中展示'),('04','抽出小卡')])+'</ol>'
+  return (f'<section class="cs-sec">{sh("Unboxing structure","Layer by Layer","開箱結構","禮盒由外到內分成三層：袖套、內盒加內襯卡，以及插在內襯裡的小卡。每一層都延續「肌膚像素」的方塊語彙。")}{flow}<div class="ob-steps">{st}</div></section>'
+          f'<section class="cs-sec bq-sec">{sh("Mockup","The Gift Box","合成示意")}'
+          f'<figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="ob2" aria-label="放大檢視：袖套、內盒、外觀並列">{pic(F+"web-mock-main",1600,1137,"禮盒合成示意：袖套、打開的內盒與套上袖套的完整禮盒並列")}</button><figcaption>✦ 袖套、內盒與完整禮盒</figcaption></figure>'
+          f'<div class="ob-pair"><figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="ob2" aria-label="放大檢視：斜角">{pic(F+"web-mock-angle",1200,794,"套上袖套的禮盒斜角視角")}</button><figcaption>✦ 斜角</figcaption></figure>'
+          f'<figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="ob2" aria-label="放大檢視：俯視">{pic(F+"web-mock-top",1200,674,"套上袖套的禮盒俯視")}</button><figcaption>✦ 俯視</figcaption></figure></div></section>')

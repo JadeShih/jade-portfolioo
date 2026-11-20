@@ -232,5 +232,17 @@ CASES={
          dict(tone='pink',title='What happened next',zh='後續成果',text='實際應用於實體門市展示與產品推廣。透過生活風格化的內容編排，協助消費者直觀比較不同鏡片色彩與配戴風格，兼顧品牌形象傳遞與門市導購需求。')],
   gallery_style='stack',gallery=[dict(tone='lime',img='work-20-catalog/web-01',cap='目錄與封面',alt='LACELLE 型錄目錄頁、夏日新眼色內頁與封面'),
                                  dict(tone='pink',img='work-20-catalog/web-02',cap='內頁與封面陳列',alt='LACELLE 型錄多本攤開陳列，可見人物特寫與鏡片色彩內頁')],
+  next=dict(title='ORBIS 淨擊煥白精華露公關禮盒',attr='href="./work-21-orbis.html"')),
+ 'work-21-orbis':dict(
+  num='21',tone='coral',deco=(('flower','cyan'),('blob','lime')),
+  title_en='ORBIS PR Box',title_zh='ORBIS 淨擊煥白精華露公關禮盒',
+  desc='Jade Shih 作品：ORBIS 淨擊煥白精華露新品上市公關禮盒，從袖套、內襯結構到成分小卡的包裝設計。',
+  tags=['包裝設計','ORBIS','2021'],tagline='',
+  cover='work-21-orbis/web-cover',cover_w=2400,cover_h=1600,cover_alt='ORBIS 淨擊煥白精華露公關禮盒：袖套、打開的內盒與完整禮盒並列',
+  meta=[('Client','ORBIS'),('Role','包裝設計・結構設計'),('Deliverables','公關品包裝'),('Year','2021')],
+  overview='<p>為 ORBIS「淨擊煥白精華露」新品上市打造公關禮盒，以精緻包裝結合品牌美白科技與產品特色，透過具巧思的開箱體驗及互動設計，提升媒體對新品的關注與記憶點，同時展現品牌簡約、純淨且具科技感的形象。</p>',
+  cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以「肌膚像素」作為核心設計概念，將像素的微小單位轉化為精華粒子的視覺隱喻，象徵精華細緻滲透肌膚、逐步展現勻亮膚質的過程。運用白色基調、銀色金屬質感與幻彩漸層方塊，營造純淨透亮且具科技感的視覺氛圍。包裝採用袖套結構與局部鏤空設計，搭配成分插畫小卡及公關摺卡，將產品概念延伸至整體開箱體驗。'),
+         dict(tone='pink',title='What happened next',zh='後續成果',text='完成涵蓋禮盒外觀、內襯結構、成分介紹小卡及公關摺卡的整體設計提案，將產品科技概念轉化為具辨識度的包裝視覺，並透過一致的設計語彙與開箱動線，呈現兼具品牌質感、產品溝通與互動體驗的公關贈禮方案。')],
+  gallery_style='none',gallery=[],extra=case_extra.orbis(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
