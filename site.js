@@ -382,14 +382,15 @@
     var fit=root.querySelector('.clp-fit'),app=root.querySelector('.clp-app'),
         home=app.querySelector('[data-view="home"]'),ev=app.querySelector('[data-view="ev"]'),seg='eco';
     function size(){app.style.setProperty('--s',fit.clientWidth/390)}
+    ev.inert=true;
     size();if('ResizeObserver' in window)new ResizeObserver(size).observe(fit);else window.addEventListener('resize',size);
     function pick(btns,attr,v,aria){[].forEach.call(btns,function(b){b.setAttribute(aria,b.getAttribute(attr)===v?'true':'false')})}
     function setSeg(v){seg=v;pick(home.querySelectorAll('[data-seg]'),'data-seg',v,'aria-selected');
       [].forEach.call(home.querySelectorAll('[data-pane]'),function(p){p.hidden=p.getAttribute('data-pane')!==v})}
     function setTab(v){pick(ev.querySelectorAll('[data-tab]'),'data-tab',v,'aria-selected');
       [].forEach.call(ev.querySelectorAll('[data-tpane]'),function(p){p.hidden=p.getAttribute('data-tpane')!==v;p.scrollTop=0})}
-    function open(v){setTab(v);app.classList.add('is-ev');ev.removeAttribute('aria-hidden');home.setAttribute('aria-hidden','true')}
-    function back(){app.classList.remove('is-ev');home.removeAttribute('aria-hidden');ev.setAttribute('aria-hidden','true');ev.querySelector('.clp-sheet').hidden=true}
+    function open(v){setTab(v);app.classList.add('is-ev');ev.removeAttribute('aria-hidden');ev.inert=false;home.setAttribute('aria-hidden','true');home.inert=true}
+    function back(){app.classList.remove('is-ev');home.removeAttribute('aria-hidden');home.inert=false;ev.setAttribute('aria-hidden','true');ev.inert=true;ev.querySelector('.clp-sheet').hidden=true}
     var suppress=false;
     app.addEventListener('click',function(e){
       if(suppress){e.preventDefault();e.stopPropagation();suppress=false;return}
@@ -458,7 +459,7 @@
   }
   function goTo(i,smooth){window.scrollTo({top:top0+span*i/(N-1),behavior:smooth?'smooth':'instant'})}
   items.forEach(function(it,i){
-    var a=it.querySelector('a');
+    var a=it.querySelector(".deck__card");
     a.addEventListener('click',function(e){if(mq.matches)return;var p=clamp((scrollY-top0)/span,0,1)*(N-1);if(Math.abs(i-p)>.5){e.preventDefault();goTo(i,true)}});
     a.addEventListener('focus',function(){if(!mq.matches)goTo(i,false)});
   });
@@ -466,3 +467,6 @@
   addEventListener('resize',measure);if(mq.addEventListener)mq.addEventListener('change',measure);
   addEventListener('load',measure);measure();
 })();
+
+/* 可橫向捲動的區塊：讓鍵盤也能聚焦後用方向鍵捲動 */
+(function(){var n=0;[].forEach.call(document.querySelectorAll('.hcar__track,.clp-x'),function(el){if(!el.hasAttribute('tabindex'))el.tabIndex=0;if(!el.hasAttribute('aria-label')&&!el.hasAttribute('aria-labelledby')){n++;el.setAttribute('role','region');el.setAttribute('aria-label','可左右捲動的內容 '+n)}})})();
