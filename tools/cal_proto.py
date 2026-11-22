@@ -2,7 +2,7 @@
 import math,random
 P='public/works/work-15-calendar/'
 def img(n,w,h,cls,alt=''):
-  return f'<picture class="{cls}"><source srcset="{P}{n}.webp" type="image/webp"><img src="{P}{n}.png" width="{w}" height="{h}" alt="{alt}" draggable="false"></picture>'
+  return f'<picture class="{cls}"><source srcset="{P}{n}.webp?v=1122" type="image/webp"><img src="{P}{n}.png?v=1122" width="{w}" height="{h}" alt="{alt}" draggable="false"></picture>'
 def bar(t,extra=''): return f'<div class="clp-h"><h3><i></i>{t}</h3>{extra}</div>'
 def spark(seed,up):
   r=random.Random(seed);pts=[];y=20
@@ -21,7 +21,7 @@ def proto():
   idx=[('道瓊指數','44323.07',0),('S&amp;P 500','6305.06',1),('那斯達克','44323.07',0),('費城半導體','6305.06',1)]
   tiles=''.join(f'<div class="clp-tile"><small>{n}</small><b>{v}</b><div class="clp-tile__row"><p class="{"up" if u else "dn"}">{"▲8.81" if u else "▼19.12"}<br>{"0.14%" if u else "-0.04%"}</p>{spark(k+3,u)}</div></div>' for k,(n,v,u) in enumerate(idx))
   rooms=''.join(f'<div class="clp-row">01.{26+k}({"一二三四五"[k]}) 11:00 ｜北京時間</div>' for k in range(5))
-  home=(f'<section class="clp-view clp-view--home" data-view="home">{img("proto-home-top",780,182,"clp-top","Mike 是麥克 App 首頁頂部")}'
+  home=(f'<section class="clp-view clp-view--home" data-view="home">{img("proto-home-top",1170,273,"clp-top","Mike 是麥克 App 首頁頂部")}'
     f'<div class="clp-body" data-dy>'
     f'{bar("美股行事曆")}<div class="clp-x" data-dx>{ch}</div>'
     f'{bar("美股關鍵日程")}<div class="clp-seg"><div class="clp-seg__g" role="tablist"><button type="button" role="tab" aria-selected="true" data-seg="eco">經濟數據</button><button type="button" role="tab" aria-selected="false" data-seg="stk">個股財報</button></div>'
@@ -30,7 +30,7 @@ def proto():
     f'{bar("大盤")}<div class="clp-tiles">{tiles}</div>'
     f'{bar("自選股","<span>查看我的自選股 &gt;</span>")}'
     f'{bar("語音聊天室","<span>【社團】&gt;【語音聊天室】</span>")}<div class="clp-rows">{rooms}</div>'
-    f'</div>{img("proto-tabbar",780,166,"clp-tab","")}</section>')
+    f'</div>{img("proto-tabbar",1170,249,"clp-tab","")}</section>')
   def stat(a,b,c):
     cl=lambda v:'pos' if v.startswith('+') else 'neg' if v.startswith('-') else ''
     return '<dl class="clp-stat">'+''.join(f'<div><dt>{k}</dt><dd class="{cl(v)}">{v}</dd></div>' for k,v in (('預估',a),('實際',b),('前值',c)))+'</dl>'
@@ -58,12 +58,12 @@ def proto():
   diary=grp('麥克投資日誌｜財報(預估)',[('2025/12/26','明日',1,'AAPL')])
   flt=[('all','不限'),('four','四大指數成分股'),('mine','我的自選股'),('diary','麥克投資日誌')]
   fl=''.join(f'<button type="button" data-f="{k}" aria-pressed="{"true" if k=="four" else "false"}">{t}</button>' for k,t in flt)
-  ev=(f'<section class="clp-view clp-view--ev" data-view="ev" aria-hidden="true">{img("proto-ev-top",780,176,"clp-top","重要事件頁頂部")}'
+  ev=(f'<section class="clp-view clp-view--ev" data-view="ev" aria-hidden="true">{img("proto-ev-top",1170,264,"clp-top","重要事件頁頂部")}'
       f'<button type="button" class="clp-back" aria-label="返回首頁"></button><button type="button" class="clp-info" aria-label="事件說明"></button>'
       f'<div class="clp-tabs" role="tablist"><button type="button" role="tab" data-tab="eco" aria-selected="true">經濟數據</button><button type="button" role="tab" data-tab="stk" aria-selected="false">個股財報</button></div>'
       f'<div class="clp-body" data-dy data-tpane="eco"><div class="clp-list">{macl}</div></div>'
       f'<div class="clp-body" data-dy data-tpane="stk" hidden><div class="clp-flt" data-dx>{fl}</div>'
       f'<div class="clp-g" data-g="four">{four}</div><div class="clp-g" data-g="all" hidden>{four}</div><div class="clp-g" data-g="mine" hidden>{mine}</div><div class="clp-g" data-g="diary" hidden>{diary}</div></div>'
-      f'{img("proto-tabbar",780,166,"clp-tab","")}'
+      f'{img("proto-tabbar",1170,249,"clp-tab","")}'
       f'<div class="clp-sheet" hidden><div class="clp-sheet__c"><h5>經濟數據</h5><p>提供近期重要的總經數據，例如升降息、核心 CPI、非農、GDP 成長率，並列出預估、實際與前值。</p><h5>個股財報</h5><p>提供近期將公布財報的個股，預設顯示四大指數成分股，可再依自選股等條件篩選。</p><button type="button" class="clp-sheet__x">知道了</button></div></div></section>')
   return (f'<div class="clp"><div class="clp-phone"><span class="clp-phone__island" aria-hidden="true"></span><div class="clp-fit"><div class="clp-app">{home}{ev}</div></div></div></div>')
