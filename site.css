@@ -1384,7 +1384,7 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .clp-tile>b{font:500 16px/19px -apple-system,"Helvetica Neue",sans-serif;margin-bottom:2px}
 .clp-tile__row{display:flex;align-items:flex-end;justify-content:space-between}
 .clp-tile__row p{margin:0;font:400 16px/21px -apple-system,"Helvetica Neue",sans-serif}
-.clp-app .up{color:#F84444}.clp-app .dn{color:#47AB75}.clp-app .pos{color:#47AB75}.clp-app .neg{color:#F84444}
+.clp-app .up{color:#47AB75}.clp-app .dn{color:#F84444}.clp-app .pos{color:#47AB75}.clp-app .neg{color:#F84444}
 .clp-spark{width:86px;height:43px}
 .clp-rows{display:grid;gap:8px}
 .clp-row{height:46px;display:flex;align-items:center;padding:0 12px;border-radius:8px;background:#212121;font-size:14px}

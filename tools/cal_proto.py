@@ -8,7 +8,7 @@ def spark(seed,up):
   r=random.Random(seed);pts=[];y=20
   for i in range(40):
     y+=r.uniform(-2.2,2.2)+(-.35 if up else .3);y=max(4,min(36,y));pts.append((i*86/39,y))
-  d=' '.join(f'{x:.1f},{y:.1f}' for x,y in pts);c='#F84444' if up else '#47AB75'
+  d=' '.join(f'{x:.1f},{y:.1f}' for x,y in pts);c='#47AB75' if up else '#F84444'
   return (f'<svg class="clp-spark" viewBox="0 0 86 43" aria-hidden="true"><defs><linearGradient id="g{seed}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{c}" stop-opacity=".55"/><stop offset="1" stop-color="{c}" stop-opacity="0"/></linearGradient></defs>'
           f'<line x1="0" y1="20" x2="86" y2="20" stroke="#555" stroke-dasharray="2 2" stroke-width=".5"/><polygon points="0,43 {d} 86,43" fill="url(#g{seed})"/><polyline points="{d}" fill="none" stroke="{c}" stroke-width="1"/></svg>')
 def proto():
