@@ -153,7 +153,7 @@ CASES={
   cards=[],gallery_style='none',gallery=[],extra=case_extra.vip(),
   next=dict(title='美股事件行事曆',attr='href="./work-15-calendar.html"')),
  'work-14-skill':dict(
-  num='14',tone='lime',body_cls=' cs-body--ink',deco=(('flower','cyan'),('blob','pink')),
+  num='01',tone='lime',body_cls=' cs-body--ink',deco=(('flower','cyan'),('blob','pink')),
   title_en='Ad Image Skill',title_zh='AI 廣告圖自動生成 Prompt Skill',
   desc='Jade Shih 作品：AI 廣告閉環中的 Agent B，設計三層 Prompt Skill，讓 AI 依 Persona 自動產出品牌一致、構圖多變的廣告圖。',
   tags=['Playground','Prompt Skill','Claude Code'],tagline='',
@@ -163,7 +163,7 @@ CASES={
   cards=[],gallery_style='none',gallery=[],extra=case_extra.skill(),
   next=dict(title='Playground',attr='href="../playground.html"')),
  'work-15-calendar':dict(
-  num='15',tone='lavender',body_cls=' cs-body--ink',deco=(('flower','yellow'),('blob','cyan')),
+  num='14',tone='lavender',body_cls=' cs-body--ink',deco=(('flower','yellow'),('blob','cyan')),
   title_en='US Market Calendar',title_zh='美股事件行事曆',
   desc='Jade Shih 作品：投資 App 的美股事件行事曆，從首頁提醒擴展為總體與個股事件頁，並定義時區、顯示區間與排序等資訊規則。',
   tags=['UI/UX','YouTuber Mike是麥克','功能規劃'],tagline='',
@@ -173,7 +173,7 @@ CASES={
   cards=[],gallery_style='none',gallery=[],extra=case_extra.cal(),
   next=dict(title='瞇瞇眼大叔短影音',attr='href="./work-16-mimi.html"')),
  'work-16-mimi':dict(
-  num='16',tone='coral',deco=(('flower','yellow'),('blob','pink')),
+  num='15',tone='coral',deco=(('flower','yellow'),('blob','pink')),
   title_en='Dr. Squint Shorts',title_zh='瞇瞇眼大叔短影音',
   desc='Jade Shih 作品：婦產科鍾國騰醫師粉絲專頁短影音，負責頻道視覺定位與六款影片模板設計，並擔任現場攝影。',
   tags=['短影音','鍾國騰醫師','模板設計'],tagline='',
@@ -183,7 +183,7 @@ CASES={
   cards=[],gallery_style='none',gallery=[],extra=case_extra.mimi(),
   next=dict(title='Shell 殼牌喜力新品海報',attr='href="./work-17-shell.html"')),
  'work-17-shell':dict(
-  num='17',tone='yellow',deco=(('flower','pink'),('blob','cyan')),
+  num='16',tone='yellow',deco=(('flower','pink'),('blob','cyan')),
   title_en='Shell Helix',title_zh='Shell 殼牌喜力新品海報',
   desc='Jade Shih 作品：Shell 殼牌喜力新款鐵罐引擎潤滑油上市形象海報，僅以產品圖進行影像合成。',
   tags=['平面設計','Shell 殼牌','2021'],tagline='',
@@ -195,7 +195,7 @@ CASES={
   gallery_style='none',gallery=[],extra=case_extra.shell(),
   next=dict(title='SONIC 汽修工具簡易型錄',attr='href="./work-18-catalog.html"')),
  'work-18-catalog':dict(
-  num='18',tone='cyan',deco=(('flower','pink'),('blob','yellow')),
+  num='17',tone='cyan',deco=(('flower','pink'),('blob','yellow')),
   title_en='SONIC',title_zh='SONIC 汽修工具簡易型錄',
   desc='Jade Shih 作品：SONIC 汽修工具品牌簡易產品型錄設計。',
   tags=['平面設計','大豐集團 SONIC','2022'],tagline='',
@@ -207,7 +207,7 @@ CASES={
   gallery_style='none',gallery=[],extra=case_extra.catalog(),
   next=dict(title='明台產險企業永續報告書',attr='href="./work-19-catalog.html"')),
  'work-19-catalog':dict(
-  num='19',tone='pink',deco=(('flower','lime'),('blob','cyan')),
+  num='18',tone='pink',deco=(('flower','lime'),('blob','cyan')),
   title_en='CSR Report',title_zh='明台產險企業永續報告書',
   desc='Jade Shih 作品：明台產物保險 2021 年企業永續報告書（CSR）視覺設計提案，以等角插畫建立永續議題的視覺語言。',
   tags=['平面設計','明台產險','2022'],tagline='',
@@ -221,7 +221,7 @@ CASES={
                                  dict(tone='pink',img='work-19-catalog/web-03',cap='第 05 章 專欄',alt='第 05 章「專欄」章節頁與綠色創新商品內頁')],
   next=dict(title='博士倫 LACELLE 雜誌風型錄',attr='href="./work-20-catalog.html"')),
  'work-20-catalog':dict(
-  num='20',tone='lavender',deco=(('flower','pink'),('blob','yellow')),
+  num='19',tone='lavender',deco=(('flower','pink'),('blob','yellow')),
   title_en='LACELLE',title_zh='博士倫 LACELLE 雜誌風型錄',
   desc='Jade Shih 作品：博士倫 LACELLE 蕾絲炫眸系列雜誌風格產品型錄設計。',
   tags=['平面設計','博士倫','2020'],tagline='',
@@ -234,7 +234,7 @@ CASES={
                                  dict(tone='pink',img='work-20-catalog/web-02',cap='內頁與封面陳列',alt='LACELLE 型錄多本攤開陳列，可見人物特寫與鏡片色彩內頁')],
   next=dict(title='ORBIS 淨擊煥白精華露公關禮盒',attr='href="./work-21-orbis.html"')),
  'work-21-orbis':dict(
-  num='21',tone='coral',deco=(('flower','cyan'),('blob','lime')),
+  num='20',tone='coral',deco=(('flower','cyan'),('blob','lime')),
   title_en='ORBIS PR Box',title_zh='ORBIS 淨擊煥白精華露公關禮盒',
   desc='Jade Shih 作品：ORBIS 淨擊煥白精華露新品上市公關禮盒，從袖套、內襯結構到成分小卡的包裝設計。',
   tags=['包裝設計','ORBIS','2021'],tagline='',
