@@ -1359,8 +1359,8 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .clp-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding:12px 12px 20px;cursor:grab;user-select:none;-webkit-user-select:none}
 .clp-body::-webkit-scrollbar,.clp-x::-webkit-scrollbar,.clp-flt::-webkit-scrollbar{display:none}
 .clp-h{display:flex;align-items:center;justify-content:space-between;margin:4px 0 12px}
-.clp-h h4{display:flex;align-items:center;gap:8px;margin:0;font:400 14px/20px "Noto Sans TC",sans-serif;color:#fff}
-.clp-h h4 i{width:4px;height:20px;border-radius:2px;background:#9D8AFF}
+.clp-h :is(h3,h4){display:flex;align-items:center;gap:8px;margin:0;font:400 14px/20px "Noto Sans TC",sans-serif;color:#fff}
+.clp-h :is(h3,h4) i{width:4px;height:20px;border-radius:2px;background:#9D8AFF}
 .clp-h span{font-size:12px;color:#9A9A9A}
 .clp-x{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -12px 20px;padding:0 12px;cursor:grab}
 .clp-x[hidden]{display:none}

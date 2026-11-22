@@ -21,6 +21,7 @@ TODO=lambda t:f'<span class="todo">待補：{t}</span>'
 def render(w):
   h=head.replace('<title>About Jade Shih</title>',f'<title>{w["title_zh"]} — Jade Shih</title>').replace(
     'content="Jade Shih 的完整介紹：十年品牌平面、整合設計與 UI/UX 經歷、能力與工作方式。"',f'content="{html.escape(w["desc"])}"')
+  h=re.sub(r'\n?<!-- share:start -->.*?<!-- share:end -->','',h,flags=re.S)  # 分享資訊改由 tools/headmeta.py 產生
   tags=''.join(f'<li>{t}</li>' for t in w['tags'])
   meta=''.join(f'<div class="cs-meta__item"><dt>{k}</dt><dd>{v}</dd></div>' for k,v in w['meta'])
   tagline=f'    <p class="cs-tagline">{w["tagline"]}</p>\n' if w.get('tagline') else ''

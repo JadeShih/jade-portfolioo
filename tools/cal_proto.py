@@ -3,7 +3,7 @@ import math,random
 P='public/works/work-15-calendar/'
 def img(n,w,h,cls,alt=''):
   return f'<picture class="{cls}"><source srcset="{P}{n}.webp" type="image/webp"><img src="{P}{n}.png" width="{w}" height="{h}" alt="{alt}" draggable="false"></picture>'
-def bar(t,extra=''): return f'<div class="clp-h"><h4><i></i>{t}</h4>{extra}</div>'
+def bar(t,extra=''): return f'<div class="clp-h"><h3><i></i>{t}</h3>{extra}</div>'
 def spark(seed,up):
   r=random.Random(seed);pts=[];y=20
   for i in range(40):
