@@ -431,3 +431,38 @@
   document.addEventListener('click',function(){close()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
 })();
+/* 首頁精選作品：捲動疊卡 */
+(function(){
+  var deck=document.querySelector('.deck');if(!deck)return;
+  var items=[].slice.call(deck.querySelectorAll('.deck__item')),N=items.length,cur=deck.querySelector('.deck__cur');
+  var mq=matchMedia('(max-width:760px),(prefers-reduced-motion:reduce)');
+  var cw=0,top0=0,span=1,ticking=false,last=-1;
+  function measure(){
+    if(mq.matches){items.forEach(function(it){it.style.transform='';it.style.zIndex='';it.style.opacity=''});return}
+    cw=items[0].offsetWidth;deck.style.setProperty('--ch',items[0].querySelector('.deck__card').offsetHeight+'px');
+    var r=deck.getBoundingClientRect();top0=r.top+scrollY;span=Math.max(1,deck.offsetHeight-innerHeight);paint();
+  }
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+  function paint(){
+    ticking=false;if(mq.matches)return;
+    var p=clamp((scrollY-top0)/span,0,1)*(N-1);
+    items.forEach(function(it,i){
+      var d=i-p,x,s,r,o=1,z;
+      if(d>=0){var a=Math.min(d,1);x=a*(cw*.96+32)+Math.max(0,d-1)*cw*.9;s=1-.08*a;r=2*a;if(d>2)o=0}
+      else{var t=-d,b=Math.min(t,1),k=Math.min(Math.max(0,t-1),4);x=-b*(cw*.5+28)-k*22;s=1-.14*b-.02*k;r=-2.5*b;if(t>5.5)o=0}
+      z=100-Math.round(Math.abs(d)*10);
+      it.style.transform='translate3d('+x.toFixed(1)+'px,0,0) scale('+s.toFixed(3)+') rotate('+r.toFixed(2)+'deg)';
+      it.style.zIndex=z;it.style.opacity=o;it.style.setProperty('--a',clamp(1-Math.abs(d)*1.6,0,1).toFixed(2));
+    });
+    var n=Math.round(p);if(n!==last&&cur){last=n;cur.textContent=String(n+1).padStart(2,'0')}
+  }
+  function goTo(i,smooth){window.scrollTo({top:top0+span*i/(N-1),behavior:smooth?'smooth':'instant'})}
+  items.forEach(function(it,i){
+    var a=it.querySelector('a');
+    a.addEventListener('click',function(e){if(mq.matches)return;var p=clamp((scrollY-top0)/span,0,1)*(N-1);if(Math.abs(i-p)>.5){e.preventDefault();goTo(i,true)}});
+    a.addEventListener('focus',function(){if(!mq.matches)goTo(i,false)});
+  });
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(paint)}},{passive:true});
+  addEventListener('resize',measure);if(mq.addEventListener)mq.addEventListener('change',measure);
+  addEventListener('load',measure);measure();
+})();
