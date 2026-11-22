@@ -459,7 +459,7 @@
   }
   function goTo(i,smooth){window.scrollTo({top:top0+span*i/(N-1),behavior:smooth?'smooth':'instant'})}
   items.forEach(function(it,i){
-    var a=it.querySelector(".deck__card");
+    var a=it.querySelector(".deck__card,.deck__folder");
     a.addEventListener('click',function(e){if(mq.matches)return;var p=clamp((scrollY-top0)/span,0,1)*(N-1);if(Math.abs(i-p)>.5){e.preventDefault();goTo(i,true)}});
     a.addEventListener('focus',function(){if(!mq.matches)goTo(i,false)});
   });

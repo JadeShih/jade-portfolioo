@@ -1665,3 +1665,11 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 @media (max-width:900px){.ycur{display:none!important}html.has-ycur,html.has-ycur *{cursor:auto!important}}
 .cs-body--ink :is(.cs-sec__title small,.ch-dec__txt h3 small,.pdp-end__txt small,.cs-overview__scope b){color:var(--jade-sys-color-primary)}
 .deck__count{font-size:24px}
+
+/* 最後一張：像素資料夾（不加卡框，直接浮在藍底上） */
+.deck__item--folder{align-self:center;--a:1}
+.deck__folder{display:block;width:92%;margin:0 auto;transform:rotate(-4deg);transition:transform .35s cubic-bezier(.2,0,0,1);-webkit-tap-highlight-color:transparent}
+.deck__folder img,.deck__folder picture{display:block;width:100%;height:auto}
+.deck__folder:hover{transform:rotate(-1deg) scale(1.04)}
+.deck__folder:focus-visible{outline:3px solid var(--jade-sys-color-secondary);outline-offset:8px;border-radius:24px}
+@media (max-width:760px),(prefers-reduced-motion:reduce){.deck__item--folder{align-self:center}.deck__folder{transform:none}}
