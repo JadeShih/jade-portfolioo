@@ -1673,3 +1673,8 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .deck__folder:hover{transform:rotate(-1deg) scale(1.04)}
 .deck__folder:focus-visible{outline:3px solid var(--jade-sys-color-secondary);outline-offset:8px;border-radius:24px}
 @media (max-width:760px),(prefers-reduced-motion:reduce){.deck__item--folder{align-self:center}.deck__folder{transform:none}}
+/* 精選作品：標題與第一張卡的距離收斂（卡片停住前，往上貼近標題） */
+@media (min-width:761px) and (prefers-reduced-motion:no-preference){
+  .deck{margin-top:calc((var(--ch,560px) - 100svh) / 2 - 24px)}
+  .sec--deck .sec__head{position:relative;z-index:1}
+}
