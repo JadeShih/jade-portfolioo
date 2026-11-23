@@ -186,7 +186,7 @@ def gacha():
     l=f'<p class="cs-sec__lead">{lead}</p>' if lead else ''
     return f'<header class="cs-sec__head"><p class="eyebrow">{eb}</p><h2 class="cs-sec__title">{en}<small>{zh}</small></h2>{l}</header>'
   def apic(n,w,h,cls):
-    return f'<picture><source srcset="{P}{F}{n}.webp" type="image/webp"><img class="{cls}" src="{P}{F}{n}.png" width="{w}" height="{h}" alt="" decoding="async"></picture>'
+    return f'<picture><source srcset="{P}{F}{n}.webp?v=1123b" type="image/webp"><img class="{cls}" src="{P}{F}{n}.png?v=1123b" width="{w}" height="{h}" alt="" decoding="async"></picture>'
   steps=[('landing','01','活動頁','扭蛋機主視覺搭配獎項說明，引導用戶按下「馬上前往」。'),
          ('anim','02','扭蛋動畫','扭蛋機搖晃、扭蛋滾出並彈開，製造開獎的期待感。'),
          ('result','03','結果頁','達Q貓帶來財氣好禮，引導領取獎勵與分享活動。')]
@@ -471,7 +471,7 @@ def credit():
   # 22 鹿港天后宮聯名信用卡：可拖曳 360° 卡片＋發行活動照片
   F='work-22-credit/'
   def face(n,alt,cls=''):
-    return f'<picture><source srcset="{P}{F}{n}.webp" type="image/webp"><img class="{cls}" src="{P}{F}{n}.png" width="1712" height="1090" alt="{alt}" draggable="false" decoding="async"></picture>'
+    return f'<picture><source srcset="{P}{F}{n}.webp?v=1123b" type="image/webp"><img class="{cls}" src="{P}{F}{n}.png?v=1123b" width="1712" height="1090" alt="{alt}" draggable="false" decoding="async"></picture>'
   edges=''.join(f'<span class="cc__edge" style="--z:{z}"></span>' for z in range(-2,3))
   card=(f'<div class="cc" data-cc>'
         f'<div class="cc__stage" tabindex="0" role="group" aria-roledescription="可旋轉的卡片" aria-label="鹿港天后宮聯名信用卡。按住左右拖曳，或用左右方向鍵轉動卡片。">'
@@ -481,12 +481,12 @@ def credit():
         f'<div class="cc__face cc__face--back">{face("card-back","信用卡背面：磁條、簽名欄、合作金庫與鹿港天后宮標誌")}<span class="cc__shine" aria-hidden="true"></span></div>'
         f'</div></div>'
         f'<div class="cc__ui"><p class="cc__hint" aria-hidden="true"><span>←</span> 拖曳轉動卡片 <span>→</span></p>'
-        f'<button type="button" class="cc__btn" data-cc-flip>翻面看背面</button></div></div>')
+        f'</div></div>')
   photos=[('web-p1',900,600,'天后宮內整齊陳列的聯名卡與申請書','卡片陳列於天后宮內'),
           ('web-p2',900,600,'銀行代表與天后宮代表手持放大版聯名卡合影','發行儀式合影'),
           ('web-p3',900,600,'鋪成扇形的聯名卡申請書，放在紅色桌布上','延伸設計：信用卡申請書')]
   figs=''.join(f'<figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="cc" aria-label="放大檢視：{c}">{pic(F+n,w,h,a)}</button><figcaption>✦ {c}</figcaption></figure>' for n,w,h,a,c in photos)
   return (f'<section class="cs-sec cc-sec">{head("Card in hand","360° Card","卡面 360°","按住卡片左右拖曳，就能轉到背面。卡號、晶片與銀行標誌是打凸燙銀的部分，轉動時會跟著反光。")}{card}'
-          f'<p class="cc__note">＊ 背面為依正面設計延伸的示意，非實際發行卡背。</p></section>'
+          f'</section>'
           f'<section class="cs-sec">{head("Launch","Card Launch","發行活動","卡片發行後，在鹿港天后宮舉辦過爐祈福的發行活動，延伸設計的申請書也一同陳列。")}'
           f'<div class="cc-photos">{figs}</div><p class="cc__note">＊ 活動照片取自鹿港天后宮官方網站。</p></section>')
