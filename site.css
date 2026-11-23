@@ -1706,3 +1706,4 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .cc-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px);margin-top:clamp(28px,4vw,48px)}
 @media (max-width:760px){.cc-photos{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.cc__hint span{animation:none}}
+.cc{gap:clamp(44px,6vw,72px)}
