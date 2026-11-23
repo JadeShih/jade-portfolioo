@@ -1707,3 +1707,55 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 @media (max-width:760px){.cc-photos{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.cc__hint span{animation:none}}
 .cc{gap:clamp(44px,6vw,72px)}
+/* 23 長春藤醫學展會 */
+.ex-hero{margin-top:clamp(28px,4vw,48px)}
+.cs-sec .ex-img,.cs-sec .ex-ph,.ex-jump{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:var(--jade-sys-shape-corner-large);overflow:hidden;box-shadow:0 0 0 2px #16143A,0 14px 34px rgba(22,20,58,.16)}
+.ex-img picture,.ex-img img,.ex-ph img,.ex-jump img{display:block;width:100%;height:auto}
+.ex-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(24px,3vw,36px)}
+.cs-sec .ex-chip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:var(--jade-sys-stroke-width) solid var(--jade-sys-color-outline);background:var(--jade-sys-color-surface);color:var(--jade-sys-color-on-surface);font:600 15px/1 var(--font-plain);cursor:pointer;transition:background .2s,transform .2s}
+.cs-sec .ex-chip span{font:400 13px/1 var(--font-plain);opacity:.75}
+.cs-sec .ex-chip:hover{transform:translateY(-2px)}
+.cs-sec .ex-chip[aria-pressed="true"]{background:var(--jade-sys-color-outline);color:var(--jade-sys-color-secondary)}
+.cs-sec .ex-chip:focus-visible{outline:3px solid var(--jade-sys-color-outline);outline-offset:3px}
+.ex-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2.2vw,28px);margin-top:clamp(20px,3vw,32px);align-items:start}
+.ex-tile{margin:0;display:grid;gap:12px;padding:clamp(14px,1.6vw,20px);background:var(--jade-sys-color-surface);border:var(--jade-sys-stroke-width) solid var(--jade-sys-color-outline);border-radius:var(--jade-sys-shape-corner-extra-large);transition:opacity .35s,filter .35s,transform .35s}
+.ex-tile--wide{grid-column:span 2}
+.ex-tile.is-dim{opacity:.22;filter:grayscale(1);transform:scale(.985)}
+.ex-tile figcaption{display:grid;gap:2px;padding:0 4px}
+.ex-tile figcaption b{font:900 18px/1.3 "Noto Sans TC",var(--font-plain),sans-serif}
+.ex-tile figcaption span{font:500 13px/20px var(--font-plain);opacity:.75}
+.ex-row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ex-row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ex-row3 .ex-img,.ex-row2 .ex-img{border-radius:12px}
+.ex-jump{position:relative;text-decoration:none;cursor:pointer}
+.ex-jump__go{position:absolute;left:50%;bottom:14px;translate:-50% 0;padding:8px 16px;border-radius:999px;background:var(--jade-sys-color-outline);color:var(--jade-sys-color-secondary);font:600 14px/1 var(--font-plain);white-space:nowrap}
+.ex-flip{perspective:1400px;width:100%}
+.ex-flip__in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,.1,.2,1)}
+.ex-flip.is-flipped .ex-flip__in{transform:rotateY(180deg)}
+.ex-flip__face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;overflow:hidden;box-shadow:0 0 0 2px #16143A}
+.ex-flip__face img{display:block;width:100%;height:100%;object-fit:cover}
+.ex-flip__face--back{transform:rotateY(180deg)}
+.cs-sec .ex-flip__btn,.cs-sec .ex-book__btn{display:inline-flex;align-items:center;justify-content:center;justify-self:start;min-height:40px;padding:0 16px;border-radius:999px;border:var(--jade-sys-stroke-width) solid var(--jade-sys-color-outline);background:var(--jade-sys-color-secondary);color:var(--jade-sys-color-on-secondary);font:600 14px/1 var(--font-plain);cursor:pointer}
+.cs-sec .ex-flip__btn{margin-top:12px}
+.cs-sec .ex-flip__btn:focus-visible,.cs-sec .ex-book__btn:focus-visible{outline:3px solid var(--jade-sys-color-outline);outline-offset:3px}
+.ex-book{display:grid;justify-items:center;gap:clamp(24px,3vw,36px);margin-top:clamp(28px,4vw,48px);padding:clamp(32px,5vw,64px) var(--jade-sys-spacing-4);background:var(--jade-sys-color-cyan);border:var(--jade-sys-stroke-width) solid var(--jade-sys-color-outline);border-radius:var(--jade-sys-shape-corner-extra-large);scroll-margin-top:110px}
+.ex-book__stage{width:min(960px,100%);aspect-ratio:1800/1271;perspective:2400px;outline:none;cursor:pointer;border-radius:8px}
+.ex-book__stage:focus-visible{outline:3px solid var(--jade-sys-color-outline);outline-offset:8px}
+.ex-book__book{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.3,.1,.2,1)}
+.ex-book[data-at="start"] .ex-book__book{transform:translateX(-25%)}
+.ex-book[data-at="end"] .ex-book__book{transform:translateX(25%)}
+.ex-leaf{position:absolute;top:0;left:50%;width:50%;height:100%;transform-origin:left center;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.3,.1,.2,1)}
+.ex-leaf.is-turned{transform:rotateY(-180deg)}
+.ex-leaf__face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;background:#fff;box-shadow:0 0 0 1px rgba(22,20,58,.18)}
+.ex-leaf__face img{display:block;width:100%;height:100%;object-fit:cover}
+.ex-leaf__face::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.14),transparent 9%)}
+.ex-leaf__face--back{transform:rotateY(180deg)}
+.ex-leaf__face--back::after{background:linear-gradient(270deg,rgba(0,0,0,.14),transparent 9%)}
+.ex-book__ui{display:flex;align-items:center;gap:16px}
+.cs-sec .ex-book__btn{width:48px;min-height:48px;padding:0;font-size:18px}
+.cs-sec .ex-book__btn:disabled{opacity:.35;cursor:default}
+.ex-book__pg{margin:0;min-width:7.5em;text-align:center;font:600 15px/1 var(--font-plain);color:var(--jade-sys-color-on-cyan,#16143A)}
+.ex-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.8vw,20px);margin-top:clamp(28px,4vw,48px)}
+@media (max-width:1000px){.ex-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.ex-grid{grid-template-columns:1fr}.ex-tile--wide{grid-column:auto}.ex-photos{grid-template-columns:repeat(2,minmax(0,1fr))}.ex-book[data-at] .ex-book__book{transform:none}}
+@media (prefers-reduced-motion:reduce){.ex-leaf,.ex-flip__in,.ex-book__book,.ex-tile{transition:none}}

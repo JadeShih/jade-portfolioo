@@ -501,3 +501,24 @@
     if(!reduce&&'IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(en){vis=en.isIntersecting;if(vis&&!touched)kick()})}).observe(root)}
   });
 })();
+/* 23 展會：情境篩選、正反翻面、小冊翻頁 */
+(function(){
+  var chips=document.querySelectorAll('[data-ex-scene]'),tiles=document.querySelectorAll('.ex-tile');
+  [].forEach.call(chips,function(c){c.addEventListener('click',function(){var k=c.getAttribute('data-ex-scene');
+    [].forEach.call(chips,function(x){x.setAttribute('aria-pressed',x===c?'true':'false')});
+    [].forEach.call(tiles,function(t){t.classList.toggle('is-dim',k!=='all'&&t.getAttribute('data-scene')!==k)})})});
+  [].forEach.call(document.querySelectorAll('[data-ex-flip]'),function(b){var f=b.previousElementSibling;b.addEventListener('click',function(){var on=!f.classList.contains('is-flipped');f.classList.toggle('is-flipped',on);b.setAttribute('aria-pressed',on?'true':'false');b.textContent=on?'看正面':'看背面'})});
+  [].forEach.call(document.querySelectorAll('[data-ex-book]'),function(bk){
+    var st=bk.querySelector('.ex-book__stage'),lv=[].slice.call(bk.querySelectorAll('.ex-leaf')),n=lv.length,i=0,
+        pg=bk.querySelector('.ex-book__pg'),pv=bk.querySelector('[data-ex-prev]'),nx=bk.querySelector('[data-ex-next]');
+    function lab(){if(i===0)return '封面';if(i===n)return '封底';return '第 '+(2*i)+'–'+(2*i+1)+' 頁'}
+    function upd(){lv.forEach(function(l,k){var t=k<i;l.classList.toggle('is-turned',t);l.style.zIndex=t?(k+1):(n-k)});
+      bk.setAttribute('data-at',i===0?'start':(i===n?'end':'mid'));pg.textContent=lab()+'　'+(i+1)+' / '+(n+1);pv.disabled=i===0;nx.disabled=i===n}
+    function go(d){var j=Math.max(0,Math.min(n,i+d));if(j!==i){i=j;upd()}}
+    pv.addEventListener('click',function(){go(-1)});nx.addEventListener('click',function(){go(1)});
+    st.addEventListener('click',function(e){var r=st.getBoundingClientRect();var x=e.clientX-r.left;
+      if(i===0){go(1);return}if(i===n){go(-1);return}go(x>r.width/2?1:-1)});
+    st.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();go(1)}else if(e.key==='ArrowLeft'){e.preventDefault();go(-1)}});
+    upd();
+  });
+})();

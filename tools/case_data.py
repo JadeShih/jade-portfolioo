@@ -256,5 +256,17 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以鹿港天后宮媽祖神像作為卡面主視覺核心，建立莊嚴且具信仰份量的視覺焦點，傳達隨身攜帶、祈求平安的設計意涵。整體以金色作為主調，並搭配傳統紋樣與在地地景元素，延伸出具文化辨識度的背景層次，保有濃厚的廟宇文化特色與紀念性。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='延續鹿港天后宮聯名信用卡的視覺設計，進一步應用於信用卡申請同意書及各式宣傳素材，透過版面延伸與視覺整合，維持聯名系列的一致性，強化文化特色與品牌辨識度。')],
   gallery_style='none',gallery=[],extra=case_extra.credit(),
+  next=dict(title='長春藤生物科技 醫學展會',attr='href="./work-23-expo.html"')),
+ 'work-23-expo':dict(
+  num='22',tone='cyan',deco=(('flower','yellow'),('blob','pink')),
+  title_en='Medical Expo Booth',title_zh='長春藤生物科技 醫學展會',
+  desc='Jade Shih 作品：長春藤生物科技內科醫學會年會展會視覺，從展會背板延伸出邀請卡、易拉展、小冊、DM、手舉板等九項製作物。',
+  tags=['平面設計','長春藤生物科技','2022'],tagline='',
+  cover='work-23-expo/web-cover',cover_w=2400,cover_h=1600,cover_alt='長春藤生物科技醫學展會全系列製作物平鋪：背板、易拉展、小冊、DM、邀請卡與工作牌',
+  meta=[('Client','長春藤生物科技'),('Role','展場設計・視覺統籌'),('Deliverables','醫學展會'),('Year','2022')],
+  overview='<p>為長春藤生物科技參與內科醫學會年會打造整體展會視覺，透過專業且具科技感的設計，傳遞品牌在腫瘤液態切片、幹細胞與免疫細胞技術領域的研發特色。整合展場展示、醫學資訊與合作推廣需求，提升醫師對品牌技術的認識，並促進潛在合作機會。</p>',
+  cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以醫療科技與專業信賴感作為視覺核心，運用大面積白色留白、藍綠色系與金色點綴，建立理性、潔淨且具辨識度的品牌形象。搭配圖像化標示及清晰的資訊層次，將複雜的醫學技術轉化為易於閱讀的展場視覺。'),
+         dict(tone='pink',title='What happened next',zh='後續成果',text='延續展會背板的核心視覺，完成邀請卡、手舉板、3 款易拉展、醫學展會小冊、合作意向書、DM、工作牌及桌牌等多項宣傳與現場應用素材。透過跨尺寸的版面調整與一致的視覺語彙，建立完整的展會識別系統，兼顧品牌形象、醫學資訊傳遞與現場活動需求。')],
+  gallery_style='none',gallery=[],extra=case_extra.expo(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
