@@ -1808,3 +1808,6 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .pr-cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(12px,1.8vw,20px);margin-top:clamp(28px,4vw,48px)}
 @media (max-width:760px){.pr-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-sec .pr-sign{flex-basis:42%}.pl-legend{font-size:13px}}
 @media (prefers-reduced-motion:reduce){.cs-sec .pr-sign{transition:none}}
+.pr-collage{max-width:880px;margin-inline:auto}
+.ob-hs[data-pos$=" l"] .ob-hs__tip{left:-22px;transform:translate(0,8px)}
+.ob-hs[data-pos$=" l"].is-open .ob-hs__tip{transform:rotate(-1.5deg)}

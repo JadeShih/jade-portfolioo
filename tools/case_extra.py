@@ -578,7 +578,8 @@ def press():
   # 24 愛他命 × 國衛院記者會：互動平面圖（依來賓動線編號）＋手舉牌牆＋產品桌卡
   F='work-24-expo/'
   D={'backdrop':(2400,1189),'rollup-1':(900,2001),'rollup-2':(900,1999),'dm-1':(2400,763),'dm-2':(2400,765),'guest':(1190,759),
-     'tcard-1':(900,1268),'tcard-2':(900,1267),'tcard-3':(900,1268),'tcard-4':(900,1268),'tcard-5':(900,1267)}
+     'tcard-1':(900,1268),'tcard-2':(900,1267),'tcard-3':(900,1268),'tcard-4':(900,1268),'tcard-5':(900,1267),
+     'site-1':(1400,1084),'site-2':(1400,533),'site-3':(1400,533),'site-4':(2400,543),'site-5':(1400,535),'site-6':(1400,534),'site-7':(1400,1086),'collage':(1800,1818)}
   SG={1:(1000,572),2:(1000,600),3:(1000,1207),4:(1000,429),5:(1000,793),6:(1000,486),7:(1000,635),8:(1000,486),9:(1000,626),10:(1000,630),11:(1000,464)}
   def spic(k,alt,lazy=True):
     w,h=SG[k];return (f'<picture><source srcset="{P}{F}web-sign-{k}.webp" type="image/webp"><img src="{P}{F}web-sign-{k}.png" width="{w}" height="{h}" alt="{html.escape(alt)}"'
@@ -593,12 +594,12 @@ def press():
   def pos(x,y):
     X,Y=y-100,1600-x;return f'{(X-V[0])/V[2]*100:.1f}%',f'{(Y-V[1])/V[3]*100:.1f}%'
   hs=[((1306,800),'b r','yellow','Entrance','易拉展：活動議程','立在門外，來賓報到前就能先看到當天流程。','入場',[('rollup-1','易拉展：活動議程')]),
-      ((1326,1330),'t r','yellow','Reception','三折 DM','接待桌發給來賓與媒體，正反面介紹計劃與長者六力。','入場｜三折頁',[('dm-1','三折 DM 正面'),('dm-2','三折 DM 背面')]),
-      ((725,950),'t','cyan','Guest Table','來賓桌卡','9 張圓桌上的來賓名牌，延續主視覺的雙手與家庭意象。','會場',[('guest','來賓桌卡')]),
-      ((740,175),'b','cyan','Backdrop','記者會背板','以「專業守護，全家安心」為主視覺的背板提案。','會場｜提案版｜W515 × H255 cm',[('backdrop','記者會背板提案')]),
-      ((640,560),'b','pink','Photo Session','拍照用手舉牌','台前大合照時，來賓手舉的造型牌，共 11 款。','台前合照｜11 款',[('sign-1','手舉牌：醫師專業推薦指標'),('sign-6','手舉牌：精準健康守護家庭'),('sign-11','手舉牌：醫師推薦健康關鍵')]),
-      ((628,1712),'t','lime','Product Table','產品介紹桌卡','產品桌上的長者六力系列桌卡，一款產品一張。','產品區｜5 款',[('tcard-1','產品介紹桌卡 1'),('tcard-2','產品介紹桌卡 2'),('tcard-3','產品介紹桌卡 3')]),
-      ((338,1825),'t','lime','Roll-up','易拉展：評測流程','放在產品區旁，說明醫療專家品質評測的流程。','產品區',[('rollup-2','易拉展：評測流程')])]
+      ((1326,1330),'t r','yellow','Reception','三折 DM','接待桌發給來賓與媒體，正反面介紹計劃與長者六力。','入場｜三折頁',[('dm-1','三折 DM 正面'),('dm-2','三折 DM 背面'),('site-3','現場照片：三折 DM')]),
+      ((725,950),'t','cyan','Guest Table','來賓桌卡','9 張圓桌上的來賓名牌，延續主視覺的雙手與家庭意象。','會場',[('guest','來賓桌卡'),('site-2','現場照片：來賓桌卡')]),
+      ((740,175),'b l','cyan','Backdrop','記者會背板','以「專業守護，全家安心」為主視覺的背板提案。','會場｜提案版｜W515 × H255 cm',[('backdrop','記者會背板提案'),('site-1','現場照片：講者站在背板前發表')]),
+      ((640,560),'b','pink','Photo Session','拍照用手舉牌','台前大合照時，來賓手舉的造型牌，共 11 款。','台前合照｜11 款',[('sign-1','手舉牌：醫師專業推薦指標'),('sign-11','手舉牌：醫師推薦健康關鍵'),('site-4','現場照片：台前手舉牌大合照')]),
+      ((628,1712),'t','lime','Product Table','產品介紹桌卡','產品桌上的長者六力系列桌卡，一款產品一張。','產品區｜5 款',[('tcard-1','產品介紹桌卡 1'),('tcard-2','產品介紹桌卡 2'),('site-5','現場照片：產品桌上的桌卡')]),
+      ((338,1825),'t','lime','Roll-up','易拉展：評測流程','放在產品區旁，說明醫療專家品質評測的流程。','產品區',[('rollup-2','易拉展：評測流程'),('site-7','現場照片：主持人與評測流程易拉展')])]
   spots=''
   for i,((x,y),p_,tone,eb,t,d,sp,items) in enumerate(hs,1):
     X,Y=pos(x,y)
@@ -614,4 +615,6 @@ def press():
           f'<figure class="bq-fig ex-hero"><button type="button" class="ex-img" data-lb="prhero" aria-label="放大檢視：記者會背板提案">{pic(F+"web-backdrop",2400,1189,"記者會背板提案：醫師雙手捧著透明球體，球內是三代同堂的家庭")}</button><figcaption>✦ 背板提案｜W515 × H255 cm</figcaption></figure></section>'
           f'<section class="cs-sec">{head("Venue plan","Guest Journey","現場動線","照來賓從門外報到、入座、台前合照到產品區的順序，標出每件製作物在現場的位置。")}{plan}</section>'
           f'<section class="cs-sec">{head("Photo props","11 Hand Signs","拍照用手舉牌","台前大合照用的造型手舉牌，每款對應一個產品或計劃關鍵字，拍出來一眼就看懂主題。")}<div class="pr-wall">{wall}</div></section>'
-          f'<section class="cs-sec">{head("Product table","Table Cards","產品介紹桌卡","產品桌上的長者六力系列桌卡，統一版型，以顏色與圖示區分每一種「力」。")}<div class="pr-cards">{cards}</div></section>')
+          f'<section class="cs-sec">{head("Product table","Table Cards","產品介紹桌卡","產品桌上的長者六力系列桌卡，統一版型，以顏色與圖示區分每一種「力」。")}<div class="pr-cards">{cards}</div></section>'
+          +f'<section class="cs-sec">{head("On site","Press Day","現場紀錄","記者會當天：背板前的發表、手舉牌大合照、桌卡與 DM，以及媒體採訪。")}'
+          f'<figure class="bq-fig ex-hero pr-collage"><button type="button" class="ex-img" data-lb="prsite" aria-label="放大檢視：記者會現場紀錄">{pic(F+"web-collage",1800,1818,"記者會現場照片拼貼：講者發表、來賓桌卡、DM、手舉牌大合照、產品桌卡、媒體採訪與評測流程易拉展")}</button><figcaption>✦ 記者會現場紀錄</figcaption></figure></section>')
