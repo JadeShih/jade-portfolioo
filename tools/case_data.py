@@ -60,7 +60,7 @@ CASES={
   after=case_extra.kolapp2(),
   next=dict(title='聊天室搜尋功能優化',attr='href="./work-06-chat.html"')),
  'work-06-chat':dict(
-  num='06',tone='cyan',body_cls=' cs-body--ink',deco=(('flower','cyan'),('blob','pink')),
+  num='06',tone='lavender',body_cls=' cs-body--ink',deco=(('flower','cyan'),('blob','pink')),
   title_en='Chat Search',title_zh='聊天室搜尋功能優化',
   desc='Jade Shih 作品：APP 聊天室訊息搜尋功能優化，從問題定義到解法設計與規格交付。',
   tags=['UI/UX','YouTuber Mike是麥克','功能優化'],tagline='',
