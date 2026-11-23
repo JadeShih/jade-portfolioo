@@ -632,16 +632,16 @@ def uniform():
     pc+=(f'<article class="kl-prop un-prop{" is-final" if final else ""}">'
          f'<span class="kl-prop__img">{pic(B+f"kv-{n}",1600,624,f"提案 {k} 款主視覺：{name}")}{fin}</span>'
          f'<span class="kl-prop__txt"><b><i>{k}</i>{name}</b><span>{desc}</span></span></article>')
-  sw=[('005 黑色','Printstar 全棉連帽 Tee','#1B2133','un-sw__chip--hood'),('White','C0 M0 Y0 K0','#FFFFFF',''),('Gray','C0 M0 Y0 K30','#B3B3B3','')]
-  swh=''.join(f'<li><span class="un-sw__chip {c}" style="background:{hx}"></span><b>{t}</b><code>{s}</code><code>{hx if not c else ""}</code></li>' for t,s,hx,c in sw)
-  spec=''.join(f'<div><dt>{a}</dt><dd>{b}</dd></div>' for a,b in [('建議加工方式','熱昇華'),('圖樣尺寸','W3 × H4.4 cm'),('位置','左胸')])
+  sw=[('Black','C90 M87 Y65 K50','#1B2133','dark'),('White','C0 M0 Y0 K0','#FFFFFF','light'),('Gray','C0 M0 Y0 K30','#B3B3B3','light')]
+  swh=''.join(f'<li class="un-sw__card un-sw__card--{c}" style="--sw:{hx}"><b>{t}</b><code>{cm}</code></li>' for t,cm,hx,c in sw)
+  spec=''.join(f'<div><dt>{a}</dt><dd>{b}</dd></div>' for a,b in [('加工方式','熱昇華'),('圖樣尺寸','W3 x H4.4 cm')])
   return (f'<section class="kl un" aria-label="CMoney 尾牙福委會工作人員制服設計">'
     f'<figure class="kl-full kl-kv">{zoom(B+"kv",2400,936,"定案主視覺：TEAM C 與奧林匹克五環，CMoney 標示")}</figure>'
     f'<div class="wrap">'
     f'<section class="kl-block">{kh("Proposal","4 Directions","服裝圖樣提案","以「雅典運動會」為尾牙主題，提出四款圖樣方向，最終由 C 款「TEAM C」定案。")}<div class="kl-props un-props">{pc}</div></section>'
     f'<section class="kl-block">{kh("Final design","TEAM C","定案設計")}'
     f'<div class="un-final"><p class="un-final__txt">以「TEAM C」代表 CMoney 福委會團隊，C 字以立體翻轉的造型呈現，搭配奧林匹克五環墜飾，讓圖像更完整協調；在深色帽 T 上以白、灰兩色呈現，低調又有團隊識別。</p>'
-    f'<ul class="un-sw">{swh}</ul><dl class="un-spec">{spec}</dl></div>'
+    f'<div class="un-final__side"><ul class="un-sw" aria-label="圖樣用色">{swh}</ul><dl class="un-spec">{spec}</dl></div></div>'
     f'<div class="un-pair">{zoom(B+"logo-dark",1200,941,"TEAM C 圖樣：深色底","un","kl-round")}{zoom(B+"logo-gray",1200,940,"TEAM C 圖樣：灰色底","un","kl-round")}</div></section>'
     f'<section class="kl-block">{kh("On body","Wear It","帽 T 上身示意")}'
     f'<div class="un-pair">{zoom(B+"body-1",1400,1080,"男模特兒上身示意：深色帽 T 左胸 TEAM C 圖樣，附加工方式與尺寸","un","kl-round")}{zoom(B+"body-2",1400,1080,"帽 T 左胸 TEAM C 圖樣特寫","un","kl-round")}</div></section>'
