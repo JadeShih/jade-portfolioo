@@ -515,11 +515,13 @@
         pg=bk.querySelector('.ex-book__pg'),pv=bk.querySelector('[data-ex-prev]'),nx=bk.querySelector('[data-ex-next]');
     function lab(){if(i===0)return '封面';if(i===n)return '封底';return '第 '+(2*i)+'–'+(2*i+1)+' 頁'}
     function upd(){lv.forEach(function(l,k){var t=k<i;l.classList.toggle('is-turned',t);l.style.zIndex=t?(k+1):(n-k)});
-      bk.setAttribute('data-at',i===0?'start':(i===n?'end':'mid'));pg.textContent=lab()+'　'+(i+1)+' / '+(n+1);pv.disabled=i===0;nx.disabled=i===n}
-    function go(d){var j=Math.max(0,Math.min(n,i+d));if(j!==i){i=j;upd()}}
+      bk.setAttribute('data-at',i===0?'start':(i===n?'end':'mid'));pg.textContent=lab()+'　'+(i+1)+' / '+(n+1);pv.disabled=i===0||busy;nx.disabled=busy;nx.textContent=i===n?'↺':'→';nx.setAttribute('aria-label',i===n?'從封面重新翻閱':'下一頁')}
+    var busy=false;
+    function restart(){if(busy)return;busy=true;var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;(function step(){if(i>0){i--;upd();if(rm){step();return}setTimeout(step,110)}else{busy=false;upd()}})()}
+    function go(d){if(busy)return;if(d>0&&i===n){restart();return}var j=Math.max(0,Math.min(n,i+d));if(j!==i){i=j;upd()}}
     pv.addEventListener('click',function(){go(-1)});nx.addEventListener('click',function(){go(1)});
     st.addEventListener('click',function(e){var r=st.getBoundingClientRect();var x=e.clientX-r.left;
-      if(i===0){go(1);return}if(i===n){go(-1);return}go(x>r.width/2?1:-1)});
+      if(i===0){go(1);return}if(i===n){restart();return}go(x>r.width/2?1:-1)});
     st.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();go(1)}else if(e.key==='ArrowLeft'){e.preventDefault();go(-1)}});
     upd();
   });
