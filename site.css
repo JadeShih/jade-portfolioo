@@ -1764,13 +1764,16 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .ex-hot{margin-top:clamp(28px,4vw,48px)}
 .ex-tip{width:min(340px,76vw)}
 .ex-tip__imgs{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:8px;align-items:end;margin:0 0 var(--jade-sys-spacing-4)}
-.ex-tip__imgs span{display:block;border-radius:8px;overflow:hidden;box-shadow:0 0 0 2px #16143A;background:#fff;transform:translateY(10px) scale(.92);opacity:0;transition:transform .4s cubic-bezier(.2,.8,.2,1.2),opacity .3s}
+.cs-sec .ex-tip__img{position:relative;display:block;width:100%;padding:0;border:0;border-radius:8px;overflow:hidden;box-shadow:0 0 0 2px #16143A;background:#fff;cursor:zoom-in;transform:translateY(10px) scale(.92);opacity:0;transition:transform .4s cubic-bezier(.2,.8,.2,1.2),opacity .3s}
 .ex-tip__imgs img{display:block;width:100%;max-height:170px;object-fit:contain;background:#fff}
-.ob-hs.is-open .ex-tip__imgs span{transform:none;opacity:1}
-.ob-hs.is-open .ex-tip__imgs span:nth-child(2){transition-delay:.06s}
-.ob-hs.is-open .ex-tip__imgs span:nth-child(3){transition-delay:.12s}
+.ob-hs.is-open .ex-tip__img{transform:none;opacity:1}
+.cs-sec .ob-hs.is-open .ex-tip__img:hover{transform:translateY(-3px)}
+.cs-sec .ex-tip__img:focus-visible{outline:3px solid #16143A;outline-offset:3px}
+.ex-tip__zoom{position:absolute;right:6px;bottom:6px;width:26px;height:26px;border-radius:50%;background:#16143A url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C2FF0A' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6'/%3E%3Cpath d='M15 15l5 5M10.5 8v5M8 10.5h5'/%3E%3C/svg%3E") center/16px no-repeat;pointer-events:none}
+.ob-hs.is-open .ex-tip__img:nth-child(2){transition-delay:.06s}
+.ob-hs.is-open .ex-tip__img:nth-child(3){transition-delay:.12s}
 @media (max-width:640px){.ex-tip{width:240px}.ex-tip__imgs img{max-height:110px}}
-@media (prefers-reduced-motion:reduce){.ex-tip__imgs span{transition:none}}
+@media (prefers-reduced-motion:reduce){.cs-sec .ex-tip__img{transition:none}}
 .ex-tip__go{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-top:var(--jade-sys-spacing-4);padding:0 18px;border-radius:999px;border:var(--jade-sys-stroke-width) solid var(--jade-sys-color-outline);background:var(--jade-sys-color-outline);color:var(--jade-sys-color-secondary);font:600 15px/1 var(--font-plain);text-decoration:none;transition:transform .2s}
 .ex-tip__go:hover{transform:translateY(-2px)}
 .ex-tip__go:focus-visible{outline:3px solid var(--jade-sys-color-outline);outline-offset:3px}

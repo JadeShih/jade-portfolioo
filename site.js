@@ -430,8 +430,9 @@
   [].forEach.call(hs,function(h){var b=h.querySelector('.ob-hs__dot');
     b.addEventListener('click',function(e){e.stopPropagation();var o=!h.classList.contains('is-open');close(h);h.classList.toggle('is-open',o);b.setAttribute('aria-expanded',o?'true':'false')});
     var tp=h.querySelector('.ob-hs__tip');if(tp)tp.addEventListener('click',function(e){e.stopPropagation()})});
-  document.addEventListener('click',function(){close()});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+  function lbOpen(){var d=document.querySelector('dialog.lb');return d&&d.open}
+  document.addEventListener('click',function(e){if(lbOpen()||(e.target.closest&&e.target.closest('dialog.lb')))return;close()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!lbOpen())close()});
 })();
 /* 首頁精選作品：捲動疊卡 */
 (function(){
