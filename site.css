@@ -1827,13 +1827,9 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 /* 25 CMoney 尾牙制服：沿用好葉 kl 深色架構，換深海軍藍 */
 .kl.un{--kl-bg:#141A2B;--kl-bg2:#1D2438;--kl-ac:var(--jade-sys-color-secondary);--kl-tx:#EEF0F6;--kl-mu:#A8AEC2}
 .un-props{grid-template-columns:repeat(2,minmax(0,1fr))}
-.cs-body .un-prop{padding:0;font:inherit;color:inherit;cursor:zoom-in}
 .un-prop .kl-prop__img{aspect-ratio:1600/624}
 .un-prop .kl-prop__img img{object-position:50% 50%}
-.un-prop.is-final{border-color:var(--kl-ac)!important;border-width:2.5px!important}
-.un-prop:hover{transform:translateY(-4px)}
-.un-prop__more{padding:0 22px 22px;font:600 14px/1 var(--font-plain),"Noto Sans TC",sans-serif;color:var(--kl-ac)}
-.un-prop:focus-visible{outline:3px solid var(--kl-ac);outline-offset:4px}
+.un-prop.is-final,article.un-prop.is-final:hover{border-color:var(--kl-ac)!important;border-width:2.5px!important}
 .un-final{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,4vw,56px) clamp(24px,5vw,72px);align-items:start;margin-bottom:clamp(28px,4vw,48px)}
 .un-final__txt{grid-row:span 2;margin:0;font:500 17px/1.9 var(--font-plain),"Noto Sans TC",sans-serif;color:var(--kl-tx)}
 .un-sw{display:flex;flex-wrap:wrap;gap:22px;margin:0;padding:0;list-style:none}

@@ -628,19 +628,17 @@ def uniform():
          (4,'D','TEAM C 徽章版','同樣以 TEAM C 為核心，改用方框徽章構成，加入紅色點綴。',False)]
   pc=''
   for n,k,name,desc,final in props:
-    sets=f'../{P}{B}page-{n}.webp'
     fin='<span class="kl-prop__final">Final</span>' if final else ''
-    pc+=(f'<button type="button" class="kl-prop un-prop{" is-final" if final else ""}" data-lb-set="{sets}" data-lb-alt="提案 {k} 款：{name}" aria-label="查看提案 {k} 款「{name}」完整提案頁">'
+    pc+=(f'<article class="kl-prop un-prop{" is-final" if final else ""}">'
          f'<span class="kl-prop__img">{pic(B+f"kv-{n}",1600,624,f"提案 {k} 款主視覺：{name}")}{fin}</span>'
-         f'<span class="kl-prop__txt"><b><i>{k}</i>{name}</b><span>{desc}</span></span>'
-         f'<span class="un-prop__more">看完整提案 <span aria-hidden="true">→</span></span></button>')
+         f'<span class="kl-prop__txt"><b><i>{k}</i>{name}</b><span>{desc}</span></span></article>')
   sw=[('005 黑色','Printstar 全棉連帽 Tee','#1B2133','un-sw__chip--hood'),('White','C0 M0 Y0 K0','#FFFFFF',''),('Gray','C0 M0 Y0 K30','#B3B3B3','')]
   swh=''.join(f'<li><span class="un-sw__chip {c}" style="background:{hx}"></span><b>{t}</b><code>{s}</code><code>{hx if not c else ""}</code></li>' for t,s,hx,c in sw)
   spec=''.join(f'<div><dt>{a}</dt><dd>{b}</dd></div>' for a,b in [('建議加工方式','熱昇華'),('圖樣尺寸','W3 × H4.4 cm'),('位置','左胸')])
   return (f'<section class="kl un" aria-label="CMoney 尾牙福委會工作人員制服設計">'
     f'<figure class="kl-full kl-kv">{zoom(B+"kv",2400,936,"定案主視覺：TEAM C 與奧林匹克五環，CMoney 標示")}</figure>'
     f'<div class="wrap">'
-    f'<section class="kl-block">{kh("Proposal","4 Directions","服裝圖樣提案","以「雅典運動會」為尾牙主題，提出四款圖樣方向，最終由 C 款「TEAM C」定案。點擊卡片可看完整提案頁。")}<div class="kl-props un-props">{pc}</div></section>'
+    f'<section class="kl-block">{kh("Proposal","4 Directions","服裝圖樣提案","以「雅典運動會」為尾牙主題，提出四款圖樣方向，最終由 C 款「TEAM C」定案。")}<div class="kl-props un-props">{pc}</div></section>'
     f'<section class="kl-block">{kh("Final design","TEAM C","定案設計")}'
     f'<div class="un-final"><p class="un-final__txt">以「TEAM C」代表 CMoney 福委會團隊，C 字以立體翻轉的造型呈現，搭配奧林匹克五環墜飾，讓圖像更完整協調；在深色帽 T 上以白、灰兩色呈現，低調又有團隊識別。</p>'
     f'<ul class="un-sw">{swh}</ul><dl class="un-spec">{spec}</dl></div>'
