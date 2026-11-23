@@ -1818,3 +1818,8 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .ob-hs[data-tone="yellow"] .ob-hs__dot::after{border-color:var(--jade-sys-color-yellow)}
 .ob-hs[data-tone="cyan"] .ob-hs__dot::after{border-color:var(--jade-sys-color-cyan)}
 .ob-hs[data-tone="pink"] .ob-hs__dot::after{border-color:var(--jade-sys-color-tertiary)}
+/* 小卡縮圖統一比例：同一張小卡裡的圖排得整齊，完整圖在放大檢視 */
+.cs-sec .ex-tip__img{aspect-ratio:4/3}
+.ex-tip__img picture{display:block;width:100%;height:100%}
+.ex-tip__imgs .ex-tip__img img{width:100%;height:100%;max-height:none;object-fit:cover;object-position:top}
+.ex-tip__imgs[style*="--n:4"]{grid-template-columns:repeat(2,minmax(0,1fr))}
