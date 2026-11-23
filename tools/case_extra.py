@@ -602,11 +602,11 @@ def press():
       (('14%','41%'),'b l','lime','Roll-up','易拉展：評測流程','放在產品區旁，說明醫療專家品質評測的流程。','產品區',[('rollup-2','易拉展：評測流程'),('site-7','現場照片：主持人與評測流程易拉展')])]
   spots=''
   for i,((X,Y),p_,tone,eb,t,d,sp,items) in enumerate(hs,1):
-    spots+=(f'<div class="ob-hs" style="--x:{X};--y:{Y}" data-pos="{p_}"><button type="button" class="ob-hs__dot" aria-expanded="false" aria-describedby="prhs{i}"><span>{i}</span><span class="sr-only">{t}</span></button>'
+    spots+=(f'<div class="ob-hs" style="--x:{X};--y:{Y}" data-pos="{p_}" data-tone="{tone}"><button type="button" class="ob-hs__dot" aria-expanded="false" aria-describedby="prhs{i}"><span>{i}</span><span class="sr-only">{t}</span></button>'
             f'<div class="ob-hs__tip ex-tip" data-tone="{tone}" id="prhs{i}" role="tooltip">{th(items,f"prhs{i}")}<p class="eyebrow ob-hs__eb">{eb}</p><p class="ob-hs__t">{t}</p><p class="ob-hs__d">{d}</p><p class="ob-hs__s">{sp}</p></div></div>')
   legend='<ul class="pl-legend">'+''.join(f'<li data-tone="{c}"><span></span>{n}</li>' for c,n in [('yellow','入場'),('cyan','會場'),('pink','台前合照'),('lime','產品區')])+'</ul>'
   plan=(f'<figure class="ob-hot pl-hot"><div class="ob-hot__stage">{pic(F+"web-plan",1536,1024,"記者會會場示意圖：左上舞台與背板，中間 9 張來賓圓桌，下方兩張產品桌與媒體座位區，右側為前後門、門外的易拉展與接待桌")}{spots}</div>'
-        f'<figcaption>{legend}<span>✦ 依來賓動線編號，點數字看該位置的製作物。</span></figcaption></figure>')
+        f'<figcaption>{legend}</figcaption></figure>')
   rot=[-4,3,-2,5,-3,2,-5,4,-2,3,-4]
   wall=''.join(f'<button type="button" class="pr-sign" data-lb="prsign" style="--r:{rot[k-1]}deg" aria-label="放大檢視：手舉牌 {k}">{spic(k,f"拍照用手舉牌 {k}")}</button>' for k in range(1,12))
   cards=''.join(f'<button type="button" class="ex-img" data-lb="prcard" aria-label="放大檢視：產品介紹桌卡 {k}">{pic(F+f"web-tcard-{k}",900,1268,f"長者六力產品介紹桌卡 {k}")}</button>' for k in range(1,6))
