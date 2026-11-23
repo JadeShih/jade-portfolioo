@@ -261,7 +261,7 @@ CASES={
   num='22',tone='cyan',deco=(('flower','yellow'),('blob','pink')),
   title_en='Medical Expo Booth',title_zh='長春藤生物科技 醫學展會',
   desc='Jade Shih 作品：長春藤生物科技內科醫學會年會展會視覺，從展會背板延伸出邀請卡、易拉展、小冊、DM、手舉板等九項製作物。',
-  tags=['平面設計','長春藤生物科技','2022'],tagline='',
+  tags=['展場・活動','長春藤生物科技','2022'],tagline='',
   cover='work-23-expo/web-cover',cover_w=2400,cover_h=1600,cover_alt='長春藤生物科技醫學展會全系列製作物平鋪：背板、易拉展、小冊、DM、邀請卡與工作牌',
   meta=[('Client','長春藤生物科技'),('Role','展場設計・視覺統籌'),('Deliverables','醫學展會'),('Year','2022')],
   overview='<p>為長春藤生物科技參與內科醫學會年會打造整體展會視覺，透過專業且具科技感的設計，傳遞品牌在腫瘤液態切片、幹細胞與免疫細胞技術領域的研發特色。整合展場展示、醫學資訊與合作推廣需求，提升醫師對品牌技術的認識，並促進潛在合作機會。</p>',
