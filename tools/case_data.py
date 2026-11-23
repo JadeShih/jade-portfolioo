@@ -268,5 +268,17 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以醫療科技與專業信賴感作為視覺核心，運用大面積白色留白、藍綠色系與金色點綴，建立理性、潔淨且具辨識度的品牌形象。搭配圖像化標示及清晰的資訊層次，將複雜的醫學技術轉化為易於閱讀的展場視覺。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='延續展會背板的核心視覺，完成邀請卡、手舉板、3 款易拉展、醫學展會小冊、合作意向書、DM、工作牌及桌牌等多項宣傳與現場應用素材。透過跨尺寸的版面調整與一致的視覺語彙，建立完整的展會識別系統，兼顧品牌形象、醫學資訊傳遞與現場活動需求。')],
   gallery_style='none',gallery=[],extra=case_extra.expo(),
+  next=dict(title='愛他命 × 國衛院記者會',attr='href="./work-24-expo.html"')),
+ 'work-24-expo':dict(
+  num='23',tone='pink',deco=(('flower','cyan'),('blob','yellow')),
+  title_en='Press Conference',title_zh='愛他命 × 國衛院記者會',
+  desc='Jade Shih 作品：愛他命創醫行銷 × 國衛院「醫療專家品質評測認證計劃」記者會，從背板、易拉展、DM 到手舉牌與桌卡的活動視覺統籌。',
+  tags=['展場・活動','愛他命','2023'],tagline='',
+  cover='work-24-expo/web-cover',cover_w=2400,cover_h=1600,cover_alt='愛他命 × 國衛院記者會背板主視覺：醫師雙手捧著透明球體，球內是三代同堂的家庭',
+  meta=[('Client','愛他命創醫行銷 × 國衛院'),('Role','展場設計・視覺統籌'),('Deliverables','記者會'),('Year','2023')],
+  overview='<p>愛他命創醫行銷攜手國衛院技轉及育成中心，與逾百位專科醫師合作推出「醫療專家品質評測認證計劃」，推動精準健康與科學循證的健康消費評鑑制度。</p>',
+  cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以「專業守護，全家安心」作為核心視覺概念，透過影像合成將醫師雙手、家庭人物與透明防護球體結合，象徵專業醫療為民眾健康提供守護。整體運用淺藍色調、柔和光暈與環繞式線條，營造純淨、安心且具科技感的視覺氛圍，搭配醫療圖示與認證徽章，強化計畫的專業形象與視覺辨識度。'),
+         dict(tone='pink',title='What happened next',zh='後續成果',text='將醫療專業、科學認證與家庭健康等抽象理念轉化為直觀的視覺意象，兼顧現場品牌曝光、活動主題傳遞與多方合作單位的識別需求，建立具專業度與親和力的活動形象。')],
+  gallery_style='none',gallery=[],extra=case_extra.press(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }

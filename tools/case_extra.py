@@ -532,3 +532,86 @@ def expo():
           f'<section class="cs-sec">{head("Visual system","One Visual, 9 Pieces","延伸製作物","依醫師在展會上遇到它們的順序編號：展前邀約、現場互動到洽談合作，全部延續背板的視覺語彙。")}{hot}</section>'
           f'<section class="cs-sec">{head("Booklet","Flip Through","醫學展會小冊","點小冊右半邊翻下一頁、左半邊翻回上一頁。")}{book}</section>'
           f'<section class="cs-sec">{head("On site","At the Booth","展會現場","展位實景與醫師互動，背板、易拉展、手舉板與小冊在現場一起運作。")}<div class="ex-photos">{photos}</div></section>')
+
+def press_plan():
+  # 24 記者會平面圖：依原平面圖重繪，轉成橫向（講台在左、門在下）
+  W0=1600
+  T=lambda x,y:(y-100,W0-x)
+  out=[]
+  def rect(x,y,w,h,cls='pl-o'):
+    a=T(x,y);b=T(x+w,y+h);X=min(a[0],b[0]);Y=min(a[1],b[1]);out.append(f'<rect class="{cls}" x="{X:.0f}" y="{Y:.0f}" width="{abs(b[0]-a[0]):.0f}" height="{abs(b[1]-a[1]):.0f}" rx="4"/>')
+  def circ(x,y,r,cls='pl-o'):
+    X,Y=T(x,y);out.append(f'<circle class="{cls}" cx="{X:.0f}" cy="{Y:.0f}" r="{r}"/>')
+  def line(x1,y1,x2,y2,cls='pl-l'):
+    a=T(x1,y1);b=T(x2,y2);out.append(f'<line class="{cls}" x1="{a[0]:.0f}" y1="{a[1]:.0f}" x2="{b[0]:.0f}" y2="{b[1]:.0f}"/>')
+  def poly(pts,cls='pl-o'):
+    out.append(f'<polygon class="{cls}" points="'+' '.join('%.0f,%.0f'%T(x,y) for x,y in pts)+'"/>')
+  def txt(x,y,s,cls='pl-t'):
+    X,Y=T(x,y);out.append(f'<text class="{cls}" x="{X:.0f}" y="{Y:.0f}">{s}</text>')
+  rect(197,140,1041,2110,'pl-room')
+  rect(334,140,811,22,'pl-wall')
+  poly([(206,345),(486,182),(493,194),(213,357)],'pl-o')
+  circ(432,415,78);txt(432,415,'投影機')
+  import math
+  cx,cy,s,a=318,584,130,math.radians(-20)
+  pts=[(cx+dx*math.cos(a)-dy*math.sin(a),cy+dx*math.sin(a)+dy*math.cos(a)) for dx,dy in [(-s/2,-s/2),(s/2,-s/2),(s/2,s/2),(-s/2,s/2)]]
+  poly(pts,'pl-o');txt(cx,cy,'講台')
+  rect(1080,200,79,283);txt(1120,341,'控台')
+  for y0,y1,l in [(301,510,'前門'),(696,905,'前門'),(1488,1695,'後門'),(1845,2053,'後門')]:
+    rect(1194,y0,44,y1-y0,'pl-door');txt(1262,(y0+y1)/2,l,'pl-t pl-t--door')
+  rect(1287,930,79,236);rect(1287,1166,79,236);txt(1326,1166,'接待桌')
+  line(1306,735,1306,875,'pl-roll');txt(1420,805,'易拉展','pl-t pl-t--sm')
+  line(1241,1410,1241,1475,'pl-roll');txt(1330,1443,'迎賓螢幕','pl-t pl-t--sm')
+  for n,(x,y) in enumerate([(539,748),(856,748),(382,996),(689,996),(995,996),(432,1274),(777,1274),(661,1521),(988,1521)],1):
+    circ(x,y,78)
+    for dx,dy in [(-72,-26),(72,-26),(-50,52),(50,52)]: circ(x+dx,y+dy,22,'pl-chair')
+    txt(x,y,str(n),'pl-t pl-t--n')
+  circ(573,1767,78);txt(573,1767,'產品桌');circ(842,1767,78);txt(842,1767,'產品桌')
+  line(270,1803,405,1848,'pl-roll');txt(338,1735,'易拉展','pl-t pl-t--sm')
+  for y in (2053,2144):
+    for x in (318,380,441,502,661,722,784,845): circ(x,y,22,'pl-chair')
+  txt(582,1985,'媒體座位區','pl-t pl-t--sm')
+  # viewBox：原圖 x 150–1520、y 120–2270 → 旋轉後
+  return '<svg class="pl-svg" viewBox="20 80 2170 1370" role="img" aria-label="記者會現場平面圖：左側為講台與背板，中間 9 張來賓圓桌，右側為產品桌與媒體座位區，上方為前後門與門外的接待桌">'+''.join(out)+'</svg>'
+
+def press():
+  # 24 愛他命 × 國衛院記者會：互動平面圖（依來賓動線編號）＋手舉牌牆＋產品桌卡
+  F='work-24-expo/'
+  D={'backdrop':(2400,1189),'rollup-1':(900,2001),'rollup-2':(900,1999),'dm-1':(2400,763),'dm-2':(2400,765),'guest':(1190,759),
+     'tcard-1':(900,1268),'tcard-2':(900,1267),'tcard-3':(900,1268),'tcard-4':(900,1268),'tcard-5':(900,1267)}
+  SG={1:(1000,572),2:(1000,600),3:(1000,1207),4:(1000,429),5:(1000,793),6:(1000,486),7:(1000,635),8:(1000,486),9:(1000,626),10:(1000,630),11:(1000,464)}
+  def spic(k,alt,lazy=True):
+    w,h=SG[k];return (f'<picture><source srcset="{P}{F}web-sign-{k}.webp" type="image/webp"><img src="{P}{F}web-sign-{k}.png" width="{w}" height="{h}" alt="{html.escape(alt)}"'
+                      f'{" loading=\"lazy\"" if lazy else ""} decoding="async"></picture>')
+  def th(items,grp):
+    o='<div class="ex-tip__imgs" style="--n:%d">'%len(items)
+    for k,(n,alt) in enumerate(items,1):
+      im=spic(int(n[5:]),alt) if n.startswith('sign-') else pic(F+'web-'+n,D[n][0],D[n][1],alt)
+      o+=f'<button type="button" class="ex-tip__img" data-lb="{grp}" aria-label="放大檢視：{alt}">{im}<span class="ex-tip__zoom" aria-hidden="true"></span></button>'
+    return o+'</div>'
+  V=(20,80,2170,1370)
+  def pos(x,y):
+    X,Y=y-100,1600-x;return f'{(X-V[0])/V[2]*100:.1f}%',f'{(Y-V[1])/V[3]*100:.1f}%'
+  hs=[((1306,800),'b r','yellow','Entrance','易拉展：活動議程','立在門外，來賓報到前就能先看到當天流程。','入場',[('rollup-1','易拉展：活動議程')]),
+      ((1326,1330),'t r','yellow','Reception','三折 DM','接待桌發給來賓與媒體，正反面介紹計劃與長者六力。','入場｜三折頁',[('dm-1','三折 DM 正面'),('dm-2','三折 DM 背面')]),
+      ((725,950),'t','cyan','Guest Table','來賓桌卡','9 張圓桌上的來賓名牌，延續主視覺的雙手與家庭意象。','會場',[('guest','來賓桌卡')]),
+      ((740,175),'b','cyan','Backdrop','記者會背板','以「專業守護，全家安心」為主視覺的背板提案。','會場｜提案版｜W515 × H255 cm',[('backdrop','記者會背板提案')]),
+      ((640,560),'b','pink','Photo Session','拍照用手舉牌','台前大合照時，來賓手舉的造型牌，共 11 款。','台前合照｜11 款',[('sign-1','手舉牌：醫師專業推薦指標'),('sign-6','手舉牌：精準健康守護家庭'),('sign-11','手舉牌：醫師推薦健康關鍵')]),
+      ((628,1712),'t','lime','Product Table','產品介紹桌卡','產品桌上的長者六力系列桌卡，一款產品一張。','產品區｜5 款',[('tcard-1','產品介紹桌卡 1'),('tcard-2','產品介紹桌卡 2'),('tcard-3','產品介紹桌卡 3')]),
+      ((338,1825),'t','lime','Roll-up','易拉展：評測流程','放在產品區旁，說明醫療專家品質評測的流程。','產品區',[('rollup-2','易拉展：評測流程')])]
+  spots=''
+  for i,((x,y),p_,tone,eb,t,d,sp,items) in enumerate(hs,1):
+    X,Y=pos(x,y)
+    spots+=(f'<div class="ob-hs" style="--x:{X};--y:{Y}" data-pos="{p_}"><button type="button" class="ob-hs__dot" aria-expanded="false" aria-describedby="prhs{i}"><span>{i}</span><span class="sr-only">{t}</span></button>'
+            f'<div class="ob-hs__tip ex-tip" data-tone="{tone}" id="prhs{i}" role="tooltip">{th(items,f"prhs{i}")}<p class="eyebrow ob-hs__eb">{eb}</p><p class="ob-hs__t">{t}</p><p class="ob-hs__d">{d}</p><p class="ob-hs__s">{sp}</p></div></div>')
+  legend='<ul class="pl-legend">'+''.join(f'<li data-tone="{c}"><span></span>{n}</li>' for c,n in [('yellow','入場'),('cyan','會場'),('pink','台前合照'),('lime','產品區')])+'</ul>'
+  plan=(f'<figure class="ob-hot pl-hot"><div class="ob-hot__stage pl-stage">{press_plan()}{spots}</div>'
+        f'<figcaption>{legend}<span>✦ 依來賓動線編號，點數字看該位置的製作物。</span></figcaption></figure>')
+  rot=[-4,3,-2,5,-3,2,-5,4,-2,3,-4]
+  wall=''.join(f'<button type="button" class="pr-sign" data-lb="prsign" style="--r:{rot[k-1]}deg" aria-label="放大檢視：手舉牌 {k}">{spic(k,f"拍照用手舉牌 {k}")}</button>' for k in range(1,12))
+  cards=''.join(f'<button type="button" class="ex-img" data-lb="prcard" aria-label="放大檢視：產品介紹桌卡 {k}">{pic(F+f"web-tcard-{k}",900,1268,f"長者六力產品介紹桌卡 {k}")}</button>' for k in range(1,6))
+  return (f'<section class="cs-sec">{head("Key visual","Press Backdrop","記者會背板","以醫師雙手、家庭人物與透明防護球體合成主視覺，傳達「專業守護，全家安心」。")}'
+          f'<figure class="bq-fig ex-hero"><button type="button" class="ex-img" data-lb="prhero" aria-label="放大檢視：記者會背板提案">{pic(F+"web-backdrop",2400,1189,"記者會背板提案：醫師雙手捧著透明球體，球內是三代同堂的家庭")}</button><figcaption>✦ 背板提案｜W515 × H255 cm</figcaption></figure></section>'
+          f'<section class="cs-sec">{head("Venue plan","Guest Journey","現場動線","照來賓從門外報到、入座、台前合照到產品區的順序，標出每件製作物在現場的位置。")}{plan}</section>'
+          f'<section class="cs-sec">{head("Photo props","11 Hand Signs","拍照用手舉牌","台前大合照用的造型手舉牌，每款對應一個產品或計劃關鍵字，拍出來一眼就看懂主題。")}<div class="pr-wall">{wall}</div></section>'
+          f'<section class="cs-sec">{head("Product table","Table Cards","產品介紹桌卡","產品桌上的長者六力系列桌卡，統一版型，以顏色與圖示區分每一種「力」。")}<div class="pr-cards">{cards}</div></section>')
