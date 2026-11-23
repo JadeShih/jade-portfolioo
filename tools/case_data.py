@@ -244,5 +244,17 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以「肌膚像素」作為核心設計概念，將像素的微小單位轉化為精華粒子的視覺隱喻，象徵精華細緻滲透肌膚、逐步展現勻亮膚質的過程。運用白色基調、銀色金屬質感與幻彩漸層方塊，營造純淨透亮且具科技感的視覺氛圍。包裝採用袖套結構與局部鏤空設計，搭配成分插畫小卡及公關摺卡，將產品概念延伸至整體開箱體驗。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='完成涵蓋禮盒外觀、內襯結構、成分介紹小卡及公關摺卡的整體設計提案，將產品科技概念轉化為具辨識度的包裝視覺，並透過一致的設計語彙與開箱動線，呈現兼具品牌質感、產品溝通與互動體驗的公關贈禮方案。')],
   gallery_style='none',gallery=[],extra=case_extra.orbis(),
+  next=dict(title='鹿港天后宮聯名信用卡',attr='href="./work-22-credit.html"')),
+ 'work-22-credit':dict(
+  num='21',tone='yellow',deco=(('flower','pink'),('blob','cyan')),
+  title_en='Lugang Mazu Co-branded Card',title_zh='鹿港天后宮聯名信用卡',
+  desc='Jade Shih 作品：合作金庫銀行 × 鹿港天后宮聯名信用卡卡面設計，以媽祖神像為主視覺，可 360° 拖曳旋轉檢視正反面。',
+  tags=['平面設計','合作金庫','2016'],tagline='',
+  cover='work-22-credit/web-cover',cover_w=2400,cover_h=1600,cover_alt='鹿港天后宮聯名信用卡正面：媽祖神像與金色海浪紋卡面',
+  meta=[('Client','合作金庫銀行 × 鹿港天后宮'),('Role','卡面設計'),('Deliverables','聯名信用卡卡面・申請書延伸'),('Year','2016')],
+  overview='<p>為合作金庫銀行與鹿港天后宮聯名信用卡進行卡面設計，結合臺灣最具代表性的民間信仰之一——媽祖文化，打造兼具金融產品功能與文化象徵意義的卡面形象。希望透過莊嚴穩重的視覺語彙，傳遞平安庇佑、闔家安康的祝福，同時提升聯名卡的收藏價值與辨識度。</p>',
+  cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以鹿港天后宮媽祖神像作為卡面主視覺核心，建立莊嚴且具信仰份量的視覺焦點，傳達隨身攜帶、祈求平安的設計意涵。整體以金色作為主調，並搭配傳統紋樣與在地地景元素，延伸出具文化辨識度的背景層次，保有濃厚的廟宇文化特色與紀念性。'),
+         dict(tone='pink',title='What happened next',zh='後續成果',text='延續鹿港天后宮聯名信用卡的視覺設計，進一步應用於信用卡申請同意書及各式宣傳素材，透過版面延伸與視覺整合，維持聯名系列的一致性，強化文化特色與品牌辨識度。')],
+  gallery_style='none',gallery=[],extra=case_extra.credit(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }

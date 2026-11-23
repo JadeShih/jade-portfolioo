@@ -466,3 +466,27 @@ def orbis():
           f'<section class="cs-sec bq-sec">{sh("Mockup","The Gift Box","合成示意")}'
           f'<div class="ob-pair"><figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="ob2" aria-label="放大檢視：禮盒斜角">{pic(F+"web-02",2400,1600,"套上袖套的禮盒斜角視角")}</button><figcaption>✦ 禮盒斜角</figcaption></figure>'
           f'<figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="ob2" aria-label="放大檢視：成分小卡">{pic(F+"web-03",2400,1600,"七張成分小卡平鋪陳列")}</button><figcaption>✦ 成分小卡 × 7：同一個版型，每款成分一個代表色</figcaption></figure></div></section>')
+
+def credit():
+  # 22 鹿港天后宮聯名信用卡：可拖曳 360° 卡片＋發行活動照片
+  F='work-22-credit/'
+  def face(n,alt,cls=''):
+    return f'<picture><source srcset="{P}{F}{n}.webp" type="image/webp"><img class="{cls}" src="{P}{F}{n}.png" width="1712" height="1090" alt="{alt}" draggable="false" decoding="async"></picture>'
+  edges=''.join(f'<span class="cc__edge" style="--z:{z}"></span>' for z in range(-2,3))
+  card=(f'<div class="cc" data-cc>'
+        f'<div class="cc__stage" tabindex="0" role="group" aria-roledescription="可旋轉的卡片" aria-label="鹿港天后宮聯名信用卡。按住左右拖曳，或用左右方向鍵轉動卡片。">'
+        f'<div class="cc__card">{edges}'
+        f'<div class="cc__face cc__face--front">{face("card-front","信用卡正面：鹿港天后宮媽祖神像為主視覺，金色底搭配海浪紋與廟宇線描")}'
+        f'<span class="cc__emb">{face("card-emboss","")}</span><span class="cc__shine cc__shine--emb" aria-hidden="true"></span><span class="cc__shine" aria-hidden="true"></span></div>'
+        f'<div class="cc__face cc__face--back">{face("card-back","信用卡背面：磁條、簽名欄、合作金庫與鹿港天后宮標誌")}<span class="cc__shine" aria-hidden="true"></span></div>'
+        f'</div></div>'
+        f'<div class="cc__ui"><p class="cc__hint" aria-hidden="true"><span>←</span> 拖曳轉動卡片 <span>→</span></p>'
+        f'<button type="button" class="cc__btn" data-cc-flip>翻面看背面</button></div></div>')
+  photos=[('web-p1',900,600,'天后宮內整齊陳列的聯名卡與申請書','卡片陳列於天后宮內'),
+          ('web-p2',900,600,'銀行代表與天后宮代表手持放大版聯名卡合影','發行儀式合影'),
+          ('web-p3',900,600,'鋪成扇形的聯名卡申請書，放在紅色桌布上','延伸設計：信用卡申請書')]
+  figs=''.join(f'<figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="cc" aria-label="放大檢視：{c}">{pic(F+n,w,h,a)}</button><figcaption>✦ {c}</figcaption></figure>' for n,w,h,a,c in photos)
+  return (f'<section class="cs-sec cc-sec">{head("Card in hand","360° Card","卡面 360°","按住卡片左右拖曳，就能轉到背面。卡號、晶片與銀行標誌是打凸燙銀的部分，轉動時會跟著反光。")}{card}'
+          f'<p class="cc__note">＊ 背面為依正面設計延伸的示意，非實際發行卡背。</p></section>'
+          f'<section class="cs-sec">{head("Launch","Card Launch","發行活動","卡片發行後，在鹿港天后宮舉辦過爐祈福的發行活動，延伸設計的申請書也一同陳列。")}'
+          f'<div class="cc-photos">{figs}</div><p class="cc__note">＊ 活動照片取自鹿港天后宮官方網站。</p></section>')

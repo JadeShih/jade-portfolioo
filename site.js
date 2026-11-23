@@ -470,3 +470,34 @@
 
 /* 可橫向捲動的區塊：讓鍵盤也能聚焦後用方向鍵捲動 */
 (function(){var n=0;[].forEach.call(document.querySelectorAll('.hcar__track,.clp-x'),function(el){if(!el.hasAttribute('tabindex'))el.tabIndex=0;if(!el.hasAttribute('aria-label')&&!el.hasAttribute('aria-labelledby')){n++;el.setAttribute('role','region');el.setAttribute('aria-label','可左右捲動的內容 '+n)}})})();
+/* 22 信用卡：拖曳 360° 旋轉 */
+(function(){
+  [].forEach.call(document.querySelectorAll('[data-cc]'),function(root){
+    var st=root.querySelector('.cc__stage'),card=root.querySelector('.cc__card'),flip=root.querySelector('[data-cc-flip]');
+    var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var vis=true,ry=-18,rx=6,vy=0,drag=false,lx=0,ly=0,lt=0,raf=0,target=null,touched=false,t0=performance.now();
+    function apply(){
+      card.style.setProperty('--ry',ry.toFixed(2)+'deg');card.style.setProperty('--rx',rx.toFixed(2)+'deg');
+      var a=ry*Math.PI/180,s=Math.sin(a);
+      root.style.setProperty('--gx',(50+s*70+rx*1.2).toFixed(1)+'%');
+      root.style.setProperty('--go',(.25+Math.abs(s)*.6).toFixed(2));
+      var back=Math.cos(a)<0;if(flip)flip.textContent=back?'翻回正面':'翻面看背面';
+    }
+    function loop(now){
+      raf=0;
+      if(!touched&&!reduce){if(!vis)return;ry=-18+Math.sin((now-t0)/1400)*22;rx=6+Math.sin((now-t0)/1900)*3;apply();raf=requestAnimationFrame(loop);return}
+      if(target!==null){var d=target-ry;ry+=d*.14;rx+=(4-rx)*.12;if(Math.abs(d)<.2){ry=target;target=null}apply();raf=requestAnimationFrame(loop);return}
+      if(!drag&&Math.abs(vy)>.05){ry+=vy;vy*=.93;rx+=(4-rx)*.08;apply();raf=requestAnimationFrame(loop)}
+    }
+    function kick(){if(!raf)raf=requestAnimationFrame(loop)}
+    function wake(){touched=true}
+    st.addEventListener('pointerdown',function(e){if(e.button>0)return;wake();drag=true;target=null;vy=0;lx=e.clientX;ly=e.clientY;lt=performance.now();st.classList.add('is-drag');try{st.setPointerCapture(e.pointerId)}catch(_){} });
+    st.addEventListener('pointermove',function(e){if(!drag)return;var dx=e.clientX-lx,dy=e.clientY-ly,now=performance.now();ry+=dx*.55;if(e.pointerType==='mouse'){rx=Math.max(-25,Math.min(25,rx-dy*.3))}vy=dx*.55*Math.min(1,16/Math.max(1,now-lt));lx=e.clientX;ly=e.clientY;lt=now;apply()});
+    function end(){if(!drag)return;drag=false;st.classList.remove('is-drag');if(reduce)vy=0;kick()}
+    st.addEventListener('pointerup',end);st.addEventListener('pointercancel',end);st.addEventListener('lostpointercapture',end);
+    st.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();wake();vy=0;target=(target===null?ry:target)+(e.key==='ArrowRight'?30:-30);if(reduce){ry=target;target=null;apply()}else kick()}});
+    if(flip)flip.addEventListener('click',function(){wake();vy=0;var base=target===null?ry:target;target=(Math.floor((base+20)/180)+1)*180;if(reduce){ry=target;target=null;rx=4;apply()}else kick()});
+    apply();
+    if(!reduce&&'IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(en){vis=en.isIntersecting;if(vis&&!touched)kick()})}).observe(root)}
+  });
+})();
