@@ -503,22 +503,21 @@ def expo():
     return (f'<div class="ex-flip" style="aspect-ratio:{ratio}"><div class="ex-flip__in">'
             f'<div class="ex-flip__face">{p(a,alt_a)}</div><div class="ex-flip__face ex-flip__face--back">{p(b,alt_b)}</div></div></div>'
             f'<button type="button" class="ex-flip__btn" data-ex-flip aria-pressed="false">看背面</button>')
-  scenes=[('all','全部'),('pre','展前邀約'),('booth','展場佈置'),('live','現場互動'),('talk','洽談合作')]
-  tiles=[
-    ('pre','wide','邀請卡','正反面｜印刷邀請卡',flip('invite-f','invite-b','邀請卡正面：腫瘤液態切片與細胞擴增技術主視覺','邀請卡背面：講座資訊與會場平面圖','1600/1120')),
-    ('pre','wide','醫學展會 DM','三折頁｜正反面',flip('dm-1','dm-2','三折 DM 正面：公司特色、檢測流程與醫師介紹','三折 DM 背面：臨床應用、細胞儲存與擴增技術','2200/1397')),
-    ('booth','wide','展會背板','主視覺｜展位背牆',lb('backdrop','展會背板合成示意：藍綠斜切版面與醫學影像')),
-    ('booth','wide','易拉展 × 3','講座｜技術｜合作活動',f'<div class="ex-row3">{lb("rollup-1","易拉展 1：新世代癌症診療利器講座")}{lb("rollup-2","易拉展 2：腫瘤液態切片與細胞擴增技術")}{lb("rollup-3","易拉展 3：細胞醫學合作夥伴招募")}</div>'),
-    ('booth','','桌牌','Line@ 好友招募｜2 款',f'<div class="ex-row2">{lb("table-1","桌牌 1：Line@ 好友招募與 QR code")}{lb("table-2","桌牌 2：Line@ 好友招募簡潔版")}</div>'),
-    ('live','wide','手舉板','午餐會講座引導',lb('sign','手舉板：敬邀出席午餐會，講座時間與講者')),
-    ('live','','工作牌','STAFF 識別',lb('badge','工作牌：STAFF 工作人員直式識別證')),
-    ('talk','','醫學展會小冊','16 頁｜可翻閱',f'<a class="ex-jump" href="#ex-book">{pic(F+"web-bk-00",900,1271,"醫學展會小冊封面：預防帶病長壽的未來")}<span class="ex-jump__go">翻閱小冊 ↓</span></a>'),
-    ('talk','','合作意向書','細胞醫學合作夥伴',lb('loi','合作意向書：細胞醫學合作夥伴意向表單')),
-  ]
-  cnt={k:sum(1 for t in tiles if t[0]==k) for k,_ in scenes};cnt['all']=len(tiles)
-  chips=''.join(f'<button type="button" class="ex-chip" data-ex-scene="{k}" aria-pressed="{"true" if k=="all" else "false"}">{v}<span>{cnt[k]}</span></button>' for k,v in scenes)
-  lab=dict(scenes)
-  grid=''.join(f'<figure class="ex-tile{" ex-tile--wide" if w else ""}" data-scene="{s}"><div class="ex-tile__vis">{v}</div><figcaption><b>{t}</b><span>{lab[s]}｜{sub}</span></figcaption></figure>' for s,w,t,sub,v in tiles)
+  def th(ns):
+    return '<div class="ex-tip__imgs" style="--n:%d">'%len(ns)+''.join(f'<span>{pic(F+"web-"+n,D[n][0],D[n][1],"",True)}</span>' for n in ns)+'</div>'
+  D['bk-00']=(900,1271);D['bk-03']=(900,1271)
+  hs=[('54%','60%','t','yellow','Invitation','邀請卡','展前寄給醫師的講座邀請，正面是主視覺，背面放議程與會場平面圖。','展前邀約｜正反面',['invite-f','invite-b']),
+      ('26%','56%','b','yellow','DM','醫學展會 DM','三折頁，正面介紹公司特色與檢測流程，背面整理臨床應用與細胞儲存技術。','展前邀約｜三折頁',['dm-1','dm-2']),
+      ('82%','60%','t r','cyan','Roll-up','易拉展 × 3','講座、技術、合作活動各一款，立在展位前吸引走道上的醫師。','展場佈置｜3 款',['rollup-1','rollup-2','rollup-3']),
+      ('74%','24%','b r','pink','Hand Sign','手舉板','午餐會講座的引導手舉板，講者照片與時間地點一眼看清。','現場互動',['sign']),
+      ('46%','82%','t','pink','Staff Badge','工作牌','直式 STAFF 識別，延續背板的斜切醫學影像。','現場互動',['badge']),
+      ('28%','29%','b','lime','Booklet','醫學展會小冊','16 頁小冊，介紹基因檢測、循環腫瘤細胞與周邊血幹細胞儲存。下方可以實際翻閱。','洽談合作｜16 頁',['bk-00','bk-03']),
+      ('59%','80%','t','lime','Letter of Intent','合作意向書','現場洽談時填寫的細胞醫學合作夥伴意向表單。','洽談合作',['loi'])]
+  spots=''.join(f'<div class="ob-hs" style="--x:{x};--y:{y}" data-pos="{pos}"><button type="button" class="ob-hs__dot" aria-expanded="false" aria-describedby="exhs{i}"><span>{i}</span><span class="sr-only">{t}</span></button>'
+                f'<div class="ob-hs__tip ex-tip" data-tone="{tone}" id="exhs{i}" role="tooltip">{th(ns)}<p class="eyebrow ob-hs__eb">{eb}</p><p class="ob-hs__t">{t}</p><p class="ob-hs__d">{d}</p><p class="ob-hs__s">{sp}</p></div></div>'
+                for i,(x,y,pos,tone,eb,t,d,sp,ns) in enumerate(hs,1))
+  hot=(f'<figure class="ob-hot ex-hot"><div class="ob-hot__stage">{pic(F+"web-all",2400,1646,"長春藤醫學展會全系列製作物平鋪：小冊、DM、邀請卡、手舉板、易拉展、工作牌與合作意向書")}{spots}</div>'
+       f'<figcaption>✦ 點數字看每件製作物，點空白處收起。另有桌牌 × 2 放在洽談桌上。</figcaption></figure>')
   names=['封面']+[f'第 {i}–{i+1} 頁' for i in range(2,15,2)]+['封底']
   leaves=''.join(f'<div class="ex-leaf" style="--k:{k}"><div class="ex-leaf__face">{pic(F+f"web-bk-{2*k:02d}",900,1271,"小冊內頁",k>0)}</div><div class="ex-leaf__face ex-leaf__face--back">{pic(F+f"web-bk-{2*k+1:02d}",900,1271,"小冊內頁")}</div></div>' for k in range(8))
   book=(f'<div class="ex-book" id="ex-book" data-ex-book>'
@@ -529,7 +528,6 @@ def expo():
   photos=''.join(f'<button type="button" class="ex-ph" data-lb="exph" aria-label="放大檢視：展會現場照片 {i}">{pic(F+f"web-photo-{i}",1800,1200,f"展會現場照片 {i}")}</button>' for i in range(1,10))
   return (f'<section class="cs-sec">{head("Key visual","Booth Backdrop","展會背板","所有製作物都從這面背板長出來：藍綠色的斜切版面、醫學影像拼貼與金色點綴，搭配清楚的資訊層級，讓醫師在走道上幾秒內就看懂主題。")}'
           f'<figure class="bq-fig ex-hero">{lb("backdrop","展會背板合成示意：藍綠斜切版面與醫學影像","exhero")}<figcaption>✦ 展會背板合成示意</figcaption></figure></section>'
-          f'<section class="cs-sec">{head("Visual system","One Visual, 9 Pieces","延伸製作物","依醫師在展會上遇到它們的順序分成四個情境。點選上方情境，只看那一組製作物。")}'
-          f'<div class="ex-chips" role="group" aria-label="依情境篩選製作物">{chips}</div><div class="ex-grid">{grid}</div></section>'
+          f'<section class="cs-sec">{head("Visual system","One Visual, 9 Pieces","延伸製作物","依醫師在展會上遇到它們的順序編號：展前邀約、現場互動到洽談合作，全部延續背板的視覺語彙。")}{hot}</section>'
           f'<section class="cs-sec">{head("Booklet","Flip Through","醫學展會小冊","點小冊右半邊翻下一頁、左半邊翻回上一頁。")}{book}</section>'
           f'<section class="cs-sec">{head("On site","At the Booth","展會現場","展位實景與醫師互動，背板、易拉展、手舉板與小冊在現場一起運作。")}<div class="ex-photos">{photos}</div></section>')

@@ -428,7 +428,8 @@
   var hs=document.querySelectorAll('.ob-hs');if(!hs.length)return;
   function close(ex){[].forEach.call(hs,function(h){if(h!==ex){h.classList.remove('is-open');h.querySelector('.ob-hs__dot').setAttribute('aria-expanded','false')}})}
   [].forEach.call(hs,function(h){var b=h.querySelector('.ob-hs__dot');
-    b.addEventListener('click',function(e){e.stopPropagation();var o=!h.classList.contains('is-open');close(h);h.classList.toggle('is-open',o);b.setAttribute('aria-expanded',o?'true':'false')})});
+    b.addEventListener('click',function(e){e.stopPropagation();var o=!h.classList.contains('is-open');close(h);h.classList.toggle('is-open',o);b.setAttribute('aria-expanded',o?'true':'false')});
+    var tp=h.querySelector('.ob-hs__tip');if(tp)tp.addEventListener('click',function(e){e.stopPropagation()})});
   document.addEventListener('click',function(){close()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
 })();
