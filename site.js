@@ -523,3 +523,9 @@
     upd();
   });
 })();
+/* 23 展會：小卡「實際試翻」→ 收起小卡並捲到小冊 */
+(function(){[].forEach.call(document.querySelectorAll('.ex-tip__go'),function(a){a.addEventListener('click',function(e){
+  var t=document.querySelector(a.getAttribute('href'));if(!t)return;e.preventDefault();
+  [].forEach.call(document.querySelectorAll('.ob-hs.is-open'),function(h){h.classList.remove('is-open');var b=h.querySelector('.ob-hs__dot');if(b)b.setAttribute('aria-expanded','false')});
+  var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;t.scrollIntoView({behavior:rm?'auto':'smooth',block:'start'});
+  var st=t.querySelector('.ex-book__stage');if(st)setTimeout(function(){st.focus({preventScroll:true})},rm?0:600)})})})();

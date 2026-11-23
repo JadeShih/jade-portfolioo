@@ -511,10 +511,11 @@ def expo():
       ('82%','60%','t r','cyan','Roll-up','易拉展 × 3','講座、技術、合作活動各一款，立在展位前吸引走道上的醫師。','展場佈置｜3 款',['rollup-1','rollup-2','rollup-3']),
       ('74%','24%','b r','pink','Hand Sign','手舉板','午餐會講座的引導手舉板，講者照片與時間地點一眼看清。','現場互動',['sign']),
       ('46%','82%','t','pink','Staff Badge','工作牌','直式 STAFF 識別，延續背板的斜切醫學影像。','現場互動',['badge']),
-      ('28%','29%','b','lime','Booklet','醫學展會小冊','16 頁小冊，介紹基因檢測、循環腫瘤細胞與周邊血幹細胞儲存。下方可以實際翻閱。','洽談合作｜16 頁',['bk-00','bk-03']),
+      ('28%','29%','b','lime','Booklet','醫學展會小冊','16 頁小冊，介紹基因檢測、循環腫瘤細胞與周邊血幹細胞儲存。','洽談合作｜16 頁',['bk-00','bk-03']),
       ('59%','80%','t','lime','Letter of Intent','合作意向書','現場洽談時填寫的細胞醫學合作夥伴意向表單。','洽談合作',['loi'])]
+  go='<a class="ex-tip__go" href="#ex-book">實際試翻小冊 ↓</a>'
   spots=''.join(f'<div class="ob-hs" style="--x:{x};--y:{y}" data-pos="{pos}"><button type="button" class="ob-hs__dot" aria-expanded="false" aria-describedby="exhs{i}"><span>{i}</span><span class="sr-only">{t}</span></button>'
-                f'<div class="ob-hs__tip ex-tip" data-tone="{tone}" id="exhs{i}" role="tooltip">{th(ns)}<p class="eyebrow ob-hs__eb">{eb}</p><p class="ob-hs__t">{t}</p><p class="ob-hs__d">{d}</p><p class="ob-hs__s">{sp}</p></div></div>'
+                f'<div class="ob-hs__tip ex-tip" data-tone="{tone}" id="exhs{i}" role="tooltip">{th(ns)}<p class="eyebrow ob-hs__eb">{eb}</p><p class="ob-hs__t">{t}</p><p class="ob-hs__d">{d}</p><p class="ob-hs__s">{sp}</p>{go if t=="醫學展會小冊" else ""}</div></div>'
                 for i,(x,y,pos,tone,eb,t,d,sp,ns) in enumerate(hs,1))
   hot=(f'<figure class="ob-hot ex-hot"><div class="ob-hot__stage">{pic(F+"web-all",2400,1646,"長春藤醫學展會全系列製作物平鋪：小冊、DM、邀請卡、手舉板、易拉展、工作牌與合作意向書")}{spots}</div>'
        f'<figcaption>✦ 點數字看每件製作物，點空白處收起。另有桌牌 × 2 放在洽談桌上。</figcaption></figure>')

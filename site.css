@@ -1771,3 +1771,6 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .ob-hs.is-open .ex-tip__imgs span:nth-child(3){transition-delay:.12s}
 @media (max-width:640px){.ex-tip{width:240px}.ex-tip__imgs img{max-height:110px}}
 @media (prefers-reduced-motion:reduce){.ex-tip__imgs span{transition:none}}
+.ex-tip__go{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-top:var(--jade-sys-spacing-4);padding:0 18px;border-radius:999px;border:var(--jade-sys-stroke-width) solid var(--jade-sys-color-outline);background:var(--jade-sys-color-outline);color:var(--jade-sys-color-secondary);font:600 15px/1 var(--font-plain);text-decoration:none;transition:transform .2s}
+.ex-tip__go:hover{transform:translateY(-2px)}
+.ex-tip__go:focus-visible{outline:3px solid var(--jade-sys-color-outline);outline-offset:3px}
