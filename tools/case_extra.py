@@ -613,3 +613,39 @@ def press():
           f'<section class="cs-sec">{head("Venue plan","Guest Journey","現場動線","")}{plan}</section>'
           +f'<section class="cs-sec">{head("On site","Press Day","現場紀錄","記者會當天：背板前的發表、手舉牌大合照、桌卡與 DM，以及媒體採訪。")}'
           f'<figure class="bq-fig ex-hero pr-collage"><button type="button" class="ex-img" data-lb="prsite" aria-label="放大檢視：記者會現場紀錄">{pic(F+"web-collage",1800,1818,"記者會現場照片拼貼：講者發表、來賓桌卡、DM、手舉牌大合照、產品桌卡、媒體採訪與評測流程易拉展")}</button><figcaption>✦ 記者會現場紀錄</figcaption></figure></section>')
+
+def uniform():
+  # 25 CMoney 尾牙福委制服：沿用好葉的深色 kl 架構（深海軍藍）
+  B='work-25-uniform/web-'
+  def kh(eb,en,zh,lead=''):
+    l=f'<p class="kl-head__lead">{lead}</p>' if lead else ''
+    return f'<header class="kl-head"><p class="kl-eyebrow">{eb}</p><h2 class="kl-title">{en}<small>{zh}</small></h2>{l}</header>'
+  def zoom(name,w,h,alt,group='un',cls=''):
+    return f'<button type="button" class="{cls}" data-lb="{group}" aria-label="放大檢視：{html.escape(alt)}">{pic(name,w,h,alt)}</button>'
+  props=[(1,'A','超越無極限','主標題傾斜排版，融入尖角元素，呈現速度與力量的動感。',False),
+         (2,'B','CMONEY × 奧運項目','把 CMONEY 六個字母化成跳水、划艇、摔角、賽跑、射擊、體操。',False),
+         (3,'C','TEAM C','以 TEAM C 代表福委團隊，搭配奧林匹克五環墜飾，增添團隊榮譽感。',True),
+         (4,'D','TEAM C 徽章版','同樣以 TEAM C 為核心，改用方框徽章構成，加入紅色點綴。',False)]
+  pc=''
+  for n,k,name,desc,final in props:
+    sets=f'../{P}{B}page-{n}.webp'
+    fin='<span class="kl-prop__final">Final</span>' if final else ''
+    pc+=(f'<button type="button" class="kl-prop un-prop{" is-final" if final else ""}" data-lb-set="{sets}" data-lb-alt="提案 {k} 款：{name}" aria-label="查看提案 {k} 款「{name}」完整提案頁">'
+         f'<span class="kl-prop__img">{pic(B+f"kv-{n}",1600,624,f"提案 {k} 款主視覺：{name}")}{fin}</span>'
+         f'<span class="kl-prop__txt"><b><i>{k}</i>{name}</b><span>{desc}</span></span>'
+         f'<span class="un-prop__more">看完整提案 <span aria-hidden="true">→</span></span></button>')
+  sw=[('005 黑色','Printstar 全棉連帽 Tee','#1B2133','un-sw__chip--hood'),('White','C0 M0 Y0 K0','#FFFFFF',''),('Gray','C0 M0 Y0 K30','#B3B3B3','')]
+  swh=''.join(f'<li><span class="un-sw__chip {c}" style="background:{hx}"></span><b>{t}</b><code>{s}</code><code>{hx if not c else ""}</code></li>' for t,s,hx,c in sw)
+  spec=''.join(f'<div><dt>{a}</dt><dd>{b}</dd></div>' for a,b in [('建議加工方式','熱昇華'),('圖樣尺寸','W3 × H4.4 cm'),('位置','左胸')])
+  return (f'<section class="kl un" aria-label="CMoney 尾牙福委會工作人員制服設計">'
+    f'<figure class="kl-full kl-kv">{zoom(B+"kv",2400,936,"定案主視覺：TEAM C 與奧林匹克五環，CMoney 標示")}</figure>'
+    f'<div class="wrap">'
+    f'<section class="kl-block">{kh("Proposal","4 Directions","服裝圖樣提案","以「雅典運動會」為尾牙主題，提出四款圖樣方向，最終由 C 款「TEAM C」定案。點擊卡片可看完整提案頁。")}<div class="kl-props un-props">{pc}</div></section>'
+    f'<section class="kl-block">{kh("Final design","TEAM C","定案設計")}'
+    f'<div class="un-final"><p class="un-final__txt">以「TEAM C」代表 CMoney 福委會團隊，C 字以立體翻轉的造型呈現，搭配奧林匹克五環墜飾，讓圖像更完整協調；在深色帽 T 上以白、灰兩色呈現，低調又有團隊識別。</p>'
+    f'<ul class="un-sw">{swh}</ul><dl class="un-spec">{spec}</dl></div>'
+    f'<div class="un-pair">{zoom(B+"logo-dark",1200,941,"TEAM C 圖樣：深色底","un","kl-round")}{zoom(B+"logo-gray",1200,940,"TEAM C 圖樣：灰色底","un","kl-round")}</div></section>'
+    f'<section class="kl-block">{kh("On body","Wear It","帽 T 上身示意")}'
+    f'<div class="un-pair">{zoom(B+"body-1",1400,1080,"男模特兒上身示意：深色帽 T 左胸 TEAM C 圖樣，附加工方式與尺寸","un","kl-round")}{zoom(B+"body-2",1400,1080,"帽 T 左胸 TEAM C 圖樣特寫","un","kl-round")}</div></section>'
+    f'</div><div class="un-end" aria-hidden="true"></div>'
+    f'</section>')

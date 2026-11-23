@@ -1824,3 +1824,27 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .ex-tip__imgs .ex-tip__img img{width:100%;height:100%;max-height:none;object-fit:cover;object-position:top}
 .ex-tip__imgs[style*="--n:4"]{grid-template-columns:repeat(2,minmax(0,1fr))}
 .pl-hot>.pl-legend{margin:0 0 16px}
+/* 25 CMoney 尾牙制服：沿用好葉 kl 深色架構，換深海軍藍 */
+.kl.un{--kl-bg:#141A2B;--kl-bg2:#1D2438;--kl-ac:var(--jade-sys-color-secondary);--kl-tx:#EEF0F6;--kl-mu:#A8AEC2}
+.un-props{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cs-body .un-prop{padding:0;font:inherit;color:inherit;cursor:zoom-in}
+.un-prop .kl-prop__img{aspect-ratio:1600/624}
+.un-prop .kl-prop__img img{object-position:50% 50%}
+.un-prop.is-final{border-color:var(--kl-ac)!important;border-width:2.5px!important}
+.un-prop:hover{transform:translateY(-4px)}
+.un-prop__more{padding:0 22px 22px;font:600 14px/1 var(--font-plain),"Noto Sans TC",sans-serif;color:var(--kl-ac)}
+.un-prop:focus-visible{outline:3px solid var(--kl-ac);outline-offset:4px}
+.un-final{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,4vw,56px) clamp(24px,5vw,72px);align-items:start;margin-bottom:clamp(28px,4vw,48px)}
+.un-final__txt{grid-row:span 2;margin:0;font:500 17px/1.9 var(--font-plain),"Noto Sans TC",sans-serif;color:var(--kl-tx)}
+.un-sw{display:flex;flex-wrap:wrap;gap:22px;margin:0;padding:0;list-style:none}
+.un-sw li{display:grid;justify-items:center;gap:6px;text-align:center}
+.un-sw__chip{width:64px;height:64px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.25)}
+.un-sw__chip--hood{box-shadow:0 0 0 2px rgba(255,255,255,.45)}
+.un-sw b{font:600 14px/1.2 var(--font-plain),"Noto Sans TC",sans-serif;color:#fff}
+.un-sw code{font:500 12px/1.2 var(--font-plain);color:var(--kl-mu)}
+.un-spec{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:8px 32px;margin:0}
+.un-spec dt{font:600 13px/1.4 var(--font-plain),"Noto Sans TC",sans-serif;color:var(--kl-mu)}
+.un-spec dd{margin:4px 0 0;font:700 17px/1.3 "Noto Sans TC",sans-serif;color:#fff}
+.un-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.un-end{height:clamp(80px,10vw,140px)}
+@media (max-width:760px){.un-props,.un-pair,.un-final{grid-template-columns:1fr}.un-final__txt{grid-row:auto}}

@@ -280,5 +280,18 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以「專業守護，全家安心」作為核心視覺概念，透過影像合成將醫師雙手、家庭人物與透明防護球體結合，象徵專業醫療為民眾健康提供守護。整體運用淺藍色調、柔和光暈與環繞式線條，營造純淨、安心且具科技感的視覺氛圍，搭配醫療圖示與認證徽章，強化計畫的專業形象與視覺辨識度。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='將醫療專業、科學認證與家庭健康等抽象理念轉化為直觀的視覺意象，兼顧現場品牌曝光、活動主題傳遞與多方合作單位的識別需求，建立具專業度與親和力的活動形象。')],
   gallery_style='none',gallery=[],extra=case_extra.press(),
+  next=dict(title='CMoney 尾牙福委會制服',attr='href="./work-25-uniform.html"')),
+ 'work-25-uniform':dict(
+  num='24',tone='lavender',body_cls=' cs-body--dark',deco=(('circle','yellow'),('scallop','cyan')),
+  title_en='Team C Uniform',title_zh='CMoney 尾牙福委會制服',
+  desc='Jade Shih 作品：CMoney 年度尾牙「雅典運動會」福委會工作人員制服設計，以 TEAM C 為核心圖樣。',
+  tags=['平面設計','CMoney','2024'],tagline='',
+  cover='work-25-uniform/web-cover',cover_w=2400,cover_h=1600,cover_alt='TEAM C 定案圖樣：白灰立體 C 字與奧林匹克五環，深海軍藍底',
+  meta=[('Client','CMoney'),('Role','服裝設計'),('Deliverables','尾牙福委會工作人員制服'),('Year','2024')],
+  overview='<p>為 CMoney 公司年度尾牙設計福委會工作人員制服，以「雅典運動會」為活動主題，結合古希臘競技精神與團隊文化，打造兼具主題辨識度、活動氛圍與團隊凝聚力的專屬服裝。</p>',
+  cards=[dict(tone='cyan',title='What I made',zh='我的設計',text='以「TEAM C」作為核心視覺，代表 CMoney 福委會團隊，傳遞團結合作與團隊榮譽感。融合奧林匹克五環、運動會象徵元素與裝飾性圖形，呼應雅典競技精神，透過圖像整合與視覺編排，打造兼具運動活力與團隊識別的制服設計。'),
+         dict(tone='yellow',title='What happened next',zh='後續成果',text='將年度尾牙主題轉化為具象的團隊識別視覺，使工作人員制服不僅具備活動識別功能，更成為凝聚團隊向心力、強化成員歸屬感與營造活動氛圍的象徵。')],
+  gallery_style='none',gallery=[],
+  after=case_extra.uniform(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
