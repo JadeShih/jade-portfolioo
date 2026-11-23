@@ -614,7 +614,5 @@ def press():
   return (f'<section class="cs-sec">{head("Key visual","Press Backdrop","記者會背板","以醫師雙手、家庭人物與透明防護球體合成主視覺，傳達「專業守護，全家安心」。")}'
           f'<figure class="bq-fig ex-hero"><button type="button" class="ex-img" data-lb="prhero" aria-label="放大檢視：記者會背板提案">{pic(F+"web-backdrop",2400,1189,"記者會背板提案：醫師雙手捧著透明球體，球內是三代同堂的家庭")}</button><figcaption>✦ 背板提案｜W515 × H255 cm</figcaption></figure></section>'
           f'<section class="cs-sec">{head("Venue plan","Guest Journey","現場動線","照來賓從門外報到、入座、台前合照到產品區的順序，標出每件製作物在現場的位置。")}{plan}</section>'
-          f'<section class="cs-sec">{head("Photo props","11 Hand Signs","拍照用手舉牌","台前大合照用的造型手舉牌，每款對應一個產品或計劃關鍵字，拍出來一眼就看懂主題。")}<div class="pr-wall">{wall}</div></section>'
-          f'<section class="cs-sec">{head("Product table","Table Cards","產品介紹桌卡","產品桌上的長者六力系列桌卡，統一版型，以顏色與圖示區分每一種「力」。")}<div class="pr-cards">{cards}</div></section>'
           +f'<section class="cs-sec">{head("On site","Press Day","現場紀錄","記者會當天：背板前的發表、手舉牌大合照、桌卡與 DM，以及媒體採訪。")}'
           f'<figure class="bq-fig ex-hero pr-collage"><button type="button" class="ex-img" data-lb="prsite" aria-label="放大檢視：記者會現場紀錄">{pic(F+"web-collage",1800,1818,"記者會現場照片拼貼：講者發表、來賓桌卡、DM、手舉牌大合照、產品桌卡、媒體採訪與評測流程易拉展")}</button><figcaption>✦ 記者會現場紀錄</figcaption></figure></section>')
