@@ -1845,7 +1845,7 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .un-end{height:clamp(80px,10vw,140px)}
 @media (max-width:760px){.un-props,.un-pair,.un-final{grid-template-columns:1fr}}
 /* 26 明台產險贈禮：信封／筆記本／桌曆 3D（three.js） */
-.mt{display:grid;justify-items:center;gap:clamp(16px,2vw,24px);margin-top:clamp(28px,4vw,48px);padding:clamp(20px,3vw,36px) var(--jade-sys-spacing-4) clamp(24px,3vw,36px);background:radial-gradient(120% 90% at 50% 20%,#FFFFFF,#E9E9E7);border:var(--jade-sys-stroke-width) solid var(--jade-sys-color-outline);border-radius:var(--jade-sys-shape-corner-extra-large)}
+.mt{display:grid;justify-items:center;gap:clamp(16px,2vw,24px);margin-top:clamp(28px,4vw,48px);padding:clamp(20px,3vw,36px) var(--jade-sys-spacing-4) clamp(24px,3vw,36px);background:#E8D8C2;border:var(--jade-sys-stroke-width) solid var(--jade-sys-color-outline);border-radius:var(--jade-sys-shape-corner-extra-large)}
 .mt-stage{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;touch-action:pan-y;cursor:grab;outline:none;border-radius:16px;-webkit-user-select:none;user-select:none}
 .mt-stage.is-drag{cursor:grabbing}
 .mt-stage:focus-visible{outline:3px solid var(--jade-sys-color-outline);outline-offset:4px}
@@ -1875,6 +1875,6 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .mt[data-phase="closed"] .mt-tabs,.mt[data-phase="closed"] .mt-pager,.mt[data-phase="closed"] .mt-btn--sub,.mt:not([data-phase="closed"]) .mt-btn--main{display:none}
 .mt[data-phase="busy"] .mt-ui{visibility:hidden}
 .mt-ui{min-height:52px;align-content:center}
-.mt:not([data-focus="nb"]):not([data-focus="cal"]) .mt-pager{visibility:hidden}
-.mt:not([data-focus="env"]) .mt-btn--sub{display:none}
+.mt:not([data-focus="nb"]):not([data-focus="cal"]) .mt-pager{display:none}
+.mt:not([data-focus=""]) .mt-btn--sub{display:none}
 @media (max-width:760px){.mt-stage{aspect-ratio:4/5}.mt-pg{min-width:7.5em}.mt-ui{min-height:108px}}

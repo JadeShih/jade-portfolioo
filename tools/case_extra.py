@@ -659,19 +659,19 @@ def series():
        f'<div class="mt-ui">'
        f'<button type="button" class="mt-btn mt-btn--main" data-mt-open>打開信封</button>'
        f'<div class="mt-tabs" role="group" aria-label="選擇要看的物件">'
-       f'<button type="button" class="mt-tab" data-mt-focus="" aria-pressed="true">全部</button>'
+       f'<button type="button" class="mt-tab" data-mt-focus="" aria-pressed="true">桌面</button>'
        f'<button type="button" class="mt-tab" data-mt-focus="nb" aria-pressed="false">筆記本</button>'
        f'<button type="button" class="mt-tab" data-mt-focus="cal" aria-pressed="false">桌曆</button>'
-       f'<button type="button" class="mt-tab" data-mt-focus="env" aria-pressed="false">信封</button></div>'
+       f'</div>'
        f'<div class="mt-pager"><button type="button" class="mt-btn mt-btn--ic" data-mt-prev aria-label="上一頁">←</button>'
        f'<p class="mt-pg" aria-live="polite"></p><button type="button" class="mt-btn mt-btn--ic" data-mt-next aria-label="下一頁">→</button></div>'
        f'<button type="button" class="mt-btn mt-btn--sub" data-mt-close>收回信封</button>'
-       f'</div><p class="mt-hint">✦ 拖曳可 360° 旋轉</p><p class="mt-note">本機直接開檔時，瀏覽器會擋下 3D 貼圖，所以這裡只顯示示意圖。上線後（或用預覽網址開啟）就能 360° 轉、開信封、翻頁。</p></div>')
+       f'</div><p class="mt-hint">✦ 點信封取出內容物，點筆記本或桌曆就能翻閱，點桌面空白處回到桌面；拖曳可轉動視角</p><p class="mt-note">本機直接開檔時，瀏覽器會擋下 3D 貼圖，所以這裡只顯示示意圖。上線後（或用預覽網址開啟）就能 360° 轉、開信封、翻頁。</p></div>')
   def fig(n,w,h,alt,cap):
     return (f'<figure class="mt-fig"><button type="button" class="mt-fig__b" data-lb="mt" aria-label="放大檢視：{html.escape(alt)}">{pic("work-26-series/"+n,w,h,alt)}</button><figcaption>✦ {cap}</figcaption></figure>')
-  return (f'<section class="cs-sec">{head("Unbox","Open The Envelope","打開信封","桌曆與筆記本收在同一只信封裡。點信封把它們拿出來，選筆記本或桌曆就能翻頁，三件都可以拖曳 360° 轉著看。")}{box}</section>'
+  return (f'<section class="cs-sec">{head("Unbox","Open The Envelope","打開信封","桌曆與筆記本收在同一只信封裡。點信封把它們拿出來；點筆記本會攤開翻閱，點桌曆會立起來翻頁，點桌面空白處就回到整張桌面。")}{box}</section>'
           f'<section class="cs-sec">{head("The set","Always At Your Side","年度贈禮組合","三角桌曆與筆記本共用同一組手繪人物與米色紙感，放在一起就是一套完整的品牌禮物。")}{fig("web-set",2400,1760,"三角桌曆與筆記本並排的實品合成","三角桌曆＋筆記本")}</section>'
-          f'<section class="cs-sec">{head("Illustration","12 Months, 12 Policies","每月一種保障","桌曆每個月對應一項保險商品，把抽象的保障轉成日常裡看得見的小故事。")}{fig("web-cal-b",2400,1600,"桌曆各月主題插畫與狀態頁平鋪","每月主題插畫：機車險、意外險、海域活動險、特定活動險⋯")}</section>'
-          f'<section class="cs-sec">{head("Desk status","Back Side","桌曆狀態頁","除了月份，桌曆另有「會議中、外出中、休假中、暫時離開」四款狀態頁，翻到對應那一面，就能告訴同事你現在在哪。")}{fig("web-cal-a",2400,1600,"三角桌曆合成：暫時離開狀態頁、封面與寵物險月份","狀態頁、封面與月份頁")}</section>'
+          f'<section class="cs-sec">{head("Illustration","12 Months, 12 Policies","每月一種保障","桌曆每個月對應一項保險商品，把抽象的保障轉成日常裡看得見的小故事。")}{fig("web-cal-b",2400,1600,"桌曆各月主題插畫平鋪","每月主題插畫：機車險、租車險、意外險、海域活動險、汽車險、特定活動險⋯")}</section>'
+          f'<section class="cs-sec">{head("Desk status","Back Side","桌曆狀態頁","除了月份，桌曆另有「會議中、外出中、休假中、暫時離開」四款狀態頁，翻到對應那一面，就能告訴同事你現在在哪。")}{fig("web-cal-a",2400,1600,"三角桌曆合成：暫時離開、外出中、會議中三款狀態頁","狀態頁：暫時離開、外出中、會議中")}</section>'
           f'<section class="cs-sec">{head("Notebook","Plan The Year","筆記本內頁","月計畫表延續桌曆的保險主題，每個月的角落都有一個小圖示，書寫格線留得夠寬，真的能用一整年。")}{fig("web-nb-mock",2400,1600,"筆記本攤開：1 月疫苗險計畫表","1 月計畫表・疫苗險")}</section>'
           f'<section class="cs-sec">{head("Extension","Mask Pattern","延伸：防疫口罩","同一組手繪人物延伸到口罩圖樣，在疫情期間把品牌陪伴帶到每天出門的路上。")}{fig("web-mask",2400,1600,"明台產險手繪人物圖樣口罩合成","口罩圖樣")}</section>')
