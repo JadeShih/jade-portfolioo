@@ -532,14 +532,31 @@
   [].forEach.call(document.querySelectorAll('.ob-hs.is-open'),function(h){h.classList.remove('is-open');var b=h.querySelector('.ob-hs__dot');if(b)b.setAttribute('aria-expanded','false')});
   var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;t.scrollIntoView({behavior:rm?'auto':'smooth',block:'start'});
   var st=t.querySelector('.ex-book__stage');if(st)setTimeout(function(){st.focus({preventScroll:true})},rm?0:600)})})})();
-/* 26 明台產險贈禮：進到畫面附近才載入 3D（一般 script，本機開檔也能跑） */
-(function(){var roots=document.querySelectorAll('[data-mt]');if(!roots.length)return;
-  var c=document.createElement('canvas'),ok=false;try{ok=!!(window.WebGLRenderingContext&&(c.getContext('webgl2')||c.getContext('webgl')))}catch(e){}
-  if(!ok)return;
-  if(location.protocol==='file:'){[].forEach.call(roots,function(R){R.classList.add('is-file')});return}
-  var me=document.currentScript&&document.currentScript.src,url=new URL('public/js/mt3d.bundle.js?v=202611241530',me||location.href).href,q=[],state=0;
-  function boot(R){if(state===2){window.MT3D.init(R);return}q.push(R);if(state)return;state=1;
-    var s=document.createElement('script');s.src=url;s.onload=function(){state=2;q.forEach(function(r){window.MT3D.init(r)})};document.head.appendChild(s)}
-  [].forEach.call(roots,function(R){
-    if(!('IntersectionObserver' in window)){boot(R);return}
-    var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();boot(R)}},{rootMargin:'400px'});io.observe(R)})})();
+/* 27 明台產險新春賀卡：刮刮樂 */
+(function(){[].forEach.call(document.querySelectorAll('[data-sc]'),function(R){
+  var cv=R.querySelector('.sc__coat'),ctx=cv.getContext('2d'),msg=R.querySelector('.sc__msg'),btn=R.querySelector('[data-sc-btn]'),
+      done=false,last=null,moves=0,lw=0,cw=0;
+  // 扇形（以整張卡片的比例定義，換算到塗層畫布）
+  var CX=.5016,CY=.7468,R1=.57,R2=.355,A=22.5*Math.PI/180,BX=.1646,BY=.1768,BW=.674,BH=.242,ASP=1469/951;
+  function fan(){var W=cv.width,H=cv.height,cardW=W/BW,cardH=cardW*ASP,ox=BX*cardW,oy=BY*cardH,cx=CX*cardW-ox,cy=CY*cardH-oy,r1=R1*cardH,r2=R2*cardH;
+    ctx.beginPath();ctx.arc(cx,cy,r1,-Math.PI/2-A,-Math.PI/2+A);ctx.arc(cx,cy,r2,-Math.PI/2+A,-Math.PI/2-A,true);ctx.closePath()}
+  function paint(){var d=Math.min(devicePixelRatio||1,2),w=cv.clientWidth,h=cv.clientHeight;if(!w)return;cw=w;
+    cv.width=Math.round(w*d);cv.height=Math.round(h*d);var W=cv.width,H=cv.height;
+    ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);ctx.save();fan();ctx.clip();
+    var g=ctx.createLinearGradient(0,0,W,H);g.addColorStop(0,'#e6e7ec');g.addColorStop(.35,'#b8bac3');g.addColorStop(.55,'#eff0f3');g.addColorStop(.8,'#a9abb5');g.addColorStop(1,'#d7d8de');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    for(var i=0;i<W*H/90;i++){ctx.fillStyle='rgba('+(Math.random()<.5?'255,255,255':'90,92,104')+','+(Math.random()*.18)+')';ctx.fillRect(Math.random()*W,Math.random()*H,1.2*d,1.2*d)}
+    ctx.fillStyle='rgba(90,92,104,.75)';ctx.font='700 '+Math.round(H*.17)+'px "Noto Sans TC",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('刮 刮 看',W/2,H*.5);
+    ctx.restore();lw=W*.11;done=false;cv.classList.remove('is-done');btn.textContent='直接揭曉';msg.textContent='✦ 用滑鼠或手指在銀色扇形上刮一刮'}
+  function cleared(){var W=cv.width,H=cv.height,data=ctx.getImageData(0,0,W,H).data,tot=0,clr=0,s=Math.max(4,Math.round(W/60));
+    ctx.save();fan();for(var y=0;y<H;y+=s)for(var x=0;x<W;x+=s){if(!ctx.isPointInPath(x,y))continue;tot++;if(data[(y*W+x)*4+3]<40)clr++}ctx.restore();return tot?clr/tot:0}
+  function reveal(){done=true;cv.classList.add('is-done');btn.textContent='再刮一次';msg.textContent='✦ 大吉！一甲子的承諾與守護，祝新年平安順心。'}
+  function pt(e){var r=cv.getBoundingClientRect();return{x:(e.clientX-r.left)/r.width*cv.width,y:(e.clientY-r.top)/r.height*cv.height}}
+  function scratch(p){ctx.globalCompositeOperation='destination-out';ctx.lineCap=ctx.lineJoin='round';ctx.lineWidth=lw;ctx.beginPath();ctx.moveTo((last||p).x,(last||p).y);ctx.lineTo(p.x,p.y);ctx.stroke();last=p;
+    if(++moves%8===0&&cleared()>.55)reveal()}
+  cv.addEventListener('pointerdown',function(e){if(done)return;e.preventDefault();try{cv.setPointerCapture(e.pointerId)}catch(_){}last=null;scratch(pt(e))});
+  cv.addEventListener('pointermove',function(e){if(done||!cv.hasPointerCapture||!cv.hasPointerCapture(e.pointerId))return;scratch(pt(e))});
+  cv.addEventListener('pointerup',function(){last=null;if(!done&&cleared()>.55)reveal()});
+  btn.addEventListener('click',function(){done?paint():reveal()});
+  if('ResizeObserver' in window)new ResizeObserver(function(){if(Math.abs(cv.clientWidth-cw)>1)paint()}).observe(cv);else addEventListener('resize',paint);
+  paint()})})();

@@ -649,29 +649,25 @@ def uniform():
     f'</section>')
 
 def series():
-  F=P+'work-26-series/'
-  nb_names=['封面','扉頁','2022・2023 全年曆','2021 年 12 月計畫表']+[f'{m} 月計畫表' for m in range(1,13)]+['公司資訊・保險小常識','MEMO 頁','扉頁（封底內頁）']
-  cal_names=['封面','2022 年曆']+[x for m in range(1,13) for x in (f'{m} 月・主題插畫',f'{m} 月・月曆')]+['2023 年曆','分公司資訊']
-  data=html.escape(json.dumps({'nb':nb_names,'cal':cal_names},ensure_ascii=False))
-  box=(f'<div class="mt" data-mt data-phase="closed" data-focus="" data-base="../{F}" data-names="{data}">'
-       f'<div class="mt-stage" tabindex="0" role="group" aria-roledescription="3D 模型" aria-label="明台產險 2022 年度贈禮：信封、筆記本與三角桌曆。拖曳可旋轉，方向鍵可翻頁。">'
-       f'<img class="mt-fallback" src="{F}web-set.webp" alt="三角桌曆與筆記本實品合成" draggable="false"></div>'
-       f'<div class="mt-ui">'
-       f'<button type="button" class="mt-btn mt-btn--main" data-mt-open>打開信封</button>'
-       f'<div class="mt-tabs" role="group" aria-label="選擇要看的物件">'
-       f'<button type="button" class="mt-tab" data-mt-focus="" aria-pressed="true">桌面</button>'
-       f'<button type="button" class="mt-tab" data-mt-focus="nb" aria-pressed="false">筆記本</button>'
-       f'<button type="button" class="mt-tab" data-mt-focus="cal" aria-pressed="false">桌曆</button>'
-       f'</div>'
-       f'<div class="mt-pager"><button type="button" class="mt-btn mt-btn--ic" data-mt-prev aria-label="上一頁">←</button>'
-       f'<p class="mt-pg" aria-live="polite"></p><button type="button" class="mt-btn mt-btn--ic" data-mt-next aria-label="下一頁">→</button></div>'
-       f'<button type="button" class="mt-btn mt-btn--sub" data-mt-close>收回信封</button>'
-       f'</div><p class="mt-hint">✦ 點信封取出內容物，點筆記本或桌曆就能翻閱，點桌面空白處回到桌面；拖曳可轉動視角</p><p class="mt-note">本機直接開檔時，瀏覽器會擋下 3D 貼圖，所以這裡只顯示示意圖。上線後（或用預覽網址開啟）就能 360° 轉、開信封、翻頁。</p></div>')
   def fig(n,w,h,alt,cap):
     return (f'<figure class="mt-fig"><button type="button" class="mt-fig__b" data-lb="mt" aria-label="放大檢視：{html.escape(alt)}">{pic("work-26-series/"+n,w,h,alt)}</button><figcaption>✦ {cap}</figcaption></figure>')
-  return (f'<section class="cs-sec">{head("Unbox","Open The Envelope","打開信封","桌曆與筆記本收在同一只信封裡。點信封把它們拿出來；點筆記本會攤開翻閱，點桌曆會立起來翻頁，點桌面空白處就回到整張桌面。")}{box}</section>'
-          f'<section class="cs-sec">{head("The set","Always At Your Side","年度贈禮組合","三角桌曆與筆記本共用同一組手繪人物與米色紙感，放在一起就是一套完整的品牌禮物。")}{fig("web-set",2400,1760,"三角桌曆與筆記本並排的實品合成","三角桌曆＋筆記本")}</section>'
+  return (f'<section class="cs-sec">{head("The set","Always At Your Side","年度贈禮組合","三角桌曆與筆記本共用同一組手繪人物與米色紙感，放在一起就是一套完整的品牌禮物。")}{fig("web-set",2400,1760,"三角桌曆與筆記本並排的實品合成","三角桌曆＋筆記本")}</section>'
           f'<section class="cs-sec">{head("Illustration","12 Months, 12 Policies","每月一種保障","桌曆每個月對應一項保險商品，把抽象的保障轉成日常裡看得見的小故事。")}{fig("web-cal-b",2400,1600,"桌曆各月主題插畫平鋪","每月主題插畫：機車險、租車險、意外險、海域活動險、汽車險、特定活動險⋯")}</section>'
           f'<section class="cs-sec">{head("Desk status","Back Side","桌曆狀態頁","除了月份，桌曆另有「會議中、外出中、休假中、暫時離開」四款狀態頁，翻到對應那一面，就能告訴同事你現在在哪。")}{fig("web-cal-a",2400,1600,"三角桌曆合成：暫時離開、外出中、會議中三款狀態頁","狀態頁：暫時離開、外出中、會議中")}</section>'
           f'<section class="cs-sec">{head("Notebook","Plan The Year","筆記本內頁","月計畫表延續桌曆的保險主題，每個月的角落都有一個小圖示，書寫格線留得夠寬，真的能用一整年。")}{fig("web-nb-mock",2400,1600,"筆記本攤開：1 月疫苗險計畫表","1 月計畫表・疫苗險")}</section>'
           f'<section class="cs-sec">{head("Extension","Mask Pattern","延伸：防疫口罩","同一組手繪人物延伸到口罩圖樣，在疫情期間把品牌陪伴帶到每天出門的路上。")}{fig("web-mask",2400,1600,"明台產險手繪人物圖樣口罩合成","口罩圖樣")}</section>')
+
+def card27():
+  F='public/works/work-27-card/'
+  def fig(n,w,h,alt,cap):
+    return (f'<figure class="mt-fig"><button type="button" class="mt-fig__b" data-lb="c27" aria-label="放大檢視：{html.escape(alt)}">{pic("work-27-card/"+n,w,h,alt)}</button><figcaption>✦ {cap}</figcaption></figure>')
+  sc=(f'<div class="sc" data-sc>'
+      f'<div class="sc__pair">'
+      f'<figure class="sc__card sc__card--front"><img src="{F}web-front.webp" width="951" height="1469" alt="賀卡正面：香檳金底、圓窗中的老虎插畫，2022 HAPPY NEW YEAR 虎虎同心・新年快樂" loading="lazy" decoding="async"></figure>'
+      f'<div class="sc__card sc__card--back"><img src="{F}web-back.webp" width="951" height="1469" alt="賀卡背面：和風花紋與扇形刮刮樂，刮開後是「大吉」，下方寫著一甲子的承諾與守護" loading="lazy" decoding="async">'
+      f'<canvas class="sc__coat" aria-hidden="true"></canvas></div></div>'
+      f'<div class="sc__ui"><p class="sc__msg" aria-live="polite">✦ 用滑鼠或手指在銀色扇形上刮一刮</p>'
+      f'<button type="button" class="sc__btn" data-sc-btn>直接揭曉</button></div></div>')
+  return (f'<section class="cs-sec">{head("Scratch to reveal","Pull A Fortune","刮開新年籤","卡片背面的扇形是刮刮樂塗層，就像新年到神社抽籤，刮開才知道今年的運勢。")}{sc}</section>'
+          f'<section class="cs-sec">{head("Card &amp; sleeve","Wrapped For New Year","卡片與信封套","信封套延續香檳金與和風紋樣：麻葉紋、市松格與「良いお年を」，卡片抽出一半時，老虎剛好從圓窗探出頭。")}{fig("web-sleeve",2000,1708,"賀卡與信封套：左為麻葉紋與市松格信封，右為卡片抽出一半露出老虎","信封套・卡片抽出示意")}</section>'
+          f'<section class="cs-sec">{head("Lucky draw","Three Fortunes","大吉・中吉・吉","刮開的籤運有大吉、中吉、吉三種，每位客戶拿到的祝福都不太一樣。")}{fig("web-set",2400,1600,"多張賀卡正反面平鋪，背面分別是大吉、中吉、吉","三種籤運與正反面")}</section>')

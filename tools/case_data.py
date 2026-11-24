@@ -306,5 +306,18 @@ CASES={
          dict(tone='yellow',title='What happened next',zh='後續成果',text='完成涵蓋三角桌曆、筆記本及包裝信封的年度贈禮設計，將桌曆與筆記本整合收納於專屬信封中，形成具一致性的品牌禮贈組合。透過日常實用的文具載體，延伸品牌與使用者的接觸情境，讓保險保障的理念自然融入生活。')],
   gallery_style='none',gallery=[],
   extra=case_extra.series(),
+  next=dict(title='明台產險新春賀卡',attr='href="./work-27-card.html"')),
+ 'work-27-card':dict(
+  num='26',tone='yellow',deco=(('flower','coral'),('circle','cyan')),
+  title_en='Year Of The Tiger',title_zh='明台產險新春賀卡',
+  desc='Jade Shih 作品：明台產物保險 2022 虎年新春賀卡提案，結合 60 週年與日式御守、抽籤文化的刮刮樂賀卡。',
+  tags=['平面設計','明台產險','2022'],tagline='',
+  cover='work-27-card/web-cover',cover_w=2400,cover_h=1600,cover_alt='明台產險虎年賀卡正反面平鋪：老虎圓窗插畫與大吉、中吉、吉刮刮樂',
+  meta=[('Client','明台產險'),('Role','視覺設計'),('Deliverables','新年賀卡'),('Year','2022')],
+  overview='<p>為明台產物保險設計 2022 虎年新春賀卡，以品牌成立 60 週年為契機，結合「一甲子的承諾與守護」主題，打造兼具節慶祝福、品牌紀念意義與互動趣味的賀年禮品，傳遞品牌長期陪伴客戶、迎接新年的美好祝願。</p>',
+  cards=[dict(tone='cyan',title='What I made',zh='我的設計',text='以日式新年御守與祈福文化為設計靈感，結合虎年生肖插畫、傳統和風紋樣與香檳金色調，營造溫暖且精緻的節慶氛圍。特別將賀卡設計為刮刮樂形式，透過刮開塗層揭曉「大吉」祝福，讓傳統賀卡增添互動驚喜與儀式感，並搭配專屬信封，呈現完整的品牌新年贈禮提案。'),
+         dict(tone='yellow',title='What happened next',zh='後續成果',text='雖然本次提案最終未獲採用，但透過刮刮樂互動機制與日式美學的結合，探索了傳統賀卡更多元的表現形式。這也是一次自己相當滿意的設計嘗試，將節慶祝福轉化為兼具視覺美感、參與感與情感溫度的創意體驗。')],
+  gallery_style='none',gallery=[],
+  extra=case_extra.card27(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
