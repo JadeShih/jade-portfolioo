@@ -27,7 +27,7 @@ CASES={
   overview='<p>國泰金控規劃製作 2020 年新春電子月刊 EDM，以新年賀詞向企業夥伴及相關利害關係人傳遞祝福，展現企業的人文關懷與品牌形象。</p>',
   cards=[dict(tone='cyan',title='What I made',zh='我的設計',text='以「宏圖大展、五福臨門、花開富貴、開春大吉」四大吉祥寓意為主題，透過鮮明色彩、書法字體與錦鯉、飛燕、牡丹、柑橘等象徵性元素，融合傳統文化與現代影像拼貼手法，呈現兼具文化底蘊與視覺張力的新春祝福，傳遞國泰金控對新一年的美好期許。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='雖然本次提案最終未獲採用，但憑藉提案過程中展現的設計能力與創意表現，成功為團隊建立與國泰金控進一步合作的契機，也為後續爭取年度報告書設計專案奠定基礎。')],
-  gallery_style='stack',gallery=[dict(tone='cyan',img='work-02-newyearcard-01',cap='系列三款海報',alt='2020 新春電子月刊系列海報：鴻圖大展、五福臨門、花開富貴、開春大吉四款錯落排列'),
+  gallery_style='stack',gallery=[dict(tone='cyan',img='work-02-newyearcard-01',cap='系列三款 EDM',alt='2020 新春電子月刊系列海報：鴻圖大展、五福臨門、花開富貴、開春大吉四款錯落排列'),
            dict(tone='pink',img='work-02-newyearcard-02',cap='五福臨門・花開富貴',alt='五福臨門與花開富貴兩款新春海報並列，藍綠色調搭配飛燕與牡丹')],
   next=dict(title='艾沛膚系列產品包裝',attr='href="./work-03-package.html"')),
  'work-03-package':dict(

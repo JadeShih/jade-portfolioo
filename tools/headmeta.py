@@ -30,6 +30,7 @@ for f in pages:
 <meta property="og:image" content="{BASE}{img}">
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
 <!-- share:end -->'''
     s=re.sub(r'(<meta name="theme-color"[^>]*>)',lambda m:m.group(1)+'\n'+block,s,count=1)
     open(f,'w').write(s)

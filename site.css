@@ -1862,3 +1862,72 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .cs-sec .sc__btn:focus-visible{outline:3px solid var(--jade-sys-color-outline);outline-offset:3px}
 @media (max-width:640px){.sc__pair{grid-template-columns:1fr;width:min(320px,100%)}.sc__card--back{order:-1}}
 @media (prefers-reduced-motion:reduce){.sc__coat{transition:none}}
+
+/* ===== 手機版修正（11/24） ===== */
+/* Hero 兩顆按鈕等寬（電腦＋手機），手機再縮小一號 */
+.hero__actions>a{width:252px;justify-content:space-between}
+@media (max-width:760px){
+  .hero__actions{--jade-comp-primary-button-container-height:42px;--jade-comp-secondary-button-container-height:42px;--jade-comp-primary-button-icon-container-size:34px;--jade-comp-secondary-button-icon-container-size:34px;--jade-comp-primary-button-icon-size:18px;--jade-comp-secondary-button-icon-size:18px;gap:12px}
+  .hero__actions>a{width:224px;font-size:15px;padding-left:20px}
+}
+/* About：資料→數據、數據→經歷的間距收斂 */
+@media (max-width:760px){
+  .ab-me>.ab-me__grid{padding-bottom:var(--jade-sys-spacing-6)}
+  .ab-me>.wrap:not(.ab-me__grid){padding-block:var(--jade-sys-spacing-8) var(--jade-sys-spacing-4)}
+  .stats{padding-bottom:0}
+  .road>.wrap{padding-top:var(--jade-sys-spacing-8)}
+}
+/* 案例封面「01 Case」星形貼紙：手機再小一點 */
+@media (max-width:760px){.cs-hero__st{left:-14px;top:-34px;transform:scale(.58);transform-origin:0 0}}
+/* 首頁精選作品：手機版「看全部作品」像電腦版一樣疊在上一張卡片上 */
+@media (max-width:760px){
+  .deck__item--folder{flex-basis:min(70vw,440px);margin-left:-16vw;position:relative;z-index:2}
+  .deck__item--folder .deck__folder{transform:rotate(-4deg)}
+}
+/* 27 刮刮樂：手機只留可以刮的背面 */
+@media (max-width:640px){.sc__card--front{display:none}}
+/* About 相關作品：DS Secondary Button（縮小版） */
+.road__links{--jade-comp-secondary-button-container-height:40px;--jade-comp-secondary-button-icon-container-size:32px;--jade-comp-secondary-button-icon-size:16px;gap:10px 12px}
+.road__links .road__btn{font-size:14px;gap:12px;padding-left:18px;text-decoration:none}
+.road__links b{flex-basis:100%}
+@media (min-width:761px){.road__links b{flex-basis:auto;margin-right:4px}}
+
+/* 手機版選單（全螢幕） */
+.navmenu-btn{display:none}
+@media (max-width:760px){
+  .navmenu-btn{display:inline-grid;place-items:center;width:48px;height:48px;margin-left:auto;padding:0;border:0;border-radius:50%;background:var(--jade-sys-color-secondary);color:var(--jade-ref-palette-neutral10);cursor:pointer}
+  .navmenu-btn svg{width:22px;height:22px}
+  .navmenu-btn:focus-visible{outline:3px solid var(--jade-sys-color-secondary);outline-offset:3px}
+  .jade-navigation-bar>.jade-secondary-button{display:none}
+  .jade-navigation-bar{width:100%;max-width:420px;box-sizing:border-box}
+}
+.navmenu{position:fixed;inset:0;z-index:300;display:none;overflow:auto;background:var(--jade-ref-palette-primary50);color:#fff;padding:calc(env(safe-area-inset-top,0px) + 24px) 16px calc(env(safe-area-inset-bottom,0px) + 32px)}
+.navmenu.is-open{display:block}
+.navmenu::before{content:"";position:absolute;left:-20%;right:-20%;top:46%;height:160px;background:var(--jade-sys-color-secondary);transform:rotate(-12deg);opacity:.16;pointer-events:none}
+.navmenu__top{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 6px 0 24px;border-radius:999px;background:var(--jade-ref-palette-primary40)}
+.navmenu__brand{display:inline-flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font:400 28px/1 var(--font-brand);letter-spacing:.01em}
+.navmenu__brand svg{width:24px;height:24px;color:var(--jade-sys-color-secondary)}
+.navmenu__close{display:grid;place-items:center;width:48px;height:48px;padding:0;border:0;border-radius:50%;background:#fff;color:var(--jade-ref-palette-neutral10);cursor:pointer}
+.navmenu__close svg{width:22px;height:22px}
+.navmenu__close:focus-visible,.navmenu__link:focus-visible{outline:3px solid var(--jade-sys-color-secondary);outline-offset:3px}
+.navmenu__list{position:relative;display:grid;gap:14px;margin:56px 0 40px;padding:0 6px;list-style:none}
+.navmenu__link{display:flex;align-items:center;gap:14px;padding:12px 22px;background:var(--jade-ref-palette-neutral10);color:#fff;text-decoration:none;transform:skewX(-10deg);box-shadow:6px 6px 0 var(--jade-ref-palette-primary40)}
+.navmenu__link>*{transform:skewX(10deg)}
+.navmenu__n{font:400 18px/1 var(--font-brand);color:var(--jade-sys-color-secondary);min-width:1.6em}
+.navmenu__en{font:400 44px/1 var(--font-brand);letter-spacing:.01em}
+.navmenu__zh{margin-left:auto;font:600 14px/1 var(--font-plain),"Noto Sans TC",sans-serif;opacity:.75}
+.navmenu__link[aria-current="page"]{background:var(--jade-sys-color-secondary);color:var(--jade-ref-palette-neutral10);box-shadow:6px 6px 0 var(--jade-ref-palette-neutral10)}
+.navmenu__link[aria-current="page"] .navmenu__n{color:var(--jade-ref-palette-neutral10)}
+.navmenu__item{opacity:0;translate:40px 0;transition:opacity .35s,translate .45s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i) * 60ms + 80ms)}
+.navmenu.is-shown .navmenu__item{opacity:1;translate:0 0}
+.navmenu__cta{position:relative;display:flex;justify-content:center}
+@media (prefers-reduced-motion:reduce){.navmenu__item{transition:none;opacity:1;translate:0 0}}
+html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
+.navmenu__list{padding:0 14px 0 8px}
+.navmenu__en{font-size:min(44px,8.6vw);white-space:nowrap;min-width:0}
+.navmenu__zh{flex-shrink:0}
+.navmenu__list{padding:0 20px 0 12px}
+.navmenu__en{font-size:min(44px,7.4vw)}
+.navmenu__link{gap:12px;padding-inline:20px}
+.navmenu__en{min-width:auto}
+@media (max-width:400px){.navmenu__en{font-size:6.6vw}}
