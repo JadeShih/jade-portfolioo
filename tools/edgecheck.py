@@ -9,6 +9,6 @@ def edges(a):
     while k<5 and m[k]-ref>10: k+=1
     if 0<k<5: out[s]=(k,round(float(m[0]-ref)))
   return out
-for f in sorted(glob.glob(sys.argv[1]+'/**/web-*.jpg',recursive=True)):
+for f in sorted(glob.glob(sys.argv[1]+'/**/web-*.jpg',recursive=True)+glob.glob(sys.argv[1]+'/**/web-*.webp',recursive=True)):
   e=edges(np.asarray(Image.open(f).convert('L')).astype(float))
   if e: print(f,e)

@@ -647,3 +647,53 @@ def uniform():
     f'<div class="un-pair">{zoom(B+"body-1",1400,1080,"男模特兒上身示意：深色帽 T 左胸 TEAM C 圖樣，附加工方式與尺寸","un","kl-round")}{zoom(B+"body-2",1400,1080,"帽 T 左胸 TEAM C 圖樣特寫","un","kl-round")}</div></section>'
     f'</div><div class="un-end" aria-hidden="true"></div>'
     f'</section>')
+
+def series():
+  F=P+'work-26-series/'
+  def im(n,alt='',eager=False):
+    a=f' alt="{html.escape(alt)}"' if alt else ' alt=""'
+    return (f'<img src="{F}{n}.webp"{a} draggable="false" decoding="async">' if eager
+            else f'<img data-src="../{F}{n}.webp"{a} draggable="false" decoding="async">')
+  nb_names=['封面','扉頁','2022・2023 全年曆','2021 年 12 月計畫表']+[f'{m} 月計畫表' for m in range(1,13)]+['公司資訊・保險小常識','MEMO 頁','扉頁（封底內頁）']
+  cal_names=['封面','2022 年曆']+[x for m in range(1,13) for x in (f'{m} 月・主題插畫',f'{m} 月・月曆')]+['2023 年曆','分公司資訊']
+  # notebook leaves: leaf0 = cover; leaf j front p[2j-2], back p[2j-1]
+  lv=(f'<div class="mt-leaf"><div class="mt-leaf__f">{im("web-nb-front","筆記本封面",True)}<span class="mt-gloss mt-gloss--front" aria-hidden="true"></span></div>'
+      f'<div class="mt-leaf__f mt-leaf__f--b mt-paper"></div></div>')
+  for j in range(1,18):
+    lv+=(f'<div class="mt-leaf"><div class="mt-leaf__f">{im(f"web-nb-p{2*j-2:02d}")}</div>'
+         f'<div class="mt-leaf__f mt-leaf__f--b">{im(f"web-nb-p{2*j-1:02d}")}</div></div>')
+  nb=(f'<div class="mt-obj mt-nb" data-obj="nb"><div class="mt-sh mt-sh--nb"></div><div class="mt-nb__rig">'
+      f'<div class="mt-nb__in mt-paper"></div><div class="mt-nb__bk">{im("web-nb-back","筆記本封底",True)}<span class="mt-gloss mt-gloss--back" aria-hidden="true"></span></div>'
+      f'<div class="mt-nb__spine">{im("web-nb-spine","",True)}</div>'
+      f'<div class="mt-nb__edge mt-nb__edge--fore"></div><div class="mt-nb__edge mt-nb__edge--top"></div><div class="mt-nb__edge mt-nb__edge--bot"></div>'
+      f'{lv}</div></div>')
+  sh=''.join(f'<div class="mt-sheet"><div class="mt-sheet__f">{im(f"web-cal-{k:02d}","桌曆封面" if k==0 else "",k==0)}</div><div class="mt-sheet__f mt-sheet__f--b"></div></div>' for k in range(len(cal_names)))
+  cal=(f'<div class="mt-obj mt-cal" data-obj="cal"><div class="mt-sh mt-sh--cal"></div><div class="mt-cal__base"></div>'
+       f'<div class="mt-cal__panel mt-cal__front"></div><div class="mt-cal__panel mt-cal__back"></div>{sh}<div class="mt-cal__rings"></div></div>')
+  env=(f'<div class="mt-obj mt-env" data-obj="env"><div class="mt-sh mt-sh--env"></div>'
+       f'<div class="mt-env__f mt-env__front">{im("web-env-front","信封正面",True)}</div>'
+       f'<div class="mt-env__f mt-env__in1"></div><div class="mt-env__f mt-env__in2"></div>'
+       f'<div class="mt-env__f mt-env__back">{im("web-env-back","信封背面",True)}</div>'
+       f'<div class="mt-env__side mt-env__side--l"></div><div class="mt-env__side mt-env__side--r"></div><div class="mt-env__bot"></div>'
+       f'<div class="mt-env__flap"><div class="mt-env__flapo">{im("web-env-flap","",True)}</div><div class="mt-env__flapi"></div></div></div>')
+  data=html.escape(json.dumps({'nb':nb_names,'cal':cal_names},ensure_ascii=False))
+  box=(f'<div class="mt" data-mt data-phase="closed" data-focus="" data-names="{data}">'
+       f'<div class="mt-stage" tabindex="0" role="group" aria-roledescription="3D 模型" aria-label="明台產險 2022 年度贈禮：信封、筆記本與三角桌曆。拖曳可旋轉，方向鍵可翻頁。">'
+       f'<div class="mt-world">{env}{nb}{cal}</div></div>'
+       f'<div class="mt-ui">'
+       f'<button type="button" class="mt-btn mt-btn--main" data-mt-open>打開信封</button>'
+       f'<div class="mt-tabs" role="group" aria-label="選擇要看的物件">'
+       f'<button type="button" class="mt-tab" data-mt-focus="" aria-pressed="true">全部</button>'
+       f'<button type="button" class="mt-tab" data-mt-focus="nb" aria-pressed="false">筆記本</button>'
+       f'<button type="button" class="mt-tab" data-mt-focus="cal" aria-pressed="false">桌曆</button>'
+       f'<button type="button" class="mt-tab" data-mt-focus="env" aria-pressed="false">信封</button></div>'
+       f'<div class="mt-pager"><button type="button" class="mt-btn mt-btn--ic" data-mt-prev aria-label="上一頁">←</button>'
+       f'<p class="mt-pg" aria-live="polite"></p><button type="button" class="mt-btn mt-btn--ic" data-mt-next aria-label="下一頁">→</button></div>'
+       f'<button type="button" class="mt-btn mt-btn--sub" data-mt-close>收回信封</button>'
+       f'</div><p class="mt-hint">✦ 拖曳可 360° 旋轉</p></div>')
+  themes=[(1,'疫苗險'),(2,'機車險'),(3,'工程險'),(4,'傷害醫療險'),(5,'寵物險'),(6,'汽車險'),(7,'海域活動險'),(8,'租車險'),(9,'特定活動險'),(10,'意外險'),(11,'住宅火險'),(12,'旅遊平安險')]
+  gal=''.join(f'<figure class="mt-g"><button type="button" class="mt-g__b" data-lb="mtcal" aria-label="放大檢視：{m} 月 {n}">{pic(f"work-26-series/web-cal-{2*m:02d}",1200,1112,f"桌曆 {m} 月主題插畫：{n}")}</button><figcaption>{m:02d}　{n}</figcaption></figure>' for m,n in themes)
+  st=''.join(f'<figure class="mt-g"><button type="button" class="mt-g__b" data-lb="mtst" aria-label="放大檢視：狀態頁 {n}">{pic(f"work-26-series/web-cal-s{i}",1200,1112,f"桌曆狀態頁：{n}")}</button><figcaption>{n}</figcaption></figure>' for i,n in enumerate(['會議中','休假中','外出中','暫時離開']))
+  return (f'<section class="cs-sec">{head("Unbox","Open The Envelope","打開信封","桌曆與筆記本收在同一只信封裡。點信封把它們拿出來，選筆記本或桌曆就能翻頁，三件都可以拖曳 360° 轉著看。")}{box}</section>'
+          f'<section class="cs-sec">{head("Illustration","12 Months, 12 Policies","每月一種保障","桌曆每個月對應一項保險商品，把抽象的保障轉成日常裡看得見的小故事。")}<div class="mt-gal">{gal}</div></section>'
+          f'<section class="cs-sec">{head("Desk status","Back Side","桌曆背面狀態頁","桌曆背面另有四款狀態頁，翻到對應那一面，就能告訴同事你現在在哪。")}<div class="mt-gal mt-gal--4">{st}</div></section>')

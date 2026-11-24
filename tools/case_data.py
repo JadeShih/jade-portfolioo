@@ -293,5 +293,18 @@ CASES={
          dict(tone='yellow',title='What happened next',zh='後續成果',text='將年度尾牙主題轉化為具象的團隊識別視覺，使工作人員制服不僅具備活動識別功能，更成為凝聚團隊向心力、強化成員歸屬感與營造活動氛圍的象徵。')],
   gallery_style='none',gallery=[],
   after=case_extra.uniform(),
+  next=dict(title='明台產險年度贈禮',attr='href="./work-26-series.html"')),
+ 'work-26-series':dict(
+  num='25',tone='cyan',deco=(('circle','yellow'),('scallop','pink')),
+  title_en='2022 Gift Set',title_zh='明台產險年度贈禮',
+  desc='Jade Shih 作品：明台產物保險 2022 年度企業贈禮，三角桌曆、筆記本與包裝信封，以「Always at Your Side」為核心的手繪插畫系列。',
+  tags=['平面設計','明台產險','2021'],tagline='',
+  cover='work-26-series/web-cover',cover_w=2400,cover_h=1600,cover_alt='明台產險 2022 三角桌曆封面：ALWAYS AT YOUR SIDE 手繪字與擊掌的人們',
+  meta=[('Client','明台產險'),('Role','禮贈品設計・視覺設計'),('Deliverables','筆記本・信封・桌曆'),('Year','2021')],
+  overview='<p>為明台產物保險打造 2022 年度企業贈禮，包含三角桌曆、筆記本與專屬包裝信封。以品牌精神「Always at Your Side」為核心，結合日常生活與保險保障的概念，讓企業贈品兼具實用性、品牌識別與情感溫度，傳遞明台產險長期陪伴、守護生活的品牌理念。</p>',
+  cards=[dict(tone='cyan',title='What I made',zh='我的設計',text='以手繪插畫與溫暖的生活情境作為視覺主軸，運用柔和色彩、紙張紋理與童趣人物，塑造親切且具溫度的品牌形象。桌曆依據每月不同保險商品設計專屬情境插畫，將抽象的保障概念轉化為貼近日常的故事畫面；筆記本則延續相同視覺語彙，結合月計畫表與書寫機能，並透過一致的封面設計與包裝信封，建立完整的系列識別。'),
+         dict(tone='yellow',title='What happened next',zh='後續成果',text='完成涵蓋三角桌曆、筆記本及包裝信封的年度贈禮設計，將桌曆與筆記本整合收納於專屬信封中，形成具一致性的品牌禮贈組合。透過日常實用的文具載體，延伸品牌與使用者的接觸情境，讓保險保障的理念自然融入生活。')],
+  gallery_style='none',gallery=[],
+  after=case_extra.series(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
