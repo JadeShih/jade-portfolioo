@@ -1931,3 +1931,22 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .navmenu__link{gap:12px;padding-inline:20px}
 .navmenu__en{min-width:auto}
 @media (max-width:400px){.navmenu__en{font-size:6.6vw}}
+/* 修改（11/24 下午） */
+.cs-body--ink :is(.ch-sq,.ch-pimg,.kl-feat__shot,.kl-plain,.kl-prop__img,.cs-shot__frame){box-shadow:0 14px 34px rgba(0,0,0,.35)!important}
+.cs-body--dark :is(.kl-feat__shot,.kl-round,.kl-plain,.kl-prop__img,.kl-logo__formula,.cs-shot__frame){box-shadow:0 14px 34px rgba(0,0,0,.35)!important}
+.kl-end{margin-bottom:64px}
+@media (max-width:900px){
+  .cs-sec__head+.ch-dec{margin-top:56px}
+  .ch-dec{gap:20px}
+  .ch-dec+.ch-dec{margin-top:72px}
+}
+@media (max-width:640px){
+  .cs-next>.wrap{padding-block:48px 56px}
+  .cs-next__link{gap:14px;margin-top:8px}
+  .cs-next__title{font-size:28px}
+  .cs-next__go{width:44px}
+  .cs-next__all{margin-top:20px}
+  .cs-next .wave{height:40px}
+  .kl-end{margin-bottom:40px}
+  .kl-onb2__track{--cw:calc(var(--h) * .4621);width:calc(100% + max(24px,env(safe-area-inset-right,0px)));margin-right:calc(-1 * max(24px,env(safe-area-inset-right,0px)));grid-auto-columns:var(--cw);-webkit-mask-image:none;mask-image:none}
+}
