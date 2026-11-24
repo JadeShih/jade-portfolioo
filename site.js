@@ -537,7 +537,7 @@
   var c=document.createElement('canvas'),ok=false;try{ok=!!(window.WebGLRenderingContext&&(c.getContext('webgl2')||c.getContext('webgl')))}catch(e){}
   if(!ok)return;
   if(location.protocol==='file:'){[].forEach.call(roots,function(R){R.classList.add('is-file')});return}
-  var me=document.currentScript&&document.currentScript.src,url=new URL('public/js/mt3d.bundle.js?v=202611241310',me||location.href).href,q=[],state=0;
+  var me=document.currentScript&&document.currentScript.src,url=new URL('public/js/mt3d.bundle.js?v=202611241320',me||location.href).href,q=[],state=0;
   function boot(R){if(state===2){window.MT3D.init(R);return}q.push(R);if(state)return;state=1;
     var s=document.createElement('script');s.src=url;s.onload=function(){state=2;q.forEach(function(r){window.MT3D.init(r)})};document.head.appendChild(s)}
   [].forEach.call(roots,function(R){

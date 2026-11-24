@@ -3,6 +3,7 @@
 import * as THREE from '../node_modules/three/build/three.module.js' /* build: tools/build-mt3d.sh */;
 
 const RM = matchMedia('(prefers-reduced-motion:reduce)').matches;
+const slow = () => +((location.search.match(/mtslow=(\d+)/) || [])[1] || 1); // 測試用：放慢動畫
 const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 const lerp = (a, b, t) => a + (b - a) * t;
 
@@ -197,7 +198,7 @@ export function init(R) {
     let x = .1, z = 0; const xs = [x], zs = [z];
     for (let i = 1; i < n; i++) { const a = Math.min(Math.PI, Math.max(0, phi - k * (i / SEG))); x += Math.cos(a) * ds; z += Math.sin(a) * ds; xs.push(x); zs.push(z); }
     const zb = lerp(z0, z1, phi / Math.PI);
-    for (let r = 0; r < 2; r++) for (let i = 0; i < n; i++) { const idx = r * n + i; pos.setX(idx, xs[i]); pos.setZ(idx, zs[i] + zb + .015); }
+    for (let r = 0; r < 2; r++) for (let i = 0; i < n; i++) { const idx = r * n + i; pos.setX(idx, xs[i]); pos.setZ(idx, zs[i] * .6 + zb + .015); }
     pos.needsUpdate = true; u.g.computeVertexNormals();
     nbSheet.position.set(0, BH / 2, 0);
   }
@@ -245,7 +246,7 @@ export function init(R) {
     let y = -.75, z = 0; const ys = [], zs = [];
     for (let i = 0; i <= SEG; i++) {
       if (i) { const a = a0 + k * (i / SEG); y += -Math.cos(a) * ds; z += -Math.sin(a) * ds; }
-      ys.push(y); zs.push(z);
+      ys.push(y); zs.push(z > 0 ? z * .6 : z);
     }
     const lift = lerp(dF, -dB, phi);
     // PlaneGeometry 頂點：每列 2 個（左右），由上而下
@@ -276,6 +277,15 @@ export function init(R) {
     if (!name) { mat.map = null; mat.needsUpdate = true; return; }
     tex(name, t => { if (mat.userData.want === name) { mat.map = t; mat.needsUpdate = true; redraw(); } });
     mat.userData.want = name;
+  }
+  const mirrors = {};
+  function setMapMirror(mat, name) { // 背面翻頁要左右鏡射，字才不會反
+    mat.userData.want = name;
+    tex(name, t => {
+      if (mat.userData.want !== name) return;
+      if (!mirrors[name]) { const m = t.clone(); m.wrapS = THREE.RepeatWrapping; m.repeat.x = -1; m.offset.x = 1; m.needsUpdate = true; mirrors[name] = m; }
+      mat.map = mirrors[name]; mat.needsUpdate = true; redraw();
+    });
   }
   function nbSpread() { // ni：已翻過的內頁數
     setMap(stL.userData.top, ni > 0 ? nbPage(2 * ni - 1) : null);
@@ -344,7 +354,7 @@ export function init(R) {
   }
   function go(o, props, d, delay, done, lin) {
     const ks = Object.keys(props), now = performance.now();
-    ks.forEach((k, i) => tw.push({ o, k, a: null, b: props[k], d: RM ? 0 : d, t0: now + (RM ? 0 : delay || 0), done: i === ks.length - 1 ? done : null, lin }));
+    ks.forEach((k, i) => tw.push({ o, k, a: null, b: props[k], d: RM ? 0 : d * slow(), t0: now + (RM ? 0 : (delay || 0) * slow()), done: i === ks.length - 1 ? done : null, lin }));
     if (!raf) raf = requestAnimationFrame(tick);
   }
   function fit(w, h) { // 需要看到的寬高（cm）→ 鏡頭距離
@@ -395,8 +405,8 @@ export function init(R) {
     if ((dir > 0 && ni >= NP) || (dir < 0 && ni <= 0)) return;
     const from = ni, to = ni + dir;
     // 翻頁的那張：正面＝原本右頁、背面＝新的左頁
-    if (dir > 0) { setMap(nbFlipF, nbPage(2 * from)); setMap(nbFlipB, nbPage(2 * to - 1)); ni = to; setMap(stR.userData.top, ni < NP ? nbPage(2 * ni) : null); }
-    else { setMap(nbFlipF, nbPage(2 * to)); setMap(nbFlipB, nbPage(2 * from - 1)); ni = to; setMap(stL.userData.top, ni > 0 ? nbPage(2 * ni - 1) : null); }
+    if (dir > 0) { setMap(nbFlipF, nbPage(2 * from)); setMapMirror(nbFlipB, nbPage(2 * to - 1)); ni = to; setMap(stR.userData.top, ni < NP ? nbPage(2 * ni) : null); }
+    else { setMap(nbFlipF, nbPage(2 * to)); setMapMirror(nbFlipB, nbPage(2 * from - 1)); ni = to; setMap(stL.userData.top, ni > 0 ? nbPage(2 * ni - 1) : null); }
     flipN = { dir, p: 0 }; label();
     go(flipN, { p: 1 }, 950, 0, () => { flipN = null; nbSpread(); apply(); redraw(); });
   }
