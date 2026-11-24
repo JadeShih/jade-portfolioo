@@ -89,49 +89,35 @@ export function init(R) {
     const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mats);
     m.castShadow = true; m.receiveShadow = true; return m;
   };
-  function clipY(pts, y0, y1) {
-    function clip(p, keep, cut) {
-      const out = [];
-      for (let i = 0; i < p.length; i++) {
-        const a = p[i], b = p[(i + 1) % p.length], ka = keep(a), kb = keep(b);
-        if (ka) out.push(a);
-        if (ka !== kb) { const t = (cut - a[1]) / (b[1] - a[1]); out.push([a[0] + (b[0] - a[0]) * t, cut]); }
-      }
-      return out;
-    }
-    return clip(clip(pts, p => p[1] >= y0, y0), p => p[1] <= y1, y1);
-  }
-  function shapeMesh(pts, yoff, W, H, mat) {
-    const s = new THREE.Shape(pts.map(p => new THREE.Vector2(p[0], p[1] - yoff)));
-    const g = new THREE.ShapeGeometry(s);
-    const uv = g.attributes.uv, pos = g.attributes.position;
-    for (let i = 0; i < uv.count; i++) uv.setXY(i, (pos.getX(i) + W / 2) / W, (pos.getY(i) + yoff) / H);
-    const m = new THREE.Mesh(g, mat); m.castShadow = true; m.receiveShadow = true; return m;
-  }
-
   /* =====================================================
      信封 23 × 23.5 cm，厚 2.6 cm（裝得下筆記本＋桌曆）
      ===================================================== */
-  const EW = 23, EH = 23.5, ED = 1.3, FH = 4.25, PT = .05;
+  const EW = 24.3, EH = 24.8, ED = .4, FH = 24.3 * 222 / 1200, PT = .03;
   const env = new THREE.Group(); scene.add(env);
-  const envIn = paper(0xE6DDCF), envEdge = paper(0xEFE8DC);
-  const envFrontM = paper(), envBackM = paper(), flapM = paper(), flapIn = paper(0xF3EEE5, null, { side: THREE.FrontSide });
+  const envIn = paper(0xEDEDEA), envEdge = paper(0xF4F4F1);
+  const envFrontM = paper(), envBackM = paper();
   tex('web-env-front', t => { envFrontM.map = t; envFrontM.needsUpdate = true; });
   tex('web-env-back', t => { envBackM.map = t; envBackM.needsUpdate = true; });
-  tex('web-env-flap', t => { flapM.map = t; flapM.needsUpdate = true; });
   const ef = box(EW, EH, PT, [envEdge, envEdge, envEdge, envEdge, envFrontM, envIn]); ef.position.set(0, EH / 2, ED / 2 - PT / 2); env.add(ef);
   const eb = box(EW, EH, PT, [envEdge, envEdge, envEdge, envEdge, envIn, envBackM]); eb.position.set(0, EH / 2, -ED / 2 + PT / 2); env.add(eb);
   [-1, 1].forEach(s => { const g = box(PT, EH - .02, ED - PT * 2, [envEdge, envEdge, envEdge, envEdge, envEdge, envEdge]); g.position.set(s * (EW / 2 - PT / 2), EH / 2, 0); env.add(g); });
   const ebot = box(EW, PT, ED, envEdge); ebot.position.set(0, PT / 2, 0); env.add(ebot);
-  // 信封舌：接在正面上緣，蓋住頂部後折到背面（跟印刷檔一致）
-  const flapPts = [[0, 100], [8.7, 25], [12, 4], [14.5, 0], [85.5, 0], [88, 4], [91.3, 25], [100, 100]].map(p => [EW * p[0] / 100 - EW / 2, FH * (1 - p[1] / 100)]);
+  // 信封舌：接在正面上緣，蓋住頂部開口後折到背面（用你給的去背 PNG 當刀模形狀）
   const fp1 = new THREE.Group(); fp1.position.set(0, EH, ED / 2); env.add(fp1);
   const fp2 = new THREE.Group(); fp2.position.set(0, ED, 0); fp1.add(fp2);
-  [[fp1, 0, ED], [fp2, ED, FH]].forEach(([grp, y0, y1]) => {
-    const pts = clipY(flapPts, y0, y1);
-    const o = shapeMesh(pts, y0, EW, FH, flapM); o.position.z = .012; grp.add(o);
-    const i = shapeMesh(pts, y0, EW, FH, flapIn); i.rotation.y = Math.PI; i.position.z = -.012; grp.add(i);
-  });
+  const flapOut = paper(0xffffff, null, { alphaTest: .5, side: THREE.FrontSide }), flapInM = paper(0xffffff, null, { alphaTest: .5, side: THREE.FrontSide });
+  function pngTex(name, mat) { loader.load(base + name + '.png', t => { t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = maxAniso; mat.map = t; mat.needsUpdate = true; redraw(); }); }
+  pngTex('web-env-flap', flapOut); pngTex('web-env-flap-in', flapInM);
+  function flapPlane(y0, y1, mat, back) {
+    const g = new THREE.PlaneGeometry(EW, y1 - y0); g.translate(0, (y1 - y0) / 2, 0);
+    const uv = g.attributes.uv;
+    for (let i = 0; i < uv.count; i++) uv.setY(i, (y0 + uv.getY(i) * (y1 - y0)) / FH);
+    const m = new THREE.Mesh(g, mat); m.castShadow = true; m.receiveShadow = true;
+    if (back) { m.rotation.y = Math.PI; m.position.z = -.008; } else m.position.z = .008;
+    return m;
+  }
+  fp1.add(flapPlane(0, ED, flapOut), flapPlane(0, ED, flapInM, true));
+  fp2.add(flapPlane(ED, FH, flapOut), flapPlane(ED, FH, flapInM, true));
 
   /* =====================================================
      筆記本 16 × 21 cm，厚 1.7 cm（硬殼、書背、局部上光）
@@ -139,26 +125,11 @@ export function init(R) {
   const BW = 16, BH = 21, T = 1.7, CB = .2, NP = 17, PW = BW - .35, PH = BH - .5, pt = (T - 2 * CB) / NP;
   const nbRoot = new THREE.Group(); scene.add(nbRoot);
   const nbBody = new THREE.Group(); nbRoot.add(nbBody);
-  const coverEdge = paper(0xD9C9B2), endpaper = paper(0xFBFBFA);
-  const nbFrontM = paper(0xffffff, null, { roughness: 1, bumpScale: .25 }), nbBackM = paper(0xffffff, null, { roughness: 1, bumpScale: .25 }), spineM = paper();
-  // 上光：用光澤遮罩做 roughnessMap（亮面＝低粗糙度）
-  function glossRough(name, mat) {
-    const img = new Image(); img.onload = () => {
-      const t = canvasTex(img.width, img.height, (g, w, h) => {
-        g.fillStyle = '#e0e0e0'; g.fillRect(0, 0, w, h);
-        g.globalCompositeOperation = 'source-over';
-        const c2 = document.createElement('canvas'); c2.width = w; c2.height = h; const g2 = c2.getContext('2d');
-        g2.drawImage(img, 0, 0, w, h); g2.globalCompositeOperation = 'source-in'; g2.fillStyle = '#2a2a2a'; g2.fillRect(0, 0, w, h);
-        g.drawImage(c2, 0, 0);
-      });
-      mat.roughnessMap = t; mat.metalness = 0; mat.needsUpdate = true; redraw();
-    };
-    img.src = base + name + '.png';
-  }
+  const coverEdge = paper(0xE6DFD3), endpaper = paper(0xFBFBFA);
+  const nbFrontM = paper(0xffffff, null, { roughness: .78, bumpScale: .25 }), nbBackM = paper(0xffffff, null, { roughness: .78, bumpScale: .25 }), spineM = paper(0xffffff, null, { roughness: .78 });
   tex('web-nb-front', t => { nbFrontM.map = t; nbFrontM.needsUpdate = true; });
   tex('web-nb-back', t => { nbBackM.map = t; nbBackM.needsUpdate = true; });
   tex('web-nb-spine', t => { spineM.map = t; spineM.needsUpdate = true; });
-  glossRough('web-nb-gloss-front', nbFrontM); glossRough('web-nb-gloss-back', nbBackM);
   const backBoard = box(BW, BH, CB, [coverEdge, coverEdge, coverEdge, coverEdge, endpaper, nbBackM]);
   backBoard.position.set(BW / 2, BH / 2, CB / 2); nbBody.add(backBoard);
   const spine = box(CB, BH, T, [endpaper, spineM, coverEdge, coverEdge, coverEdge, coverEdge]);
@@ -265,8 +236,8 @@ export function init(R) {
   /* ---------- 狀態 ---------- */
   const S = {
     env: { x: 0, y: 0, z: 0, ry: -.5, flap: 0 },       // flap 0＝蓋上、1＝打開
-    nb: { x: 0, y: 1, z: .12, ry: 0, rx: 0, open: 0, v: 0, sz: .45 },
-    cal: { x: 0, y: .6, z: -.3, ry: 0, th: .015, v: 0, sz: .25 },
+    nb: { x: 0, y: 1, z: .05, ry: 0, rx: 0, open: 0, v: 0, sz: .12 },
+    cal: { x: 0, y: .6, z: -.1, ry: 0, th: .015, v: 0, sz: .06 },
     cam: { d: 80, ty: 11, ry: 0, h: .2 }
   };
   let ni = 0, ci = 0, focus = '', phase = 'closed', flipN = null, flipC = null;
@@ -425,8 +396,8 @@ export function init(R) {
     tex(calPage(0)); calFront(); nbSpread();
     layout('front', 700);
     go(S.env, { flap: 1 }, 900, 650);
-    S.nb.x = 0; S.nb.y = 1; S.nb.z = .12; S.nb.ry = 0; S.nb.rx = 0; S.nb.open = 0; S.nb.sz = .45;
-    S.cal.x = 0; S.cal.y = .6; S.cal.z = -.3; S.cal.ry = 0; S.cal.th = .015; S.cal.sz = .25;
+    S.nb.x = 0; S.nb.y = 1; S.nb.z = .05; S.nb.ry = 0; S.nb.rx = 0; S.nb.open = 0; S.nb.sz = .12;
+    S.cal.x = 0; S.cal.y = .6; S.cal.z = -.1; S.cal.ry = 0; S.cal.th = .015; S.cal.sz = .06;
     setTimeout(() => { S.nb.v = 1; S.cal.v = 1; }, RM ? 0 : 1500);
     go(S.cal, { y: 24 }, 1100, 1550); go(S.nb, { y: 25 }, 1100, 1750);
     layout('all', 1300, 2950); go(S.cal, { th: THREE.MathUtils.degToRad(9.83) }, 1000, 3150, () => {
@@ -440,7 +411,7 @@ export function init(R) {
       ci = 0; calFront();
       layout('front', 1000);
       go(S.cal, { th: .015 }, 800);
-      go(S.nb, { x: 0, y: 25, z: .12, ry: 0, rx: 0, sz: .45 }, 1000); go(S.cal, { x: 0, y: 24, z: -.3, ry: 0, sz: .25 }, 1000);
+      go(S.nb, { x: 0, y: 25, z: .05, ry: 0, rx: 0, sz: .12 }, 1000); go(S.cal, { x: 0, y: 24, z: -.1, ry: 0, sz: .06 }, 1000);
       go(S.nb, { y: 1 }, 900, 1100); go(S.cal, { y: .6 }, 900, 1250, () => {
         S.nb.v = 0; S.cal.v = 0;
         go(S.env, { flap: 0 }, 900, 0); layout('closed', 1000, 700, () => setPhase('closed'));
