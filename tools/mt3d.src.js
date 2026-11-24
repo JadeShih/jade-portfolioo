@@ -111,7 +111,7 @@ export function init(R) {
   /* =====================================================
      信封 23 × 23.5 cm，厚 2.6 cm（裝得下筆記本＋桌曆）
      ===================================================== */
-  const EW = 23, EH = 23.5, ED = 2.6, FH = 4.25, PT = .05;
+  const EW = 23, EH = 23.5, ED = 1.3, FH = 4.25, PT = .05;
   const env = new THREE.Group(); scene.add(env);
   const envIn = paper(0xE6DDCF), envEdge = paper(0xEFE8DC);
   const envFrontM = paper(), envBackM = paper(), flapM = paper(), flapIn = paper(0xF3EEE5, null, { side: THREE.FrontSide });
@@ -264,9 +264,9 @@ export function init(R) {
   /* ---------- 狀態 ---------- */
   const S = {
     env: { x: 0, y: 0, z: 0, ry: -.5, flap: 0 },       // flap 0＝蓋上、1＝打開
-    nb: { x: 0, y: 1, z: .25, ry: 0, rx: 0, open: 0, v: 0 },
-    cal: { x: 0, y: .6, z: -.7, ry: 0, th: .015, v: 0 },
-    cam: { d: 80, ty: 11, ry: 0 }
+    nb: { x: 0, y: 1, z: .12, ry: 0, rx: 0, open: 0, v: 0, sz: .45 },
+    cal: { x: 0, y: .6, z: -.3, ry: 0, th: .015, v: 0, sz: .25 },
+    cam: { d: 80, ty: 11, ry: 0, h: .2 }
   };
   let ni = 0, ci = 0, focus = '', phase = 'closed', flipN = null, flipC = null;
 
@@ -296,7 +296,7 @@ export function init(R) {
     fp2.rotation.x = f < .5 ? -Math.PI / 2 * (1 - f * 2) : 0;
 
     const n = S.nb, o = n.open;
-    nbRoot.visible = !!n.v; nbRoot.position.set(n.x, n.y, n.z); nbRoot.rotation.set(n.rx, n.ry, 0, 'YXZ');
+    nbRoot.visible = !!n.v; nbRoot.position.set(n.x, n.y, n.z); nbRoot.rotation.set(n.rx, n.ry, 0, 'YXZ'); nbRoot.scale.set(1, 1, n.sz);
     nbBody.position.set(lerp(-BW / 2, 0, o), 0, -T / 2 * (1 - o));
     coverPivot.rotation.y = -Math.PI * Math.min(1, o * 1.0);
     coverPivot.position.z = lerp(T - CB, 0, o);
@@ -309,7 +309,7 @@ export function init(R) {
     else nbSheet.visible = false;
 
     const c = S.cal, th = c.th, apexY = CL * Math.cos(th) + BT * .5;
-    cal.visible = !!c.v; cal.position.set(c.x, c.y, c.z); cal.rotation.y = c.ry;
+    cal.visible = !!c.v; cal.position.set(c.x, c.y, c.z); cal.rotation.y = c.ry; cal.scale.set(1, 1, c.sz);
     apex.position.set(0, apexY, 0); pvF.rotation.x = -th; pvB.rotation.x = th;
     baseB.scale.z = Math.max(.01, 2 * CL * Math.sin(th) - BT); baseB.position.set(0, BT / 2, 0);
     let cF = NS - ci, cB = ci;
@@ -322,7 +322,7 @@ export function init(R) {
     const asp = st.clientWidth / Math.max(1, st.clientHeight);
     camera.aspect = asp; camera.updateProjectionMatrix();
     const cm = S.cam, ry = cm.ry;
-    camera.position.set(Math.sin(ry) * cm.d, cm.ty + cm.d * .2, Math.cos(ry) * cm.d);
+    camera.position.set(Math.sin(ry) * cm.d, cm.ty + cm.d * cm.h, Math.cos(ry) * cm.d);
     camera.lookAt(0, cm.ty, 0);
   }
   let rq = 0;
@@ -331,15 +331,15 @@ export function init(R) {
   /* ---------- 動畫 ---------- */
   let tw = [], raf = 0;
   function tick(now) {
-    const live = [];
+    const live = [], dones = [];
     tw.forEach(t => {
       if (now < t.t0) { live.push(t); return; }
       if (t.a === null) t.a = t.o[t.k];
       const q = t.d ? Math.min(1, (now - t.t0) / t.d) : 1;
       t.o[t.k] = t.a + (t.b - t.a) * (t.lin ? q : ease(q));
-      if (q < 1) live.push(t); else if (t.done) t.done();
+      if (q < 1) live.push(t); else if (t.done) dones.push(t.done);
     });
-    tw = live; apply(); renderer.render(scene, camera);
+    tw = live; dones.forEach(f => f()); apply(); renderer.render(scene, camera);
     raf = tw.length ? requestAnimationFrame(tick) : 0;
   }
   function go(o, props, d, delay, done, lin) {
@@ -354,13 +354,13 @@ export function init(R) {
   const away = 90;
   function L(name) {
     return {
-      closed: { env: { x: 0, y: 0, z: 0, ry: -.5 }, cam: { d: fit(30, 30), ty: 11.5, ry: 0 } },
-      front: { env: { x: 0, y: 0, z: 0, ry: 0 }, cam: { d: fit(34, 54), ty: 20, ry: 0 } },
-      all: { env: { x: 0, y: 0, z: -14, ry: 0 }, nb: { x: -18, y: 0, z: 5, ry: .5, rx: 0 }, cal: { x: 17.5, y: 0, z: 3, ry: -.5 }, cam: { d: fit(66, 30), ty: 11, ry: 0 } },
-      nb: { nb: { x: 0, y: 0, z: 0, ry: -.55, rx: 0 }, env: { x: -away, z: -20, ry: 0 }, cal: { x: away, z: -20, ry: 0 }, cam: { d: fit(28, 26), ty: 10.5, ry: 0 } },
-      nbopen: { nb: { x: 0, y: 0, z: 0, ry: 0, rx: -1.15 }, cam: { d: fit(35, 24), ty: 6.5, ry: 0 } },
-      cal: { cal: { x: 0, y: 0, z: 0, ry: -.5 }, env: { x: -away, z: -20, ry: 0 }, nb: { x: away, z: -20, ry: 0, rx: 0 }, cam: { d: fit(32, 28), ty: 10, ry: 0 } },
-      env: { env: { x: 0, y: 0, z: 0, ry: -.5 }, nb: { x: -away, z: -20, ry: 0, rx: 0 }, cal: { x: away, z: -20, ry: 0 }, cam: { d: fit(30, 30), ty: 11.5, ry: 0 } }
+      closed: { env: { x: 0, y: 0, z: 0, ry: -.5 }, cam: { d: fit(30, 30), ty: 11.5, ry: 0, h: .2 } },
+      front: { env: { x: 0, y: 0, z: 0, ry: 0 }, cam: { d: fit(34, 54), ty: 20, ry: 0, h: .2 } },
+      all: { env: { x: 0, y: 0, z: -14, ry: 0 }, nb: { x: -18, y: 0, z: 5, ry: .5, rx: 0, sz: 1 }, cal: { x: 17.5, y: 0, z: 3, ry: -.5, sz: 1 }, cam: { d: fit(66, 30), ty: 11, ry: 0, h: .2 } },
+      nb: { nb: { x: 0, y: 0, z: 0, ry: -.3, rx: 0 }, env: { x: -away, z: -20, ry: 0 }, cal: { x: away, z: -20, ry: 0 }, cam: { d: fit(26, 25), ty: 10.5, ry: 0, h: 0 } },
+      nbopen: { nb: { x: 0, y: 0, z: 0, ry: 0, rx: 0 }, cam: { d: fit(36, 25), ty: 10.5, ry: 0, h: 0 } },
+      cal: { cal: { x: 0, y: 0, z: 0, ry: -.5 }, env: { x: -away, z: -20, ry: 0 }, nb: { x: away, z: -20, ry: 0, rx: 0 }, cam: { d: fit(32, 28), ty: 10, ry: 0, h: .2 } },
+      env: { env: { x: 0, y: 0, z: 0, ry: -.5 }, nb: { x: -away, z: -20, ry: 0, rx: 0 }, cal: { x: away, z: -20, ry: 0 }, cam: { d: fit(30, 30), ty: 11.5, ry: 0, h: .2 } }
     }[name];
   }
   function layout(name, d, delay, done) {
@@ -415,8 +415,8 @@ export function init(R) {
     tex(calPage(0)); calFront(); nbSpread();
     layout('front', 700);
     go(S.env, { flap: 1 }, 900, 650);
-    S.nb.x = 0; S.nb.y = 1; S.nb.z = .25; S.nb.ry = 0; S.nb.rx = 0; S.nb.open = 0;
-    S.cal.x = 0; S.cal.y = .6; S.cal.z = -.7; S.cal.ry = 0; S.cal.th = .015;
+    S.nb.x = 0; S.nb.y = 1; S.nb.z = .12; S.nb.ry = 0; S.nb.rx = 0; S.nb.open = 0; S.nb.sz = .45;
+    S.cal.x = 0; S.cal.y = .6; S.cal.z = -.3; S.cal.ry = 0; S.cal.th = .015; S.cal.sz = .25;
     setTimeout(() => { S.nb.v = 1; S.cal.v = 1; }, RM ? 0 : 1500);
     go(S.cal, { y: 24 }, 1100, 1550); go(S.nb, { y: 25 }, 1100, 1750);
     layout('all', 1300, 2950); go(S.cal, { th: THREE.MathUtils.degToRad(9.83) }, 1000, 3150, () => {
@@ -430,7 +430,7 @@ export function init(R) {
       ci = 0; calFront();
       layout('front', 1000);
       go(S.cal, { th: .015 }, 800);
-      go(S.nb, { x: 0, y: 25, z: .25, ry: 0, rx: 0 }, 1000); go(S.cal, { x: 0, y: 24, z: -.7, ry: 0 }, 1000);
+      go(S.nb, { x: 0, y: 25, z: .12, ry: 0, rx: 0, sz: .45 }, 1000); go(S.cal, { x: 0, y: 24, z: -.3, ry: 0, sz: .25 }, 1000);
       go(S.nb, { y: 1 }, 900, 1100); go(S.cal, { y: .6 }, 900, 1250, () => {
         S.nb.v = 0; S.cal.v = 0;
         go(S.env, { flap: 0 }, 900, 0); layout('closed', 1000, 700, () => setPhase('closed'));
