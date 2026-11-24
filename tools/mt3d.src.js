@@ -25,8 +25,8 @@ export function init(R) {
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(30, 1.6, 1, 600);
-  scene.add(new THREE.HemisphereLight(0xffffff, 0xd6cab8, 1.55));
-  const sun = new THREE.DirectionalLight(0xfff6ea, 1.9);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0xd9d9d9, 1.55));
+  const sun = new THREE.DirectionalLight(0xffffff, 1.9);
   sun.position.set(-28, 62, 48);
   sun.castShadow = true;
   sun.shadow.mapSize.set(2048, 2048);
@@ -34,7 +34,7 @@ export function init(R) {
   sun.shadow.bias = -0.0004;
   sun.shadow.normalBias = 0.02;
   scene.add(sun);
-  const fill = new THREE.DirectionalLight(0xf0f3ff, 0.7);
+  const fill = new THREE.DirectionalLight(0xffffff, 0.7);
   fill.position.set(40, 20, 30);
   scene.add(fill);
   const floor = new THREE.Mesh(new THREE.PlaneGeometry(600, 600), new THREE.ShadowMaterial({ opacity: .17 }));
@@ -71,8 +71,8 @@ export function init(R) {
   // 紙張側邊（一張張的紙）
   function stripes(dir) {
     const t = canvasTex(dir ? 4 : 256, dir ? 256 : 4, (g, w, h) => {
-      g.fillStyle = '#f7f4ec'; g.fillRect(0, 0, w, h);
-      g.fillStyle = '#dcd5c6';
+      g.fillStyle = '#f8f8f6'; g.fillRect(0, 0, w, h);
+      g.fillStyle = '#d9d9d6';
       for (let i = 0; i < 256; i += 4) dir ? g.fillRect(0, i, w, 1) : g.fillRect(i, 0, 1, h);
     }, true);
     t.wrapS = t.wrapT = THREE.RepeatWrapping;
@@ -138,7 +138,7 @@ export function init(R) {
   const BW = 16, BH = 21, T = 1.7, CB = .2, NP = 17, PW = BW - .35, PH = BH - .5, pt = (T - 2 * CB) / NP;
   const nbRoot = new THREE.Group(); scene.add(nbRoot);
   const nbBody = new THREE.Group(); nbRoot.add(nbBody);
-  const coverEdge = paper(0xD9C9B2), endpaper = paper(0xFBF9F4);
+  const coverEdge = paper(0xD9C9B2), endpaper = paper(0xFBFBFA);
   const nbFrontM = paper(0xffffff, null, { roughness: 1, bumpScale: .25 }), nbBackM = paper(0xffffff, null, { roughness: 1, bumpScale: .25 }), spineM = paper();
   // 上光：用光澤遮罩做 roughnessMap（亮面＝低粗糙度）
   function glossRough(name, mat) {
@@ -224,7 +224,7 @@ export function init(R) {
   function cstack(pv, sign) {
     const sX = stripes(false), sY = stripes(true), top = paper();
     const mats = [paper(0xffffff, sY), paper(0xffffff, sY), paper(0xffffff, sX), paper(0xffffff, sX)];
-    if (sign > 0) mats.push(top, paper()); else mats.push(paper(), paper(0xF4F1EA));
+    if (sign > 0) mats.push(top, paper()); else mats.push(paper(), paper(0xF5F5F3));
     const m = box(CW, CPH, 1, mats); m.userData = { top, sign, sX, sY }; pv.add(m); return m;
   }
   const csF = cstack(pvF, 1), csB = cstack(pvB, -1);
@@ -233,7 +233,7 @@ export function init(R) {
     m.position.set(0, -.75 - CPH / 2, m.userData.sign * (BT + h / 2));
     const n = Math.max(1, Math.round(h / spt)); m.userData.sY.repeat.x = n / 64; m.userData.sX.repeat.y = n / 64;
   }
-  const calFlipF = paper(), calFlipB = paper(0xF4F1EA, null, { side: THREE.BackSide });
+  const calFlipF = paper(), calFlipB = paper(0xF5F5F3, null, { side: THREE.BackSide });
   const calSheet = (() => {
     const g = new THREE.PlaneGeometry(CW, CPH, 1, SEG); g.translate(0, -CPH / 2, 0);
     const f = new THREE.Mesh(g, calFlipF), b = new THREE.Mesh(g, calFlipB); f.castShadow = b.castShadow = true;
@@ -456,7 +456,7 @@ export function init(R) {
   }
   function target() { return phase === 'closed' ? S.env : focus === 'nb' ? S.nb : focus === 'cal' ? S.cal : focus === 'env' ? S.env : S.cam; }
   let drag = null;
-  st.addEventListener('pointerdown', e => { if (phase === 'busy') return; drag = { x: e.clientX, y: e.clientY, m: false, id: e.pointerId, e }; });
+  st.addEventListener('pointerdown', e => { e.preventDefault(); try { st.focus({ preventScroll: true }); } catch (_) {} if (phase === 'busy') return; drag = { x: e.clientX, y: e.clientY, m: false, id: e.pointerId, e }; });
   st.addEventListener('pointermove', e => {
     if (!drag) return; const dx = e.clientX - drag.x;
     if (!drag.m && Math.abs(dx) + Math.abs(e.clientY - drag.y) > 6) { drag.m = true; st.classList.add('is-drag'); try { st.setPointerCapture(drag.id); } catch (_) {} }
