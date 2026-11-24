@@ -651,7 +651,7 @@ def uniform():
 def series():
   def fig(n,w,h,alt,cap):
     return (f'<figure class="mt-fig"><button type="button" class="mt-fig__b" data-lb="mt" aria-label="放大檢視：{html.escape(alt)}">{pic("work-26-series/"+n,w,h,alt)}</button><figcaption>✦ {cap}</figcaption></figure>')
-  return (f'<section class="cs-sec">{head("The set","Always At Your Side","年度贈禮組合","三角桌曆與筆記本共用同一組手繪人物與米色紙感，放在一起就是一套完整的品牌禮物。")}{fig("web-set",2400,1760,"三角桌曆與筆記本並排的實品合成","三角桌曆＋筆記本")}</section>'
+  return (f'<section class="cs-sec">{head("The set","Always At Your Side","年度贈禮組合","三角桌曆與筆記本共用同一組手繪人物與米色紙感，放在一起就是一套完整的品牌禮物。")}{fig("web-set",2400,1756,"三角桌曆與筆記本並排的實品合成","三角桌曆＋筆記本")}</section>'
           f'<section class="cs-sec">{head("Illustration","12 Months, 12 Policies","每月一種保障","桌曆每個月對應一項保險商品，把抽象的保障轉成日常裡看得見的小故事。")}{fig("web-cal-b",2400,1600,"桌曆各月主題插畫平鋪","每月主題插畫：機車險、租車險、意外險、海域活動險、汽車險、特定活動險⋯")}</section>'
           f'<section class="cs-sec">{head("Desk status","Back Side","桌曆狀態頁","除了月份，桌曆另有「會議中、外出中、休假中、暫時離開」四款狀態頁，翻到對應那一面，就能告訴同事你現在在哪。")}{fig("web-cal-a",2400,1600,"三角桌曆合成：暫時離開、外出中、會議中三款狀態頁","狀態頁：暫時離開、外出中、會議中")}</section>'
           f'<section class="cs-sec">{head("Notebook","Plan The Year","筆記本內頁","月計畫表延續桌曆的保險主題，每個月的角落都有一個小圖示，書寫格線留得夠寬，真的能用一整年。")}{fig("web-nb-mock",2400,1600,"筆記本攤開：1 月疫苗險計畫表","1 月計畫表・疫苗險")}</section>'
