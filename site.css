@@ -1934,7 +1934,6 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 /* 修改（11/24 下午） */
 .cs-body--ink :is(.ch-sq,.ch-pimg,.kl-feat__shot,.kl-plain,.kl-prop__img,.cs-shot__frame){box-shadow:0 14px 34px rgba(0,0,0,.35)!important}
 .cs-body--dark :is(.kl-feat__shot,.kl-round,.kl-plain,.kl-prop__img,.kl-logo__formula,.cs-shot__frame){box-shadow:0 14px 34px rgba(0,0,0,.35)!important}
-.kl-end{margin-bottom:64px}
 @media (max-width:900px){
   .cs-sec__head+.ch-dec{margin-top:56px}
   .ch-dec{gap:20px}
