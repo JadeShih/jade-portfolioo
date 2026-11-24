@@ -661,13 +661,14 @@ def card27():
   F='public/works/work-27-card/'
   def fig(n,w,h,alt,cap):
     return (f'<figure class="mt-fig"><button type="button" class="mt-fig__b" data-lb="c27" aria-label="放大檢視：{html.escape(alt)}">{pic("work-27-card/"+n,w,h,alt)}</button><figcaption>✦ {cap}</figcaption></figure>')
-  sc=(f'<div class="sc" data-sc>'
+  fort=html.escape(json.dumps([['../'+F+'web-back-1.webp','大吉'],['../'+F+'web-back-2.webp','中吉'],['../'+F+'web-back-3.webp','吉'],['../'+F+'web-back-4.webp','小吉']],ensure_ascii=False))
+  sc=(f'<div class="sc" data-sc data-fortunes="{fort}" data-coat="../{F}web-coat.png">'
       f'<div class="sc__pair">'
-      f'<figure class="sc__card sc__card--front"><img src="{F}web-front.webp" width="951" height="1469" alt="賀卡正面：香檳金底、圓窗中的老虎插畫，2022 HAPPY NEW YEAR 虎虎同心・新年快樂" loading="lazy" decoding="async"></figure>'
-      f'<div class="sc__card sc__card--back"><img src="{F}web-back.webp" width="951" height="1469" alt="賀卡背面：和風花紋與扇形刮刮樂，刮開後是「大吉」，下方寫著一甲子的承諾與守護" loading="lazy" decoding="async">'
+      f'<figure class="sc__card sc__card--front"><img src="{F}web-front.webp" width="946" height="1477" alt="賀卡正面：香檳金底、圓窗中的老虎插畫，2022 HAPPY NEW YEAR 虎虎同心・新年快樂" loading="lazy" decoding="async"></figure>'
+      f'<div class="sc__card sc__card--back"><img class="sc__fortune" src="{F}web-back-1.webp" width="946" height="1477" alt="賀卡背面：和風花紋與扇形刮刮樂，刮開後是籤運，下方寫著一甲子的承諾與守護" loading="lazy" decoding="async">'
       f'<canvas class="sc__coat" aria-hidden="true"></canvas></div></div>'
       f'<div class="sc__ui"><p class="sc__msg" aria-live="polite">✦ 用滑鼠或手指在銀色扇形上刮一刮</p>'
       f'<button type="button" class="sc__btn" data-sc-btn>直接揭曉</button></div></div>')
-  return (f'<section class="cs-sec">{head("Scratch to reveal","Pull A Fortune","刮開新年籤","卡片背面的扇形是刮刮樂塗層，就像新年到神社抽籤，刮開才知道今年的運勢。")}{sc}</section>'
+  return (f'<section class="cs-sec">{head("Scratch to reveal","Pull A Fortune","刮開新年籤","卡片背面的扇形是刮刮樂塗層，就像新年到神社抽籤，刮開才知道今年的運勢：大吉、中吉、吉、小吉，每次刮到的都可能不一樣。")}{sc}</section>'
           f'<section class="cs-sec">{head("Card &amp; sleeve","Wrapped For New Year","卡片與信封套","信封套延續香檳金與和風紋樣：麻葉紋、市松格與「良いお年を」，卡片抽出一半時，老虎剛好從圓窗探出頭。")}{fig("web-sleeve",2000,1708,"賀卡與信封套：左為麻葉紋與市松格信封，右為卡片抽出一半露出老虎","信封套・卡片抽出示意")}</section>'
-          f'<section class="cs-sec">{head("Lucky draw","Three Fortunes","大吉・中吉・吉","刮開的籤運有大吉、中吉、吉三種，每位客戶拿到的祝福都不太一樣。")}{fig("web-set",2400,1600,"多張賀卡正反面平鋪，背面分別是大吉、中吉、吉","三種籤運與正反面")}</section>')
+          f'<section class="cs-sec">{head("Lucky draw","Four Fortunes","大吉・中吉・吉・小吉","刮開的籤運有大吉、中吉、吉、小吉四種，每位客戶拿到的祝福都不太一樣。")}{fig("web-set",2400,1600,"多張賀卡正反面平鋪，背面分別是大吉、中吉、吉","三種籤運與正反面")}</section>')

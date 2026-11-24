@@ -532,31 +532,32 @@
   [].forEach.call(document.querySelectorAll('.ob-hs.is-open'),function(h){h.classList.remove('is-open');var b=h.querySelector('.ob-hs__dot');if(b)b.setAttribute('aria-expanded','false')});
   var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;t.scrollIntoView({behavior:rm?'auto':'smooth',block:'start'});
   var st=t.querySelector('.ex-book__stage');if(st)setTimeout(function(){st.focus({preventScroll:true})},rm?0:600)})})})();
-/* 27 明台產險新春賀卡：刮刮樂 */
+/* 27 明台產險新春賀卡：刮刮樂（塗層形狀取自未刮開的印刷檔，籤運隨機） */
 (function(){[].forEach.call(document.querySelectorAll('[data-sc]'),function(R){
-  var cv=R.querySelector('.sc__coat'),ctx=cv.getContext('2d'),msg=R.querySelector('.sc__msg'),btn=R.querySelector('[data-sc-btn]'),
-      done=false,last=null,moves=0,lw=0,cw=0;
-  // 扇形（以整張卡片的比例定義，換算到塗層畫布）
-  var CX=.5016,CY=.7468,R1=.57,R2=.355,A=22.5*Math.PI/180,BX=.1646,BY=.1768,BW=.674,BH=.242,ASP=1469/951;
-  function fan(){var W=cv.width,H=cv.height,cardW=W/BW,cardH=cardW*ASP,ox=BX*cardW,oy=BY*cardH,cx=CX*cardW-ox,cy=CY*cardH-oy,r1=R1*cardH,r2=R2*cardH;
-    ctx.beginPath();ctx.arc(cx,cy,r1,-Math.PI/2-A,-Math.PI/2+A);ctx.arc(cx,cy,r2,-Math.PI/2+A,-Math.PI/2-A,true);ctx.closePath()}
-  function paint(){var d=Math.min(devicePixelRatio||1,2),w=cv.clientWidth,h=cv.clientHeight;if(!w)return;cw=w;
+  var cv=R.querySelector('.sc__coat'),ctx=cv.getContext('2d'),msg=R.querySelector('.sc__msg'),btn=R.querySelector('[data-sc-btn]'),img=R.querySelector('.sc__fortune'),
+      F=JSON.parse(R.getAttribute('data-fortunes')),coat=new Image(),cur=0,done=false,last=null,moves=0,lw=0,cw=0,mask=null;
+  var WORDS={'大吉':'大吉！一甲子的承諾與守護，祝新年萬事順心。','中吉':'中吉！明台與您齊心，迎接新年新氣象。','吉':'吉！平安就是福，新的一年穩穩前進。','小吉':'小吉！小小的好運，一點一滴累積成整年的幸福。'};
+  function paint(pick){var d=Math.min(devicePixelRatio||1,2),w=cv.clientWidth,h=cv.clientHeight;if(!w||!coat.complete)return;cw=w;
+    if(pick){var n=cur;while(F.length>1&&n===cur)n=Math.floor(Math.random()*F.length);cur=n;img.src=F[cur][0]}
     cv.width=Math.round(w*d);cv.height=Math.round(h*d);var W=cv.width,H=cv.height;
-    ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);ctx.save();fan();ctx.clip();
-    var g=ctx.createLinearGradient(0,0,W,H);g.addColorStop(0,'#e6e7ec');g.addColorStop(.35,'#b8bac3');g.addColorStop(.55,'#eff0f3');g.addColorStop(.8,'#a9abb5');g.addColorStop(1,'#d7d8de');
+    ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);ctx.drawImage(coat,0,0,W,H);
+    ctx.globalCompositeOperation='source-atop';var g=ctx.createLinearGradient(0,0,W,H);g.addColorStop(0,'rgba(255,255,255,.35)');g.addColorStop(.45,'rgba(255,255,255,0)');g.addColorStop(.55,'rgba(255,255,255,.4)');g.addColorStop(.7,'rgba(80,82,96,.12)');g.addColorStop(1,'rgba(255,255,255,.25)');
     ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
-    for(var i=0;i<W*H/90;i++){ctx.fillStyle='rgba('+(Math.random()<.5?'255,255,255':'90,92,104')+','+(Math.random()*.18)+')';ctx.fillRect(Math.random()*W,Math.random()*H,1.2*d,1.2*d)}
-    ctx.fillStyle='rgba(90,92,104,.75)';ctx.font='700 '+Math.round(H*.17)+'px "Noto Sans TC",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('刮 刮 看',W/2,H*.5);
-    ctx.restore();lw=W*.11;done=false;cv.classList.remove('is-done');btn.textContent='直接揭曉';msg.textContent='✦ 用滑鼠或手指在銀色扇形上刮一刮'}
-  function cleared(){var W=cv.width,H=cv.height,data=ctx.getImageData(0,0,W,H).data,tot=0,clr=0,s=Math.max(4,Math.round(W/60));
-    ctx.save();fan();for(var y=0;y<H;y+=s)for(var x=0;x<W;x+=s){if(!ctx.isPointInPath(x,y))continue;tot++;if(data[(y*W+x)*4+3]<40)clr++}ctx.restore();return tot?clr/tot:0}
-  function reveal(){done=true;cv.classList.add('is-done');btn.textContent='再刮一次';msg.textContent='✦ 大吉！一甲子的承諾與守護，祝新年平安順心。'}
+    for(var i=0;i<W*H/120;i++){ctx.fillStyle='rgba('+(Math.random()<.5?'255,255,255':'70,72,84')+','+(Math.random()*.16)+')';ctx.fillRect(Math.random()*W,Math.random()*H,1.2*d,1.2*d)}
+    ctx.fillStyle='rgba(70,72,84,.7)';ctx.font='700 '+Math.round(H*.16)+'px "Noto Sans TC",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('刮 刮 看',W/2,H*.4);
+    ctx.globalCompositeOperation='source-over';try{mask=ctx.getImageData(0,0,W,H).data}catch(_){mask=null}moves=0;
+    lw=W*.1;done=false;cv.classList.remove('is-done');btn.textContent='直接揭曉';msg.textContent='✦ 用滑鼠或手指在銀色扇形上刮一刮'}
+  function cleared(){if(!mask)return moves/70; // 本機開檔時畫布不能讀像素，改用刮的次數估算
+    var W=cv.width,H=cv.height,data=ctx.getImageData(0,0,W,H).data,tot=0,clr=0,s=Math.max(4,Math.round(W/60));
+    for(var y=0;y<H;y+=s)for(var x=0;x<W;x+=s){var k=(y*W+x)*4+3;if(mask[k]<128)continue;tot++;if(data[k]<40)clr++}return tot?clr/tot:0}
+  function reveal(){done=true;cv.classList.add('is-done');btn.textContent='再刮一次';msg.textContent='✦ '+WORDS[F[cur][1]]}
   function pt(e){var r=cv.getBoundingClientRect();return{x:(e.clientX-r.left)/r.width*cv.width,y:(e.clientY-r.top)/r.height*cv.height}}
   function scratch(p){ctx.globalCompositeOperation='destination-out';ctx.lineCap=ctx.lineJoin='round';ctx.lineWidth=lw;ctx.beginPath();ctx.moveTo((last||p).x,(last||p).y);ctx.lineTo(p.x,p.y);ctx.stroke();last=p;
     if(++moves%8===0&&cleared()>.55)reveal()}
   cv.addEventListener('pointerdown',function(e){if(done)return;e.preventDefault();try{cv.setPointerCapture(e.pointerId)}catch(_){}last=null;scratch(pt(e))});
   cv.addEventListener('pointermove',function(e){if(done||!cv.hasPointerCapture||!cv.hasPointerCapture(e.pointerId))return;scratch(pt(e))});
   cv.addEventListener('pointerup',function(){last=null;if(!done&&cleared()>.55)reveal()});
-  btn.addEventListener('click',function(){done?paint():reveal()});
-  if('ResizeObserver' in window)new ResizeObserver(function(){if(Math.abs(cv.clientWidth-cw)>1)paint()}).observe(cv);else addEventListener('resize',paint);
-  paint()})})();
+  btn.addEventListener('click',function(){done?paint(true):reveal()});
+  F.forEach(function(f){var i=new Image();i.src=f[0]});
+  coat.onload=function(){cur=-1;paint(true);if('ResizeObserver' in window)new ResizeObserver(function(){if(Math.abs(cv.clientWidth-cw)>1)paint(false)}).observe(cv);else addEventListener('resize',function(){paint(false)})};
+  coat.src=R.getAttribute('data-coat')})})();
