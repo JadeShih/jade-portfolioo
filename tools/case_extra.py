@@ -666,7 +666,7 @@ def series():
        f'<div class="mt-pager"><button type="button" class="mt-btn mt-btn--ic" data-mt-prev aria-label="上一頁">←</button>'
        f'<p class="mt-pg" aria-live="polite"></p><button type="button" class="mt-btn mt-btn--ic" data-mt-next aria-label="下一頁">→</button></div>'
        f'<button type="button" class="mt-btn mt-btn--sub" data-mt-close>收回信封</button>'
-       f'</div><p class="mt-hint">✦ 拖曳可 360° 旋轉</p></div>')
+       f'</div><p class="mt-hint">✦ 拖曳可 360° 旋轉</p><p class="mt-note">本機直接開檔時，瀏覽器會擋下 3D 貼圖，所以這裡只顯示示意圖。上線後（或用預覽網址開啟）就能 360° 轉、開信封、翻頁。</p></div>')
   def fig(n,w,h,alt,cap):
     return (f'<figure class="mt-fig"><button type="button" class="mt-fig__b" data-lb="mt" aria-label="放大檢視：{html.escape(alt)}">{pic("work-26-series/"+n,w,h,alt)}</button><figcaption>✦ {cap}</figcaption></figure>')
   return (f'<section class="cs-sec">{head("Unbox","Open The Envelope","打開信封","桌曆與筆記本收在同一只信封裡。點信封把它們拿出來，選筆記本或桌曆就能翻頁，三件都可以拖曳 360° 轉著看。")}{box}</section>'

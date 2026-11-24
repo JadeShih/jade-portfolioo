@@ -532,12 +532,14 @@
   [].forEach.call(document.querySelectorAll('.ob-hs.is-open'),function(h){h.classList.remove('is-open');var b=h.querySelector('.ob-hs__dot');if(b)b.setAttribute('aria-expanded','false')});
   var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;t.scrollIntoView({behavior:rm?'auto':'smooth',block:'start'});
   var st=t.querySelector('.ex-book__stage');if(st)setTimeout(function(){st.focus({preventScroll:true})},rm?0:600)})})})();
-/* 26 明台產險贈禮：進到畫面附近才載入 three.js 模組 */
+/* 26 明台產險贈禮：進到畫面附近才載入 3D（一般 script，本機開檔也能跑） */
 (function(){var roots=document.querySelectorAll('[data-mt]');if(!roots.length)return;
   var c=document.createElement('canvas'),ok=false;try{ok=!!(window.WebGLRenderingContext&&(c.getContext('webgl2')||c.getContext('webgl')))}catch(e){}
   if(!ok)return;
-  var src=(document.currentScript&&document.currentScript.src)||'';var url=new URL('public/js/mt3d.js?v=202611241330',src||location.href).href;
-  function boot(R){import(url).then(function(m){m.init(R)}).catch(function(e){console.warn(e)})}
+  if(location.protocol==='file:'){[].forEach.call(roots,function(R){R.classList.add('is-file')});return}
+  var me=document.currentScript&&document.currentScript.src,url=new URL('public/js/mt3d.bundle.js?v=202611241245',me||location.href).href,q=[],state=0;
+  function boot(R){if(state===2){window.MT3D.init(R);return}q.push(R);if(state)return;state=1;
+    var s=document.createElement('script');s.src=url;s.onload=function(){state=2;q.forEach(function(r){window.MT3D.init(r)})};document.head.appendChild(s)}
   [].forEach.call(roots,function(R){
     if(!('IntersectionObserver' in window)){boot(R);return}
     var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();boot(R)}},{rootMargin:'400px'});io.observe(R)})})();

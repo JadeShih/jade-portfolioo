@@ -1,6 +1,6 @@
 /* 26 明台產險年度贈禮：信封／筆記本／三角桌曆 3D（three.js）
    單位：公分。地面 y=0，鏡頭看向 -z。 */
-import * as THREE from './three.module.min.js';
+import * as THREE from '../node_modules/three/build/three.module.js' /* build: tools/build-mt3d.sh */;
 
 const RM = matchMedia('(prefers-reduced-motion:reduce)').matches;
 const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
