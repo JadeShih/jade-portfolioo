@@ -2182,3 +2182,10 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .cs-sec .skb__tab[data-tone="coral"]{background:#FF6B4A}
 .cs-sec .skb__tab[data-tone="purple"]{background:#A99BFF}
 .skb__stack--l{transition:opacity .18s}
+/* 紙張厚度加強：每張紙更厚、闔上時書口更厚 */
+.skb{--t:18px}
+.skb__leaf{--lt:3.5px}
+.skb__leaf--cover{--lt:5px}
+.skb__edge{background:repeating-linear-gradient(90deg,#f6f3ec 0 1.4px,#d4cec2 1.4px 2.2px)}
+.skb__edge--b{background:repeating-linear-gradient(0deg,#f6f3ec 0 1.4px,#d4cec2 1.4px 2.2px)}
+@media (max-width:760px){.skb{--t:12px}}

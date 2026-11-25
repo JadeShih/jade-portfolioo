@@ -614,11 +614,13 @@
 /* 28 速寫本：每張紙有自己的厚度層，避免同平面閃爍；圖片背景預載 */
 (function(){[].forEach.call(document.querySelectorAll('.skb'),function(sk){
   var stage=sk.closest('.skb-stage')||sk.parentNode;
-  var leaves=[].slice.call(sk.querySelectorAll('.skb__leaf')),N=leaves.length,MAX=N-1,GAP=.6;
+  var leaves=[].slice.call(sk.querySelectorAll('.skb__leaf')),N=leaves.length,MAX=N-1,GAP=.35;
   var k=0,last=1,busy=false,FLIP=900,moving={},seq=0;
   function zo(i){return moving[i]?(N+4+moving[i])*GAP:(i<k?(i+1)*GAP:(N-i)*GAP)}
   function z(){leaves.forEach(function(l,i){l.style.zIndex=moving[i]?100+moving[i]:(i<k?(i+1):(N-i));l.style.setProperty('--zo',zo(i).toFixed(2)+'px')})}
-  function ds(n){sk.dataset.l=n;sk.dataset.r=N-n}
+  var stL=sk.querySelector('.skb__stack--l'),stR=sk.querySelector('.skb__stack--r');
+  function edge(cnt,dir){var px=Math.max(1,Math.round(cnt*.6)),out=[],c=['#f4f1ea','#d9d4c9','#ebe7df','#cdc7ba'];for(var j=1;j<=px;j++)out.push((dir*j*1.05).toFixed(1)+'px '+(j*.5).toFixed(1)+'px 0 '+c[j%4]);out.push((dir*(px*1.05+1.2)).toFixed(1)+'px '+(px*.5+.8).toFixed(1)+'px 0 #a39c8d');return out.join(',')}
+  function ds(n){sk.dataset.l=n;sk.dataset.r=N-n;if(stL)stL.style.boxShadow=n>0?edge(n,-1):'none';if(stR)stR.style.boxShadow=edge(N-n,1)}
   function fb(){}
   function load(i){if(i<0||i>=N)return;[].forEach.call(leaves[i].querySelectorAll('img[data-skb]'),function(im){im.src=im.getAttribute('data-skb');im.removeAttribute('data-skb')})}
   function near(n){for(var i=n-4;i<=n+4;i++)load(i)}
