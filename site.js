@@ -635,7 +635,7 @@
 /* 手機版小卡插槽：說明卡上方散落成分小卡，點一下放大，點空白或下一張復原 */
 (function(){var mq=matchMedia('(max-width:760px)'),h=document.querySelector('.ob-hs[data-cards]'),sh=document.querySelector('.ob-sheet');if(!h||!sh)return;
   var src=h.querySelectorAll('.ob-mc__card');if(!src.length)return;
-  var POS=[[6,4,-9],[52,0,7],[2,30,5],[50,26,-6],[8,56,-4],[54,52,9],[28,78,-7]];
+  var POS=[[14,22,-12],[40,14,8],[22,36,4],[46,32,-9],[10,52,-5],[42,50,11],[26,64,-7]];
   var sc=document.createElement('div');sc.className='ob-scatter';sc.setAttribute('aria-hidden','true');
   [].forEach.call(src,function(p,i){var c=p.cloneNode(true),q=POS[i%POS.length];c.className='ob-scatter__card';c.style.cssText='--x:'+q[0]+'%;--y:'+q[1]+'%;--r:'+q[2]+'deg;--d:'+(i*45)+'ms';
     var im=c.querySelector('img');if(im)im.loading='eager';
