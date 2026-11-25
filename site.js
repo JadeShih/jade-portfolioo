@@ -615,10 +615,11 @@
 (function(){[].forEach.call(document.querySelectorAll('.skb'),function(sk){
   var stage=sk.closest('.skb-stage')||sk.parentNode;
   var leaves=[].slice.call(sk.querySelectorAll('.skb__leaf')),N=leaves.length,MAX=N-1;
-  var k=0,last=1,busy=false,FLIP=900,STEP=170;
+  var k=0,last=1,busy=false,FLIP=900;
   function z(){leaves.forEach(function(l,i){l.style.zIndex=i<k?(i+1):(N-i)});sk.dataset.l=k;sk.dataset.r=N-k}
+  function near(n){for(var i=Math.max(0,n-2);i<=Math.min(N-1,n+2);i++)[].forEach.call(leaves[i].querySelectorAll('img[data-skb]'),function(im){im.src=im.getAttribute('data-skb');im.removeAttribute('data-skb')})}
   function turn(i,on,d){var l=leaves[i];setTimeout(function(){l.classList.add('is-moving');l.style.zIndex=20+i;l.classList.toggle('is-turned',on);setTimeout(function(){l.classList.remove('is-moving')},FLIP)},d||0)}
-  function go(n,cb){if(n===k){cb&&cb();return}var dir=n>k?1:-1,steps=Math.abs(n-k),i;busy=true;
+  function go(n,cb){if(n===k){cb&&cb();return}near(n);var dir=n>k?1:-1,steps=Math.abs(n-k),i,STEP=Math.min(170,600/steps);busy=true;
     for(i=0;i<steps;i++){turn(dir>0?k+i:k-1-i,dir>0,i*STEP)}
     k=n;if(k>0)setTimeout(function(){sk.dataset.l=k;sk.dataset.r=N-k},(steps-1)*STEP+FLIP*.5);
     setTimeout(function(){z();busy=false;cb&&cb()},(steps-1)*STEP+FLIP)}

@@ -678,11 +678,17 @@ def drawing28():
   def face(cls,n,alt):
     return f'<div class="skb__face {cls}">{pic(F+"web-sk-"+n,832,1200,alt)}<i></i></div>'
   rim='<span class="skb__rim skb__rim--r"></span><span class="skb__rim skb__rim--t"></span><span class="skb__rim skb__rim--b"></span>'
-  leaves=[('skb__leaf--cover',('skb__face--front skb__face--cover','cover','速寫本封面：再生紙板，藍色山形與 IN DULAN 字樣'),('skb__face--back','p1','Day 11：三張側躺的女生頭像')),
-          ('',('skb__face--front','p2','Day 12：三個綁髮女生的頭像'),('skb__face--back','p3','Day 13：三個女生的半身像')),
-          ('',('skb__face--front','p4','Day 14：短髮女生、張嘴的女生與人體比例練習'),('skb__face--back','back',''))]
-  lv=''.join(f'<div class="skb__leaf {c}" style="z-index:{3-i}">{face(*a)}{face(*b)}{rim}</div>' for i,(c,a,b) in enumerate(leaves))
-  book=(f'<div class="skb is-closed" data-l="0" data-r="3" role="group" aria-label="30 日畫畫速寫本"><div class="skb__obj"><div class="skb__shadow"></div>'
+  pages=['cover']+[f'p{i:02d}' for i in range(1,65)]+['back']
+  alts={'cover':'速寫本封面：再生紙板，藍色山形與 IN DULAN 字樣','back':''}
+  def face2(cls,n,i):
+    alt=alts[n] if n in alts else f'30 日畫畫速寫本第 {int(n[1:])} 頁'
+    src=f'{P}{F}web-sk-{n}.webp'
+    img=(f'<img src="{src}" width="640" height="923" alt="{alt}" decoding="async">' if i<3 else f'<img data-skb="../{src}" width="640" height="923" alt="{alt}" decoding="async">')
+    return f'<div class="skb__face {cls}">{img}<i></i></div>'
+  N=len(pages)//2
+  lv=''.join(f'<div class="skb__leaf{" skb__leaf--cover" if i==0 else ""}" style="z-index:{N-i}">'
+             f'{face2("skb__face--front"+(" skb__face--cover" if i==0 else ""),pages[2*i],i)}{face2("skb__face--back",pages[2*i+1],i)}{rim}</div>' for i in range(N))
+  book=(f'<div class="skb is-closed" data-l="0" data-r="33" role="group" aria-label="30 日畫畫速寫本"><div class="skb__obj"><div class="skb__shadow"></div>'
         f'<div class="skb__book"><div class="skb__stack skb__stack--l"></div><div class="skb__stack skb__stack--r"></div>{lv}</div>'
         '<div class="skb__edge"></div><div class="skb__edge skb__edge--b"></div>'
         '<button type="button" class="skb__hit skb__hit--l" aria-label="上一頁"></button><button type="button" class="skb__hit skb__hit--r" aria-label="下一頁"></button>'
