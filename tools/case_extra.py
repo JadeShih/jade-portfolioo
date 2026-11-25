@@ -701,7 +701,7 @@ def drawing28():
   return (f'<section class="cs-sec">{head("Sketchbook","Flip Through","翻翻我的速寫本")}'
           f'<div class="skb-stage">{book}</div></section>')
 
-BN29={"app": [["web-app-1", 816, 1088, "年度回顧彈窗・個人專屬數據", "jpg", 816, 1088], ["web-app-2", 816, 1088, "年度回顧彈窗・年度績效", "jpg", 816, 1088], ["web-app-3", 597, 800, "KOL 訂閱・免費領取講義", "jpg", 600, 800], ["web-app-4", 600, 800, "KOL 訂閱・早鳥延長", "jpg", 600, 800], ["web-app-5", 600, 800, "KOL 訂閱・會員見證", "jpg", 600, 800], ["web-app-6", 600, 800, "限時隱藏優惠", "jpg", 600, 800], ["web-app-7", 720, 878, "年度寵粉回饋 EDM", "jpg", 720, 880], ["web-app-8", 1000, 1000, "價格快閃活動", "jpg", 1080, 1080], ["web-app-9", 1280, 720, "KOL 合作問卷", "jpg", 1280, 720]], "web": [["web-web-1", 1600, 542, "正官庄・母親節檔期", "jpg", 1920, 650], ["web-web-2", 640, 760, "彤人秘・母親節檔期", "jpg", 640, 760], ["web-web-3", 1600, 542, "正官庄・初夏窈窕檔期", "jpg", 1920, 650], ["web-web-4", 1200, 462, "松柏嶺受天宮・年節套組", "jpg", 1200, 462], ["web-web-5", 1200, 500, "RISNA・官網主視覺", "jpg", 1200, 500], ["web-web-6", 1000, 300, "OMRON・momo 活動", "jpg", 1000, 300]], "social": [["web-social-1", 1000, 1000, "長春藤生物科技・預防醫學", "jpg", 1200, 1200], ["web-social-2", 1000, 1000, "長春藤生物科技・細胞儲存", "jpg", 1200, 1200], ["web-social-3", 1000, 1017, "寶島眼科・機車族護眼", "jpg", 1201, 1221], ["web-social-4", 1000, 1017, "寶島眼科・白內障衛教", "jpg", 1201, 1221], ["web-social-5", 1040, 1040, "ORIX・中秋動態貼文", "gif", 1040, 1040], ["web-social-6", 1400, 896, "ORIX・端午節 EDM", "jpg", 5001, 3201]]}
+BN29={"app": [["web-app-1", 816, 1088, "年度回顧彈窗・個人專屬數據", "jpg", 816, 1088], ["web-app-2", 816, 1088, "年度回顧彈窗・年度績效", "jpg", 816, 1088], ["web-app-3", 597, 800, "KOL 訂閱・免費領取講義", "jpg", 600, 800], ["web-app-4", 600, 800, "KOL 訂閱・早鳥延長", "jpg", 600, 800], ["web-app-5", 600, 800, "KOL 訂閱・會員見證", "jpg", 600, 800], ["web-app-6", 600, 800, "限時隱藏優惠", "jpg", 600, 800], ["web-app-7", 720, 878, "年度寵粉回饋 EDM", "jpg", 720, 880], ["web-app-8", 1000, 1000, "價格快閃活動", "jpg", 1080, 1080], ["web-app-9", 1280, 720, "KOL 合作問卷", "jpg", 1280, 720]], "web": [["web-web-1", 1600, 542, "正官庄・母親節檔期", "jpg", 1920, 650], ["web-web-3", 1600, 542, "正官庄・初夏窈窕檔期", "jpg", 1920, 650], ["web-web-4", 1200, 462, "松柏嶺受天宮・年節套組", "jpg", 1200, 462], ["web-web-5", 1200, 500, "RISNA・官網主視覺", "jpg", 1200, 500], ["web-web-6", 1000, 300, "OMRON・momo 活動", "jpg", 1000, 300]], "social": [["web-social-1", 1000, 1000, "長春藤生物科技・預防醫學", "jpg", 1200, 1200], ["web-social-2", 1000, 1000, "長春藤生物科技・細胞儲存", "jpg", 1200, 1200], ["web-social-3", 1000, 1017, "寶島眼科・機車族護眼", "jpg", 1201, 1221], ["web-social-4", 1000, 1017, "寶島眼科・白內障衛教", "jpg", 1201, 1221], ["web-social-5", 1040, 1040, "ORIX・中秋動態貼文", "gif", 1040, 1040], ["web-social-6", 1400, 896, "ORIX・端午節 EDM", "jpg", 5001, 3201]]}
 def banner29():
   # 29 Banner 合輯：依用途分四組
   F='work-29-banner/'
@@ -712,7 +712,7 @@ def banner29():
     return (f'<figure class="bn-fig" style="--ar:{w}/{h}"><button type="button" class="bn-fig__img" data-lb="{grp}" aria-label="放大檢視：{html.escape(alt)}">{img}</button>'
             f'<figcaption><b>{html.escape(t)}</b>{"<span>"+html.escape(u)+"</span>" if u else ""}<em>{w0} × {h0}</em></figcaption></figure>')
   G=[('app','App & Membership','App 彈窗・會員轉換','財經 App 的訂閱、優惠與年度回顧活動：在一張 600 × 800 的彈窗裡，把方案、價格、期限和行動按鈕排出清楚的閱讀順序。','bn-row'),
-     ('web','Web & E-commerce','官網・電商橫幅','品牌官網主視覺與 momo、官方商城的檔期橫幅。同一檔活動延伸成寬版與直式兩種版位。','bn-wide'),
+     ('web','Web & E-commerce','官網・電商橫幅','品牌官網主視覺與 momo、官方商城的檔期橫幅。','bn-wide'),
      ('social','Social Posts','社群貼文・EDM','醫療、保險品牌的衛教與節慶貼文，把專業資訊整理成手機一眼看得懂的圖文。','bn-row')]
   out=''
   for g,en,zh,lead,cls in G:
@@ -720,9 +720,7 @@ def banner29():
     if cls=='bn-row':
       ARL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>'
       ARR='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>'
-      figs=(f'<div class="bn-car"><div class="bn-car__bar"><span class="bn-car__count" aria-hidden="true"><b>01</b> / {len(BN29[g]):02d}</span>'
-            f'<span class="bn-car__ctrl"><button type="button" class="bn-car__btn" data-dir="-1" aria-label="上一張">{ARL}</button><button type="button" class="bn-car__btn" data-dir="1" aria-label="下一張">{ARR}</button></span></div>'
-            f'<div class="bn-row" tabindex="0" aria-label="{zh}，可左右捲動">{figs}</div><div class="bn-car__prog" aria-hidden="true"><i></i></div></div>')
+      figs=f'<div class="bn-car"><div class="bn-row" tabindex="0" aria-label="{zh}，可左右捲動">{figs}</div><div class="kl-dots bn-car__dots"></div></div>'
       cls='bn-wrapc'
     out+=f'<section class="cs-sec bn-sec">{head(en,en.replace("&","&amp;"),zh,lead).replace(f'<p class="eyebrow">{en}</p>',f'<p class="eyebrow">{len(BN29[g])} pieces</p>')}<div class="{cls}">{figs}</div></section>'
   return out
