@@ -101,7 +101,7 @@ def kolapp2():
     f'</section>'
     f'<section class="kl-block">{kh("Inside the app","Key Features","核心功能")}{feats}</section>'
     f'</div>'
-    f'<figure class="kl-full kl-end">{zoom(B+"24",2400,980,"手持手機，資料夾中的好葉智能選股 App Icon")}<figcaption class="kl-end__txt">That’s a wrap<small>感謝觀看</small></figcaption></figure>'
+    f'<figure class="kl-full kl-end">{zoom(B+"24",2400,980,"手持手機，資料夾中的好葉智能選股 App Icon").replace("<picture>",'<picture><source media="(max-width:760px)" srcset="'+P+B+'end-m.webp?v=1125a" type="image/webp" width="1170" height="1560"><source media="(max-width:760px)" srcset="'+P+B+'end-m.jpg?v=1125a" width="1170" height="1560">')}<figcaption class="kl-end__txt">That’s a wrap<small>感謝觀看</small></figcaption></figure>'
     f'</section>')
 
 def ph(label,ratio='16/9',note=''):

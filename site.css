@@ -2101,3 +2101,4 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .ob-sheet.cs-sec{margin-top:0}
 @media (max-width:760px){.hero__actions{display:none}}
 @media (max-width:760px){.pdp-end img{aspect-ratio:1/1;object-position:50% 50%}}
+@media (max-width:760px){.kl-end{margin-bottom:0}.kl-end img{width:100%;height:auto}.kl-end__txt{bottom:52px}}
