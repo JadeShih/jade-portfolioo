@@ -2254,3 +2254,6 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .nt-theme[data-tone="lime"]{--tone:var(--jade-sys-color-secondary);--on-tone:var(--jade-sys-color-on-secondary)}
 .nt-theme__en,.nt-theme b,.nt-theme p{color:var(--on-tone)}
 .nt-theme__en{opacity:.75}
+/* 淺色頁的展示牆圓點：深色＋主色（瞇瞇眼大叔等） */
+.cs-body:not(.cs-body--ink):not(.cs-body--dark) .hcar .kl-dot{background:rgba(22,20,58,.18)!important}
+.cs-body:not(.cs-body--ink):not(.cs-body--dark) .hcar .kl-dot.is-on{background:var(--jade-sys-color-primary)!important;width:32px}
