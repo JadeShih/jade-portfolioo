@@ -161,7 +161,7 @@ CASES={
   meta=[('Client','YouTuber Mike是麥克'),('Role','Agent B 生圖系統設計・Prompt Skill 架構'),('Deliverables','AI 廣告圖 Prompt Skill'),('Year','2026')],
   overview='<p>團隊以四個 AI Agent 串起廣告閉環：Agent A 給內容、Agent B 生成圖片、Agent C 投放、Agent D 追蹤成效。我負責 Agent B 的生圖系統。</p><p>我用 Claude Code 製作 Prompt Skill，把團隊定義的五種 Persona 轉成 AI 能穩定執行的視覺規則與量化版面規範，讓 AI 每次自動產出的廣告圖都維持品牌一致，同時構圖不重複。</p>',
   cards=[],gallery_style='none',gallery=[],extra=case_extra.skill(),
-  next=dict(title='Playground',attr='href="../playground.html"')),
+  next=dict(title='30 日畫畫',attr='href="./work-28-drawing.html"')),
  'work-15-calendar':dict(
   num='14',tone='lavender',body_cls=' cs-body--ink',deco=(('flower','yellow'),('blob','cyan')),
   title_en='US Market Calendar',title_zh='美股事件行事曆',
@@ -320,4 +320,17 @@ CASES={
   gallery_style='none',gallery=[],
   extra=case_extra.card27(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
+ 'work-28-drawing':dict(
+  num='02',tone='pink',body_cls='',deco=(('flower','yellow'),('circle','cyan')),
+  title_en='30 Days Of Drawing',title_zh='30 日畫畫',
+  desc='Jade Shih 的 Playground：一個不太會畫畫的人，每天畫十幾分鐘、連續 30 天的速寫本紀錄。',
+  tags=['Playground','手繪速寫','30 天'],tagline='',
+  cover='work-28-drawing/web-cover',cover_w=2400,cover_h=1600,cover_alt='打開的速寫本：Day 13 與 Day 14 的女生人像鉛筆速寫',
+  meta=[('Type','個人練習'),('Duration','30 天'),('Medium','鉛筆・速寫本'),('Size','10.4 × 15 cm')],
+  overview='<p>我一直覺得自己不太會畫畫。某天看到一位 YouTuber 每天畫一張圖的影片，看著看著突然想：既然有時間，那我也試試看吧。</p><p>於是給自己定了一個很小的規則：每天抽出十幾分鐘，畫什麼都好，連續 30 天，看看會發生什麼事。</p>',
+  cards=[dict(tone='cyan',title='The first days',zh='一開始',text='老實說，前幾天滿痛苦的。畫出來的東西跟腦中想的差很多，比例歪、線條抖，每天打開本子都要先跟自己說：醜也沒關係，畫完就好。'),
+         dict(tone='yellow',title='Day by day',zh='慢慢地',text='大概過了一半，手開始比較聽話，臉的比例、頭髮的線條慢慢抓得到感覺。翻回前面的頁面，才發現自己真的一點一點在進步。到最後，每天的十幾分鐘從「要撐過去」變成一件會期待的事。')],
+  gallery_style='none',gallery=[],
+  extra=case_extra.drawing28(),
+  next=dict(title='Playground',attr='href="../playground.html"')),
 }

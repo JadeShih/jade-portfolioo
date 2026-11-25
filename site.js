@@ -609,3 +609,25 @@
   function chk(){var s=scrollY>innerHeight*1.2;if(s!==on){on=s;b.classList.toggle('is-on',s)}}
   addEventListener('scroll',chk,{passive:true});chk();
   b.addEventListener('click',function(){scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});var h=document.querySelector('.jade-navigation-bar a');if(h)h.focus({preventScroll:true})})})();
+
+/* 28 速寫本 */
+(function(){[].forEach.call(document.querySelectorAll('.skb'),function(sk){
+  var stage=sk.closest('.skb-stage')||sk.parentNode;
+  var leaves=[].slice.call(sk.querySelectorAll('.skb__leaf')),N=leaves.length,MAX=N-1;
+  var k=0,last=1,busy=false,FLIP=900,STEP=170;
+  function z(){leaves.forEach(function(l,i){l.style.zIndex=i<k?(i+1):(N-i)});sk.dataset.l=k;sk.dataset.r=N-k}
+  function turn(i,on,d){var l=leaves[i];setTimeout(function(){l.classList.add('is-moving');l.style.zIndex=20+i;l.classList.toggle('is-turned',on);setTimeout(function(){l.classList.remove('is-moving')},FLIP)},d||0)}
+  function go(n,cb){if(n===k){cb&&cb();return}var dir=n>k?1:-1,steps=Math.abs(n-k),i;busy=true;
+    for(i=0;i<steps;i++){turn(dir>0?k+i:k-1-i,dir>0,i*STEP)}
+    k=n;if(k>0)setTimeout(function(){sk.dataset.l=k;sk.dataset.r=N-k},(steps-1)*STEP+FLIP*.5);
+    setTimeout(function(){z();busy=false;cb&&cb()},(steps-1)*STEP+FLIP)}
+  var openBtn=sk.querySelector('.skb__open');
+  function close(){if(busy||sk.classList.contains('is-closed'))return;last=k;go(0,function(){sk.classList.add('is-closed')})}
+  function open(){if(busy)return;busy=true;sk.classList.remove('is-closed');setTimeout(function(){busy=false;go(last)},450)}
+  sk.querySelector('.skb__hit--r').addEventListener('click',function(e){e.stopPropagation();if(!busy&&k<MAX)go(k+1)});
+  sk.querySelector('.skb__hit--l').addEventListener('click',function(e){e.stopPropagation();if(!busy&&k>1)go(k-1)});
+  openBtn.addEventListener('click',function(e){e.stopPropagation();open()});
+  stage.addEventListener('click',close);
+  sk.addEventListener('keydown',function(e){if(sk.classList.contains('is-closed'))return;if(e.key==='ArrowRight'&&!busy&&k<MAX){e.preventDefault();go(k+1)}if(e.key==='ArrowLeft'&&!busy&&k>1){e.preventDefault();go(k-1)}if(e.key==='Escape')close()});
+  z();
+})})();

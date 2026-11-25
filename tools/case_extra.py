@@ -671,3 +671,21 @@ def card27():
   return (f'<section class="cs-sec">{head("Scratch to reveal","Pull A Fortune","刮開新年籤","卡片背面的扇形是刮刮樂塗層，就像新年到神社抽籤，刮開才知道今年的運勢：大吉、中吉、吉、小吉，每次刮到的都可能不一樣。")}{sc}</section>'
           f'<section class="cs-sec">{head("Card &amp; sleeve","Wrapped For New Year","卡片與信封套","信封套延續香檳金與和風紋樣：麻葉紋、市松格與「良いお年を」，卡片抽出一半時，老虎剛好從圓窗探出頭。")}{fig("web-sleeve",2000,1708,"賀卡與信封套：左為麻葉紋與市松格信封，右為卡片抽出一半露出老虎","信封套・卡片抽出示意")}</section>'
           f'<section class="cs-sec">{head("Lucky draw","Four Fortunes","大吉・中吉・吉・小吉","刮開的籤運有大吉、中吉、吉、小吉四種，每位客戶拿到的祝福都不太一樣。")}{fig("web-set",2400,1600,"多張賀卡正反面平鋪，背面分別是大吉、中吉、吉","三種籤運與正反面")}</section>')
+
+def drawing28():
+  # 28 30 日畫畫：硬紙速寫本互動
+  F='work-28-drawing/'
+  def face(cls,n,alt):
+    return f'<div class="skb__face {cls}">{pic(F+"web-sk-"+n,832,1200,alt)}<i></i></div>'
+  rim='<span class="skb__rim skb__rim--r"></span><span class="skb__rim skb__rim--t"></span><span class="skb__rim skb__rim--b"></span>'
+  leaves=[('skb__leaf--cover',('skb__face--front skb__face--cover','cover','速寫本封面：再生紙板，藍色山形與 IN DULAN 字樣'),('skb__face--back','p1','Day 11：三張側躺的女生頭像')),
+          ('',('skb__face--front','p2','Day 12：三個綁髮女生的頭像'),('skb__face--back','p3','Day 13：三個女生的半身像')),
+          ('',('skb__face--front','p4','Day 14：短髮女生、張嘴的女生與人體比例練習'),('skb__face--back','back',''))]
+  lv=''.join(f'<div class="skb__leaf {c}" style="z-index:{3-i}">{face(*a)}{face(*b)}{rim}</div>' for i,(c,a,b) in enumerate(leaves))
+  book=(f'<div class="skb is-closed" data-l="0" data-r="3" role="group" aria-label="30 日畫畫速寫本"><div class="skb__obj"><div class="skb__shadow"></div>'
+        f'<div class="skb__book"><div class="skb__stack skb__stack--l"></div><div class="skb__stack skb__stack--r"></div>{lv}</div>'
+        '<div class="skb__edge"></div><div class="skb__edge skb__edge--b"></div>'
+        '<button type="button" class="skb__hit skb__hit--l" aria-label="上一頁"></button><button type="button" class="skb__hit skb__hit--r" aria-label="下一頁"></button>'
+        '<button type="button" class="skb__open" aria-label="打開速寫本"></button></div></div>')
+  return (f'<section class="cs-sec">{head("Sketchbook","Flip Through","翻翻我的速寫本","點一下速寫本把它打開，點右頁往後翻、左頁往前翻；點旁邊的空白處，它就會闔起來。")}'
+          f'<div class="skb-stage">{book}<p class="skb-hint">點右頁往後翻・點左頁往前翻・點空白處闔上</p></div></section>')
