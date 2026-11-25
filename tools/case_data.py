@@ -364,7 +364,7 @@ CASES={
   title_en='Classic Curry Poster',title_zh='OK 食堂經典咖哩海報',
   desc='Jade Shih 作品：OKmart「OK 食堂」經典咖哩系列新品推廣海報與陳列架腰貼。',
   tags=['平面設計','OKmart','2020'],tagline='',
-  cover='work-31-poster/web-cover',cover_w=2400,cover_h=1600,cover_alt='OK 食堂經典咖哩海報',
+  cover='work-31-poster/web-cover',cover_w=2400,cover_h=1600,cover_alt='兩張 OK 食堂經典咖哩海報斜放在米色背景上',
   meta=[('Client','OKmart'),('Role','視覺設計'),('Deliverables','海報・陳列架腰貼'),('Year','2020')],
   overview='<p>為 OKmart「OK食堂」經典咖哩系列打造新品推廣海報，聚焦日式咖哩雞燴飯與咖哩豬排歐姆蛋燴飯兩款商品，透過鮮明的視覺呈現強化餐點的美味印象，吸引消費者目光，並傳遞便利商店也能輕鬆享用日式咖哩的產品特色。</p>',
   cards=[dict(tone='cyan',title='What I made',zh='我的設計',text='以暖黃色與橘色作為主視覺基調，營造濃郁、溫暖且充滿食慾的氛圍。透過大幅餐點攝影與食材影像合成，凸顯咖哩的濃厚醬汁與豐富配料，搭配醒目的立體標題字、手繪插圖及趣味標籤，強化商品的視覺吸引力。'),
