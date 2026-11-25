@@ -486,7 +486,7 @@ def credit():
           ('web-p2',900,600,'銀行代表與天后宮代表手持放大版聯名卡合影','發行儀式合影'),
           ('web-p3',900,600,'鋪成扇形的聯名卡申請書，放在紅色桌布上','延伸設計：信用卡申請書')]
   figs=''.join(f'<figure class="bq-fig"><button type="button" class="bq-fig__img" data-lb="cc" aria-label="放大檢視：{c}">{pic(F+n,w,h,a)}</button><figcaption>✦ {c}</figcaption></figure>' for n,w,h,a,c in photos)
-  return (f'<section class="cs-sec cc-sec">{head("Card in hand","360° Card","卡面 360°","按住卡片左右拖曳，就能轉到背面。卡號、晶片與銀行標誌是打凸燙銀的部分，轉動時會跟著反光。")}{card}'
+  return (f'<section class="cs-sec cc-sec">{head("Card in hand","360° Card","卡面 360°")}{card}'
           f'</section>'
           f'<section class="cs-sec">{head("Launch","Card Launch","發行活動","卡片發行後，在鹿港天后宮舉辦過爐祈福的發行活動，延伸設計的申請書也一同陳列。")}'
           f'<div class="cc-photos">{figs}</div><p class="cc__note">＊ 活動照片取自鹿港天后宮官方網站。</p></section>')
@@ -511,7 +511,7 @@ def expo():
       ('82%','60%','t r','cyan','Roll-up','易拉展 × 3','講座、技術、合作活動各一款，立在展位前吸引走道上的醫師。','展場佈置｜3 款',['rollup-1','rollup-2','rollup-3']),
       ('74%','24%','b r','pink','Hand Sign','手舉板','午餐會講座的引導手舉板，講者照片與時間地點一眼看清。','現場互動',['sign']),
       ('46%','82%','t','pink','Staff Badge','工作牌','直式 STAFF 識別，延續背板的斜切醫學影像。','現場互動',['badge']),
-      ('28%','29%','b','lime','Booklet','醫學展會小冊','16 頁小冊，介紹基因檢測、循環腫瘤細胞與周邊血幹細胞儲存。','洽談合作｜16 頁',['bk-00','bk-03']),
+      ('50%','30%','b','lime','Booklet','醫學展會小冊','16 頁小冊，介紹基因檢測、循環腫瘤細胞與周邊血幹細胞儲存。','洽談合作｜16 頁',['bk-00','bk-03']),
       ('59%','80%','t','lime','Letter of Intent','合作意向書','現場洽談時填寫的細胞醫學合作夥伴意向表單。','洽談合作',['loi'])]
   go='<a class="ex-tip__go" href="#ex-book">實際試翻小冊 ↓</a>'
   spots=''.join(f'<div class="ob-hs" style="--x:{x};--y:{y}" data-pos="{pos}"><button type="button" class="ob-hs__dot" aria-expanded="false" aria-describedby="exhs{i}"><span>{i}</span><span class="sr-only">{t}</span></button>'

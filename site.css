@@ -2121,3 +2121,33 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
   .ob-sheet .ob-sheet__x,.ob-sheet__x{position:static;align-self:flex-end;width:44px;height:44px;box-shadow:3px 3px 0 var(--jade-ref-palette-neutral10)}
   .ob-sheet__card .ob-hs__tip{padding:20px}
 }
+/* 手機版（11/25 15:20，Figma 261-15657 第三輪） */
+@media (max-width:760px){
+  /* 頂部導覽到標題的距離縮短（首頁、案例頁除外） */
+  .ab-hero>.wrap,.wk-hero>.wrap,.ct-hero>.wrap{padding-top:112px}
+  /* 副標和波浪拉開，波浪後的淺色區塊上方縮短 */
+  .ab-hero>.wrap,.ct-hero>.wrap{padding-bottom:84px}
+  .ct-main>.wrap,.ab-me>.wrap:first-of-type{padding-top:32px}
+  /* 經歷卡片內左右留白 */
+  .road__item summary{padding-inline:20px}
+  .road__body{padding-inline:20px}
+  /* Shell 延伸應用：左右滑動 */
+  .sh-apps{display:flex!important;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-24px;padding:4px 24px 8px;scroll-padding-inline:24px;scrollbar-width:none;align-items:flex-start}
+  .sh-apps::-webkit-scrollbar{display:none}
+  .sh-apps>.sh-app{flex:0 0 84%;scroll-snap-align:center;grid-column:auto!important;grid-row:auto!important;min-width:0}
+  /* 天萃苑：圖片上方空白裁掉 */
+  .pdp-end img{aspect-ratio:1170/820;object-position:50% 100%}
+  /* 好葉 That's a wrap：文字移到右側中段、圖片矮一點 */
+  .kl-end img{aspect-ratio:390/380;object-position:50% 70%}
+  .kl-end__txt{top:44%;bottom:auto;right:20px;left:auto;transform:translateY(-50%);text-align:left}
+}
+.ob-scatter{display:none}
+@media (max-width:760px){
+  .ob-sheet:has(.ob-scatter.is-on){justify-content:flex-end}
+  .ob-scatter.is-on{display:block;position:relative;flex:1 1 auto;min-height:0;margin:84px 4px 0}
+  .ob-scatter__card{position:absolute;left:var(--x);top:var(--y);width:44%;transform:rotate(var(--r));transition:transform .3s cubic-bezier(.2,.8,.2,1),z-index 0s;animation:obPop .45s cubic-bezier(.2,.8,.2,1) var(--d) both;cursor:pointer}
+  .ob-scatter__card img{display:block;width:100%;height:auto;filter:drop-shadow(0 8px 14px rgba(22,20,58,.35))}
+  .ob-scatter__card.is-big{z-index:5;transform:rotate(0deg) scale(1.3)}
+  @keyframes obPop{from{opacity:0;transform:translateY(40px) rotate(0deg) scale(.7)}}
+}
+@media (max-width:760px) and (prefers-reduced-motion:reduce){.ob-scatter__card{animation:none;transition:none}}

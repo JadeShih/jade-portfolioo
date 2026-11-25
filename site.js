@@ -632,3 +632,16 @@
   sk.addEventListener('keydown',function(e){if(sk.classList.contains('is-closed'))return;if(e.key==='ArrowRight'&&!busy&&k<MAX){e.preventDefault();go(k+1)}if(e.key==='ArrowLeft'&&!busy&&k>1){e.preventDefault();go(k-1)}if(e.key==='Escape')close()});
   z();
 })})();
+/* 手機版小卡插槽：說明卡上方散落成分小卡，點一下放大，點空白或下一張復原 */
+(function(){var mq=matchMedia('(max-width:760px)'),h=document.querySelector('.ob-hs[data-cards]'),sh=document.querySelector('.ob-sheet');if(!h||!sh)return;
+  var src=h.querySelectorAll('.ob-mc__card');if(!src.length)return;
+  var POS=[[6,4,-9],[52,0,7],[2,30,5],[50,26,-6],[8,56,-4],[54,52,9],[28,78,-7]];
+  var sc=document.createElement('div');sc.className='ob-scatter';sc.setAttribute('aria-hidden','true');
+  [].forEach.call(src,function(p,i){var c=p.cloneNode(true),q=POS[i%POS.length];c.className='ob-scatter__card';c.style.cssText='--x:'+q[0]+'%;--y:'+q[1]+'%;--r:'+q[2]+'deg;--d:'+(i*45)+'ms';
+    var im=c.querySelector('img');if(im)im.loading='eager';
+    c.addEventListener('click',function(e){e.stopPropagation();var on=!c.classList.contains('is-big');[].forEach.call(sc.children,function(k){k.classList.remove('is-big')});c.classList.toggle('is-big',on)});sc.appendChild(c)});
+  sc.addEventListener('click',function(e){e.stopPropagation();[].forEach.call(sc.children,function(k){k.classList.remove('is-big')})});
+  sh.insertBefore(sc,sh.firstChild);
+  function sync(){var on=mq.matches&&h.classList.contains('is-open');sc.classList.toggle('is-on',on);if(!on)[].forEach.call(sc.children,function(k){k.classList.remove('is-big')})}
+  document.addEventListener('click',function(){setTimeout(sync,10)},true);document.addEventListener('keydown',function(){setTimeout(sync,10)},true);
+})();
