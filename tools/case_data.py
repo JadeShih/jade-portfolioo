@@ -319,7 +319,7 @@ CASES={
          dict(tone='yellow',title='What happened next',zh='後續成果',text='雖然本次提案最終未獲採用，但透過刮刮樂互動機制與日式美學的結合，探索了傳統賀卡更多元的表現形式。這也是一次自己相當滿意的設計嘗試，將節慶祝福轉化為兼具視覺美感、參與感與情感溫度的創意體驗。')],
   gallery_style='none',gallery=[],
   extra=case_extra.card27(),
-  next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
+  next=dict(title='廣告視覺合輯',attr='href="./work-29-banner.html"')),
  'work-28-drawing':dict(
   num='02',tone='pink',body_cls='',deco=(('flower','yellow'),('circle','cyan')),
   title_en='30 Days Of Drawing',title_zh='30 日畫畫',
@@ -333,4 +333,17 @@ CASES={
   gallery_style='none',gallery=[],
   extra=case_extra.drawing28(),
   next=dict(title='Playground',attr='href="../playground.html"')),
+ 'work-29-banner':dict(
+  num='26',tone='lime',deco=(('flower','pink'),('circle','yellow')),
+  title_en='Banner Collection',title_zh='廣告視覺合輯',
+  desc='Jade Shih 作品：橫跨保健、醫療、金融與居家品牌的廣告視覺合輯，依用途整理成 App 彈窗、官網電商橫幅、社群貼文與平面廣告四組。',
+  tags=['平面設計','廣告視覺','2019–2026'],tagline='',
+  cover='work-29-banner/web-cover',cover_w=2400,cover_h=1600,cover_alt='多款廣告視覺拼貼：正官庄檔期橫幅、財經 App 彈窗、長春藤與寶島眼科社群貼文',
+  meta=[('Client','正官庄・ORIX・Dulux・寶島眼科 等'),('Role','視覺設計'),('Deliverables','App 彈窗・網站橫幅・社群貼文・平面廣告'),('Year','2019–2026')],
+  overview='<p>這裡整理了我在不同公司、為不同品牌做的廣告視覺。品牌和尺寸都不一樣，所以不照品牌排，而是依用途分成四組：App 彈窗、官網與電商橫幅、社群貼文，以及平面廣告。</p>',
+  cards=[dict(tone='cyan',title='What I made',zh='我做了什麼',text='橫跨保健、醫療、金融與居家產業 10 多個品牌，從財經 App 的訂閱彈窗、品牌官網與 momo 檔期橫幅，到醫療衛教貼文和雜誌平面稿。'),
+         dict(tone='yellow',title='How I work',zh='我的做法',text='先找出這個版位上最重要的一件事，可能是價格、期限或活動名稱，再用主視覺、色塊和按鈕排出閱讀順序。同一檔活動先做主尺寸，再延伸成其他版位，讓每個尺寸看起來都是同一套視覺。')],
+  gallery_style='none',gallery=[],
+  extra=case_extra.banner29(),
+  next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
