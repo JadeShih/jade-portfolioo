@@ -325,7 +325,7 @@ CASES={
   title_en='30 Days Of Drawing',title_zh='30 日畫畫',
   desc='Jade Shih 的 Playground：一個不太會畫畫的人，每天畫十幾分鐘、連續 30 天的速寫本紀錄。',
   tags=['Playground','手繪速寫','30 天'],tagline='',
-  cover='work-28-drawing/web-cover',cover_w=2400,cover_h=1600,cover_alt='打開的速寫本：Day 13 與 Day 14 的女生人像鉛筆速寫',
+  cover='work-28-drawing/web-cover',cover_w=2400,cover_h=1600,cover_alt='深色背景上攤開的速寫本，滿頁的人物鉛筆速寫',
   meta=[('Type','個人練習'),('Duration','30 天'),('Medium','鉛筆・速寫本'),('Size','10.4 × 15 cm')],
   overview='<p>我一直覺得自己不太會畫畫。某天看到一位 YouTuber 每天畫一張圖的影片，看著看著突然想：既然有時間，那我也試試看吧。</p><p>於是給自己定了一個很小的規則：每天抽出十幾分鐘，畫什麼都好，連續 30 天，看看會發生什麼事。</p>',
   cards=[dict(tone='cyan',title='The first days',zh='一開始',text='老實說，前幾天滿痛苦的。畫出來的東西跟腦中想的差很多，比例歪、線條抖，每天打開本子都要先跟自己說：醜也沒關係，畫完就好。'),
