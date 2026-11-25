@@ -2215,7 +2215,6 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 /* 社群：三欄格子 */
 .bn-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px;align-items:start}
 .bn-grid>.bn-fig:last-child{grid-column:span 2}
-.bn-print{max-width:980px;margin-inline:auto}
 @media (max-width:760px){
   .bn-row{gap:14px;margin-inline:-24px;padding:4px 24px 12px;scroll-padding-inline:24px;scrollbar-width:none}
   .bn-row::-webkit-scrollbar{display:none}
