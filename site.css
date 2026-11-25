@@ -2204,9 +2204,8 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 
 /* 官網：兩欄，寬版跨欄 */
 .bn-wide{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:28px 24px;align-items:start}
-.bn-wide>.bn-fig:nth-child(-n+2){grid-column:1/-1}
-.bn-wide>.bn-fig:nth-child(3),.bn-wide>.bn-fig:nth-child(4){grid-column:span 3}
-.bn-wide>.bn-fig:nth-child(5){grid-column:2/span 4}
+.bn-wide>.bn-fig:nth-child(-n+3){grid-column:1/-1}
+.bn-wide>.bn-fig:nth-child(4),.bn-wide>.bn-fig:nth-child(5){grid-column:span 3}
 /* 社群：三欄格子 */
 .bn-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px;align-items:start}
 .bn-grid>.bn-fig:last-child{grid-column:span 2}
