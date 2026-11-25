@@ -713,13 +713,9 @@ def banner29():
             f'<figcaption><b>{html.escape(t)}</b>{"<span>"+html.escape(u)+"</span>" if u else ""}<em>{w0} × {h0}</em></figcaption></figure>')
   G=[('app','App & Membership','App 彈窗・會員轉換','財經 App 的訂閱、優惠與年度回顧活動：在一張 600 × 800 的彈窗裡，把方案、價格、期限和行動按鈕排出清楚的閱讀順序。','bn-row'),
      ('web','Web & E-commerce','官網・電商橫幅','品牌官網主視覺與 momo、官方商城的檔期橫幅。同一檔活動延伸成寬版與直式兩種版位。','bn-wide'),
-     ('social','Social Posts','社群貼文・EDM','醫療、保險品牌的衛教與節慶貼文，把專業資訊整理成手機一眼看得懂的圖文。','bn-just')]
+     ('social','Social Posts','社群貼文・EDM','醫療、保險品牌的衛教與節慶貼文，把專業資訊整理成手機一眼看得懂的圖文。','bn-row')]
   out=''
   for g,en,zh,lead,cls in G:
-    if g=='social':
-      rows=[[0,1,2],[3,4,5]]
-      figs=''.join('<div class="bn-jrow">'+''.join(fig(*BN29[g][j],'bn-'+g).replace('<figure class="bn-fig" style="',f'<figure class="bn-fig" style="flex:{BN29[g][j][1]/BN29[g][j][2]:.3f} 1 0;') for j in r)+'</div>' for r in rows)
-    else:
-      figs=''.join(fig(*it,'bn-'+g) for it in BN29[g])
+    figs=''.join(fig(*it,'bn-'+g) for it in BN29[g])
     out+=f'<section class="cs-sec bn-sec">{head(en,en.replace("&","&amp;"),zh,lead).replace(f'<p class="eyebrow">{en}</p>',f'<p class="eyebrow">{len(BN29[g])} pieces</p>')}<div class="{cls}">{figs}</div></section>'
   return out
