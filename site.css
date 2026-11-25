@@ -2157,3 +2157,8 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 /* 電腦版：各頁頂部藍底加首頁淺色方格線（手機版 48px 格） */
 .ab-hero,.wk-hero,.ct-hero,.cs-hero{--line:color-mix(in srgb,var(--jade-sys-color-on-surface) 9%,transparent);background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;background-position:center top}
 @media (max-width:760px){.ab-hero,.wk-hero,.ct-hero,.cs-hero{background-size:48px 48px}}
+/* 速寫本修正：每張紙在 3D 空間有自己的高度；陰影改漸層（不用 blur，避免 Windows Chrome 變成一塊色塊）；點擊層浮在紙張上方 */
+.skb__leaf{transform:translateZ(var(--zo,0px)) rotateY(0deg)}
+.skb__leaf.is-turned{transform:translateZ(var(--zo,0px)) rotateY(-180deg)}
+.skb__shadow{filter:none;background:radial-gradient(closest-side,rgba(10,12,30,.5),rgba(10,12,30,.22) 55%,rgba(10,12,30,0));height:22%;bottom:-9%;transform:translateZ(-4px)}
+.skb__hit,.skb__open{transform:translateZ(60px)}
