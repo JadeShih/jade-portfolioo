@@ -358,5 +358,18 @@ CASES={
          dict(tone='yellow',title='What happened next',zh='後續成果',text='完成三款不同主題的便條紙與專屬背卡設計，將品牌產品特色延伸至日常文具用品，透過實用功能與輕巧的視覺表現，提升禮贈品的親和力與使用價值，讓品牌形象自然融入消費者的日常生活。')],
   gallery_style='none',gallery=[],
   extra=case_extra.note30(),
+  next=dict(title='OK 食堂經典咖哩海報',attr='href="./work-31-poster.html"')),
+ 'work-31-poster':dict(
+  num='28',tone='yellow',deco=(('flower','pink'),('circle','cyan')),
+  title_en='Classic Curry Poster',title_zh='OK 食堂經典咖哩海報',
+  desc='Jade Shih 作品：OKmart「OK 食堂」經典咖哩系列新品推廣海報與陳列架腰貼。',
+  tags=['平面設計','OKmart','2020'],tagline='',
+  cover='work-31-poster/web-cover',cover_w=2400,cover_h=1600,cover_alt='OK 食堂經典咖哩海報',
+  meta=[('Client','OKmart'),('Role','視覺設計'),('Deliverables','海報・陳列架腰貼'),('Year','2020')],
+  overview='<p>為 OKmart「OK食堂」經典咖哩系列打造新品推廣海報，聚焦日式咖哩雞燴飯與咖哩豬排歐姆蛋燴飯兩款商品，透過鮮明的視覺呈現強化餐點的美味印象，吸引消費者目光，並傳遞便利商店也能輕鬆享用日式咖哩的產品特色。</p>',
+  cards=[dict(tone='cyan',title='What I made',zh='我的設計',text='以暖黃色與橘色作為主視覺基調，營造濃郁、溫暖且充滿食慾的氛圍。透過大幅餐點攝影與食材影像合成，凸顯咖哩的濃厚醬汁與豐富配料，搭配醒目的立體標題字、手繪插圖及趣味標籤，強化商品的視覺吸引力。'),
+         dict(tone='yellow',title='What happened next',zh='後續成果',text='延續主視覺設計，進一步 Resize 並調整版面比例，應用於便利商店商品陳列架的腰貼設計，強化商品於貨架上的辨識度與促購氛圍。')],
+  gallery_style='none',gallery=[],
+  extra=case_extra.poster31(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }

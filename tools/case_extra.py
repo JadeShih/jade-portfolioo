@@ -741,3 +741,15 @@ def note30():
           f'{fig("web-01","ORBIS 便條紙組正面：防曬、保濕、營養補給三款便條紙與專屬背卡","便條紙組與背卡","三款便條紙排在同一張專屬背卡上，左上角是品牌 Logo")}</section>'
           f'<section class="cs-sec">{head("In Use","Everyday Notes","日常使用情境","便條紙實際貼在筆記本裡寫上待辦，讓品牌自然出現在每天的生活中。")}'
           f'{fig("web-02","ORBIS 便條紙實際貼在方格筆記本中，寫著化妝水、卸妝油等待辦事項","","")}</section>')
+
+def poster31():
+  # 28 OK 食堂經典咖哩海報：分層疊加影片＋完稿＋腰貼
+  F='work-31-poster/'
+  vid=(f'<figure class="op-vid"><video src="{P}{F}web-poster.mp4" poster="{P}{F}web-poster-poster.jpg" width="840" height="1192" autoplay muted loop playsinline preload="metadata" aria-label="海報由背景、桌面、餐點、標題到 Logo 一層層疊加完成"></video>'
+       f'<figcaption>✦ 圖層拆解</figcaption></figure>')
+  full=(f'<figure class="op-vid"><button type="button" class="mt-fig__b" data-lb="op" aria-label="放大檢視：OK 食堂經典咖哩海報完稿">{pic(F+"web-poster",1200,1702,"OK 食堂經典咖哩海報完稿：日式咖哩雞燴飯與咖哩豬排歐姆蛋燴飯")}</button>'
+        f'<figcaption>✦ 海報完稿</figcaption></figure>')
+  strip=(f'<figure class="mt-fig"><button type="button" class="mt-fig__b" data-lb="op" aria-label="放大檢視：商品陳列架腰貼">{pic(F+"web-strip",2400,377,"OK 食堂經典咖哩陳列架腰貼，延伸海報主視覺")}</button>'
+         f'<figcaption>✦ 陳列架腰貼</figcaption></figure>')
+  return (f'<section class="cs-sec">{head("Layer by Layer","Building the Poster","海報構成","從純色背景、桌面、餐點到標題與 Logo，一層層疊出完整畫面。")}<div class="op-pair">{vid}{full}</div></section>'
+          f'<section class="cs-sec">{head("Shelf Strip","Resize for the Shelf","陳列架腰貼","延續主視覺，重新調整成 60.5 × 9.5 cm 的長條比例，貼在便利商店的商品陳列架上。")}{strip}</section>')
