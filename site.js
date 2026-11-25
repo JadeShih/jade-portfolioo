@@ -633,6 +633,7 @@
   sk.querySelector('.skb__hit--r').addEventListener('click',function(e){e.stopPropagation();if(!busy&&k<MAX)go(k+1)});
   sk.querySelector('.skb__hit--l').addEventListener('click',function(e){e.stopPropagation();if(!busy&&k>1)go(k-1)});
   sk.querySelector('.skb__open').addEventListener('click',function(e){e.stopPropagation();open()});
+  [].forEach.call(sk.querySelectorAll('.skb__tab'),function(t){t.addEventListener('click',function(e){e.stopPropagation();var n=+t.getAttribute('data-go');if(busy)return;if(sk.classList.contains('is-closed')){last=n;open()}else if(n!==k)go(n)})});
   stage.addEventListener('click',function(e){if(sk.classList.contains('is-closed')){if(sk.contains(e.target))open();return}if(!e.target.closest('.skb__hit'))close()});
   sk.addEventListener('keydown',function(e){if(sk.classList.contains('is-closed'))return;if(e.key==='ArrowRight'&&!busy&&k<MAX){e.preventDefault();go(k+1)}if(e.key==='ArrowLeft'&&!busy&&k>1){e.preventDefault();go(k-1)}if(e.key==='Escape')close()});
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(en){if(en[0].isIntersecting){near(1);io.disconnect()}},{rootMargin:'400px'});io.observe(sk)}
