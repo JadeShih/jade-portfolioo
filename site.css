@@ -1949,3 +1949,25 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
   .kl-end{margin-bottom:40px}
   .kl-onb2__track{--cw:calc(var(--h) * .4621);width:calc(100% + max(24px,env(safe-area-inset-right,0px)));margin-right:calc(-1 * max(24px,env(safe-area-inset-right,0px)));grid-auto-columns:var(--cw);-webkit-mask-image:none;mask-image:none}
 }
+/* 手機版熱點：小圓點＋編號清單 */
+.ob-legend{display:none}
+@media (max-width:760px){
+  .ob-hot .ob-hs__dot,.cs-sec .ob-hot .ob-hs__dot{width:16px!important;height:16px!important;margin:-8px 0 0 -8px!important;border-width:2px!important;font-size:0!important}
+  .ob-hot .ob-hs__dot span{display:none}
+  .ob-hot .ob-hs__dot::after{inset:-6px;animation:obPulse 1.8s cubic-bezier(.2,0,0,1) infinite}
+  .ob-hot .ob-hs.is-open .ob-hs__dot{transform:scale(1.35)}
+  .ob-hot .ob-hs[data-pos^="b"] .ob-hs__tip{top:16px}
+  .ob-hot .ob-hs[data-pos^="t"] .ob-hs__tip{bottom:16px}
+  .ob-legend{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:0;list-style:none}
+  .ob-legend__panel .ob-hs__tip{position:static;display:none;width:auto;margin-top:14px;opacity:1;visibility:visible;pointer-events:auto;transform:none!important;transition:none}
+  .ob-legend__panel .ob-hs__tip.is-shown{display:block}
+  .cs-sec .ob-legend__btn{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:4px 14px 4px 4px;border:2px solid var(--jade-sys-color-outline);border-radius:999px;background:var(--jade-ref-palette-neutral100);color:var(--jade-ref-palette-neutral10);font:700 14px/1.2 var(--font-plain),"Noto Sans TC",sans-serif;cursor:pointer}
+  .ob-legend__btn span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--jade-sys-color-secondary);color:var(--jade-sys-color-on-secondary);font:700 13px/1 var(--font-plain)}
+  .ob-legend__btn[data-tone="cyan"] span{background:var(--jade-sys-color-cyan);color:var(--jade-sys-color-on-cyan)}
+  .ob-legend__btn[data-tone="pink"] span{background:var(--jade-sys-color-tertiary);color:var(--jade-sys-color-on-tertiary)}
+  .ob-legend__btn[data-tone="yellow"] span{background:var(--jade-sys-color-yellow);color:var(--jade-sys-color-on-yellow)}
+  .cs-sec .ob-legend__btn[aria-pressed="true"]{background:var(--jade-ref-palette-neutral10);color:#fff}
+  .ob-legend__btn:focus-visible{outline:3px solid var(--jade-sys-color-focus-ring);outline-offset:3px}
+}
+@media (max-width:760px) and (prefers-reduced-motion:reduce){.ob-hot .ob-hs__dot::after{animation:none}}
+@media (max-width:760px){.ob-legend__panel .ob-hs__tip.is-shown .ex-tip__img{transform:none;opacity:1}}

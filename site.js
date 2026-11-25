@@ -583,3 +583,22 @@
   document.addEventListener('keydown',function(e){if(!m.classList.contains('is-open'))return;if(e.key==='Escape'){shut();return}
     if(e.key==='Tab'){var f=[].slice.call(m.querySelectorAll('a,button')),a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
   matchMedia('(min-width:761px)').addEventListener('change',function(q){if(q.matches&&m.classList.contains('is-open'))shut()})})();
+/* 手機版熱點：圖上小圓點＋下方編號清單，說明卡移到清單下方 */
+(function(){
+  var figs=document.querySelectorAll('.ob-hot');if(!figs.length)return;var mq=matchMedia('(max-width:760px)'),all=[];
+  [].forEach.call(figs,function(f){var hs=[].slice.call(f.querySelectorAll('.ob-hs'));if(!hs.length)return;
+    var ol=document.createElement('ol');ol.className='ob-legend';ol.setAttribute('aria-label','製作物清單');
+    var pn=document.createElement('div');pn.className='ob-legend__panel';
+    var items=hs.map(function(h,i){var d=h.querySelector('.ob-hs__dot'),t=h.querySelector('.sr-only'),tip=h.querySelector('.ob-hs__tip'),li=document.createElement('li'),b=document.createElement('button');
+      b.type='button';b.className='ob-legend__btn';b.setAttribute('aria-pressed','false');if(tip&&tip.dataset.tone)b.dataset.tone=tip.dataset.tone;
+      b.innerHTML='<span>'+(i+1)+'</span>'+(t?t.textContent:'');
+      b.addEventListener('click',function(e){e.stopPropagation();d.click();sync()});li.appendChild(b);ol.appendChild(li);
+      return {h:h,b:b,tip:tip}});
+    f.appendChild(ol);f.appendChild(pn);
+    function sync(){items.forEach(function(it){var o=it.h.classList.contains('is-open');it.b.setAttribute('aria-pressed',o?'true':'false');if(it.tip)it.tip.classList.toggle('is-shown',o)})}
+    function place(){items.forEach(function(it){if(!it.tip)return;if(mq.matches){if(it.tip.parentNode!==pn)pn.appendChild(it.tip)}else if(it.tip.parentNode!==it.h)it.h.appendChild(it.tip)})}
+    place();all.push({place:place,sync:sync})});
+  function syncAll(){setTimeout(function(){all.forEach(function(a){a.sync()})},0)}
+  document.addEventListener('click',syncAll,true);document.addEventListener('keydown',syncAll,true);
+  mq.addEventListener('change',function(){all.forEach(function(a){a.place();a.sync()})});
+})();
