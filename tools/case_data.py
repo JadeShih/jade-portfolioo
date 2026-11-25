@@ -46,7 +46,7 @@ CASES={
            dict(tone='pink',img='work-03-package-03-web',cap='水凝乳外盒與軟管',alt='舒緩脂癢水凝乳外盒與軟管並列，外盒印有金色花朵線條')],
   next=dict(title='好葉智能選股APP',attr='href="./work-05-kolapp.html"')),
  'work-05-kolapp':dict(
-  num='05',tone='lime',body_cls=' cs-body--dark',deco=(('circle','yellow'),('scallop','coral')),
+  num='04',tone='lime',body_cls=' cs-body--dark',deco=(('circle','yellow'),('scallop','coral')),
   title_en='Better Leaf App',title_zh='好葉智能選股APP',
   desc='Jade Shih 作品：YouTuber Better Leaf 好葉「好葉智能選股」APP 主視覺規劃、品牌識別與介面視覺。',
   tags=['金融投資','Better Leaf 好葉','2025'],
@@ -60,7 +60,7 @@ CASES={
   after=case_extra.kolapp2(),
   next=dict(title='聊天室搜尋功能優化',attr='href="./work-06-chat.html"')),
  'work-06-chat':dict(
-  num='06',tone='lavender',body_cls=' cs-body--ink',deco=(('flower','cyan'),('blob','pink')),
+  num='05',tone='lavender',body_cls=' cs-body--ink',deco=(('flower','cyan'),('blob','pink')),
   title_en='Chat Search',title_zh='聊天室搜尋功能優化',
   desc='Jade Shih 作品：APP 聊天室訊息搜尋功能優化，從問題定義到解法設計與規格交付。',
   tags=['UI/UX','YouTuber Mike是麥克','功能優化'],tagline='',
@@ -70,7 +70,7 @@ CASES={
   cards=[],gallery_style='none',gallery=[],extra=case_extra.chat(),
   next=dict(title='益生菌電商商品頁設計',attr='href="./work-07-pdp.html"')),
  'work-07-pdp':dict(
-  num='07',tone='yellow',deco=(('flower','cyan'),('blob','pink')),
+  num='06',tone='yellow',deco=(('flower','cyan'),('blob','pink')),
   title_en='Probiotics PDP',title_zh='益生菌電商商品頁設計',
   desc='Jade Shih 作品：易廣健康事業 天萃苑益生漾 電商商品詳情頁（PDP）視覺設計。',
   tags=['平面設計','易廣健康事業','PDP 商店頁'],tagline='',
@@ -83,7 +83,7 @@ CASES={
   after='<figure class="pdp-end"><svg class="pdp-end__cut" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V20 C 1200 64, 960 64, 720 36 S 240 0, 0 40 Z" fill="currentColor"/></svg><picture><source media="(max-width:760px)" srcset="public/works/work-07-pdp/web-end-m.webp?v=1125a" type="image/webp"><source media="(max-width:760px)" srcset="public/works/work-07-pdp/web-end-m.jpg?v=1125a"><source srcset="public/works/work-07-pdp/web-end.webp?v=1118v" type="image/webp"><img src="public/works/work-07-pdp/web-end.jpg?v=1118v" width="2400" height="1603" alt="天萃苑系列產品商品頁主視覺：大奧御植酵素、益生漾、安鍵、新鍵-P" loading="lazy" decoding="async"></picture><figcaption class="pdp-end__txt">One look,<br>whole series<small>一套視覺，延伸整個系列</small></figcaption></figure>',
   next=dict(title='凝神99禮盒聯名商品頁設計',attr='href="./work-08-pdp.html"')),
  'work-08-pdp':dict(
-  num='08',tone='coral',deco=(('flower','yellow'),('blob','cyan')),
+  num='07',tone='coral',deco=(('flower','yellow'),('blob','cyan')),
   title_en='Ning Shen 99',title_zh='凝神99禮盒聯名商品頁設計',
   desc='Jade Shih 作品：正官庄 × Mr. Donothing 聯名「凝神99禮盒」電商商品詳情頁（PDP）視覺設計。',
   tags=['平面設計','正官庄','聯名 PDP'],tagline='',
@@ -95,7 +95,7 @@ CASES={
   gallery_style='none',gallery=[],extra=case_extra.pdp('work-08-pdp',7170,'正官庄 × Mr. Donothing 凝神99禮盒商品頁完整長圖'),
   next=dict(title='籌碼K線 拉新用戶活動',attr='href="./work-09-OPENLAB.html"')),
  'work-09-OPENLAB':dict(
-  num='09',tone='cyan',deco=(('flower','pink'),('blob','yellow')),
+  num='08',tone='cyan',deco=(('flower','pink'),('blob','yellow')),
   title_en='Cat Gacha',title_zh='籌碼K線 拉新用戶活動',
   desc='Jade Shih 作品：CMoney 籌碼K線拉新用戶活動，日式扭蛋主題的互動式 Landing Page。',
   tags=['平面設計','CMoney','互動行銷'],tagline='',
@@ -107,7 +107,7 @@ CASES={
   gallery_style='none',gallery=[],extra=case_extra.gacha(),
   next=dict(title='高麗蔘紅石榴飲商品頁設計',attr='href="./work-10-pdp.html"')),
  'work-10-pdp':dict(
-  num='10',tone='pink',deco=(('flower','yellow'),('blob','cyan')),
+  num='09',tone='pink',deco=(('flower','yellow'),('blob','cyan')),
   title_en='Pomegranate',title_zh='高麗蔘紅石榴飲商品頁設計',
   desc='Jade Shih 作品：正官庄「高麗蔘紅石榴飲」電商商品詳情頁（PDP）視覺設計。',
   tags=['平面設計','正官庄','PDP 商店頁'],tagline='',
@@ -119,7 +119,7 @@ CASES={
   gallery_style='none',gallery=[],extra=case_extra.pdp('work-10-pdp',9479,'正官庄高麗蔘紅石榴飲商品頁完整長圖'),
   next=dict(title='EVERYTIME 系列產品四摺 DM',attr='href="./work-11-dm.html"')),
  'work-11-dm':dict(
-  num='11',tone='coral',deco=(('flower','yellow'),('blob','cyan')),
+  num='10',tone='coral',deco=(('flower','yellow'),('blob','cyan')),
   title_en='EVERYTIME',title_zh='EVERYTIME 系列產品四摺 DM',
   desc='Jade Shih 作品：正官庄 EVERYTIME 系列產品四摺 DM 視覺設計。',
   tags=['平面設計','正官庄','四摺 DM'],tagline='',
@@ -131,7 +131,7 @@ CASES={
   gallery_style='none',gallery=[],extra=case_extra.dm(),
   next=dict(title='BenQ MOBIUZ 電競螢幕 DM',attr='href="./work-12-dm.html"')),
  'work-12-dm':dict(
-  num='12',tone='lime',deco=(('flower','cyan'),('blob','pink')),
+  num='11',tone='lime',deco=(('flower','cyan'),('blob','pink')),
   title_en='MOBIUZ',title_zh='BenQ MOBIUZ 電競螢幕 DM',
   desc='Jade Shih 作品：BenQ MOBIUZ 電競螢幕實體通路 DM 與牆面視覺設計。',
   tags=['平面設計','BenQ','2021'],tagline='',
@@ -143,7 +143,7 @@ CASES={
   gallery_style='none',gallery=[],extra=case_extra.benq(),
   next=dict(title='語音直播免費場轉 VIP 場',attr='href="./work-13-vip.html"')),
  'work-13-vip':dict(
-  num='13',tone='cyan',body_cls=' cs-body--ink',deco=(('flower','pink'),('blob','cyan')),
+  num='12',tone='cyan',body_cls=' cs-body--ink',deco=(('flower','pink'),('blob','cyan')),
   title_en='Free to VIP',title_zh='語音直播免費場轉 VIP 場',
   desc='Jade Shih 作品：APP 語音直播「前段免費、後段 VIP」權限切換功能，從問題定義、轉換設計到邊界情境與規格交付。',
   tags=['UI/UX','YouTuber Mike是麥克','付費轉換'],tagline='',
@@ -163,7 +163,7 @@ CASES={
   cards=[],gallery_style='none',gallery=[],extra=case_extra.skill(),
   next=dict(title='30 日畫畫',attr='href="./work-28-drawing.html"')),
  'work-15-calendar':dict(
-  num='14',tone='lavender',body_cls=' cs-body--ink',deco=(('flower','yellow'),('blob','cyan')),
+  num='13',tone='lavender',body_cls=' cs-body--ink',deco=(('flower','yellow'),('blob','cyan')),
   title_en='US Market Calendar',title_zh='美股事件行事曆',
   desc='Jade Shih 作品：投資 App 的美股事件行事曆，從首頁提醒擴展為總體與個股事件頁，並定義時區、顯示區間與排序等資訊規則。',
   tags=['UI/UX','YouTuber Mike是麥克','功能規劃'],tagline='',
@@ -173,7 +173,7 @@ CASES={
   cards=[],gallery_style='none',gallery=[],extra=case_extra.cal(),
   next=dict(title='瞇瞇眼大叔短影音',attr='href="./work-16-mimi.html"')),
  'work-16-mimi':dict(
-  num='15',tone='coral',deco=(('flower','yellow'),('blob','pink')),
+  num='14',tone='coral',deco=(('flower','yellow'),('blob','pink')),
   title_en='Dr. Squint Shorts',title_zh='瞇瞇眼大叔短影音',
   desc='Jade Shih 作品：婦產科鍾國騰醫師粉絲專頁短影音，負責頻道視覺定位與六款影片模板設計，並擔任現場攝影。',
   tags=['短影音','鍾國騰醫師','模板設計'],tagline='',
@@ -183,7 +183,7 @@ CASES={
   cards=[],gallery_style='none',gallery=[],extra=case_extra.mimi(),
   next=dict(title='Shell 殼牌喜力新品海報',attr='href="./work-17-shell.html"')),
  'work-17-shell':dict(
-  num='16',tone='yellow',deco=(('flower','pink'),('blob','cyan')),
+  num='15',tone='yellow',deco=(('flower','pink'),('blob','cyan')),
   title_en='Shell Helix',title_zh='Shell 殼牌喜力新品海報',
   desc='Jade Shih 作品：Shell 殼牌喜力新款鐵罐引擎潤滑油上市形象海報，僅以產品圖進行影像合成。',
   tags=['平面設計','Shell 殼牌','2021'],tagline='',
@@ -195,7 +195,7 @@ CASES={
   gallery_style='none',gallery=[],extra=case_extra.shell(),
   next=dict(title='SONIC 汽修工具簡易型錄',attr='href="./work-18-catalog.html"')),
  'work-18-catalog':dict(
-  num='17',tone='cyan',deco=(('flower','pink'),('blob','yellow')),
+  num='16',tone='cyan',deco=(('flower','pink'),('blob','yellow')),
   title_en='SONIC',title_zh='SONIC 汽修工具簡易型錄',
   desc='Jade Shih 作品：SONIC 汽修工具品牌簡易產品型錄設計。',
   tags=['平面設計','大豐集團 SONIC','2022'],tagline='',
@@ -207,7 +207,7 @@ CASES={
   gallery_style='none',gallery=[],extra=case_extra.catalog(),
   next=dict(title='明台產險企業永續報告書',attr='href="./work-19-catalog.html"')),
  'work-19-catalog':dict(
-  num='18',tone='pink',deco=(('flower','lime'),('blob','cyan')),
+  num='17',tone='pink',deco=(('flower','lime'),('blob','cyan')),
   title_en='CSR Report',title_zh='明台產險企業永續報告書',
   desc='Jade Shih 作品：明台產物保險 2021 年企業永續報告書（CSR）視覺設計提案，以等角插畫建立永續議題的視覺語言。',
   tags=['平面設計','明台產險','2022'],tagline='',
@@ -221,7 +221,7 @@ CASES={
                                  dict(tone='pink',img='work-19-catalog/web-03',cap='第 05 章 專欄',alt='第 05 章「專欄」章節頁與綠色創新商品內頁')],
   next=dict(title='博士倫 LACELLE 雜誌風型錄',attr='href="./work-20-catalog.html"')),
  'work-20-catalog':dict(
-  num='19',tone='lavender',deco=(('flower','pink'),('blob','yellow')),
+  num='18',tone='lavender',deco=(('flower','pink'),('blob','yellow')),
   title_en='LACELLE',title_zh='博士倫 LACELLE 雜誌風型錄',
   desc='Jade Shih 作品：博士倫 LACELLE 蕾絲炫眸系列雜誌風格產品型錄設計。',
   tags=['平面設計','博士倫','2020'],tagline='',
@@ -234,7 +234,7 @@ CASES={
                                  dict(tone='pink',img='work-20-catalog/web-02',cap='內頁與封面陳列',alt='LACELLE 型錄多本攤開陳列，可見人物特寫與鏡片色彩內頁')],
   next=dict(title='ORBIS 淨擊煥白精華露公關禮盒',attr='href="./work-21-orbis.html"')),
  'work-21-orbis':dict(
-  num='20',tone='coral',deco=(('flower','cyan'),('blob','lime')),
+  num='19',tone='coral',deco=(('flower','cyan'),('blob','lime')),
   title_en='ORBIS PR Box',title_zh='ORBIS 淨擊煥白精華露公關禮盒',
   desc='Jade Shih 作品：ORBIS 淨擊煥白精華露新品上市公關禮盒，從袖套、內襯結構到成分小卡的包裝設計。',
   tags=['包裝設計','ORBIS','2021'],tagline='',
@@ -246,7 +246,7 @@ CASES={
   gallery_style='none',gallery=[],extra=case_extra.orbis(),
   next=dict(title='鹿港天后宮聯名信用卡',attr='href="./work-22-credit.html"')),
  'work-22-credit':dict(
-  num='21',tone='yellow',deco=(('flower','pink'),('blob','cyan')),
+  num='20',tone='yellow',deco=(('flower','pink'),('blob','cyan')),
   title_en='Lugang Mazu Co-branded Card',title_zh='鹿港天后宮聯名信用卡',
   desc='Jade Shih 作品：合作金庫銀行 × 鹿港天后宮聯名信用卡卡面設計，以媽祖神像為主視覺，可 360° 拖曳旋轉檢視正反面。',
   tags=['平面設計','合作金庫','2016'],tagline='',
@@ -258,7 +258,7 @@ CASES={
   gallery_style='none',gallery=[],extra=case_extra.credit(),
   next=dict(title='長春藤生物科技 醫學展會',attr='href="./work-23-expo.html"')),
  'work-23-expo':dict(
-  num='22',tone='cyan',deco=(('flower','yellow'),('blob','pink')),
+  num='21',tone='cyan',deco=(('flower','yellow'),('blob','pink')),
   title_en='Medical Expo Booth',title_zh='長春藤生物科技 醫學展會',
   desc='Jade Shih 作品：長春藤生物科技內科醫學會年會展會視覺，從展會背板延伸出邀請卡、易拉展、小冊、DM、手舉板等九項製作物。',
   tags=['展場・活動','長春藤生物科技','2022'],tagline='',
@@ -270,7 +270,7 @@ CASES={
   gallery_style='none',gallery=[],extra=case_extra.expo(),
   next=dict(title='愛他命 × 國衛院記者會',attr='href="./work-24-expo.html"')),
  'work-24-expo':dict(
-  num='23',tone='pink',deco=(('flower','cyan'),('blob','yellow')),
+  num='22',tone='pink',deco=(('flower','cyan'),('blob','yellow')),
   title_en='Press Conference',title_zh='愛他命 × 國衛院記者會',
   desc='Jade Shih 作品：愛他命創醫行銷 × 國衛院「醫療專家品質評測認證計劃」記者會，從背板、易拉展、DM 到手舉牌與桌卡的活動視覺統籌。',
   tags=['展場・活動','愛他命','2023'],tagline='',
@@ -282,7 +282,7 @@ CASES={
   gallery_style='none',gallery=[],extra=case_extra.press(),
   next=dict(title='CMoney 尾牙福委會制服',attr='href="./work-25-uniform.html"')),
  'work-25-uniform':dict(
-  num='24',tone='lavender',body_cls=' cs-body--dark',deco=(('circle','yellow'),('scallop','cyan')),
+  num='23',tone='lavender',body_cls=' cs-body--dark',deco=(('circle','yellow'),('scallop','cyan')),
   title_en='Team C Uniform',title_zh='CMoney 尾牙福委會制服',
   desc='Jade Shih 作品：CMoney 年度尾牙「雅典運動會」福委會工作人員制服設計，以 TEAM C 為核心圖樣。',
   tags=['平面設計','CMoney','2024'],tagline='',
@@ -295,7 +295,7 @@ CASES={
   after=case_extra.uniform(),
   next=dict(title='明台產險年度贈禮',attr='href="./work-26-series.html"')),
  'work-26-series':dict(
-  num='25',tone='cyan',deco=(('circle','yellow'),('scallop','pink')),
+  num='24',tone='cyan',deco=(('circle','yellow'),('scallop','pink')),
   title_en='2022 Gift Set',title_zh='明台產險年度贈禮',
   desc='Jade Shih 作品：明台產物保險 2022 年度企業贈禮，三角桌曆、筆記本與包裝信封，以「Always at Your Side」為核心的手繪插畫系列。',
   tags=['平面設計','明台產險','2021'],tagline='',
@@ -308,7 +308,7 @@ CASES={
   extra=case_extra.series(),
   next=dict(title='明台產險新春賀卡',attr='href="./work-27-card.html"')),
  'work-27-card':dict(
-  num='26',tone='yellow',deco=(('flower','coral'),('circle','cyan')),
+  num='25',tone='yellow',deco=(('flower','coral'),('circle','cyan')),
   title_en='Year Of The Tiger',title_zh='明台產險新春賀卡',
   desc='Jade Shih 作品：明台產物保險 2022 虎年新春賀卡提案，結合 60 週年與日式御守、抽籤文化的刮刮樂賀卡。',
   tags=['平面設計','明台產險','2022'],tagline='',
