@@ -2247,3 +2247,10 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .op-vid video{display:block;width:100%;height:auto;border:var(--jade-sys-stroke-width) solid var(--jade-sys-color-outline);border-radius:var(--jade-sys-shape-corner-large,20px);background:#FFF7E6}
 .op-vid figcaption{font:900 18px/1.4 "Noto Sans TC",sans-serif}
 @media (max-width:760px){.op-pair{grid-template-columns:1fr}.op-vid figcaption{font-size:15px}}
+/* 三款主題小卡：改用 DS 色票（與 What I made 卡同一組 tone） */
+.nt-theme{--tone:var(--jade-sys-color-tertiary);--on-tone:var(--jade-sys-color-on-tertiary);background:var(--tone)!important;border:var(--jade-sys-stroke-width,2px) solid var(--jade-sys-color-outline);border-radius:var(--jade-sys-shape-corner-large,20px);box-shadow:4px 4px 0 var(--jade-sys-color-outline)}
+.nt-theme[data-tone="cyan"]{--tone:var(--jade-sys-color-cyan);--on-tone:var(--jade-sys-color-on-cyan)}
+.nt-theme[data-tone="yellow"]{--tone:var(--jade-sys-color-yellow);--on-tone:var(--jade-sys-color-on-yellow)}
+.nt-theme[data-tone="lime"]{--tone:var(--jade-sys-color-secondary);--on-tone:var(--jade-sys-color-on-secondary)}
+.nt-theme__en,.nt-theme b,.nt-theme p{color:var(--on-tone)}
+.nt-theme__en{opacity:.75}
