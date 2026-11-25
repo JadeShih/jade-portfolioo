@@ -686,7 +686,7 @@ def drawing28():
     img=(f'<img src="{src}" width="640" height="923" alt="{alt}" decoding="async">' if i<3 else f'<img data-skb="../{src}" width="640" height="923" alt="{alt}" decoding="async">')
     return f'<div class="skb__face {cls}">{img}<i></i></div>'
   N=len(pages)//2
-  TABS={2:('3','cyan','5%'),8:('15','lime','24%'),10:('19','pink','43%'),25:('49','yellow','62%'),28:('55','coral','81%')}
+  TABS={2:('3','cyan','4%'),5:('9','purple','20%'),8:('15','lime','36%'),10:('19','pink','52%'),25:('49','yellow','68%'),28:('55','coral','84%')}
   def tab(i):
     if i not in TABS:return ''
     n,t,y=TABS[i]
