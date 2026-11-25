@@ -2002,3 +2002,12 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
   html.navmenu-lock .totop{display:none}
 }
 @media (max-width:760px) and (prefers-reduced-motion:reduce){.totop{transition:none}}
+/* 手機版案例頁：圖說字級縮小、開頭區塊間距縮短（11/25） */
+@media (max-width:760px){
+  .bq-fig figcaption{font-size:15px}
+  .bq-fig figcaption span{font-size:13px}
+  .cs-shot figcaption{font-size:13px}
+  .cs-body>.wrap{padding-top:56px}
+  .cs-overview{margin-top:48px}
+  .cs-cards{margin-top:40px}
+}
