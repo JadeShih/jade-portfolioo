@@ -754,4 +754,4 @@ def poster31():
   shelf=(f'<figure class="mt-fig"><button type="button" class="mt-fig__b" data-lb="op" aria-label="放大檢視：腰貼在陳列架上的示意">{pic(F+"web-shelf",1536,1024,"經典咖哩腰貼貼在便利商店冷藏陳列架上的示意圖")}</button>'
          f'<figcaption>✦ 陳列架示意</figcaption></figure>')
   return (f'<section class="cs-sec">{head("Layer by Layer","Building the Poster","海報構成","從純色背景、桌面、餐點到標題與 Logo，一層層疊出完整畫面。")}<div class="op-pair">{vid}{full}</div></section>'
-          f'<section class="cs-sec">{head("Shelf Strip","Resize for the Shelf","陳列架腰貼","延續主視覺，重新調整成 60.5 × 9.5 cm 的長條比例，貼在便利商店的商品陳列架上。")}{strip}{shelf}</section>')
+          f'<section class="cs-sec">{head("Shelf Strip","Resize for the Shelf","陳列架腰貼","延續主視覺，重新調整成 60.5 × 9.5 cm 的長條比例，貼在便利商店的商品陳列架上。")}{shelf}</section>')
