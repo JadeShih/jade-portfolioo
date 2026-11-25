@@ -699,4 +699,4 @@ def drawing28():
         '<button type="button" class="skb__hit skb__hit--l" aria-label="上一頁"></button><button type="button" class="skb__hit skb__hit--r" aria-label="下一頁"></button>'
         '<button type="button" class="skb__open" aria-label="打開速寫本"></button></div></div>')
   return (f'<section class="cs-sec">{head("Sketchbook","Flip Through","翻翻我的速寫本")}'
-          f'<div class="skb-stage">{book}<button type="button" class="skb-first" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/></svg>回到第一頁</button></div></section>')
+          f'<div class="skb-stage">{book}</div></section>')
