@@ -2154,3 +2154,6 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 @media (max-width:760px){.ob-hs[data-cards] .ob-mc{display:none}}
 .sh-apps--one{display:block!important;max-width:520px;margin-inline:auto}
 @media (max-width:760px){.sh-apps--one{overflow:visible;margin-inline:auto;padding:0;max-width:84%}.sh-apps--one>.sh-app{flex:none}}
+/* 電腦版：各頁頂部藍底加首頁淺色方格線（手機版 48px 格） */
+.ab-hero,.wk-hero,.ct-hero,.cs-hero{--line:color-mix(in srgb,var(--jade-sys-color-on-surface) 9%,transparent);background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;background-position:center top}
+@media (max-width:760px){.ab-hero,.wk-hero,.ct-hero,.cs-hero{background-size:48px 48px}}
