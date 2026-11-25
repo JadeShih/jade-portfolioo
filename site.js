@@ -586,8 +586,8 @@
 /* 手機版熱點：圖上小圓點，點了說明卡從底部彈出；小冊圓點直接捲到試翻區 */
 (function(){
   var figs=document.querySelectorAll('.ob-hot');if(!figs.length)return;var mq=matchMedia('(max-width:760px)'),items=[];
-  var sh=document.createElement('div');sh.className='ob-sheet cs-sec';sh.innerHTML='<div class="ob-sheet__card" role="dialog" aria-modal="false" aria-label="製作物說明"><button type="button" class="ob-sheet__x" aria-label="關閉說明"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>';
-  document.body.appendChild(sh);var card=sh.firstChild,x=card.querySelector('.ob-sheet__x');
+  var sh=document.createElement('div');sh.className='ob-sheet cs-sec';sh.innerHTML='<button type="button" class="ob-sheet__x" aria-label="關閉說明"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div class="ob-sheet__card" role="dialog" aria-modal="false" aria-label="製作物說明"></div>';
+  document.body.appendChild(sh);var card=sh.querySelector('.ob-sheet__card'),x=sh.querySelector('.ob-sheet__x');
   function closeAll(){items.forEach(function(it){it.h.classList.remove('is-open');var d=it.h.querySelector('.ob-hs__dot');d&&d.setAttribute('aria-expanded','false')});sync()}
   x.addEventListener('click',function(e){e.stopPropagation();closeAll();if(last)last.focus({preventScroll:true})});
   var last=null;
@@ -597,7 +597,7 @@
       if(go){e.stopImmediatePropagation();e.preventDefault();var t=document.querySelector(go.getAttribute('href'));if(t)t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'})}},true);
     if(go)go.addEventListener('click',function(){closeAll()})})});
   function sync(){var any=false;items.forEach(function(it){var o=it.h.classList.contains('is-open');if(it.tip)it.tip.classList.toggle('is-shown',o);if(o)any=true});sh.classList.toggle('is-on',mq.matches&&any)}
-  function place(){items.forEach(function(it){if(!it.tip)return;if(mq.matches){if(it.tip.parentNode!==card)card.insertBefore(it.tip,x)}else if(it.tip.parentNode!==it.h)it.h.appendChild(it.tip)})}
+  function place(){items.forEach(function(it){if(!it.tip)return;if(mq.matches){if(it.tip.parentNode!==card)card.appendChild(it.tip)}else if(it.tip.parentNode!==it.h)it.h.appendChild(it.tip)})}
   place();
   function later(){setTimeout(sync,0)}
   document.addEventListener('click',later,true);document.addEventListener('keydown',later,true);
