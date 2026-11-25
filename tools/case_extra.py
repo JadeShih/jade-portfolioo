@@ -726,3 +726,20 @@ def banner29():
       cls='bn-wrapc'
     out+=f'<section class="cs-sec bn-sec">{head(en,en.replace("&","&amp;"),zh,lead).replace(f'<p class="eyebrow">{en}</p>',f'<p class="eyebrow">{len(BN29[g])} pieces</p>')}<div class="{cls}">{figs}</div></section>'
   return out
+
+
+def note30():
+  # 27 ORBIS 便條紙組：三款主題＋實際使用情境
+  F='work-30-note/'
+  def fig(n,alt,cap,sub):
+    return (f'<figure class="mt-fig"><button type="button" class="mt-fig__b" data-lb="n30" aria-label="放大檢視：{html.escape(alt)}">{pic(F+n,2400,1600,alt)}</button>'
+            f'<figcaption>✦ {cap}<span class="nt-sub">{sub}</span></figcaption></figure>')
+  themes=[('pink','防曬','Sunshine','陽光與海星，對應防曬系列的明亮與夏日感。'),
+          ('cyan','保濕','Water','水滴與清透藍，呼應保濕化妝水的水潤質地。'),
+          ('yellow','營養補給','Citrus','柑橘切片與暖黃，帶出營養補給品的元氣感。')]
+  t=''.join(f'<li class="nt-theme" data-tone="{tone}"><span class="nt-theme__en">{en}</span><b>{zh}</b><p>{d}</p></li>' for tone,zh,en,d in themes)
+  return (f'<section class="cs-sec">{head("Three Themes","One Product, One Note","三款主題便條紙","把三款明星商品各自轉成一個手繪元素，用水彩質感和粉嫩配色串成同一組。")}'
+          f'<ul class="nt-themes">{t}</ul>'
+          f'{fig("web-01","ORBIS 便條紙組正面：防曬、保濕、營養補給三款便條紙與專屬背卡","便條紙組與背卡","三款便條紙排在同一張專屬背卡上，左上角是品牌 Logo")}</section>'
+          f'<section class="cs-sec">{head("In Use","Everyday Notes","日常使用情境","便條紙實際貼在筆記本裡寫上待辦，讓品牌自然出現在每天的生活中。")}'
+          f'{fig("web-02","ORBIS 便條紙實際貼在方格筆記本中，寫著化妝水、卸妝油等待辦事項","貼在筆記本裡的樣子","寫上待辦清單，三種尺寸對應不同長度的筆記")}</section>')

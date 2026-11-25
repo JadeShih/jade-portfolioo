@@ -345,5 +345,18 @@ CASES={
          dict(tone='yellow',title='How I work',zh='我的做法',text='先找出這個版位上最重要的一件事，可能是價格、期限或活動名稱，再用主視覺、色塊和按鈕排出閱讀順序。同一檔活動先做主尺寸，再延伸成其他版位，讓每個尺寸看起來都是同一套視覺。')],
   gallery_style='none',gallery=[],
   extra=case_extra.banner29(),
+  next=dict(title='品牌便條紙組',attr='href="./work-30-note.html"')),
+ 'work-30-note':dict(
+  num='27',tone='pink',deco=(('flower','yellow'),('circle','cyan')),
+  title_en='Sticky Note Set',title_zh='品牌便條紙組',
+  desc='Jade Shih 作品：ORBIS 品牌禮贈品便條紙組，以手繪插畫和水彩質感，把防曬、保濕、營養補給三款商品轉成日常文具。',
+  tags=['平面設計','ORBIS','2020'],tagline='',
+  cover='work-30-note/web-cover',cover_w=2400,cover_h=1600,cover_alt='ORBIS 便條紙組懸浮在米色背景上，三款粉藍黃便條紙排在白色背卡',
+  meta=[('Client','ORBIS'),('Role','視覺設計'),('Deliverables','便條紙・專屬背卡'),('Year','2020')],
+  overview='<p>為 ORBIS 打造品牌禮贈品便條紙組，結合旗下多款保養產品特色，設計兼具實用性與品牌識別的文具小物。</p>',
+  cards=[dict(tone='cyan',title='What I made',zh='我的設計',text='以「將保養融入日常」作為設計概念，運用手繪插畫、水彩質感與柔和的粉嫩配色，將不同產品的特性轉化為具象的視覺元素。透過陽光、水滴與柑橘等意象，分別呼應防曬、保濕與營養補給的產品特色。'),
+         dict(tone='yellow',title='What happened next',zh='後續成果',text='完成三款不同主題的便條紙與專屬背卡設計，將品牌產品特色延伸至日常文具用品，透過實用功能與輕巧的視覺表現，提升禮贈品的親和力與使用價值，讓品牌形象自然融入消費者的日常生活。')],
+  gallery_style='none',gallery=[],
+  extra=case_extra.note30(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }

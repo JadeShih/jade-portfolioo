@@ -2251,3 +2251,12 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
   .bn-row .bn-fig__img{box-shadow:4px 4px 0 var(--jade-ref-palette-neutral10,#16143A)}
 }
 @media (prefers-reduced-motion:reduce){.bn-car__prog i{transition:none}}
+/* 27 ORBIS 便條紙組 */
+.nt-themes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:clamp(24px,3vw,40px) 0 0;padding:0;list-style:none}
+.nt-theme{padding:22px 22px 24px;border:2px solid var(--jade-ref-palette-neutral10,#16143A);border-radius:20px;background:#FFE3EC;box-shadow:4px 4px 0 var(--jade-ref-palette-neutral10,#16143A)}
+.nt-theme[data-tone="cyan"]{background:#DDF4FA}.nt-theme[data-tone="yellow"]{background:#FFF1C9}
+.nt-theme__en{display:block;font:400 13px/1 var(--font-plain);letter-spacing:.14em;text-transform:uppercase;color:var(--jade-sys-color-on-surface-variant)}
+.nt-theme b{display:block;margin-top:10px;font:700 22px/1.3 "Noto Sans TC",sans-serif;color:var(--jade-ref-palette-neutral10,#16143A)}
+.nt-theme p{margin:8px 0 0;font:400 15px/1.7 "Noto Sans TC",sans-serif;color:var(--jade-ref-palette-neutral10,#16143A)}
+.nt-sub{display:block;margin-top:2px;font-weight:400;color:var(--jade-sys-color-on-surface-variant)}
+@media (max-width:760px){.nt-themes{grid-template-columns:1fr;gap:14px}}
