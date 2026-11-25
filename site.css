@@ -2100,3 +2100,4 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 @media (max-width:760px) and (prefers-reduced-motion:reduce){.ob-sheet,.ob-sheet__card{transition:none}}
 .ob-sheet.cs-sec{margin-top:0}
 @media (max-width:760px){.hero__actions{display:none}}
+@media (max-width:760px){.pdp-end img{aspect-ratio:1/1;object-position:50% 50%}}
