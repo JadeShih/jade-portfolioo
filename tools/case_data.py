@@ -338,7 +338,7 @@ CASES={
   title_en='Banner Collection',title_zh='廣告視覺合輯',
   desc='Jade Shih 作品：橫跨保健、醫療、金融與保險品牌的廣告視覺合輯，依用途整理成 App 彈窗、官網電商橫幅與社群貼文三組。',
   tags=['平面設計','廣告視覺','2019–2026'],tagline='',
-  cover='work-29-banner/web-cover',cover_w=2400,cover_h=1600,cover_alt='多款廣告視覺拼貼：正官庄檔期橫幅、財經 App 彈窗、長春藤與寶島眼科社群貼文',
+  cover='work-29-banner/web-cover',cover_w=2400,cover_h=1600,cover_alt='多款廣告視覺斜向拼貼在黃色背景上：檔期橫幅、財經 App 彈窗與社群貼文',
   meta=[('Client','正官庄・ORIX・寶島眼科・長春藤 等'),('Role','視覺設計'),('Deliverables','App 彈窗・網站橫幅・社群貼文'),('Year','2019–2026')],
   overview='<p>這裡整理了我在不同公司、為不同品牌做的廣告視覺。品牌和尺寸都不一樣，所以不照品牌排，而是依用途分成三組：App 彈窗、官網與電商橫幅，以及社群貼文。</p>',
   cards=[dict(tone='cyan',title='What I made',zh='我做了什麼',text='橫跨保健、醫療、金融與保險產業 10 多個品牌，從財經 App 的訂閱彈窗、品牌官網與 momo 檔期橫幅，到醫療衛教與節慶社群貼文。'),
