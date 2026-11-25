@@ -755,3 +755,18 @@ def poster31():
          f'<figcaption>✦ 陳列架示意</figcaption></figure>')
   return (f'<section class="cs-sec">{head("Layer by Layer","Building the Poster","海報構成","從純色背景、桌面、餐點到標題與 Logo，一層層疊出完整畫面。")}<div class="op-pair">{vid}{full}</div></section>'
           f'<section class="cs-sec">{head("Shelf Strip","Resize for the Shelf","陳列架腰貼","延續主視覺，重新調整成 60.5 × 9.5 cm 的長條比例，貼在便利商店的商品陳列架上。")}{shelf}</section>')
+
+def envelope32():
+  # 29 Brother 年節紅包袋：一系列三款，以印表機、裁縫機、影印機為主體
+  F='work-32-envelope/'
+  def fig(n,w,h,alt,cap):
+    c=f'<figcaption>✦ {cap}</figcaption>' if cap else ''
+    return f'<figure class="mt-fig"><button type="button" class="mt-fig__b" data-lb="e32" aria-label="放大檢視：{html.escape(alt)}">{pic(F+n,w,h,alt)}</button>{c}</figure>'
+  themes=[('pink','心心相印','Printer','以多功能印表機為主體，取「印」字諧音祝福彼此心意相通。'),
+          ('yellow','喜迎相縫','Sewing Machine','以家用裁縫機為主體，用「縫」諧音「逢」，迎接新年相聚。'),
+          ('cyan','好彩頭','Copier','以影印機為主體，搭配海浪雲紋，祝新的一年有個好開始。')]
+  t=''.join(f'<li class="nt-theme" data-tone="{tone}"><span class="nt-theme__en">{en}</span><b>{zh}</b><p>{d}</p></li>' for tone,zh,en,d in themes)
+  return (f'<section class="cs-sec">{head("Series of Three","Three Products, Three Wishes","一系列三款","以 Brother 的三款產品作為主體，各自搭配一句諧音吉祥話。")}'
+          f'<ul class="nt-themes">{t}</ul>{fig("web-01",2400,1840,"Brother 2020 年節紅包袋三款並排：心心相印、喜迎相縫、好彩頭","三款紅包袋")}</section>'
+          f'<section class="cs-sec">{head("Front & Back","Opening Detail","正面與背面","正面是產品線條插畫與金色細線，背面延續中式信封的開口結構。")}'
+          f'{fig("web-02",2400,1600,"紅包袋正面與背面：正面是裁縫機插畫，背面為信封式開口","正面與背面")}</section>')

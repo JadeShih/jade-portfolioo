@@ -371,5 +371,18 @@ CASES={
          dict(tone='yellow',title='What happened next',zh='後續成果',text='延續主視覺設計，進一步 Resize 並調整版面比例，應用於便利商店商品陳列架的腰貼設計，強化商品於貨架上的辨識度與促購氛圍。')],
   gallery_style='none',gallery=[],
   extra=case_extra.poster31(),
+  next=dict(title='Brother 年節紅包袋',attr='href="./work-32-envelope.html"')),
+ 'work-32-envelope':dict(
+  num='29',tone='pink',deco=(('flower','yellow'),('circle','cyan')),
+  title_en='Lunar New Year Envelope',title_zh='Brother 年節紅包袋',
+  desc='Jade Shih 作品：Brother 2020 年節紅包袋，一系列三款，以印表機、裁縫機、影印機為主體，結合中式元素與鼠年生肖插畫。',
+  tags=['平面設計','Brother','2020'],tagline='',
+  cover='work-32-envelope/web-cover',cover_w=2400,cover_h=1600,cover_alt='紅色紅包袋特寫：金色線條的印表機插畫與 HAPPY NEW YEAR 2020 字樣',
+  meta=[('Client','Brother'),('Role','視覺設計'),('Deliverables','年節紅包袋'),('Year','2020')],
+  overview='<p>2020 年農曆新年，Brother 以紅包袋作為年節溝通載體，期望在節慶送禮情境中延續品牌辨識，同時讓整體視覺兼具喜氣、質感與企業形象。</p>',
+  cards=[dict(tone='cyan',title='What I made',zh='我的設計',text='正面運用品牌產品與中式元素，結合背面信封式開口結構，讓紅包袋在未開啟時就具備完整的儀式感。整體透過對稱構圖、細線插畫與生肖鼠、雲紋、花飾等細節，平衡商業品牌感與傳統新年意象。'),
+         dict(tone='yellow',title='What happened next',zh='後續成果',text='這款紅包袋設計讓 Brother 在年節贈禮與品牌溝通上，有了更完整且具記憶點的視覺呈現，也展現出品牌在節慶物件上的延伸能力。相較於一般制式紅包袋，它不只傳遞祝福，也進一步把品牌印象、產品聯想與節慶情境整合在同一個設計載體中。')],
+  gallery_style='none',gallery=[],
+  extra=case_extra.envelope32(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
