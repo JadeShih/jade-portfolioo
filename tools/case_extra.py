@@ -686,11 +686,11 @@ def drawing28():
     img=(f'<img src="{src}" width="640" height="923" alt="{alt}" decoding="async">' if i<3 else f'<img data-skb="../{src}" width="640" height="923" alt="{alt}" decoding="async">')
     return f'<div class="skb__face {cls}">{img}<i></i></div>'
   N=len(pages)//2
-  TABS={1:('1','cyan','8%'),5:('10','lime','30%'),10:('20','pink','52%')}
+  TABS={1:('1','cyan','8%'),8:('15','lime','30%'),10:('19','pink','52%')}
   def tab(i):
     if i not in TABS:return ''
     n,t,y=TABS[i]
-    return f'<button type="button" class="skb__tab" data-go="{i}" data-tone="{t}" style="--ty:{y}" aria-label="翻到第 {n} 頁"><span>{n}</span><span class="skb__tab-b" aria-hidden="true">{n}</span></button>'
+    return f'<button type="button" class="skb__tab" data-go="{i}" data-tone="{t}" style="--ty:{y}" aria-label="翻到第 {n} 頁"></button>'
   lv=''.join(f'<div class="skb__leaf{" skb__leaf--cover" if i==0 else ""}" style="z-index:{N-i}">'
              f'{face2("skb__face--front"+(" skb__face--cover" if i==0 else ""),pages[2*i],i)}{face2("skb__face--back",pages[2*i+1],i)}{rim}{tab(i)}</div>' for i in range(N))
   book=(f'<div class="skb is-closed" data-l="0" data-r="33" role="group" aria-label="30 日畫畫速寫本"><div class="skb__obj"><div class="skb__shadow"></div>'
