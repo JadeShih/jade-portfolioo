@@ -687,5 +687,5 @@ def drawing28():
         '<div class="skb__edge"></div><div class="skb__edge skb__edge--b"></div>'
         '<button type="button" class="skb__hit skb__hit--l" aria-label="上一頁"></button><button type="button" class="skb__hit skb__hit--r" aria-label="下一頁"></button>'
         '<button type="button" class="skb__open" aria-label="打開速寫本"></button></div></div>')
-  return (f'<section class="cs-sec">{head("Sketchbook","Flip Through","翻翻我的速寫本","點一下速寫本把它打開，點右頁往後翻、左頁往前翻；點旁邊的空白處，它就會闔起來。")}'
-          f'<div class="skb-stage">{book}<p class="skb-hint">點右頁往後翻・點左頁往前翻・點空白處闔上</p></div></section>')
+  return (f'<section class="cs-sec">{head("Sketchbook","Flip Through","翻翻我的速寫本")}'
+          f'<div class="skb-stage">{book}</div></section>')
