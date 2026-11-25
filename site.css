@@ -2233,3 +2233,5 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .bn-car .kl-dot.is-on{background:var(--jade-sys-color-primary)!important;width:32px}
 @media (max-width:760px){.bn-car{--h:min(380px,52vh);--gut:24px;gap:16px}.bn-row>.bn-fig{max-width:80vw}}
 .cs-sec .bn-fig__img{border:0;border-radius:14px}.cs-sec .bn-fig__img:hover{transform:none}
+.mt-fig figcaption{font:900 18px/1.4 "Noto Sans TC",sans-serif}
+@media (max-width:760px){.mt-fig figcaption{font-size:15px}}

@@ -730,8 +730,8 @@ def note30():
   # 27 ORBIS 便條紙組：三款主題＋實際使用情境
   F='work-30-note/'
   def fig(n,alt,cap,sub):
-    return (f'<figure class="mt-fig"><button type="button" class="mt-fig__b" data-lb="n30" aria-label="放大檢視：{html.escape(alt)}">{pic(F+n,2400,1600,alt)}</button>'
-            f'<figcaption>✦ {cap}<span class="nt-sub">{sub}</span></figcaption></figure>')
+    c=f'<figcaption>✦ {cap}</figcaption>' if cap else ''
+    return (f'<figure class="mt-fig"><button type="button" class="mt-fig__b" data-lb="n30" aria-label="放大檢視：{html.escape(alt)}">{pic(F+n,2400,1600,alt)}</button>{c}</figure>')
   themes=[('pink','防曬','Sunshine','陽光與海星，對應防曬系列的明亮與夏日感。'),
           ('cyan','保濕','Water','水滴與清透藍，呼應保濕化妝水的水潤質地。'),
           ('yellow','營養補給','Citrus','柑橘切片與暖黃，帶出營養補給品的元氣感。')]
@@ -740,4 +740,4 @@ def note30():
           f'<ul class="nt-themes">{t}</ul>'
           f'{fig("web-01","ORBIS 便條紙組正面：防曬、保濕、營養補給三款便條紙與專屬背卡","便條紙組與背卡","三款便條紙排在同一張專屬背卡上，左上角是品牌 Logo")}</section>'
           f'<section class="cs-sec">{head("In Use","Everyday Notes","日常使用情境","便條紙實際貼在筆記本裡寫上待辦，讓品牌自然出現在每天的生活中。")}'
-          f'{fig("web-02","ORBIS 便條紙實際貼在方格筆記本中，寫著化妝水、卸妝油等待辦事項","貼在筆記本裡的樣子","寫上待辦清單，三種尺寸對應不同長度的筆記")}</section>')
+          f'{fig("web-02","ORBIS 便條紙實際貼在方格筆記本中，寫著化妝水、卸妝油等待辦事項","","")}</section>')
