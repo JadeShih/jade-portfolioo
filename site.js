@@ -602,3 +602,10 @@
   document.addEventListener('click',syncAll,true);document.addEventListener('keydown',syncAll,true);
   mq.addEventListener('change',function(){all.forEach(function(a){a.place();a.sync()})});
 })();
+/* 手機版回到最上方 */
+(function(){var b=document.createElement('button');b.type='button';b.className='totop';b.setAttribute('aria-label','回到最上方');
+  b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+  document.body.appendChild(b);var on=false;
+  function chk(){var s=scrollY>innerHeight*1.2;if(s!==on){on=s;b.classList.toggle('is-on',s)}}
+  addEventListener('scroll',chk,{passive:true});chk();
+  b.addEventListener('click',function(){scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});var h=document.querySelector('.jade-navigation-bar a');if(h)h.focus({preventScroll:true})})})();

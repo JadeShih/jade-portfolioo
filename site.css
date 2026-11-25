@@ -1971,3 +1971,34 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 }
 @media (max-width:760px) and (prefers-reduced-motion:reduce){.ob-hot .ob-hs__dot::after{animation:none}}
 @media (max-width:760px){.ob-legend__panel .ob-hs__tip.is-shown .ex-tip__img{transform:none;opacity:1}}
+/* 手機版修改（11/25，Figma 256-15949） */
+.totop{display:none}
+@media (max-width:760px){
+  /* 首頁：兩顆按鈕拉開 */
+  .hero__actions{row-gap:20px}
+  /* 首頁貼紙順序：10 年經歷 → 50+ 合作品牌 → 400+ 專案 → AI practice → Open for work */
+  .badges .b-exp{order:1}.badges .b-brands{order:2}.badges .b-project{order:3}.badges .b-ai{order:4}.badges .b-contact{order:5}
+  /* 案例封面星形貼紙：縮小（transform 被浮動動畫佔用，改用 scale 屬性） */
+  .cs-hero__st{transform:none;scale:.46;transform-origin:0 0;left:-10px;top:-26px}
+  /* 首頁精選作品：ALL WORKS 資料夾放大，移除下方按鈕 */
+  .deck__item--folder{flex-basis:min(84vw,500px);margin-left:-12vw}
+  .sec--deck .work-more{display:none!important}
+  .deck__track{width:calc(100% + 8px)!important;max-width:none}
+  /* 作品頁篩選：一排左右滑動 */
+  .wk-filters{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;margin-inline:calc(-1 * var(--gutter,24px));padding:4px var(--gutter,24px);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .wk-filters::-webkit-scrollbar{display:none}
+  .wk-filter{flex:0 0 auto;white-space:nowrap}
+  /* 選單按鈕：像素感 */
+  .navmenu__link{transform:none;box-shadow:none;border-radius:0;
+    clip-path:polygon(0 8px,4px 8px,4px 4px,8px 4px,8px 0,calc(100% - 8px) 0,calc(100% - 8px) 4px,calc(100% - 4px) 4px,calc(100% - 4px) 8px,100% 8px,100% calc(100% - 8px),calc(100% - 4px) calc(100% - 8px),calc(100% - 4px) calc(100% - 4px),calc(100% - 8px) calc(100% - 4px),calc(100% - 8px) 100%,8px 100%,8px calc(100% - 4px),4px calc(100% - 4px),4px calc(100% - 8px),0 calc(100% - 8px))}
+  .navmenu__item{filter:drop-shadow(6px 6px 0 var(--jade-ref-palette-primary40))}
+  .navmenu__link[aria-current=page]{filter:none}
+  /* 回到最上方 */
+  .totop{display:grid;place-items:center;position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:40;width:52px;height:52px;padding:0;border:2.5px solid var(--jade-ref-palette-neutral10);border-radius:50%;background:var(--jade-sys-color-secondary);color:var(--jade-ref-palette-neutral10);box-shadow:3px 3px 0 var(--jade-ref-palette-neutral10);cursor:pointer;opacity:0;visibility:hidden;translate:0 12px;transition:opacity .25s,translate .3s cubic-bezier(.2,.8,.2,1),visibility .25s}
+  .totop.is-on{opacity:1;visibility:visible;translate:0 0}
+  .totop:active{translate:2px 2px;box-shadow:1px 1px 0 var(--jade-ref-palette-neutral10)}
+  .totop:focus-visible{outline:3px solid var(--jade-sys-color-focus-ring);outline-offset:4px}
+  .totop svg{width:24px;height:24px}
+  html.navmenu-lock .totop{display:none}
+}
+@media (max-width:760px) and (prefers-reduced-motion:reduce){.totop{transition:none}}
