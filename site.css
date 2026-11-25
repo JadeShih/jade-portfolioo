@@ -2201,7 +2201,6 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .bn-fig__img img,.bn-fig__img picture{display:block;width:100%;height:auto}
 .bn-fig figcaption{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;font:500 13px/1.4 var(--font-plain),"Noto Sans TC",sans-serif;color:var(--jade-sys-color-on-surface-variant)}
 .bn-fig figcaption b{font:700 14px/1.4 "Noto Sans TC",sans-serif;color:var(--jade-sys-color-on-surface)}
-.bn-fig figcaption em{font-style:normal;margin-left:auto;padding:2px 8px;border-radius:999px;background:var(--jade-ref-palette-neutral95,#EFF0FF);font:600 11px/1.4 var(--font-plain);letter-spacing:.04em;white-space:nowrap}
 
 /* 官網：兩欄，寬版跨欄 */
 .bn-wide{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:28px 24px;align-items:start}

@@ -710,7 +710,7 @@ def banner29():
     img=(f'<img src="{P}{F}{n}.gif" width="{w}" height="{h}" alt="{html.escape(alt)}" loading="lazy" decoding="async">' if ext=='gif' else pic(F+n,w,h,alt))
     t,_,u=cap.partition('・')
     return (f'<figure class="bn-fig" style="--ar:{w}/{h}"><button type="button" class="bn-fig__img" data-lb="{grp}" aria-label="放大檢視：{html.escape(alt)}">{img}</button>'
-            f'<figcaption><b>{html.escape(t)}</b>{"<span>"+html.escape(u)+"</span>" if u else ""}<em>{w0} × {h0}</em></figcaption></figure>')
+            f'<figcaption><b>{html.escape(t)}</b>{"<span>"+html.escape(u)+"</span>" if u else ""}</figcaption></figure>')
   G=[('app','App & Membership','App 彈窗・會員轉換','財經 App 的訂閱、優惠與年度回顧活動：在一張 600 × 800 的彈窗裡，把方案、價格、期限和行動按鈕排出清楚的閱讀順序。','bn-row'),
      ('web','Web & E-commerce','官網・電商橫幅','品牌官網主視覺與 momo、官方商城的檔期橫幅。','bn-wide'),
      ('social','Social Posts','社群貼文・EDM','醫療、保險品牌的衛教與節慶貼文，把專業資訊整理成手機一眼看得懂的圖文。','bn-row')]
