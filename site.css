@@ -2152,3 +2152,5 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 }
 @media (max-width:760px) and (prefers-reduced-motion:reduce){.ob-scatter__card{animation:none;transition:none}}
 @media (max-width:760px){.ob-hs[data-cards] .ob-mc{display:none}}
+.sh-apps--one{display:block!important;max-width:520px;margin-inline:auto}
+@media (max-width:760px){.sh-apps--one{overflow:visible;margin-inline:auto;padding:0;max-width:84%}.sh-apps--one>.sh-app{flex:none}}

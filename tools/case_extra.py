@@ -427,8 +427,8 @@ def shell():
     f'<figure class="sh-step sh-step--final"><p class="sh-step__tag">After<span>合成完成的場景</span></p>'
     f'<button type="button" class="sh-final" data-lb="sh" aria-label="放大檢視：形象海報">{pic(F+"web-poster",1500,1850,"合成後的產品場景：紅紫雙罐置於深色空間，搭配霓虹光束與地面反射")}</button>'
     f'<p class="sh-step__note">背景、光束與地面反射都是合成出來的</p></figure></div></section>'
-    f'<section class="cs-sec">{sh("Applications","One Visual, Many Formats","延伸應用","同一套主視覺延伸到桌曆、筆記本與 A4 文宣，依各尺寸重新安排版面。")}'
-    f'<div class="sh-apps">{fig("web-calendar",2400,1714,"殼牌喜力新品桌曆封面","桌曆"," sh-app--wide")}{fig("web-note",1200,1679,"殼牌喜力新品筆記本封面","筆記本")}{fig("web-a4",1200,1697,"殼牌喜力新品 A4 文宣","A4 文宣")}</div></section>')
+    f'<section class="cs-sec">{sh("Applications","One Visual, Many Formats","延伸應用","同一套主視覺延伸到筆記本封面，依尺寸重新安排版面。")}'
+    f'<div class="sh-apps sh-apps--one">{fig("web-note",1200,1679,"殼牌喜力新品筆記本封面","筆記本")}</div></section>')
 
 def catalog():
   # 18 SONIC 簡易型錄：展開頁
