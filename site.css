@@ -2072,3 +2072,30 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .skb-hint{position:absolute;left:16px;right:16px;bottom:22px;margin:0;text-align:center;color:#DAD7F0;font:500 13px/1.5 var(--font-plain),"Noto Sans TC",sans-serif;pointer-events:none}
 @media (max-width:760px){.skb{--pw:min(160px,calc((100vw - 72px) / 2))}.skb-stage{min-height:420px;padding:40px 8px 64px}}
 .skb__face picture{display:block;width:100%;height:100%}
+/* 手機版（11/25 下午）：熱點說明改成底部彈出卡、首頁標題放大、各頁頂部格線、選單去掉 Let's talk */
+.ob-sheet{display:none}
+@media (max-width:760px){
+  .ob-hot .ob-hs__dot,.cs-sec .ob-hot .ob-hs__dot{width:20px!important;height:20px!important;margin:-10px 0 0 -10px!important}
+  .ob-sheet{display:flex;align-items:flex-end;position:fixed;inset:0;z-index:70;padding:16px max(12px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));background:rgba(22,20,58,.38);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+  .ob-sheet.is-on{opacity:1;visibility:visible}
+  .ob-sheet__card{position:relative;width:100%;max-height:78svh;overflow:auto;translate:0 24px;transition:translate .35s cubic-bezier(.2,.8,.2,1)}
+  .ob-sheet.is-on .ob-sheet__card{translate:0 0}
+  .ob-sheet__card .ob-hs__tip{position:static;display:none;width:auto;opacity:1;visibility:visible;pointer-events:auto;transform:none!important;transition:none;padding:60px 20px 20px}
+  .ob-sheet__card .ob-hs__tip.is-shown{display:block}
+  .ob-sheet__card .ob-hs__tip.is-shown .ex-tip__img{transform:none;opacity:1}
+  .ob-sheet .ob-sheet__x,.ob-sheet__x{position:absolute;top:10px;right:10px;z-index:2;display:grid;place-items:center;width:40px;height:40px;padding:0;border:2px solid var(--jade-ref-palette-neutral10);border-radius:50%;background:#fff;color:var(--jade-ref-palette-neutral10);cursor:pointer}
+  .ob-sheet__x svg{width:18px;height:18px}
+  .ob-sheet__x:focus-visible{outline:3px solid var(--jade-sys-color-focus-ring);outline-offset:3px}
+  html:has(.ob-sheet.is-on) .totop{opacity:0;visibility:hidden}
+  /* 首頁：英文標題放大、和副標距離縮短 */
+  .hero__title{font-size:min(16.4vw,66px)}
+  .hero__sub{margin-top:14px}
+  /* 各頁頂部藍底：加首頁的淺色方格線 */
+  .ab-hero,.wk-hero,.ct-hero,.cs-hero{--line:color-mix(in srgb,var(--jade-sys-color-on-surface) 9%,transparent);background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:48px 48px;background-position:center top}
+  /* 各頁頂部到波浪的距離縮短 */
+  .ab-hero>.wrap,.wk-hero>.wrap,.ct-hero>.wrap{padding-bottom:48px}
+  /* 選單：拿掉 Let's talk */
+  .navmenu__cta{display:none}
+}
+@media (max-width:760px) and (prefers-reduced-motion:reduce){.ob-sheet,.ob-sheet__card{transition:none}}
+.ob-sheet.cs-sec{margin-top:0}
