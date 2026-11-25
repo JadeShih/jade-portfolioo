@@ -2102,3 +2102,4 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 @media (max-width:760px){.hero__actions{display:none}}
 @media (max-width:760px){.pdp-end img{aspect-ratio:1/1;object-position:50% 50%}}
 @media (max-width:760px){.kl-end{margin-bottom:0}.kl-end img{width:100%;height:auto}.kl-end__txt{bottom:52px}}
+@media (max-width:760px){.cs-hero__st{scale:.6;left:-12px;top:-34px}}
