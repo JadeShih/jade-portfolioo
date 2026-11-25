@@ -717,5 +717,12 @@ def banner29():
   out=''
   for g,en,zh,lead,cls in G:
     figs=''.join(fig(*it,'bn-'+g) for it in BN29[g])
+    if cls=='bn-row':
+      ARL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>'
+      ARR='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>'
+      figs=(f'<div class="bn-car"><div class="bn-car__bar"><span class="bn-car__count" aria-hidden="true"><b>01</b> / {len(BN29[g]):02d}</span>'
+            f'<span class="bn-car__ctrl"><button type="button" class="bn-car__btn" data-dir="-1" aria-label="上一張">{ARL}</button><button type="button" class="bn-car__btn" data-dir="1" aria-label="下一張">{ARR}</button></span></div>'
+            f'<div class="bn-row" tabindex="0" aria-label="{zh}，可左右捲動">{figs}</div><div class="bn-car__prog" aria-hidden="true"><i></i></div></div>')
+      cls='bn-wrapc'
     out+=f'<section class="cs-sec bn-sec">{head(en,en.replace("&","&amp;"),zh,lead).replace(f'<p class="eyebrow">{en}</p>',f'<p class="eyebrow">{len(BN29[g])} pieces</p>')}<div class="{cls}">{figs}</div></section>'
   return out
