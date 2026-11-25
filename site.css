@@ -2151,3 +2151,4 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
   @keyframes obPop{from{opacity:0;transform:translateY(40px) rotate(0deg) scale(.7)}}
 }
 @media (max-width:760px) and (prefers-reduced-motion:reduce){.ob-scatter__card{animation:none;transition:none}}
+@media (max-width:760px){.ob-hs[data-cards] .ob-mc{display:none}}
