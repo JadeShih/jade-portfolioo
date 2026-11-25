@@ -630,7 +630,7 @@
     for(i=0;i<steps;i++){turn(dir>0?from+i:from-1-i,dir>0,i*STEP)}
     for(i=0;i<steps;i++)(function(j){setTimeout(function(){ds(dir>0?from+j+1:from-j-1)},j*STEP+FLIP*.5)})(i);
     setTimeout(function(){moving={};seq=0;z();ds(k);busy=false;fb();cb&&cb()},(steps-1)*STEP+FLIP+40)}
-  function close(){if(busy||sk.classList.contains('is-closed'))return;last=k||1;if(first)first.hidden=true;go(0,function(){sk.classList.add('is-closed');fb()})}
+  function close(){if(busy||sk.classList.contains('is-closed'))return;last=1;if(first)first.hidden=true;go(0,function(){sk.classList.add('is-closed');fb()})}
   function open(){if(busy)return;busy=true;near(last);bg();sk.classList.remove('is-closed');setTimeout(function(){busy=false;go(last)},500)}
   sk.querySelector('.skb__hit--r').addEventListener('click',function(e){e.stopPropagation();if(!busy&&k<MAX)go(k+1)});
   sk.querySelector('.skb__hit--l').addEventListener('click',function(e){e.stopPropagation();if(!busy&&k>0)go(k-1)});
