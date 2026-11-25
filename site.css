@@ -2180,3 +2180,9 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .cs-sec .skb__tab[data-tone="cyan"]{background:#7FE3FF}.cs-sec .skb__tab[data-tone="pink"]{background:#FF7AC6}
 .cs-sec .skb__tab[data-tone="yellow"]{background:#FFD23F}
 .cs-sec .skb__tab[data-tone="coral"]{background:#FF6B4A}
+.skb-first{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:2px solid #16143A;border-radius:999px;background:#fff;color:#16143A;font:700 13px/1 var(--font-plain),"Noto Sans TC",sans-serif;box-shadow:3px 3px 0 #16143A;cursor:pointer;z-index:5}
+.cs-sec .skb-first{cursor:pointer;background:#fff;border:2px solid #16143A;padding:8px 16px}
+.skb-first svg{width:16px;height:16px}
+.skb-first:active{transform:translate(calc(-50% + 2px),2px);box-shadow:1px 1px 0 #16143A}
+.skb-first:focus-visible{outline:3px solid #c6ff00;outline-offset:3px}
+.skb-first[hidden]{display:none!important}
