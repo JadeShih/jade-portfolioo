@@ -2309,3 +2309,8 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .sbk__hint{margin:0;color:rgba(255,255,255,.72);font-size:13px;text-align:center}
 @media (max-width:760px){.sbk{--pw:min(150px,calc((100vw - 100px) / 2))}}
 @media (prefers-reduced-motion:reduce){.sbk{--dur:.01s}}
+
+/* 首頁精選作品拖曳中：不要選取文字、游標顯示抓取中 */
+.deck.is-dragging,.deck.is-dragging *{cursor:grabbing!important;-webkit-user-select:none;user-select:none}
+/* 首頁精選作品（桌機）：卡片的左緣對齊「Selected Works」標題，--deck-left 由 site.js 量測 */
+@media (min-width:761px){.deck__stage{place-items:center start}.deck__track{margin-left:var(--deck-left,0px)}}

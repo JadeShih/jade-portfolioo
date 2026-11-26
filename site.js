@@ -441,10 +441,12 @@
   var deck=document.querySelector('.deck');if(!deck)return;
   var items=[].slice.call(deck.querySelectorAll('.deck__item')),N=items.length,cur=deck.querySelector('.deck__cur');
   var mq=matchMedia('(max-width:760px),(prefers-reduced-motion:reduce)');
-  var cw=0,top0=0,span=1,ticking=false,last=-1;
+  var cw=0,top0=0,span=1,ticking=false,last=-1,mid=0;
   function measure(){
     if(mq.matches){items.forEach(function(it){it.style.transform='';it.style.zIndex='';it.style.opacity=''});return}
-    cw=items[0].offsetWidth;deck.style.setProperty('--ch',items[0].querySelector('.deck__card').offsetHeight+'px');
+    var head=deck.closest('.sec')&&deck.closest('.sec').querySelector('.sec__title'),stage=deck.querySelector('.deck__stage'),left=0;
+    if(head&&stage){left=Math.max(0,Math.round(head.getBoundingClientRect().left-stage.getBoundingClientRect().left));deck.style.setProperty('--deck-left',left+'px')} // 卡片左緣對齊標題
+    cw=items[0].offsetWidth;mid=stage?(stage.clientWidth-cw)/2-left:0; // 最後一張「看全部作品」滑到底時要移到的置中位置deck.style.setProperty('--ch',items[0].querySelector('.deck__card').offsetHeight+'px');
     var r=deck.getBoundingClientRect();top0=r.top+scrollY;span=Math.max(1,deck.offsetHeight-innerHeight);paint();
   }
   function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
@@ -453,8 +455,8 @@
     var p=clamp((scrollY-top0)/span,0,1)*(N-1);
     items.forEach(function(it,i){
       var d=i-p,x,s,r,o=1,z;
-      if(d>=0){var a=Math.min(d,1);x=a*(cw*.96+32)+Math.max(0,d-1)*cw*.9;s=1-.08*a;r=2*a;if(d>2)o=0}
-      else{var t=-d,b=Math.min(t,1),k=Math.min(Math.max(0,t-1),4);x=-b*(cw*.5+28)-k*22;s=1-.14*b-.02*k;r=-2.5*b;if(t>5.5)o=0}
+      if(d>=0){var a=Math.min(d,1);x=a*(cw*.96+32)+Math.max(0,d-1)*cw*.9;s=1-.08*a;r=2*a;if(d>2)o=0;if(i===N-1)x+=(1-a)*mid} // 最後一張滑進來時逐漸移到正中央
+      else{var t=-d;x=-t*cw*.35;s=1-.12*Math.min(t,1.5);r=-2*Math.min(t,1);o=Math.max(0,1-t*1.1)} // 看過的卡片往左縮小、淡出（卡片靠左對齊，左邊沒有空間疊放）
       z=100-Math.round(Math.abs(d)*10);
       it.style.transform='translate3d('+x.toFixed(1)+'px,0,0) scale('+s.toFixed(3)+') rotate('+r.toFixed(2)+'deg)';
       it.style.zIndex=z;it.style.opacity=o;it.style.setProperty('--a',clamp(1-Math.abs(d)*1.6,0,1).toFixed(2));
@@ -470,6 +472,23 @@
   addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(paint)}},{passive:true});
   addEventListener('resize',measure);if(mq.addEventListener)mq.addEventListener('change',measure);
   addEventListener('load',measure);measure();
+  if('ResizeObserver' in window)new ResizeObserver(function(){measure()}).observe(document.body); // 上方圖片載完會把這區往下推，位置要重量，否則卡片對不齊
+  /* 左右拖曳、觸控板左右滑：改的是同一個頁面捲動位置，所以跟原本的捲動接得起來；放開後對齊到最近的一張 */
+  function prog(){return clamp((scrollY-top0)/span,0,1)*(N-1)}
+  function toY(p){return top0+span*clamp(p,0,N-1)/(N-1)}
+  var sx=null,sp=0,dragged=false,lastDrag=0;
+  deck.addEventListener('dragstart',function(e){if(!mq.matches)e.preventDefault()});
+  deck.addEventListener('pointerdown',function(e){if(mq.matches||e.button!==0||e.pointerType==='touch')return;sx=e.clientX;sp=prog();dragged=false});
+  deck.addEventListener('pointermove',function(e){if(sx===null)return;var dx=e.clientX-sx;
+    if(!dragged&&Math.abs(dx)>6){dragged=true;deck.classList.add('is-dragging');try{deck.setPointerCapture(e.pointerId)}catch(_){}}
+    if(dragged)window.scrollTo({top:toY(sp-dx/(cw*.9)),behavior:'instant'})});
+  function release(e){if(sx===null)return;var dx=e.clientX-sx;sx=null;if(!dragged)return;deck.classList.remove('is-dragging');lastDrag=Date.now();
+    var p=prog();goTo(clamp(dx<-40?Math.ceil(p-.15):dx>40?Math.floor(p+.15):Math.round(p),0,N-1),true)}
+  deck.addEventListener('pointerup',release);deck.addEventListener('pointercancel',release);
+  deck.addEventListener('click',function(e){if(Date.now()-lastDrag<350){e.preventDefault();e.stopPropagation()}},true); // 拖曳放開時不要誤點進作品頁
+  var wt=0;
+  deck.addEventListener('wheel',function(e){if(mq.matches||Math.abs(e.deltaX)<=Math.abs(e.deltaY))return;e.preventDefault();
+    window.scrollTo({top:toY(prog()+e.deltaX/400),behavior:'instant'});clearTimeout(wt);wt=setTimeout(function(){goTo(Math.round(prog()),true)},160)},{passive:false});
 })();
 
 /* 可橫向捲動的區塊：讓鍵盤也能聚焦後用方向鍵捲動 */
