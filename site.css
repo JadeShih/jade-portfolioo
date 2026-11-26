@@ -1327,7 +1327,7 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 @keyframes sk-pop{0%{transform:scale(.92);opacity:.3}100%{transform:none;opacity:1}}
 .sk-note{color:#16143A;opacity:.7}
 .sk-roll{margin-top:6px}
-.sk-out img{border:3px solid #16143A;box-shadow:8px 8px 0 #A99BFF}
+.sk-out img{border:0;box-shadow:none}
 /* 版面規範改用圖 */
 .sk-rules__img{margin:0;max-width:480px;width:100%;justify-self:center}
 .sk-rules__img img{display:block;width:100%;height:auto}
@@ -1522,7 +1522,7 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .sh-app figcaption{font:900 16px/1.4 "Noto Sans TC",sans-serif}
 @media (max-width:820px){.sh-flow{grid-template-columns:minmax(0,1fr)}.sh-arrow{justify-self:center;transform:rotate(90deg)}.sh-apps{grid-template-columns:1fr 1fr}.sh-app--wide{grid-column:1/-1}}
 /* 案例頁圖片邊框統一：墨色 2px 外框＋柔和陰影（同益生菌 PDP 長圖），新增案例頁一律沿用 */
-:is(.ob-img,.cs-stack__item,.dm-shot__frame,.bq-fig__img,.mm-tp__img,.sh-app__img,.sh-final,.sh-raw,.sk-gimg,.sk-out,.sk-rules__img,.kl-feat__shot,.kl-round,.kl-plain,.kl-prop__img,.kl-logo__formula,.ch-sq,.ch-pimg,.pdp-strip__col,.cs-shot__frame){border:0!important;box-shadow:0 0 0 2px #16143A,0 14px 34px rgba(22,20,58,.16)!important;overflow:hidden}
+:is(.ob-img,.cs-stack__item,.dm-shot__frame,.bq-fig__img,.mm-tp__img,.sh-app__img,.sh-final,.sh-raw,.sk-gimg,.sk-rules__img,.kl-feat__shot,.kl-round,.kl-plain,.kl-prop__img,.kl-logo__formula,.ch-sq,.ch-pimg,.pdp-strip__col,.cs-shot__frame){border:0!important;box-shadow:0 0 0 2px #16143A,0 14px 34px rgba(22,20,58,.16)!important;overflow:hidden}
 :is(.kl-feat__shot,.kl-plain,.kl-prop__img,.ch-sq,.ch-pimg,.sk-rules__img){border-radius:16px!important}
 /* 成果區一般擺放（取代疊放） */
 .cs-figs{margin-top:clamp(40px,6vw,72px)}
