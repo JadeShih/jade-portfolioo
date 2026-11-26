@@ -1669,7 +1669,13 @@ article.kl-prop.is-final:hover{border-color:var(--kl-ac)!important}
 .deck__item--folder{align-self:center;--a:1}
 .deck__folder{display:block;width:92%;margin:0 auto;transform:rotate(-4deg);transition:transform .35s cubic-bezier(.2,0,0,1);-webkit-tap-highlight-color:transparent}
 .deck__folder img,.deck__folder picture{display:block;width:100%;height:auto}
-.deck__folder:hover{transform:rotate(-1deg) scale(1.04)}
+.deck__folder:hover{transform:rotate(1deg) scale(1.08) translateY(-2%);transition-timing-function:cubic-bezier(.34,1.56,.64,1)}
+.deck__folder:active{transform:rotate(-4deg) scale(.96);transition-duration:.12s}
+/* 資料夾成為目前這張時彈跳一下（site.js 加 is-pop） */
+@keyframes folder-pop{0%{transform:none}30%{transform:translateY(-4%) scale(1.13) rotate(3deg)}52%{transform:translateY(1%) scale(.95) rotate(-2deg)}70%{transform:translateY(-1%) scale(1.04) rotate(1deg)}86%{transform:scale(.99)}100%{transform:none}}
+.deck__folder picture{transform-origin:50% 85%}
+.deck__folder.is-pop picture{animation:folder-pop .8s cubic-bezier(.3,.7,.3,1)}
+@media (prefers-reduced-motion:reduce){.deck__folder.is-pop picture{animation:none}}
 .deck__folder:focus-visible{outline:3px solid var(--jade-sys-color-secondary);outline-offset:8px;border-radius:24px}
 @media (max-width:760px),(prefers-reduced-motion:reduce){.deck__item--folder{align-self:center}.deck__folder{transform:none}}
 /* 精選作品：標題與第一張卡的距離收斂（卡片停住前，往上貼近標題） */
@@ -2349,3 +2355,11 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
   .desk.is-nb .desk__nb{--tx:42cqw;--ty:22.5cqw;--s:.96}
   .desk.is-cal .desk__cal{--tx:-17cqw;--ty:-32cqw;--s:1.5}
 }
+/* 首頁插圖離開畫面中段時縮小消失（site.js 加 is-out），下次捲回來再用原本的 pop 動畫跳出；用 scale 屬性才不會蓋掉各自的旋轉 */
+@keyframes art-out{to{opacity:0;scale:.3}}
+.exp-art.is-out>*,.brands-art.is-out .brands-art__item,.pg-art.is-out .pg-art__item,.skill-cards.is-out .skill-card{animation:art-out .3s cubic-bezier(.4,0,1,1) both}
+@media (prefers-reduced-motion:reduce){.exp-art.is-out>*,.brands-art.is-out .brands-art__item,.pg-art.is-out .pg-art__item,.skill-cards.is-out .skill-card{animation:none;opacity:1}}
+/* 頁首 Logo 星星：一直順時針慢慢轉 */
+@keyframes brand-spin{to{transform:rotate(360deg)}}
+.jade-navigation-bar__brand svg{animation:brand-spin 8s linear infinite}
+@media (prefers-reduced-motion:reduce){.jade-navigation-bar__brand svg{animation:none}}

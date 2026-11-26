@@ -92,11 +92,14 @@
   window.addEventListener('load',q);window.addEventListener('resize',q);
 })();
 
-/* 經歷、合作品牌與 Playground 插圖：捲到畫面中才跳出；不支援或要求減少動態時直接顯示 */
+/* 經歷、合作品牌、技能卡與 Playground 插圖：每次捲到畫面中段都跳出、離開時縮小消失；不支援或要求減少動態時直接顯示 */
 (function(){
   var arts=document.querySelectorAll('.exp-art,.brands-art,.pg-art,.skill-cards');
   if(!arts.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');e.target.classList.remove('is-armed');io.unobserve(e.target)}})},{threshold:.35});
+  /* 每次捲進畫面中段就跳出來；離開中段（往上捲過或往回捲）時縮小消失，下次捲回來再跳一次 */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){var t=e.target;
+    if(e.isIntersecting){if(!t.classList.contains('is-in')){t.classList.remove('is-armed');t.classList.remove('is-out');t.classList.add('is-in')}}
+    else if(t.classList.contains('is-in')){t.classList.remove('is-in');t.classList.add('is-out')}})},{threshold:.15,rootMargin:'-8% 0px -20% 0px'});
   [].forEach.call(arts,function(a){a.classList.add('is-armed');io.observe(a)});
 })();
 
@@ -465,7 +468,13 @@
       it.style.zIndex=z;it.style.opacity=o;it.style.setProperty('--a',clamp(1-Math.abs(d)*1.6,0,1).toFixed(2));
     });
     var n=Math.round(p);if(n!==last&&cur){last=n;cur.textContent=String(n+1).padStart(2,'0')}
+    pop(p>N-1.1);
   }
+  /* 「看全部作品」資料夾：成為目前這張時彈跳一下（電腦版看捲動進度，手機版看資料夾有沒有滑進畫面） */
+  var fold=deck.querySelector('.deck__folder'),popOn=false;
+  function pop(v){if(!fold||v===popOn)return;popOn=v;if(v){fold.classList.remove('is-pop');void fold.offsetWidth;fold.classList.add('is-pop')}}
+  if(fold){fold.addEventListener('animationend',function(){fold.classList.remove('is-pop')});
+    if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){if(mq.matches)pop(e.intersectionRatio>=.75)})},{root:fold.closest('.deck__track'),threshold:[0,.75]}).observe(fold)} // 以橫向滑動列為準，只看左右露出多少
   function goTo(i,smooth){window.scrollTo({top:top0+span*i/(N-1),behavior:smooth?'smooth':'instant'})}
   items.forEach(function(it,i){
     var a=it.querySelector(".deck__card,.deck__folder");
