@@ -735,6 +735,13 @@
     else if(mode===which&&e.key==='ArrowLeft'){e.preventDefault();prev()}})}
   keys(nb,'nb',function(){goNb(np+1)},function(){if(np<=1)close();else goNb(np-1)});
   keys(cal,'cal',function(){goCal(cp+1)},function(){goCal(cp-1)});
+  /* 晃動提示：桌面有六成進到畫面時晃一次，停留的話每 4 秒再晃，最多 3 次；捲走再回來重新算；拿起過任何一個就不再晃 */
+  var used=false,wn=0,wt=0,seen=false;
+  function wiggle(){if(used||!seen||wn>=3||mode!=='idle'||rm)return;wn++;
+    g.classList.remove('is-wiggle');void g.offsetWidth;g.classList.add('is-wiggle');
+    setTimeout(function(){g.classList.remove('is-wiggle')},1200);wt=setTimeout(wiggle,4000)}
+  [nb,cal].forEach(function(el){el.addEventListener('click',function(){used=true;g.classList.remove('is-wiggle')},true)});
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){seen=e.isIntersecting;clearTimeout(wt);if(seen){wn=0;wt=setTimeout(wiggle,350)}})},{threshold:.6}).observe(stage);
   drawNb(0);drawCal(0);
 })();
 /* 27 抽卡：選卡→翻正→翻面→刮開→吉祥話＋再抽一次（結構在 tools/frag/27-picker.html） */
