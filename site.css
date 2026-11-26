@@ -2011,66 +2011,6 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
   .cs-cards{margin-top:40px}
 }
 
-/* 28 30 日畫畫：硬紙速寫本（點右頁／左頁翻頁、點空白闔上、再點打開回到上次那頁） */
-.skb{--pw:min(300px,40vw);--ph:calc(var(--pw) * 1.4423);--t:10px;--ease:cubic-bezier(.45,.05,.2,1);
-  position:relative;width:calc(var(--pw) * 2);height:var(--ph);perspective:2200px}
-.skb__obj{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .7s var(--ease),translate .7s var(--ease)}
-.skb__shadow{position:absolute;left:4%;right:4%;bottom:-6%;height:18%;border-radius:50%;background:rgba(10,12,30,.45);filter:blur(18px);transform:translateZ(-2px);transition:left .7s var(--ease),right .7s var(--ease),opacity .7s}
-.skb__book{position:absolute;inset:0;perspective:2400px}
-/* 底板（左右兩疊紙的厚度） */
-.skb__stack{position:absolute;top:0;width:50%;height:100%;border-radius:2px;background:#f4f2ed;transition:box-shadow .5s var(--ease)}
-.skb__stack--l{left:0;border-radius:4px 1px 1px 4px}
-.skb__stack--r{right:0;border-radius:1px 4px 4px 1px}
-.skb[data-l="0"] .skb__stack--l{opacity:0}
-.skb__stack--r{box-shadow:1.5px 1px 0 #e3e0d8,3px 2px 0 #d6d2c8,4.5px 3px 0 #e8e5de,6px 4px 0 #cfcabf,7px 5px 0 #b9b4a8}
-.skb__stack--l{box-shadow:-1.5px 1px 0 #e3e0d8,-3px 2px 0 #d6d2c8,-4.5px 3px 0 #e8e5de,-6px 4px 0 #cfcabf,-7px 5px 0 #b9b4a8}
-.skb[data-l="1"] .skb__stack--l{box-shadow:-1.5px 1px 0 #d6d2c8,-3px 2px 0 #b9b4a8}
-.skb[data-r="1"] .skb__stack--r{box-shadow:1.5px 1px 0 #d6d2c8,3px 2px 0 #b9b4a8}
-/* 書頁 */
-.skb__leaf{--lt:2.5px;position:absolute;top:0;left:50%;width:50%;height:100%;transform-origin:0 50%;transform-style:preserve-3d;transform:rotateY(0deg);transition:transform .9s cubic-bezier(.55,.06,.22,1)}
-.skb__leaf--cover{--lt:4px}
-.skb__leaf.is-turned{transform:rotateY(-180deg)}
-.skb__face{position:absolute;inset:0;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#f4f2ed}
-.skb__face img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;user-select:none}
-.skb__face--front{transform:translateZ(calc(var(--lt) / 2));border-radius:1px 3px 3px 1px}
-.skb__face--back{transform:rotateY(180deg) translateZ(calc(var(--lt) / 2));border-radius:3px 1px 1px 3px}
-/* 紙張厚度：書口、天、地三個側面 */
-.skb__rim{position:absolute;pointer-events:none;background:#e6e2d8}
-.skb__rim--r{top:0;bottom:0;left:calc(100% - var(--lt) / 2);width:var(--lt);transform:rotateY(90deg);background:linear-gradient(90deg,#d8d3c7,#f1eee7 50%,#cfc9bc)}
-.skb__rim--t,.skb__rim--b{left:0;right:0;height:var(--lt);background:linear-gradient(0deg,#d8d3c7,#f1eee7 50%,#cfc9bc)}
-.skb__rim--t{top:calc(var(--lt) / -2);transform:rotateX(90deg)}
-.skb__rim--b{bottom:calc(var(--lt) / -2);transform:rotateX(-90deg)}
-.skb__leaf--cover .skb__rim{background:#b9ab95}
-/* 裝訂線陰影與翻動時的光影 */
-.skb__face::after{content:"";position:absolute;inset:0;pointer-events:none}
-.skb__face--front::after{background:linear-gradient(90deg,rgba(0,0,0,.22),rgba(0,0,0,.06) 6%,transparent 14%,transparent 92%,rgba(0,0,0,.05))}
-.skb__face--back::after{background:linear-gradient(270deg,rgba(0,0,0,.22),rgba(0,0,0,.06) 6%,transparent 14%,transparent 92%,rgba(0,0,0,.05))}
-.skb__face--cover::after{background:linear-gradient(90deg,rgba(0,0,0,.18),transparent 5%,transparent 96%,rgba(0,0,0,.08))}
-.skb__face i{position:absolute;inset:0;opacity:0;pointer-events:none}
-.skb__face i{background:rgba(20,18,40,.16)}
-.skb__leaf.is-moving .skb__face i{animation:skShade .9s var(--ease)}
-@keyframes skShade{0%,100%{opacity:0}50%{opacity:1}}
-/* 闔起來：封面置中、轉一點角度露出書口厚度 */
-.skb__edge{position:absolute;top:0;right:0;width:var(--t);height:100%;transform-origin:100% 50%;transform:rotateY(90deg);background:repeating-linear-gradient(90deg,#f6f4ef 0 1px,#d9d5cb 1px 2px);opacity:0;transition:opacity .3s}
-.skb__edge--b{top:auto;bottom:0;left:50%;width:50%;height:var(--t);transform-origin:50% 100%;transform:rotateX(-90deg);background:repeating-linear-gradient(0deg,#f6f4ef 0 1px,#d9d5cb 1px 2px)}
-.skb.is-closed .skb__obj{translate:calc(var(--pw) * -.5) 0;transform:rotateX(14deg) rotateY(-24deg) rotateZ(2deg)}
-.skb.is-closed .skb__edge{opacity:1;transition-delay:.35s}
-.skb.is-closed .skb__shadow{left:30%;right:-6%}
-.skb.is-closed{cursor:pointer}
-.skb:not(.is-closed) .skb__book{cursor:default}
-.skb__hit{position:absolute;top:0;width:50%;height:100%;z-index:50;background:none;border:0;padding:0;cursor:pointer}
-.skb__hit--l{left:0;cursor:w-resize}.skb__hit--r{right:0;cursor:e-resize}
-.skb.is-closed .skb__hit{display:none}
-.skb__open{position:absolute;inset:0;z-index:60;display:none;background:none;border:0;cursor:pointer}
-.skb.is-closed .skb__open{display:block;left:50%}
-.skb__hit:focus-visible,.skb__open:focus-visible{outline:3px solid #c6ff00;outline-offset:6px}
-@media (prefers-reduced-motion:reduce){.skb__leaf,.skb__obj{transition-duration:.01s}.skb__leaf.is-moving .skb__face i{animation:none}}
-.skb-stage{position:relative;display:grid;place-items:center;min-height:clamp(420px,62vw,640px);margin-top:clamp(28px,4vw,48px);padding:56px 16px 72px;border:var(--jade-sys-stroke-width) solid var(--jade-sys-color-outline);border-radius:var(--jade-sys-shape-corner-extra-large,32px);background:#3a3f63;overflow:hidden;cursor:zoom-out;-webkit-tap-highlight-color:transparent}
-.cs-sec .skb-stage button{cursor:pointer}
-.cs-sec .skb__hit--l{cursor:w-resize}.cs-sec .skb__hit--r{cursor:e-resize}
-.skb-hint{position:absolute;left:16px;right:16px;bottom:22px;margin:0;text-align:center;color:#DAD7F0;font:500 13px/1.5 var(--font-plain),"Noto Sans TC",sans-serif;pointer-events:none}
-@media (max-width:760px){.skb{--pw:min(160px,calc((100vw - 72px) / 2))}.skb-stage{min-height:420px;padding:40px 8px 64px}}
-.skb__face picture{display:block;width:100%;height:100%}
 /* 手機版（11/25 下午）：熱點說明改成底部彈出卡、首頁標題放大、各頁頂部格線、選單去掉 Let's talk */
 .ob-sheet{display:none}
 @media (max-width:760px){
@@ -2156,42 +2096,6 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 /* 電腦版：各頁頂部藍底加首頁淺色方格線（手機版 48px 格） */
 .ab-hero,.wk-hero,.ct-hero,.cs-hero{--line:color-mix(in srgb,var(--jade-sys-color-on-surface) 9%,transparent);background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;background-position:center top}
 @media (max-width:760px){.ab-hero,.wk-hero,.ct-hero,.cs-hero{background-size:48px 48px}}
-/* 速寫本修正：每張紙在 3D 空間有自己的高度；陰影改漸層（不用 blur，避免 Windows Chrome 變成一塊色塊）；點擊層浮在紙張上方 */
-.skb__leaf{transform:translateZ(var(--zo,0px)) rotateY(0deg)}
-.skb__leaf.is-turned{transform:translateZ(var(--zo,0px)) rotateY(-180deg)}
-.skb__shadow{filter:none;background:radial-gradient(closest-side,rgba(10,12,30,.5),rgba(10,12,30,.22) 55%,rgba(10,12,30,0));height:22%;bottom:-9%;transform:translateZ(-4px)}
-.skb__hit,.skb__open{transform:translateZ(60px)}
-/* 速寫本頁籤：黏在紙張書口，翻頁時跟著翻到左邊 */
-.skb__tab{position:absolute;z-index:3;top:var(--ty);left:100%;width:26px;height:13%;padding:0;border:2px solid var(--jade-ref-palette-neutral10);border-left:0;border-radius:0 8px 8px 0;background:var(--jade-sys-color-secondary);color:var(--jade-ref-palette-neutral10);font:700 12px/1 var(--font-plain);cursor:pointer;transform:translateZ(.6px);transform-style:preserve-3d;transition:filter .2s}
-.skb__tab[data-tone="pink"]{background:var(--jade-sys-color-tertiary);color:var(--jade-sys-color-on-tertiary)}
-.skb__tab span{position:absolute;inset:0;display:grid;place-items:center;writing-mode:vertical-rl;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.skb__tab .skb__tab-b{transform:rotateY(180deg)}
-.skb__tab:hover{filter:brightness(1.08)}
-.skb__tab:focus-visible{outline:3px solid #c6ff00;outline-offset:3px}
-.cs-sec .skb-stage .skb__tab{cursor:pointer}
-.skb__hit,.skb__open{transform:translateZ(60px)}
-@media (max-width:760px){.skb__tab{width:20px;font-size:10px}}
-.skb__tab{background:#C2FF0A;color:#16143A}
-.skb__tab[data-tone="cyan"]{background:#7FE3FF;color:#16143A}
-.skb__tab[data-tone="pink"]{background:#FF7AC6;color:#16143A}
-@media (max-width:760px){.skb{--pw:min(160px,calc((100vw - 124px) / 2))}}
-.cs-sec .skb__tab{background:#C2FF0A;border:2px solid #16143A;border-left:0;border-radius:0 8px 8px 0}
-.cs-sec .skb__tab[data-tone="cyan"]{background:#7FE3FF}.cs-sec .skb__tab[data-tone="pink"]{background:#FF7AC6}
-.cs-sec .skb__tab[data-tone="yellow"]{background:#FFD23F}
-.cs-sec .skb__tab[data-tone="coral"]{background:#FF6B4A}
-.cs-sec .skb__tab[data-tone="purple"]{background:#A99BFF}
-.skb__stack--l{transition:opacity .18s}
-/* 紙張厚度加強：每張紙更厚、闔上時書口更厚 */
-.skb{--t:18px}
-.skb__leaf{--lt:3.5px}
-.skb__leaf--cover{--lt:5px}
-.skb__edge{background:repeating-linear-gradient(90deg,#f6f3ec 0 1.4px,#d4cec2 1.4px 2.2px)}
-.skb__edge--b{background:repeating-linear-gradient(0deg,#f6f3ec 0 1.4px,#d4cec2 1.4px 2.2px)}
-@media (max-width:760px){.skb{--t:12px}}
-/* 效能：離目前跨頁較遠的紙不畫（只留頁籤），由左右紙疊表現厚度 */
-.skb__leaf.is-far>.skb__face,.skb__leaf.is-far>.skb__rim{display:none}
-.skb__leaf.is-moving{will-change:transform}
-@media (max-width:760px){.skb__rim{display:none}.skb__face::after{display:none}}
 /* 29 廣告視覺合輯 */
 .bn-sec .cs-sec__head{margin-bottom:clamp(24px,3vw,40px)}
 .bn-fig{margin:0;display:flex;flex-direction:column;gap:10px;min-width:0}
@@ -2295,3 +2199,113 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .kl-final-st .jade-sticker__label b{font-size:26px;letter-spacing:.02em;text-transform:uppercase}
 @media (max-width:760px){.kl-final-st{width:84px;height:84px;top:8px;right:8px}.kl-final-st .jade-sticker__label b{font-size:21px}}
 @media (prefers-reduced-motion:reduce){.kl-final-st,.kl-final-st .jade-sticker__shape{animation:none}}
+
+/* 26 年度贈禮互動：滿版桌面，點筆記本或桌曆拿到中央翻閱（尺寸用 cqw，位置對齊桌面圖的合成構圖；結構在 tools/frag/26-desk.html） */
+.desk{container-type:inline-size;width:100vw;margin-left:calc(50% - 50vw);margin-top:clamp(28px,4vw,48px);--dur:.85s;--ease:cubic-bezier(.3,.7,.2,1)}
+.desk__stage{position:relative;height:56.25cqw;background:#2e55a6 url(public/works/work-26-series/gift/desk.jpg) center/cover no-repeat;overflow-x:clip;overflow-y:visible;perspective:200cqw;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.desk__dim{position:absolute;inset:0;z-index:2;background:rgba(12,14,32,.62);opacity:0;transition:opacity .5s;pointer-events:none}
+.desk.is-nb .desk__dim,.desk.is-cal .desk__dim{opacity:1}
+.desk__nb,.desk__cal{position:absolute;z-index:1;cursor:pointer;outline:none;perspective:160cqw;will-change:transform;transition:transform var(--dur) var(--ease);
+  transform:translate(var(--tx,0cqw),var(--ty,0cqw)) translate(var(--ox,0cqw),var(--oy,0cqw)) rotate(var(--r,0deg)) translate(calc(var(--ox,0cqw) * -1),calc(var(--oy,0cqw) * -1)) translateY(var(--hy,0cqw)) scale(var(--s,1))}
+.desk__nb{left:19.375cqw;top:10.88cqw;width:28.85cqw;height:37.75cqw;transform-origin:0 50%;perspective-origin:0 50%;--ox:14.425cqw;--r:-14.3deg}
+.desk__cal{left:45.5cqw;top:20.54cqw;width:28.9cqw;height:26.07cqw;transform-origin:50% 50%;--r:7.9deg}
+.desk:not(.is-nb):not(.is-cal) .desk__nb:hover,.desk:not(.is-nb):not(.is-cal) .desk__cal:hover,.desk__nb:focus-visible,.desk__cal:focus-visible{--hy:-.6cqw;--s:1.02}
+.desk.is-nb .desk__nb{z-index:3;--tx:30.625cqw;--ty:-3cqw;--r:0deg;--s:1.18;--hy:0cqw}
+.desk.is-cal .desk__cal{z-index:3;--tx:-9.95cqw;--ty:-3.5cqw;--r:0deg;--s:1.1;--hy:0cqw}
+.desk.is-nb .desk__cal,.desk.is-cal .desk__nb{pointer-events:none}
+/* 放在桌上時的陰影（厚度由實景照片呈現），hover 時陰影拉長 */
+.desk__block{position:absolute;inset:0;border-radius:.2cqw .8cqw .8cqw .2cqw;transform:translateZ(-.3cqw);transition:box-shadow .35s,opacity .4s;box-shadow:1cqw 1.4cqw 2cqw rgba(30,16,0,.42)}
+.desk__cal .desk__block{inset:auto;left:-.195cqw;top:-1.237cqw;width:29.29cqw;height:30.4cqw;border-radius:.3cqw}
+.desk__nb:hover .desk__block,.desk__cal:hover .desk__block,.desk__nb:focus-visible .desk__block,.desk__cal:focus-visible .desk__block{box-shadow:2cqw 2.8cqw 3.2cqw rgba(30,16,0,.38)}
+.desk.is-nb .desk__nb .desk__block,.desk.is-cal .desk__cal .desk__block{opacity:0}
+.desk__nb img,.desk__cal img{display:block;width:100%;height:100%;-webkit-user-drag:none}
+/* 實景照片：放在桌上時顯示，拿起來時淡出換成可翻頁的版本（照片的紙張範圍對齊下面的紙張） */
+.desk__photo{position:absolute;pointer-events:none;transition:opacity .3s .05s;will-change:opacity}
+.desk__nb .desk__photo{inset:0;border-radius:.2cqw .5cqw .5cqw .2cqw}
+.desk .desk__cal .desk__photo{left:-.195cqw;top:-1.237cqw;width:29.29cqw;height:30.4cqw}
+.desk.is-nb .desk__nb .desk__photo,.desk.is-cal .desk__cal .desk__photo{opacity:0;transition-delay:0s}
+/* 筆記本：紙頁在 desk__book 裡排 3D 前後；實景照片放在外層、不參與 3D 排序（放進去會讓後面的紙頁跑到最上面） */
+.desk__book{position:absolute;inset:0;transform-style:preserve-3d}
+.desk__leaf{position:absolute;inset:0;transform-origin:0 50%;transform-style:preserve-3d;transform:rotateY(var(--a,0deg));transition:transform var(--dur) var(--ease) var(--dl,0s)}
+.desk__face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fbfaf6;border-radius:.2cqw .5cqw .5cqw .2cqw}
+.desk__face--b{transform:rotateY(180deg);border-radius:.5cqw .2cqw .2cqw .5cqw}
+.desk__face img{border-radius:inherit}
+.desk__face::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(90deg,rgba(60,40,10,.22),rgba(60,40,10,0) 9%),rgba(20,22,51,var(--sh,0));box-shadow:inset 0 0 0 1px rgba(90,70,40,.12)}
+.desk__face--b::after{background:linear-gradient(270deg,rgba(60,40,10,.22),rgba(60,40,10,0) 9%),rgba(20,22,51,var(--sh,0))}
+/* 三角桌曆：拿起來時立成帳篷狀（深藍底座、黑色支架、頂端線圈），翻過的紙繞線圈翻到背面 */
+.desk__calbody{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:50% 100%;transition:transform var(--dur) var(--ease)}
+.desk.is-cal .desk__calbody{transform:rotateY(14deg) rotateX(20deg)}
+.desk__stand{position:absolute;inset:0 0 -11% 0;background:#060b2e;border-radius:.3cqw;transform-origin:50% 0;transform:rotateX(-.6deg);transition:transform var(--dur) var(--ease)}
+.desk.is-cal .desk__stand{transform:rotateX(-40deg)}
+/* 左右三角側板：把正面、背板、底座連成一個深藍色的三角柱（高度含底座 = 紙張的 111%，寬 = 高 × sin40°） */
+.desk__side{position:absolute;top:0;width:18.6cqw;height:111%;background:#060b2e;transform-origin:0 0;transform:rotateY(90deg) scaleX(.02);clip-path:polygon(0 0,0 100%,100% 76.6%);opacity:0;transition:transform var(--dur) var(--ease),opacity .3s;pointer-events:none}
+.desk__side--l{left:0}
+.desk__side--r{left:100%}
+.desk.is-cal .desk__side{transform:rotateY(90deg);opacity:1}
+.desk__sheet{position:absolute;inset:0;transform-origin:50% 0;transform-style:preserve-3d;transform:rotateX(var(--a,0deg));transition:transform var(--dur) var(--ease) var(--dl,0s)}
+.desk__sheet img{position:absolute;inset:0;object-fit:cover;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:.3cqw}
+.desk__sheet::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4%;border-radius:0 0 .3cqw .3cqw;background:linear-gradient(to top,rgba(110,90,60,.35),rgba(110,90,60,0));backface-visibility:hidden;-webkit-backface-visibility:hidden;pointer-events:none} /* 紙張下緣的細陰影，疊在一起時看得出一層層紙邊 */
+.desk__sheet i{position:absolute;inset:0;background:#f1ece2;border-radius:.3cqw;transform:rotateX(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.desk__ring,.desk__base{position:absolute;pointer-events:none;opacity:0;transition:opacity .4s}
+.desk__ring{left:3%;right:3%;top:-5.5%;height:12.7%;transform:translateZ(.25cqw);background:url(public/works/work-26-series/gift/cal-ring.png) center/100% 100% no-repeat}
+.desk__base{left:-1.5%;right:-1.5%;top:97%;height:14%;background:#0b1753;border-radius:0 0 .3cqw .3cqw}
+.desk.is-cal .desk__ring,.desk.is-cal .desk__base{opacity:1;transition-delay:.25s}
+.desk__hint{position:absolute;right:max(14px,2.5cqw);bottom:max(14px,2cqw);z-index:4;margin:0;padding:8px 16px;border-radius:999px;background:rgba(18,20,44,.72);color:#fff;font-size:13px;line-height:1.4;white-space:nowrap;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.desk{--dur:.01s}}
+
+/* 27 抽卡：三張虎面卡，選一張翻到背面刮開（結構在 tools/frag/27-picker.html） */
+.fp{display:flex;flex-direction:column;align-items:center;gap:clamp(20px,3vw,36px);padding-top:clamp(28px,4vw,48px)}
+.fp__deck{display:flex;justify-content:center;align-items:flex-end;padding:0 24px 28px}
+.fp__card{--r:0deg;--x:0px;--y:0px;--s:1;position:relative;width:clamp(104px,25vw,270px);aspect-ratio:946/1477;perspective:1600px;transform-origin:50% 100%;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(var(--s));transition:transform .42s cubic-bezier(.34,1.3,.64,1),opacity .4s;cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent;filter:drop-shadow(0 14px 20px rgba(110,80,20,.22))}
+.fp__card:nth-child(1){--r:-10deg;--y:16px;margin-right:clamp(-56px,-4vw,-22px);z-index:1}
+.fp__card:nth-child(2){z-index:2}
+.fp__card:nth-child(3){--r:10deg;--y:16px;margin-left:clamp(-56px,-4vw,-22px);z-index:1}
+@media (hover:hover){
+  .fp:not(.is-picked) .fp__deck:hover .fp__card:nth-child(1){--r:-17deg;--x:-26px;--y:24px}
+  .fp:not(.is-picked) .fp__deck:hover .fp__card:nth-child(3){--r:17deg;--x:26px;--y:24px}
+  .fp:not(.is-picked) .fp__deck .fp__card:hover{--y:-22px;--s:1.05;z-index:3}
+}
+.fp:not(.is-picked) .fp__card:focus-visible{--y:-22px;--s:1.05;z-index:3}
+.fp:not(.is-picked) .fp__card:focus-visible .fp__face--front{outline:3px solid var(--jade-sys-color-outline);outline-offset:4px}
+.fp.is-picked .fp__card{cursor:default;opacity:.5;pointer-events:none}
+.fp.is-picked .fp__card.is-sel{--r:0deg;--x:0px;--y:-14px;--s:1.06;opacity:1;pointer-events:auto;z-index:3}
+.fp__inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.45,.05,.25,1)}
+.fp__card.is-flip .fp__inner{transform:rotateY(180deg)}
+.fp__face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden} /* 陰影放在外層卡片，放在翻面內層會讓背面消失 */
+.fp__face--back{transform:rotateY(180deg)}
+.fp__face img{width:100%;height:100%;display:block}
+.fp__btn[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){.fp__card,.fp__inner{transition:none}}
+
+/* 28 速寫本：3D 翻頁，兩側紙頁扇形散開呈現厚度（結構在 tools/frag/28-sketchbook.html） */
+.sbk{cursor:default;--pw:clamp(128px,30vw,300px);--ph:calc(var(--pw) * 1.4125);--ease:cubic-bezier(.3,.7,.2,1);--dur:.9s;display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:clamp(28px,4vw,48px);padding:clamp(36px,5vw,64px) 12px 28px;border:var(--jade-sys-stroke-width) solid var(--jade-sys-color-outline);border-radius:var(--jade-sys-shape-corner-extra-large,32px);background:#3a3f63;overflow:hidden}
+.sbk__scene{width:calc(var(--pw) * 2 + 96px);max-width:100%;height:calc(var(--ph) * 1.14);perspective:calc(var(--pw) * 5);perspective-origin:50% 25%;display:grid;place-items:center;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;outline:none}
+.sbk__scene:focus-visible{outline:3px solid #fff;outline-offset:4px;border-radius:16px}
+.sbk__book{position:relative;width:calc(var(--pw) * 2);height:var(--ph);transform-style:preserve-3d;transform:translateX(var(--sx,0px)) rotateX(16deg);transition:transform var(--dur) var(--ease)}
+.sbk__shadow{position:absolute;left:4%;right:4%;top:97%;height:9%;border-radius:50%;background:radial-gradient(closest-side,rgba(8,10,30,.5),rgba(8,10,30,0));pointer-events:none;transition:left var(--dur) var(--ease),right var(--dur) var(--ease)}
+.sbk.is-front .sbk__shadow{left:52%;right:1%}
+.sbk.is-back .sbk__shadow{left:1%;right:52%}
+.sbk__leaf{cursor:pointer;position:absolute;left:50%;top:0;width:var(--pw);height:100%;transform-origin:0 50%;transform-style:preserve-3d;transform:rotateY(var(--a,0deg));transition:transform var(--dur) var(--ease) var(--dl,0s)}
+.sbk__face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#f4f1ea;border-radius:2px 8px 8px 2px}
+.sbk__face--b{transform:rotateY(180deg);border-radius:8px 2px 2px 8px}
+.sbk__face img{width:100%;height:100%;display:block;object-fit:cover;border-radius:inherit}
+.sbk__face::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(90deg,rgba(40,30,10,.3),rgba(40,30,10,.07) 6%,rgba(40,30,10,0) 15%,rgba(40,30,10,0) 95%,rgba(255,255,255,.3));box-shadow:inset 0 0 0 1px rgba(60,50,30,.14)}
+.sbk__face--b::after{background:linear-gradient(270deg,rgba(40,30,10,.3),rgba(40,30,10,.07) 6%,rgba(40,30,10,0) 15%,rgba(40,30,10,0) 95%,rgba(255,255,255,.3))}
+.sbk__leaf--cover .sbk__face{background:#cdb895}
+.sbk__leaf--cover .sbk__face::after{box-shadow:inset 0 0 0 2px rgba(110,85,45,.45)}
+.sbk .sbk__tab{--tw:clamp(20px,2.6vw,30px);position:absolute;z-index:1;top:var(--ty);right:calc(var(--tw) * -1 + 2px);width:var(--tw);height:calc(var(--ph) * .135);padding:0;border:0;border-radius:0 8px 8px 0;background:var(--tc);color:#16143a;font:700 clamp(8px,.95vw,11px)/1 var(--font-plain,"Space Grotesk"),sans-serif;letter-spacing:.02em;white-space:nowrap;overflow:hidden;writing-mode:vertical-rl;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:inset 0 0 0 1.5px rgba(22,20,58,.35);transition:transform .2s ease}
+.sbk .sbk__face--b .sbk__tab{right:auto;left:calc(var(--tw) * -1 + 2px);border-radius:8px 0 0 8px}
+.sbk__face--f .sbk__tab:hover,.sbk__face--f .sbk__tab:focus-visible{transform:translateX(6px)}
+.sbk__face--b .sbk__tab:hover{transform:translateX(-6px)}
+.sbk__tab:focus-visible{outline:3px solid #fff;outline-offset:2px}
+/* 效能：疊在深處、看不到的紙不畫也不跑動畫（由 site.js 依目前頁數切換） */
+.sbk__leaf.is-far,.desk__leaf.is-far,.desk__sheet.is-far{visibility:hidden;transition:none}
+.sbk__leaf.is-snap,.desk__leaf.is-snap,.desk__sheet.is-snap{transition:none}
+/* 效能：26 筆記本、桌曆放在桌上時被實景照片蓋住，底下的 3D 紙頁不畫；拿起來立刻顯示，放回後等照片蓋住（0.9 秒）才隱藏 */
+.desk__face,.desk__sheet img,.desk__sheet i,.desk__sheet::after{visibility:hidden;transition-property:visibility;transition-duration:0s;transition-delay:.9s}
+.desk.is-nb .desk__face,.desk.is-cal .desk__sheet img,.desk.is-cal .desk__sheet i,.desk.is-cal .desk__sheet::after{visibility:inherit;transition-delay:0s}
+/* 效能：28 速寫本捲出畫面時瀏覽器跳過不畫 */
+.sbk{content-visibility:auto;contain-intrinsic-size:auto 640px}
+.sbk__hint{margin:0;color:rgba(255,255,255,.72);font-size:13px;text-align:center}
+@media (max-width:760px){.sbk{--pw:min(150px,calc((100vw - 100px) / 2))}}
+@media (prefers-reduced-motion:reduce){.sbk{--dur:.01s}}

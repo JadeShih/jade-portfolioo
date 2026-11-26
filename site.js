@@ -613,38 +613,6 @@
   addEventListener('scroll',chk,{passive:true});chk();
   b.addEventListener('click',function(){scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});var h=document.querySelector('.jade-navigation-bar a');if(h)h.focus({preventScroll:true})})})();
 
-/* 28 速寫本：每張紙有自己的厚度層，避免同平面閃爍；圖片背景預載 */
-(function(){[].forEach.call(document.querySelectorAll('.skb'),function(sk){
-  var stage=sk.closest('.skb-stage')||sk.parentNode;
-  var leaves=[].slice.call(sk.querySelectorAll('.skb__leaf')),N=leaves.length,MAX=N-1,GAP=.35;
-  var k=0,last=1,busy=false,FLIP=900,moving={},seq=0;
-  function zo(i){return moving[i]?(N+4+moving[i])*GAP:(i<k?(i+1)*GAP:(N-i)*GAP)}
-  function z(){leaves.forEach(function(l,i){l.style.zIndex=moving[i]?100+moving[i]:(i<k?(i+1):(N-i));l.style.setProperty('--zo',zo(i).toFixed(2)+'px');l.classList.toggle('is-far',!moving[i]&&(i<k-2||i>k+1))})}
-  var stL=sk.querySelector('.skb__stack--l'),stR=sk.querySelector('.skb__stack--r');
-  function edge(cnt,dir){var px=Math.max(1,Math.round(cnt*.6)),out=[],c=['#f4f1ea','#d9d4c9','#ebe7df','#cdc7ba'];for(var j=1;j<=px;j++)out.push((dir*j*1.05).toFixed(1)+'px '+(j*.5).toFixed(1)+'px 0 '+c[j%4]);out.push((dir*(px*1.05+1.2)).toFixed(1)+'px '+(px*.5+.8).toFixed(1)+'px 0 #a39c8d');return out.join(',')}
-  function ds(n){sk.dataset.l=n;sk.dataset.r=N-n;if(stL)stL.style.boxShadow=n>0?edge(n,-1):'none';if(stR)stR.style.boxShadow=edge(N-n,1)}
-  function fb(){}
-  function load(i){if(i<0||i>=N)return;[].forEach.call(leaves[i].querySelectorAll('img[data-skb]'),function(im){im.src=im.getAttribute('data-skb');im.removeAttribute('data-skb')})}
-  function near(n){for(var i=n-4;i<=n+4;i++)load(i)}
-  var bgStarted=false;function bg(){if(bgStarted)return;bgStarted=true;var i=0;(function nx(){while(i<N&&!leaves[i].querySelector('img[data-skb]'))i++;if(i>=N)return;load(i);setTimeout(nx,120)})()}
-  function turn(i,on,d){var l=leaves[i];setTimeout(function(){moving[i]=++seq;z();l.classList.add('is-moving');l.classList.toggle('is-turned',on);
-    setTimeout(function(){l.classList.remove('is-moving');delete moving[i];z()},FLIP)},d||0)}
-  function go(n,cb){if(n===k){cb&&cb();return}near(n);var dir=n>k?1:-1,steps=Math.abs(n-k),i,STEP=Math.max(60,Math.min(170,700/steps));busy=true;
-    var from=k;k=n;
-    for(i=0;i<steps;i++){turn(dir>0?from+i:from-1-i,dir>0,i*STEP)}
-    for(i=0;i<steps;i++)(function(j){setTimeout(function(){ds(dir>0?from+j+1:from-j-1)},j*STEP+FLIP*.5)})(i);
-    setTimeout(function(){moving={};seq=0;z();ds(k);busy=false;fb();cb&&cb()},(steps-1)*STEP+FLIP+40)}
-  function close(){if(busy||sk.classList.contains('is-closed'))return;last=1;go(0,function(){sk.classList.add('is-closed');fb()})}
-  function open(){if(busy)return;busy=true;near(last);bg();sk.classList.remove('is-closed');setTimeout(function(){busy=false;go(last)},500)}
-  sk.querySelector('.skb__hit--r').addEventListener('click',function(e){e.stopPropagation();if(!busy&&k<MAX)go(k+1)});
-  sk.querySelector('.skb__hit--l').addEventListener('click',function(e){e.stopPropagation();if(!busy&&k>0)go(k-1)});
-  sk.querySelector('.skb__open').addEventListener('click',function(e){e.stopPropagation();open()});
-  [].forEach.call(sk.querySelectorAll('.skb__tab'),function(t){t.addEventListener('click',function(e){e.stopPropagation();var n=+t.getAttribute('data-go');if(busy)return;if(sk.classList.contains('is-closed')){last=n;open()}else if(n!==k)go(n)})});
-  stage.addEventListener('click',function(e){if(sk.classList.contains('is-closed')){if(sk.contains(e.target))open();return}if(!e.target.closest('.skb__hit'))close()});
-  sk.addEventListener('keydown',function(e){if(sk.classList.contains('is-closed'))return;if(e.key==='ArrowRight'&&!busy&&k<MAX){e.preventDefault();go(k+1)}if(e.key==='ArrowLeft'&&!busy&&k>0){e.preventDefault();go(k-1)}if(e.key==='Home'&&!busy&&k!==1){e.preventDefault();go(1)}if(e.key==='Escape')close()});
-  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(en){if(en[0].isIntersecting){near(1);io.disconnect()}},{rootMargin:'400px'});io.observe(sk)}
-  z();ds(k);
-})})();
 /* 手機版小卡插槽：說明卡上方散落成分小卡，點一下放大，點空白或下一張復原 */
 (function(){var mq=matchMedia('(max-width:760px)'),h=document.querySelector('.ob-hs[data-cards]'),sh=document.querySelector('.ob-sheet');if(!h||!sh)return;
   var src=h.querySelectorAll('.ob-mc__card');if(!src.length)return;
@@ -679,3 +647,171 @@
   if(tag){tr.addEventListener('mouseenter',function(){tag.textContent='DRAG ↔';y.classList.add('is-drag')});tr.addEventListener('mouseleave',function(){tag.textContent='YOU';y.classList.remove('is-drag')})}
   sync();
 })})();
+
+/* 26 年度贈禮互動：桌上的筆記本與桌曆（結構在 tools/frag/26-desk.html） */
+(function(){
+  var g=document.querySelector('.desk');if(!g)return;
+  var stage=g.querySelector('.desk__stage'),nb=g.querySelector('.desk__nb'),cal=g.querySelector('.desk__cal'),hint=g.querySelector('.desk__hint'),
+      lv=[].slice.call(nb.querySelectorAll('.desk__leaf')),L=lv.length,sh=[].slice.call(cal.querySelectorAll('.desk__sheet')),S=sh.length,
+      rm=matchMedia('(prefers-reduced-motion:reduce)').matches,mode='idle',np=0,cp=0,tk=0,HINT=hint.textContent;
+  var quick=false; // 放回桌上時紙頁一起闔上，不一張張依序翻
+  function stagger(i,lo,hi,fwd,n){return !quick&&n>1&&!rm&&i>=lo&&i<hi?(fwd?i-lo:hi-1-i)*Math.min(.05,.6/n):0}
+  /* 筆記本：攤開時最上面兩頁微微抬起，下面的紙越深越平，書口露出厚度 */
+  function lift(k){return np===0||np===L?-Math.min(k*.05,1):6-4*(1-Math.exp(-k/6))}
+  /* 效能：只讓最上面幾張紙參與動畫，更深的隱藏且不跑動畫；只在數值有變時才寫入；預先解碼附近頁面的圖 */
+  var tn=0,tc=0;
+  function setv(d,k,v){if(d.style.getPropertyValue(k)!==v)d.style.setProperty(k,v)}
+  function warm(list,a,b){for(var i=Math.max(0,a);i<=Math.min(list.length-1,b);i++)[].forEach.call(list[i].querySelectorAll('img'),function(im){if(im.decode&&!im.dataset.w){im.dataset.w=1;im.decode().catch(function(){})}})}
+  function nbNear(i){return (i<np?np-1-i:i-np)<=6}
+  /* 效能：翻頁時只有正在翻的紙和兩側最上面的紙跑動畫，其他紙的角度微調直接到位（差不到 1°，看不出來） */
+  var all=false;
+  function snap(d,mov,k){d.classList.toggle('is-snap',!all&&!(mov||k<=1))}
+  function drawNb(prev){var lo=Math.min(np,prev),hi=Math.max(np,prev),n=hi-lo;
+    lv.forEach(function(d,i){var up=i<np,k=up?np-1-i:i-np,mov=i>=lo&&i<hi;
+      d.classList.toggle('is-far',!(nbNear(i)||mov));snap(d,mov,k);
+      setv(d,'--a',(up?-180+lift(k):-lift(k))+'deg');
+      setv(d,'--dl',stagger(i,lo,hi,np>prev,n)+'s')});
+    clearTimeout(tn);tn=setTimeout(function(){lv.forEach(function(d,i){d.classList.toggle('is-far',!nbNear(i))})},wait(n)+100);
+    warm(lv,np-3,np+2);return n}
+  function goNb(n){n=Math.max(0,Math.min(L,n));if(n===np)return 0;var pr=np;np=n;return drawNb(pr)}
+  /* 桌曆：立起來時整座後仰 20°，背板對稱後仰在 -40°（兩片都碰到桌面），翻過的紙繞頂端線圈轉到 320° 貼著背板外側。
+     立起來時最上面那張紙下緣朝觀者抬起最多，下面的紙越深越平，下緣一層層露出來（跟速寫本同樣的厚度做法） */
+  function calLift(k){return mode==='cal'?5-4.2*(1-Math.exp(-k/4)):-k*.12}
+  function calNear(i){return i<cp?cp-1-i<=2:i-cp<=8}
+  function drawCal(prev){var lo=Math.min(cp,prev),hi=Math.max(cp,prev),n=hi-lo;
+    sh.forEach(function(d,i){var up=i<cp,mov=i>=lo&&i<hi;
+      d.classList.toggle('is-far',!(calNear(i)||mov));snap(d,mov,up?cp-1-i:i-cp);
+      setv(d,'--a',(up?320-(i+1)*.15:calLift(i-cp))+'deg');
+      setv(d,'--dl',stagger(i,lo,hi,cp>prev,n)+'s')});
+    clearTimeout(tc);tc=setTimeout(function(){sh.forEach(function(d,i){d.classList.toggle('is-far',!calNear(i))})},wait(n)+100);
+    warm(sh,cp-1,cp+2);return n}
+  function goCal(n){n=Math.max(0,Math.min(S-1,n));if(n===cp)return 0;var pr=cp;cp=n;return drawCal(pr)}
+  function wait(n){return 850+(n>1&&!rm?n*Math.min(50,600/n):0)}
+  function open(which){++tk;mode=which;g.classList.add(which==='nb'?'is-nb':'is-cal');
+    hint.textContent=which==='nb'?'點右頁往後翻、點左頁往前翻・點空白處放回桌上':'點桌曆翻下一頁・點空白處放回桌上';
+    if(which==='nb'){var t=tk;setTimeout(function(){if(t===tk&&mode==='nb')goNb(1)},rm?0:320)}else{all=true;drawCal(cp);all=false}}
+  /* 放回桌上：筆記本跟速寫本一樣，先一張張往回翻、闔上，再回到桌上原位；收合途中多點幾下不會讓它重來或延後。
+     桌曆則是闔起與移回同時進行 */
+  function close(){if(mode==='idle'||mode==='closing')return;var t=++tk,m=mode;hint.textContent=HINT;
+    if(m==='nb'){mode='closing';var n=goNb(0);
+      setTimeout(function(){if(t!==tk)return;g.classList.remove('is-nb');mode='idle'},n?wait(n)-150:0)}
+    else{mode='idle';quick=true;all=true;goCal(0);drawCal(0);quick=false;all=false;g.classList.remove('is-cal')}}
+  function spineX(){var r=stage.getBoundingClientRect();return r.left+r.width/2}
+  nb.addEventListener('click',function(e){e.stopPropagation();if(mode==='idle'){open('nb');return}if(mode!=='nb')return;
+    /* 沒點在紙上（例如翻到封底後右邊的空位）就當成點空白處 */
+    if(!e.target.closest('.desk__leaf')||(np===L&&e.clientX>spineX())){close();return}
+    if(e.clientX>spineX())goNb(np+1);else if(np<=1)close();else goNb(np-1)});
+  cal.addEventListener('click',function(e){e.stopPropagation();if(mode==='idle'){open('cal');return}if(mode!=='cal')return;
+    if(cp<S-1)goCal(cp+1);else goCal(0)});
+  stage.addEventListener('click',close);
+  function keys(el,which,next,prev){el.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click()}
+    else if(e.key==='Escape')close();
+    else if(mode===which&&e.key==='ArrowRight'){e.preventDefault();next()}
+    else if(mode===which&&e.key==='ArrowLeft'){e.preventDefault();prev()}})}
+  keys(nb,'nb',function(){goNb(np+1)},function(){if(np<=1)close();else goNb(np-1)});
+  keys(cal,'cal',function(){goCal(cp+1)},function(){goCal(cp-1)});
+  drawNb(0);drawCal(0);
+})();
+/* 27 抽卡：選卡→翻正→翻面→刮開→吉祥話＋再抽一次（結構在 tools/frag/27-picker.html） */
+(function(){
+  var fp=document.getElementById('fp');if(!fp)return;
+  var cards=[].slice.call(fp.querySelectorAll('.fp__card')),msg=fp.querySelector('.fp__msg'),btn=fp.querySelector('.fp__btn');
+  var F=JSON.parse(fp.getAttribute('data-fortunes')),coat=new Image(),HINT=msg.textContent;
+  var WORDS={'大吉':'大吉！一甲子的承諾與守護，祝新年萬事順心。','中吉':'中吉！明台與您齊心，迎接新年新氣象。','吉':'吉！平安就是福，新的一年穩穩前進。','小吉':'小吉！小小的好運，一點一滴累積成整年的幸福。'};
+  var rm=matchMedia('(prefers-reduced-motion:reduce)').matches,T_STRAIGHT=rm?0:380,T_FLIP=rm?0:720;
+  var sel=null,cv=null,ctx=null,cur=-1,done=false,busy=false,mask=null,moves=0,last=null,lw=0;
+  F.forEach(function(f){var i=new Image();i.src=f[0]});
+  coat.src=fp.getAttribute('data-coat');
+  function ui(text,label){msg.textContent=text;if(label){btn.textContent=label;btn.hidden=false}else btn.hidden=true}
+  function paint(){
+    var d=Math.min(devicePixelRatio||1,2),w=cv.clientWidth,h=cv.clientHeight;
+    cv.width=Math.round(w*d);cv.height=Math.round(h*d);var W=cv.width,H=cv.height;
+    ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,W,H);ctx.drawImage(coat,0,0,W,H);
+    ctx.globalCompositeOperation='source-atop';var g=ctx.createLinearGradient(0,0,W,H);
+    g.addColorStop(0,'rgba(255,255,255,.35)');g.addColorStop(.45,'rgba(255,255,255,0)');g.addColorStop(.55,'rgba(255,255,255,.4)');g.addColorStop(.7,'rgba(80,82,96,.12)');g.addColorStop(1,'rgba(255,255,255,.25)');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    for(var i=0;i<W*H/120;i++){ctx.fillStyle='rgba('+(Math.random()<.5?'255,255,255':'70,72,84')+','+(Math.random()*.16)+')';ctx.fillRect(Math.random()*W,Math.random()*H,1.2*d,1.2*d)}
+    ctx.fillStyle='rgba(70,72,84,.7)';ctx.font='700 '+Math.round(H*.16)+'px "Noto Sans TC",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('刮 刮 看',W/2,H*.4);
+    ctx.globalCompositeOperation='source-over';try{mask=ctx.getImageData(0,0,W,H).data}catch(_){mask=null}
+    moves=0;last=null;lw=W*.1;cv.classList.remove('is-done');
+  }
+  function cleared(){if(!mask)return moves/70; // 本機開檔時畫布不能讀像素，改用刮的次數估算
+    var W=cv.width,H=cv.height,data=ctx.getImageData(0,0,W,H).data,tot=0,clr=0,s=Math.max(4,Math.round(W/60));
+    for(var y=0;y<H;y+=s)for(var x=0;x<W;x+=s){var k=(y*W+x)*4+3;if(mask[k]<128)continue;tot++;if(data[k]<40)clr++}return tot?clr/tot:0}
+  function reveal(){if(done)return;done=true;cv.classList.add('is-done');ui('✦ '+WORDS[F[cur][1]],'再抽一次')}
+  function pick(card){
+    if(sel||busy)return;busy=true;sel=card;done=false;
+    var n=cur;while(F.length>1&&n===cur)n=Math.floor(Math.random()*F.length);cur=n;
+    card.querySelector('.fp__fortune').src=F[cur][0];
+    cv=card.querySelector('.sc__coat');ctx=cv.getContext('2d');
+    fp.classList.add('is-picked');card.classList.add('is-sel');ui('');
+    function flip(){paint();card.classList.add('is-flip');
+      setTimeout(function(){busy=false;ui('✦ 用滑鼠或手指在銀色扇形上刮一刮')},T_FLIP)}
+    setTimeout(function(){if(coat.complete)flip();else coat.onload=flip},T_STRAIGHT);
+  }
+  function reset(){
+    if(!sel||busy)return;busy=true;var c=sel;c.classList.remove('is-flip');ui(HINT);
+    setTimeout(function(){c.classList.remove('is-sel');fp.classList.remove('is-picked');sel=null;busy=false},T_FLIP);
+  }
+  cards.forEach(function(card){
+    card.addEventListener('click',function(){if(!sel)pick(card)});
+    card.addEventListener('keydown',function(e){if(!sel&&(e.key==='Enter'||e.key===' ')){e.preventDefault();pick(card)}});
+    var c=card.querySelector('.sc__coat');
+    function pt(e){var r=c.getBoundingClientRect();return{x:(e.clientX-r.left)/r.width*c.width,y:(e.clientY-r.top)/r.height*c.height}}
+    function scratch(p){ctx.globalCompositeOperation='destination-out';ctx.lineCap=ctx.lineJoin='round';ctx.lineWidth=lw;ctx.beginPath();ctx.moveTo((last||p).x,(last||p).y);ctx.lineTo(p.x,p.y);ctx.stroke();last=p;
+      if(++moves%8===0&&cleared()>.55)reveal()}
+    function live(){return c===cv&&!done&&!busy}
+    c.addEventListener('pointerdown',function(e){if(!live())return;e.preventDefault();try{c.setPointerCapture(e.pointerId)}catch(_){}last=null;scratch(pt(e))});
+    c.addEventListener('pointermove',function(e){if(!live()||!c.hasPointerCapture(e.pointerId))return;scratch(pt(e))});
+    c.addEventListener('pointerup',function(){last=null;if(live()&&cleared()>.55)reveal()});
+  });
+  btn.addEventListener('click',function(){if(done)reset()});
+})();
+/* 28 速寫本翻頁（結構在 tools/frag/28-sketchbook.html） */
+(function(){
+  var sb=document.querySelector('.sbk');if(!sb)return;
+  var sc=sb.querySelector('.sbk__scene'),bk=sb.querySelector('.sbk__book'),lv=[].slice.call(sb.querySelectorAll('.sbk__leaf')),L=lv.length,
+      p=0,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  /* 攤開時最上面兩頁朝觀者抬起成 V 字，下面的紙越深越平，紙邊就會從外緣一層層露出來；角度不重複才不會閃爍 */
+  function lift(k){return p===0||p===L?-Math.min(k*.1,3):30-24*(1-Math.exp(-k/7))}
+  /* 效能：每側只讓最上面 K 張紙參與動畫，更深的隱藏且不跑動畫（帶標籤的紙保留）；只在數值有變時才寫入 */
+  var K=6,ft=0,tab=lv.map(function(d){return !!d.querySelector('.sbk__tab')});
+  function setv(d,k,v){if(d.style.getPropertyValue(k)!==v)d.style.setProperty(k,v)}
+  function depth(i){return i<p?p-1-i:i-p}
+  function near(){return p===0||p===L?2:K} // 闔上時紙頁幾乎平疊在封面後面，只留最上面兩張和帶標籤的紙
+  function warm(c){for(var i=Math.max(0,c-3);i<=Math.min(L-1,c+2);i++)[].forEach.call(lv[i].querySelectorAll('img'),function(im){if(im.decode&&!im.dataset.w){im.dataset.w=1;im.decode().catch(function(){})}})}
+  function draw(prev){
+    var lo=Math.min(p,prev),hi=Math.max(p,prev),n=hi-lo;
+    var edge=prev===0||prev===L||p===0||p===L; // 闔上／翻開那一下，所有紙的角度都大幅改變，要全部跑動畫
+    lv.forEach(function(d,i){
+      var up=i<p,k=depth(i),mov=i>=lo&&i<hi;
+      d.classList.toggle('is-far',!(k<=near()||tab[i]||mov));
+      d.classList.toggle('is-snap',!edge&&!(mov||k<=2)); // 翻開狀態下翻頁時，深處的紙角度微調直接到位
+      setv(d,'--a',(up?-180+lift(k):-lift(k))+'deg');
+      var dl=0;if(n>1&&!rm&&mov)dl=(p>prev?i-lo:hi-1-i)*Math.min(.06,.6/n); // 跳頁時一張接一張翻
+      setv(d,'--dl',dl+'s');
+    });
+    clearTimeout(ft);ft=setTimeout(function(){lv.forEach(function(d,i){d.classList.toggle('is-far',!(depth(i)<=near()||tab[i]))})},950+(n>1&&!rm?n*Math.min(60,600/n):0));
+    bk.style.setProperty('--sx',p===0?'calc(var(--pw) * -.5)':p===L?'calc(var(--pw) * .5)':'0px');
+    sb.classList.toggle('is-front',p===0);sb.classList.toggle('is-back',p===L);
+    warm(p);
+  }
+  function go(n){n=Math.max(0,Math.min(L,n));if(n===p)return;var pr=p;p=n;draw(pr)}
+  [].forEach.call(sb.querySelectorAll('.sbk__tab'),function(t){t.addEventListener('click',function(e){e.stopPropagation();go(+t.getAttribute('data-go'))})});
+  var sx=null;
+  sb.addEventListener('pointerdown',function(e){sx=e.target.closest('.sbk__tab')?null:e.clientX});
+  sb.addEventListener('pointerup',function(e){
+    if(sx===null)return;var dx=e.clientX-sx;sx=null;
+    if(Math.abs(dx)>40){go(p+(dx<0?1:-1));return}
+    if(!e.target.closest('.sbk__leaf')){go(0);return} // 點空白處闔回封面
+    if(p===0){go(1);return}if(p===L){go(L-1);return}
+    var r=bk.getBoundingClientRect();go(e.clientX>r.left+r.width/2?p+1:p-1);
+  });
+  sb.addEventListener('pointercancel',function(){sx=null});
+  sc.addEventListener('keydown',function(e){
+    var m={ArrowRight:p+1,ArrowLeft:p-1,Home:0,End:L}[e.key];
+    if(m!==undefined){e.preventDefault();go(m)}
+  });
+  draw(0);
+})();

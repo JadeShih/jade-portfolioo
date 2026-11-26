@@ -15,7 +15,7 @@ CASES={
   gallery_style='stack',gallery=[dict(tone='cyan',img='work-01-report-01',cap='封面與封底攤開',alt='2021 國泰金控年報封面與封底攤開，無限符號道路橫跨前後封'),
            dict(tone='lime',img='work-01-report-02',cap='書本細節特寫',alt='年報書本特寫，可見綠色書名與無限符號立體插畫細節'),
            dict(tone='pink',img='work-01-report-03',cap='成品陳列',alt='年報成品直立陳列與平放書堆')],
-  next=dict(title='2020新春電子月刊',attr='href="./work-02-card.html"')),
+  next=dict(title='語音直播免費場轉 VIP 場',attr='href="./work-13-vip.html"')),
  'work-02-card':dict(
   num='02',tone='yellow',deco=(('blob','cyan'),('flower','coral')),
   title_en='New Year EDM',title_zh='新春電子月刊',
@@ -29,7 +29,7 @@ CASES={
          dict(tone='pink',title='What happened next',zh='後續成果',text='雖然本次提案最終未獲採用，但憑藉提案過程中展現的設計能力與創意表現，成功為團隊建立與國泰金控進一步合作的契機，也為後續爭取年度報告書設計專案奠定基礎。')],
   gallery_style='stack',gallery=[dict(tone='cyan',img='work-02-newyearcard-01',cap='系列三款 EDM',alt='2020 新春電子月刊系列海報：鴻圖大展、五福臨門、花開富貴、開春大吉四款錯落排列'),
            dict(tone='pink',img='work-02-newyearcard-02',cap='五福臨門・花開富貴',alt='五福臨門與花開富貴兩款新春海報並列，藍綠色調搭配飛燕與牡丹')],
-  next=dict(title='艾沛膚系列產品包裝',attr='href="./work-03-package.html"')),
+  next=dict(title='EVERYTIME 系列產品四摺 DM',attr='href="./work-11-dm.html"')),
  'work-03-package':dict(
   num='03',tone='cyan',deco=(('circle','pink'),('blob','yellow')),
   title_en='EczCare SD',title_zh='舒緩脂癢系列產品包裝',
@@ -44,7 +44,7 @@ CASES={
   gallery_style='stack',gallery=[dict(tone='cyan',img='work-03-package-01-web',cap='系列三款產品',alt='EczCare SD 三款產品裝在湖水綠購物籃中'),
            dict(tone='lime',img='work-03-package-02-web',cap='頭皮噴霧外盒與瓶身',alt='舒緩脂癢頭皮噴霧外盒與瓶身並列'),
            dict(tone='pink',img='work-03-package-03-web',cap='水凝乳外盒與軟管',alt='舒緩脂癢水凝乳外盒與軟管並列，外盒印有金色花朵線條')],
-  next=dict(title='好葉智能選股APP',attr='href="./work-05-kolapp.html"')),
+  next=dict(title='愛他命 × 國衛院記者會',attr='href="./work-24-expo.html"')),
  'work-05-kolapp':dict(
   num='04',tone='lime',body_cls=' cs-body--dark',deco=(('circle','yellow'),('scallop','coral')),
   title_en='Better Leaf App',title_zh='好葉智能選股APP',
@@ -58,7 +58,7 @@ CASES={
          dict(tone='yellow',title='What happened next',zh='後續成果',text='品牌主視覺定案後，進一步延伸應用至各類數位行銷素材與活動視覺，並透過網路平台持續曝光。以一致的視覺語言串聯不同宣傳內容，讓品牌識別不僅停留於單一標誌，更成為後續行銷溝通與視覺延伸的基礎。')],
   gallery_style='none',gallery=[],
   after=case_extra.kolapp2(),
-  next=dict(title='聊天室搜尋功能優化',attr='href="./work-06-chat.html"')),
+  next=dict(title='明台產險新春賀卡',attr='href="./work-27-card.html"')),
  'work-06-chat':dict(
   num='05',tone='lavender',body_cls=' cs-body--ink',deco=(('flower','cyan'),('blob','pink')),
   title_en='Chat Search',title_zh='聊天室搜尋功能優化',
@@ -68,7 +68,7 @@ CASES={
   meta=[('Client','YouTuber Mike是麥克'),('Role','UI/UX 設計・功能規劃'),('Deliverables','聊天室訊息搜尋・UI Spec'),('Year','2026')],
   overview='<p>APP 聊天室是用戶與作者交流投資觀點的主要場所。隨著訊息量快速累積，用戶需要一個能快速找回重要訊息的方式。</p><p>本專案從用戶痛點出發，規劃聊天室內的訊息全文搜尋，從搜尋、結果摘要到跳回原訊息檢視，並撰寫完整的 UI 狀態與規格交付工程。</p>',
   cards=[],gallery_style='none',gallery=[],extra=case_extra.chat(),
-  next=dict(title='益生菌電商商品頁設計',attr='href="./work-07-pdp.html"')),
+  next=dict(title='凝神99禮盒聯名商品頁設計',attr='href="./work-08-pdp.html"')),
  'work-07-pdp':dict(
   num='06',tone='yellow',deco=(('flower','cyan'),('blob','pink')),
   title_en='Probiotics PDP',title_zh='益生菌電商商品頁設計',
@@ -81,7 +81,7 @@ CASES={
          dict(tone='pink',title='What happened next',zh='後續成果',text='延續此次建立的視覺語彙與設計架構，陸續發展多款系列產品的 PDP，在保留各產品特色的同時，建立一致且具辨識度的品牌視覺體系。')],
   gallery_style='none',gallery=[],extra=case_extra.pdp(),
   after='<figure class="pdp-end"><svg class="pdp-end__cut" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 H1440 V20 C 1200 64, 960 64, 720 36 S 240 0, 0 40 Z" fill="currentColor"/></svg><picture><source media="(max-width:760px)" srcset="public/works/work-07-pdp/web-end-m.webp?v=1125a" type="image/webp"><source media="(max-width:760px)" srcset="public/works/work-07-pdp/web-end-m.jpg?v=1125a"><source srcset="public/works/work-07-pdp/web-end.webp?v=1118v" type="image/webp"><img src="public/works/work-07-pdp/web-end.jpg?v=1118v" width="2400" height="1603" alt="天萃苑系列產品商品頁主視覺：大奧御植酵素、益生漾、安鍵、新鍵-P" loading="lazy" decoding="async"></picture><figcaption class="pdp-end__txt">One look,<br>whole series<small>一套視覺，延伸整個系列</small></figcaption></figure>',
-  next=dict(title='凝神99禮盒聯名商品頁設計',attr='href="./work-08-pdp.html"')),
+  next=dict(title='CMoney 尾牙福委會制服',attr='href="./work-25-uniform.html"')),
  'work-08-pdp':dict(
   num='07',tone='coral',deco=(('flower','yellow'),('blob','cyan')),
   title_en='Ning Shen 99',title_zh='凝神99禮盒聯名商品頁設計',
@@ -93,7 +93,7 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='主視覺以插圖 IP 作為敘事主角，透過角色在畫布上創作的情境，自然帶出產品登場。整體版面則以筆記本與手寫註記作為核心概念，結合便條紙、膠帶、塗鴉感插圖與卡片式資訊區塊，營造出活潑、親切又具整理感的閱讀節奏。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='透過資訊圖像化與具敘事性的版面設計，將複雜的產品成分與機能資訊轉化為直觀、易於理解的閱讀體驗，同時藉由聯名角色與筆記本的視覺概念，強化商品頁的資訊層次、視覺辨識度與品牌記憶點。')],
   gallery_style='none',gallery=[],extra=case_extra.pdp('work-08-pdp',7170,'正官庄 × Mr. Donothing 凝神99禮盒商品頁完整長圖'),
-  next=dict(title='籌碼K線 拉新用戶活動',attr='href="./work-09-OPENLAB.html"')),
+  next=dict(title='高麗蔘紅石榴飲商品頁設計',attr='href="./work-10-pdp.html"')),
  'work-09-OPENLAB':dict(
   num='08',tone='cyan',deco=(('flower','pink'),('blob','yellow')),
   title_en='Cat Gacha',title_zh='籌碼K線 拉新用戶活動',
@@ -105,7 +105,7 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以日式扭蛋機作為核心視覺概念，結合具有招福寓意的達摩貓角色，將抽獎活動包裝成充滿趣味與期待感的遊戲體驗。透過高彩度黃藍配色、立體標題字、手繪插圖與遊戲化按鈕，營造熱鬧活潑的活動氛圍，並針對活動參與、獎品領取及社群分享等階段，建立一致的視覺語彙。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='將原本以獎勵為導向的行銷活動轉化為具遊戲感的互動體驗，透過明確的資訊層次與行動引導，降低活動規則的理解門檻，同時強化活動的趣味性與視覺記憶點。')],
   gallery_style='none',gallery=[],extra=case_extra.gacha(),
-  next=dict(title='高麗蔘紅石榴飲商品頁設計',attr='href="./work-10-pdp.html"')),
+  next=dict(title='益生菌電商商品頁設計',attr='href="./work-07-pdp.html"')),
  'work-10-pdp':dict(
   num='09',tone='pink',deco=(('flower','yellow'),('blob','cyan')),
   title_en='Pomegranate',title_zh='高麗蔘紅石榴飲商品頁設計',
@@ -117,7 +117,7 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以美妝保養品的視覺語彙作為設計出發點，運用粉紅漸層、晶透光感、金色點綴與立體成分素材，營造精緻、明亮且富有光澤感的視覺氛圍，跳脫傳統高麗蔘保健食品的既定印象。透過成分圖像化、情境攝影與模組化版面編排，兼顧商品的情感訴求與專業資訊傳遞。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='以此次建立的視覺語彙與資訊架構為基礎，進一步延伸至同系列「高麗蔘野櫻莓飲」商品頁設計，在保留個別產品特色的同時，維持系列商品的視覺一致性，建立更具辨識度的品牌形象。')],
   gallery_style='none',gallery=[],extra=case_extra.pdp('work-10-pdp',9479,'正官庄高麗蔘紅石榴飲商品頁完整長圖'),
-  next=dict(title='EVERYTIME 系列產品四摺 DM',attr='href="./work-11-dm.html"')),
+  next=dict(title='廣告視覺合輯',attr='href="./work-29-banner.html"')),
  'work-11-dm':dict(
   num='10',tone='coral',deco=(('flower','yellow'),('blob','cyan')),
   title_en='EVERYTIME',title_zh='EVERYTIME 系列產品四摺 DM',
@@ -129,7 +129,7 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以產品差異化與系列一致性作為設計核心，延伸各商品包裝色彩作為獨立版面的主色調，搭配放大的產品形象、立體成分素材與機能圖示，建立直觀的商品分類方式。同時透過統一的版面結構與資訊編排，兼顧品牌的專業形象、產品辨識度及摺頁展開後的視覺連貫性。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='將五款商品的特色與機能資訊整合為具系統性的品牌銷售素材，強化系列商品之間的辨識度，降低消費者比較產品的資訊門檻，同時兼顧品牌形象展示與商品導購需求。')],
   gallery_style='none',gallery=[],extra=case_extra.dm(),
-  next=dict(title='BenQ MOBIUZ 電競螢幕 DM',attr='href="./work-12-dm.html"')),
+  next=dict(title='博士倫 LACELLE 雜誌風型錄',attr='href="./work-20-catalog.html"')),
  'work-12-dm':dict(
   num='11',tone='lime',deco=(('flower','cyan'),('blob','pink')),
   title_en='MOBIUZ',title_zh='BenQ MOBIUZ 電競螢幕 DM',
@@ -141,7 +141,7 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以「傳送門」作為主視覺的核心概念，透過影像合成串聯現實城市與奇幻遊戲角色，將品牌訴求轉化為具敘事性的視覺場景。運用電影海報式構圖、電藍色光效與高反差色調，營造遊戲世界的沉浸感與張力，並透過模組化的資訊編排與規格比較表，兼顧視覺吸引力及產品資訊的閱讀效率。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='延續既有主視覺進行多尺寸 Resize 與版面調整，因應不同實體通路的展示空間與應用需求，在維持品牌視覺一致性的同時，確保各尺寸下的資訊完整性與視覺張力。')],
   gallery_style='none',gallery=[],extra=case_extra.benq(),
-  next=dict(title='語音直播免費場轉 VIP 場',attr='href="./work-13-vip.html"')),
+  next=dict(title='Shell 殼牌喜力新品海報',attr='href="./work-17-shell.html"')),
  'work-13-vip':dict(
   num='12',tone='cyan',body_cls=' cs-body--ink',deco=(('flower','pink'),('blob','cyan')),
   title_en='Free to VIP',title_zh='語音直播免費場轉 VIP 場',
@@ -151,7 +151,7 @@ CASES={
   meta=[('Client','YouTuber Mike是麥克'),('Role','UI/UX 設計・功能規劃'),('Deliverables','語音直播權限切換・UI Spec'),('Year','2026')],
   overview='<p>APP 的語音直播原本只能選「全部可聽」或「僅限 VIP」，兩種模式都無法有效把免費用戶轉換為付費 VIP，只能靠另開 YouTube 直播前段來導流。</p><p>本專案把這套轉換流程內建到語音直播：一場直播前段免費試聽，由主持人在直播間手動切換為 VIP 場，被移出的免費用戶直接看到升級引導與折扣碼，並完整規劃推播分流、入口標示與邊界情境。</p>',
   cards=[],gallery_style='none',gallery=[],extra=case_extra.vip(),
-  next=dict(title='美股事件行事曆',attr='href="./work-15-calendar.html"')),
+  next=dict(title='ORBIS 淨擊煥白精華露公關禮盒',attr='href="./work-21-orbis.html"')),
  'work-14-skill':dict(
   num='01',tone='lime',body_cls=' cs-body--ink',deco=(('flower','cyan'),('blob','pink')),
   title_en='Ad Image Skill',title_zh='AI 廣告圖自動生成 Prompt Skill',
@@ -171,7 +171,7 @@ CASES={
   meta=[('Client','YouTuber Mike是麥克'),('Role','UI/UX 設計・功能規劃'),('Deliverables','美股事件行事曆・UI Spec'),('Year','2025–2026')],
   overview='<p>台灣投資人對美股的休市、總經數據與財報時間掌握度不足，資訊分散在不同平台，時區換算也容易出錯。</p><p>我們從首頁的一條提醒開始規劃，分階段擴展成總體事件頁與個股事件頁，並逐條定義時區換算、顯示區間、排序與空資料等規則，連同各種資料量的畫面一起交付工程。</p>',
   cards=[],gallery_style='none',gallery=[],extra=case_extra.cal(),
-  next=dict(title='瞇瞇眼大叔短影音',attr='href="./work-16-mimi.html"')),
+  next=dict(title='明台產險年度贈禮',attr='href="./work-26-series.html"')),
  'work-16-mimi':dict(
   num='14',tone='coral',deco=(('flower','yellow'),('blob','pink')),
   title_en='Dr. Squint Shorts',title_zh='瞇瞇眼大叔短影音',
@@ -181,7 +181,7 @@ CASES={
   meta=[('Client','鍾國騰醫師'),('Role','短影音模板設計・現場攝影'),('Deliverables','頻道視覺定位・6 款影片模板'),('Year','2024')],
   overview='<p>鍾國騰醫師是婦產科醫師，粉絲專頁希望用短影音回答女性常見的婦科問題，讓專業知識更容易被看見。</p><p>我負責頻道的視覺定位與影片模板設計，從「專注、細心、溫暖」三個關鍵字延伸出暖色系、圓體字與 Q 版醫師角色，做成一套每集都能直接套用的字卡系統；拍攝當天也擔任現場攝影。</p>',
   cards=[],gallery_style='none',gallery=[],extra=case_extra.mimi(),
-  next=dict(title='Shell 殼牌喜力新品海報',attr='href="./work-17-shell.html"')),
+  next=dict(title='好葉智能選股APP',attr='href="./work-05-kolapp.html"')),
  'work-17-shell':dict(
   num='15',tone='yellow',deco=(('flower','pink'),('blob','cyan')),
   title_en='Shell Helix',title_zh='Shell 殼牌喜力新品海報',
@@ -193,7 +193,7 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='在僅有原始產品圖的素材條件下，透過影像合成、光影重塑、材質修飾與環境反射，從無到有建構具備商業攝影質感的產品展示場景。延伸兩款商品的紅、紫包裝色彩，搭配深色背景、漸層光暈與線性光束，強化金屬材質的立體感與空間層次，營造兼具科技感、高性能與高端精品質感的視覺形象。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='延續此次建立的新品主視覺，透過 Resize 與版面重構，將形象海報延伸應用至品牌桌曆封面，在維持原有光影質感與高端產品形象的同時，確保不同印刷載體間的視覺一致性。')],
   gallery_style='none',gallery=[],extra=case_extra.shell(),
-  next=dict(title='SONIC 汽修工具簡易型錄',attr='href="./work-18-catalog.html"')),
+  next=dict(title='品牌便條紙組',attr='href="./work-30-note.html"')),
  'work-18-catalog':dict(
   num='16',tone='cyan',deco=(('flower','pink'),('blob','yellow')),
   title_en='SONIC',title_zh='SONIC 汽修工具簡易型錄',
@@ -219,7 +219,7 @@ CASES={
   gallery_style='stack',gallery=[dict(tone='lime',img='work-19-catalog/web-01',cap='報告書封面',alt='明台產險 2021 企業永續報告書封面，等角視角城市與永續插畫'),
                                  dict(tone='cyan',img='work-19-catalog/web-02',cap='第 04 章 永續藍圖',alt='第 04 章「永續藍圖」章節頁與永續管理內頁'),
                                  dict(tone='pink',img='work-19-catalog/web-03',cap='第 05 章 專欄',alt='第 05 章「專欄」章節頁與綠色創新商品內頁')],
-  next=dict(title='博士倫 LACELLE 雜誌風型錄',attr='href="./work-20-catalog.html"')),
+  next=dict(title='BenQ MOBIUZ 電競螢幕 DM',attr='href="./work-12-dm.html"')),
  'work-20-catalog':dict(
   num='18',tone='lavender',deco=(('flower','pink'),('blob','yellow')),
   title_en='LACELLE',title_zh='博士倫 LACELLE 雜誌風型錄',
@@ -232,7 +232,7 @@ CASES={
          dict(tone='pink',title='What happened next',zh='後續成果',text='實際應用於實體門市展示與產品推廣。透過生活風格化的內容編排，協助消費者直觀比較不同鏡片色彩與配戴風格，兼顧品牌形象傳遞與門市導購需求。')],
   gallery_style='stack',gallery=[dict(tone='lime',img='work-20-catalog/web-01',cap='目錄與封面',alt='LACELLE 型錄目錄頁、夏日新眼色內頁與封面'),
                                  dict(tone='pink',img='work-20-catalog/web-02',cap='內頁與封面陳列',alt='LACELLE 型錄多本攤開陳列，可見人物特寫與鏡片色彩內頁')],
-  next=dict(title='ORBIS 淨擊煥白精華露公關禮盒',attr='href="./work-21-orbis.html"')),
+  next=dict(title='OK 食堂經典咖哩海報',attr='href="./work-31-poster.html"')),
  'work-21-orbis':dict(
   num='19',tone='coral',deco=(('flower','cyan'),('blob','lime')),
   title_en='ORBIS PR Box',title_zh='ORBIS 淨擊煥白精華露公關禮盒',
@@ -244,7 +244,7 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以「肌膚像素」作為核心設計概念，將像素的微小單位轉化為精華粒子的視覺隱喻，象徵精華細緻滲透肌膚、逐步展現勻亮膚質的過程。運用白色基調、銀色金屬質感與幻彩漸層方塊，營造純淨透亮且具科技感的視覺氛圍。包裝採用袖套結構與局部鏤空設計，搭配成分插畫小卡及公關摺卡，將產品概念延伸至整體開箱體驗。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='完成涵蓋禮盒外觀、內襯結構、成分介紹小卡及公關摺卡的整體設計提案，將產品科技概念轉化為具辨識度的包裝視覺，並透過一致的設計語彙與開箱動線，呈現兼具品牌質感、產品溝通與互動體驗的公關贈禮方案。')],
   gallery_style='none',gallery=[],extra=case_extra.orbis(),
-  next=dict(title='鹿港天后宮聯名信用卡',attr='href="./work-22-credit.html"')),
+  next=dict(title='美股事件行事曆',attr='href="./work-15-calendar.html"')),
  'work-22-credit':dict(
   num='20',tone='yellow',deco=(('flower','pink'),('blob','cyan')),
   title_en='Lugang Mazu Co-branded Card',title_zh='鹿港天后宮聯名信用卡',
@@ -256,7 +256,7 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以鹿港天后宮媽祖神像作為卡面主視覺核心，建立莊嚴且具信仰份量的視覺焦點，傳達隨身攜帶、祈求平安的設計意涵。整體以金色作為主調，並搭配傳統紋樣與在地地景元素，延伸出具文化辨識度的背景層次，保有濃厚的廟宇文化特色與紀念性。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='延續鹿港天后宮聯名信用卡的視覺設計，進一步應用於信用卡申請同意書及各式宣傳素材，透過版面延伸與視覺整合，維持聯名系列的一致性，強化文化特色與品牌辨識度。')],
   gallery_style='none',gallery=[],extra=case_extra.credit(),
-  next=dict(title='長春藤生物科技 醫學展會',attr='href="./work-23-expo.html"')),
+  next=dict(title='艾沛膚系列產品包裝',attr='href="./work-03-package.html"')),
  'work-23-expo':dict(
   num='21',tone='cyan',deco=(('flower','yellow'),('blob','pink')),
   title_en='Medical Expo Booth',title_zh='長春藤生物科技 醫學展會',
@@ -268,7 +268,7 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以醫療科技與專業信賴感作為視覺核心，運用大面積白色留白、藍綠色系與金色點綴，建立理性、潔淨且具辨識度的品牌形象。搭配圖像化標示及清晰的資訊層次，將複雜的醫學技術轉化為易於閱讀的展場視覺。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='延續展會背板的核心視覺，完成邀請卡、手舉板、3 款易拉展、醫學展會小冊、合作意向書、DM、工作牌及桌牌等多項宣傳與現場應用素材。透過跨尺寸的版面調整與一致的視覺語彙，建立完整的展會識別系統，兼顧品牌形象、醫學資訊傳遞與現場活動需求。')],
   gallery_style='none',gallery=[],extra=case_extra.expo(),
-  next=dict(title='愛他命 × 國衛院記者會',attr='href="./work-24-expo.html"')),
+  next=dict(title='瞇瞇眼大叔短影音',attr='href="./work-16-mimi.html"')),
  'work-24-expo':dict(
   num='22',tone='pink',deco=(('flower','cyan'),('blob','yellow')),
   title_en='Press Conference',title_zh='愛他命 × 國衛院記者會',
@@ -280,7 +280,7 @@ CASES={
   cards=[dict(tone='lime',title='What I made',zh='我的設計',text='以「專業守護，全家安心」作為核心視覺概念，透過影像合成將醫師雙手、家庭人物與透明防護球體結合，象徵專業醫療為民眾健康提供守護。整體運用淺藍色調、柔和光暈與環繞式線條，營造純淨、安心且具科技感的視覺氛圍，搭配醫療圖示與認證徽章，強化計畫的專業形象與視覺辨識度。'),
          dict(tone='pink',title='What happened next',zh='後續成果',text='將醫療專業、科學認證與家庭健康等抽象理念轉化為直觀的視覺意象，兼顧現場品牌曝光、活動主題傳遞與多方合作單位的識別需求，建立具專業度與親和力的活動形象。')],
   gallery_style='none',gallery=[],extra=case_extra.press(),
-  next=dict(title='CMoney 尾牙福委會制服',attr='href="./work-25-uniform.html"')),
+  next=dict(title='長春藤生物科技 醫學展會',attr='href="./work-23-expo.html"')),
  'work-25-uniform':dict(
   num='23',tone='lavender',body_cls=' cs-body--dark',deco=(('circle','yellow'),('scallop','cyan')),
   title_en='Team C Uniform',title_zh='CMoney 尾牙福委會制服',
@@ -293,7 +293,7 @@ CASES={
          dict(tone='yellow',title='What happened next',zh='後續成果',text='將年度尾牙主題轉化為具象的團隊識別視覺，使工作人員制服不僅具備活動識別功能，更成為凝聚團隊向心力、強化成員歸屬感與營造活動氛圍的象徵。')],
   gallery_style='none',gallery=[],
   after=case_extra.uniform(),
-  next=dict(title='明台產險年度贈禮',attr='href="./work-26-series.html"')),
+  next=dict(title='SONIC 汽修工具簡易型錄',attr='href="./work-18-catalog.html"')),
  'work-26-series':dict(
   num='24',tone='cyan',deco=(('circle','yellow'),('scallop','pink')),
   title_en='2022 Gift Set',title_zh='明台產險年度贈禮',
@@ -306,7 +306,7 @@ CASES={
          dict(tone='yellow',title='What happened next',zh='後續成果',text='完成涵蓋三角桌曆、筆記本及包裝信封的年度贈禮設計，將桌曆與筆記本整合收納於專屬信封中，形成具一致性的品牌禮贈組合。透過日常實用的文具載體，延伸品牌與使用者的接觸情境，讓保險保障的理念自然融入生活。')],
   gallery_style='none',gallery=[],
   extra=case_extra.series(),
-  next=dict(title='明台產險新春賀卡',attr='href="./work-27-card.html"')),
+  next=dict(title='聊天室搜尋功能優化',attr='href="./work-06-chat.html"')),
  'work-27-card':dict(
   num='25',tone='yellow',deco=(('flower','coral'),('circle','cyan')),
   title_en='Year Of The Tiger',title_zh='明台產險新春賀卡',
@@ -319,7 +319,7 @@ CASES={
          dict(tone='yellow',title='What happened next',zh='後續成果',text='雖然本次提案最終未獲採用，但透過刮刮樂互動機制與日式美學的結合，探索了傳統賀卡更多元的表現形式。這也是一次自己相當滿意的設計嘗試，將節慶祝福轉化為兼具視覺美感、參與感與情感溫度的創意體驗。')],
   gallery_style='none',gallery=[],
   extra=case_extra.card27(),
-  next=dict(title='廣告視覺合輯',attr='href="./work-29-banner.html"')),
+  next=dict(title='JAY 價值選股APP',attr='href="./work-33-jay.html"')),
  'work-28-drawing':dict(
   num='02',tone='pink',body_cls='',deco=(('flower','yellow'),('circle','cyan')),
   title_en='30 Days Of Drawing',title_zh='30 日畫畫',
@@ -345,7 +345,7 @@ CASES={
          dict(tone='yellow',title='How I work',zh='我的做法',text='先找出這個版位上最重要的一件事，可能是價格、期限或活動名稱，再用主視覺、色塊和按鈕排出閱讀順序。同一檔活動先做主尺寸，再延伸成其他版位，讓每個尺寸看起來都是同一套視覺。')],
   gallery_style='none',gallery=[],
   extra=case_extra.banner29(),
-  next=dict(title='品牌便條紙組',attr='href="./work-30-note.html"')),
+  next=dict(title='籌碼K線 拉新用戶活動',attr='href="./work-09-OPENLAB.html"')),
  'work-30-note':dict(
   num='27',tone='pink',deco=(('flower','yellow'),('circle','cyan')),
   title_en='Sticky Note Set',title_zh='品牌便條紙組',
@@ -358,7 +358,7 @@ CASES={
          dict(tone='yellow',title='What happened next',zh='後續成果',text='完成三款不同主題的便條紙與專屬背卡設計，將品牌產品特色延伸至日常文具用品，透過實用功能與輕巧的視覺表現，提升禮贈品的親和力與使用價值，讓品牌形象自然融入消費者的日常生活。')],
   gallery_style='none',gallery=[],
   extra=case_extra.note30(),
-  next=dict(title='OK 食堂經典咖哩海報',attr='href="./work-31-poster.html"')),
+  next=dict(title='2020新春電子月刊',attr='href="./work-02-card.html"')),
  'work-31-poster':dict(
   num='28',tone='yellow',deco=(('flower','pink'),('circle','cyan')),
   title_en='Classic Curry Poster',title_zh='OK 食堂經典咖哩海報',
@@ -384,7 +384,7 @@ CASES={
          dict(tone='yellow',title='What happened next',zh='後續成果',text='這款紅包袋設計讓 Brother 在年節贈禮與品牌溝通上，有了更完整且具記憶點的視覺呈現，也展現出品牌在節慶物件上的延伸能力。相較於一般制式紅包袋，它不只傳遞祝福，也進一步把品牌印象、產品聯想與節慶情境整合在同一個設計載體中。')],
   gallery_style='none',gallery=[],
   extra=case_extra.envelope32(),
-  next=dict(title='JAY 價值選股APP',attr='href="./work-33-jay.html"')),
+  next=dict(title='Panasonic 電材型錄',attr='href="./work-34-catalog.html"')),
  'work-33-jay':dict(
   num='30',tone='yellow',body_cls=' cs-body--jay',deco=(('circle','yellow'),('scallop','coral')),
   title_en='Jay Value App',title_zh='JAY 價值選股APP',
@@ -397,7 +397,7 @@ CASES={
          dict(tone='yellow',title='What happened next',zh='後續成果',text='延伸核心 Logo 設計，發展多款品牌識別版本、App Icon 與啟動畫面，建立一致的數位產品視覺語彙。透過圖形、色彩與立體質感的整合，讓品牌從識別標誌延伸至實際使用情境，兼顧品牌辨識度與數位介面的視覺一致性。')],
   gallery_style='none',gallery=[],
   after=case_extra.jay33(),
-  next=dict(title='Panasonic 電材型錄',attr='href="./work-34-catalog.html"')),
+  next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
  'work-34-catalog':dict(
   num='31',tone='cyan',deco=(('flower','pink'),('blob','yellow')),
   title_en='Panasonic Catalog',title_zh='Panasonic 電材型錄',
@@ -410,5 +410,5 @@ CASES={
          dict(tone='pink',title='What happened next',zh='後續成果',text='提案確認後，與另一名設計師共同完成約 150 頁的完整產品型錄編排，將既有視覺架構延伸至不同產品系列與技術資訊頁面。透過分工協作、版面系統化與細節整合，確保大量頁面在維持品牌一致性的同時，兼顧資訊準確性與閱讀體驗。')],
   gallery_style='stack',gallery=[dict(tone='lime',img='work-34-Catalog/web-01',cap='封面與內頁',alt='Panasonic 型錄封面與攤開的建築情境內頁'),
                                  dict(tone='cyan',img='work-34-Catalog/web-02',cap='RISNA 系列內頁',alt='RISNA 系列內頁展開：配線器具搭配示意、產品介紹與尺寸圖')],
-  next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
+  next=dict(title='鹿港天后宮聯名信用卡',attr='href="./work-22-credit.html"')),
 }

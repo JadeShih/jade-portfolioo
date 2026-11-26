@@ -7,6 +7,9 @@ def pic(name,w,h,alt,lazy=True):
 def head(eyebrow,en,zh,lead=''):
   l=f'<p class="cs-sec__lead">{lead}</p>' if lead else ''
   return f'<header class="cs-sec__head"><p class="eyebrow">{eyebrow}</p><h2 class="cs-sec__title">{en}<small>{zh}</small></h2>{l}</header>'
+def frag(name):
+  # 互動區塊的 HTML 片段（26 桌面、27 抽卡、28 速寫本），樣式與互動在 site.css／site.js
+  return open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'frag',name),encoding='utf-8').read()
 def strip(group,items,cls=''):
   out=''.join(f'<button type="button" class="cs-strip__item" data-lb="{group}" aria-label="放大檢視：{html.escape(a)}">{pic(n,w,h,a)}</button>' for n,w,h,a in items)
   return f'<div class="cs-strip {cls}" style="--n:{len(items)}">{out}</div>'
@@ -651,56 +654,22 @@ def uniform():
 def series():
   def fig(n,w,h,alt,cap):
     return (f'<figure class="mt-fig"><button type="button" class="mt-fig__b" data-lb="mt" aria-label="放大檢視：{html.escape(alt)}">{pic("work-26-series/"+n,w,h,alt)}</button><figcaption>✦ {cap}</figcaption></figure>')
-  return (f'<section class="cs-sec">{head("The set","Always At Your Side","年度贈禮組合","三角桌曆與筆記本共用同一組手繪人物與米色紙感，放在一起就是一套完整的品牌禮物。")}{fig("web-set",2400,1756,"三角桌曆與筆記本並排的實品合成","三角桌曆＋筆記本")}</section>'
+  return (f'<section class="cs-sec">{head("On the desk","Pick One Up","拿起來翻翻看")}{frag("26-desk.html")}</section>'
           f'<section class="cs-sec">{head("Illustration","12 Months, 12 Policies","每月一種保障","桌曆每個月對應一項保險商品，把抽象的保障轉成日常裡看得見的小故事。")}{fig("web-cal-b",2400,1600,"桌曆各月主題插畫平鋪","每月主題插畫：機車險、租車險、意外險、海域活動險、汽車險、特定活動險⋯")}</section>'
           f'<section class="cs-sec">{head("Desk status","Back Side","桌曆狀態頁","除了月份，桌曆另有「會議中、外出中、休假中、暫時離開」四款狀態頁，翻到對應那一面，就能告訴同事你現在在哪。")}{fig("web-cal-a",2400,1600,"三角桌曆合成：暫時離開、外出中、會議中三款狀態頁","狀態頁：暫時離開、外出中、會議中")}</section>'
           f'<section class="cs-sec">{head("Notebook","Plan The Year","筆記本內頁","月計畫表延續桌曆的保險主題，每個月的角落都有一個小圖示，書寫格線留得夠寬，真的能用一整年。")}{fig("web-nb-mock",2400,1600,"筆記本攤開：1 月疫苗險計畫表","1 月計畫表・疫苗險")}</section>'
           f'<section class="cs-sec">{head("Extension","Mask Pattern","延伸：防疫口罩","同一組手繪人物延伸到口罩圖樣，在疫情期間把品牌陪伴帶到每天出門的路上。")}{fig("web-mask",2400,1600,"明台產險手繪人物圖樣口罩合成","口罩圖樣")}</section>')
 
 def card27():
-  F='public/works/work-27-card/'
   def fig(n,w,h,alt,cap):
     return (f'<figure class="mt-fig"><button type="button" class="mt-fig__b" data-lb="c27" aria-label="放大檢視：{html.escape(alt)}">{pic("work-27-card/"+n,w,h,alt)}</button><figcaption>✦ {cap}</figcaption></figure>')
-  fort=html.escape(json.dumps([['../'+F+'web-back-1.webp','大吉'],['../'+F+'web-back-2.webp','中吉'],['../'+F+'web-back-3.webp','吉'],['../'+F+'web-back-4.webp','小吉']],ensure_ascii=False))
-  sc=(f'<div class="sc" data-sc data-fortunes="{fort}" data-coat="../{F}web-coat.png">'
-      f'<div class="sc__pair">'
-      f'<figure class="sc__card sc__card--front"><img src="{F}web-front.webp" width="946" height="1477" alt="賀卡正面：香檳金底、圓窗中的老虎插畫，2022 HAPPY NEW YEAR 虎虎同心・新年快樂" loading="lazy" decoding="async"></figure>'
-      f'<div class="sc__card sc__card--back"><img class="sc__fortune" src="{F}web-back-1.webp" width="946" height="1477" alt="賀卡背面：和風花紋與扇形刮刮樂，刮開後是籤運，下方寫著一甲子的承諾與守護" loading="lazy" decoding="async">'
-      f'<canvas class="sc__coat" aria-hidden="true"></canvas></div></div>'
-      f'<div class="sc__ui"><p class="sc__msg" aria-live="polite">✦ 用滑鼠或手指在銀色扇形上刮一刮</p>'
-      f'<button type="button" class="sc__btn" data-sc-btn>直接揭曉</button></div></div>')
-  return (f'<section class="cs-sec">{head("Scratch to reveal","Pull A Fortune","刮開新年籤","卡片背面的扇形是刮刮樂塗層，就像新年到神社抽籤，刮開才知道今年的運勢：大吉、中吉、吉、小吉，每次刮到的都可能不一樣。")}{sc}</section>'
+  return (f'<section class="cs-sec">{head("Scratch to reveal","Pull A Fortune","刮開新年籤","卡片背面的扇形是刮刮樂塗層，就像新年到神社抽籤，刮開才知道今年的運勢：大吉、中吉、吉、小吉，每次刮到的都可能不一樣。")}{frag("27-picker.html")}</section>'
           f'<section class="cs-sec">{head("Card &amp; sleeve","Wrapped For New Year","卡片與信封套","信封套延續香檳金與和風紋樣：麻葉紋、市松格與「良いお年を」，卡片抽出一半時，老虎剛好從圓窗探出頭。")}{fig("web-sleeve",2000,1708,"賀卡與信封套：左為麻葉紋與市松格信封，右為卡片抽出一半露出老虎","信封套・卡片抽出示意")}</section>'
           f'<section class="cs-sec">{head("Lucky draw","Four Fortunes","大吉・中吉・吉・小吉","刮開的籤運有大吉、中吉、吉、小吉四種，每位客戶拿到的祝福都不太一樣。")}{fig("web-set",2400,1600,"多張賀卡正反面平鋪，背面分別是大吉、中吉、吉","三種籤運與正反面")}</section>')
 
 def drawing28():
-  # 28 30 日畫畫：硬紙速寫本互動
-  F='work-28-drawing/'
-  def face(cls,n,alt):
-    return f'<div class="skb__face {cls}">{pic(F+"web-sk-"+n,832,1200,alt)}<i></i></div>'
-  rim='<span class="skb__rim skb__rim--r"></span><span class="skb__rim skb__rim--t"></span><span class="skb__rim skb__rim--b"></span>'
-  pages=['cover']+[f'p{i:02d}' for i in range(1,65)]+['back']
-  alts={'cover':'速寫本封面：再生紙板，藍色山形與 IN DULAN 字樣','back':''}
-  def face2(cls,n,i):
-    alt=alts[n] if n in alts else f'30 日畫畫速寫本第 {int(n[1:])} 頁'
-    src=f'{P}{F}web-sk-{n}.webp'
-    img=(f'<img src="{src}" width="640" height="923" alt="{alt}" decoding="async">' if i<3 else f'<img data-skb="../{src}" width="640" height="923" alt="{alt}" decoding="async">')
-    return f'<div class="skb__face {cls}">{img}<i></i></div>'
-  N=len(pages)//2
-  TABS={2:('3','cyan','4%'),5:('9','purple','20%'),8:('15','lime','36%'),10:('19','pink','52%'),25:('49','yellow','68%'),28:('55','coral','84%')}
-  def tab(i):
-    if i not in TABS:return ''
-    n,t,y=TABS[i]
-    return f'<button type="button" class="skb__tab" data-go="{i}" data-tone="{t}" style="--ty:{y}" aria-label="翻到第 {n} 頁"></button>'
-  lv=''.join(f'<div class="skb__leaf{" skb__leaf--cover" if i==0 else ""}" style="z-index:{N-i}">'
-             f'{face2("skb__face--front"+(" skb__face--cover" if i==0 else ""),pages[2*i],i)}{face2("skb__face--back",pages[2*i+1],i)}{rim}{tab(i)}</div>' for i in range(N))
-  book=(f'<div class="skb is-closed" data-l="0" data-r="33" role="group" aria-label="30 日畫畫速寫本"><div class="skb__obj"><div class="skb__shadow"></div>'
-        f'<div class="skb__book"><div class="skb__stack skb__stack--l"></div><div class="skb__stack skb__stack--r"></div>{lv}</div>'
-        '<div class="skb__edge"></div><div class="skb__edge skb__edge--b"></div>'
-        '<button type="button" class="skb__hit skb__hit--l" aria-label="上一頁"></button><button type="button" class="skb__hit skb__hit--r" aria-label="下一頁"></button>'
-        '<button type="button" class="skb__open" aria-label="打開速寫本"></button></div></div>')
-  return (f'<section class="cs-sec">{head("Sketchbook","Flip Through","翻翻我的速寫本")}'
-          f'<div class="skb-stage">{book}</div></section>')
+  # 28 30 日畫畫：3D 速寫本（頁面圖在 public/works/work-28-drawing/sk/，由原始跨頁照片切成左右頁）
+  return f'<section class="cs-sec">{head("Sketchbook","Flip Through","翻翻我的速寫本")}{frag("28-sketchbook.html")}</section>'
 
 BN29={"app": [["web-app-1", 816, 1088, "年度回顧彈窗・個人專屬數據", "jpg", 816, 1088], ["web-app-2", 816, 1088, "年度回顧彈窗・年度績效", "jpg", 816, 1088], ["web-app-3", 597, 800, "KOL 訂閱・免費領取講義", "jpg", 600, 800], ["web-app-4", 600, 800, "KOL 訂閱・早鳥延長", "jpg", 600, 800], ["web-app-5", 600, 800, "KOL 訂閱・會員見證", "jpg", 600, 800], ["web-app-6", 600, 800, "限時隱藏優惠", "jpg", 600, 800], ["web-app-7", 720, 878, "年度寵粉回饋 EDM", "jpg", 720, 880], ["web-app-8", 1000, 1000, "價格快閃活動", "jpg", 1080, 1080], ["web-app-9", 1280, 720, "KOL 合作問卷", "jpg", 1280, 720]], "web": [["web-web-1", 1600, 542, "正官庄・母親節檔期", "jpg", 1920, 650], ["web-web-3", 1600, 542, "正官庄・初夏窈窕檔期", "jpg", 1920, 650], ["web-web-6", 1600, 484, "OMRON・momo 活動", "jpg", 1920, 582], ["web-web-4", 1200, 462, "松柏嶺受天宮・年節套組", "jpg", 1200, 462], ["web-web-5", 1200, 500, "RISNA・Panasonic 官網 Banner", "jpg", 1200, 500]], "social": [["web-social-5", 1040, 1040, "ORIX・中秋動態貼文", "gif", 1040, 1040], ["web-social-6", 1400, 896, "ORIX・端午節 EDM", "jpg", 5001, 3201], ["web-social-1", 1000, 1000, "長春藤生物科技・預防醫學", "jpg", 1200, 1200], ["web-social-2", 1000, 1000, "長春藤生物科技・細胞儲存", "jpg", 1200, 1200], ["web-social-3", 1000, 1017, "寶島眼科・機車族護眼", "jpg", 1201, 1221], ["web-social-4", 1000, 1017, "寶島眼科・白內障衛教", "jpg", 1201, 1221]]}
 def banner29():
