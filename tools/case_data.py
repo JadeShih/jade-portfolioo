@@ -386,7 +386,7 @@ CASES={
   extra=case_extra.envelope32(),
   next=dict(title='JAY 價值選股APP',attr='href="./work-33-jay.html"')),
  'work-33-jay':dict(
-  num='30',tone='yellow',deco=(('circle','yellow'),('scallop','coral')),
+  num='30',tone='yellow',body_cls=' cs-body--jay',deco=(('circle','yellow'),('scallop','coral')),
   title_en='Jay Value App',title_zh='JAY 價值選股APP',
   desc='Jade Shih 作品：CMoney「JAY 價值選股」App 品牌 Logo、視覺識別、商店頁與新手導覽設計。',
   tags=['金融投資','YouTuber Jay','2026'],tagline='',

@@ -2279,3 +2279,12 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .kl-store__item img{border-radius:clamp(10px,1.2vw,16px)}
 .kl--jay .kl-end img{aspect-ratio:2400/700;object-fit:cover;object-position:50% 38%}
 @media (max-width:760px){.kl--jay .kl-end img{aspect-ratio:1400/733;object-position:center}.kl--jay .kl-end__txt{top:50%;bottom:auto;transform:translateY(-30%);right:14px;font-size:26px;text-align:left}.kl--jay .kl-end__txt small{font-size:13px;margin-top:6px}}
+/* JAY：整頁區塊間距縮短 */
+.cs-body--jay>.wrap{padding-block:clamp(48px,6vw,80px) clamp(48px,6vw,72px)}
+.cs-body--jay .cs-overview{margin-top:clamp(40px,5vw,64px)}
+.cs-body--jay .cs-cards{margin-top:clamp(32px,4vw,48px)}
+.kl--jay .kl-kv{margin-top:0}
+.kl--jay .kl-block{padding-top:clamp(56px,6vw,88px)}
+.kl--jay .kl-head{margin-bottom:clamp(20px,2.6vw,32px)}
+.kl--jay .kl-logo__grid{margin-bottom:clamp(20px,3vw,36px)}
+.kl--jay :is(.kl-mid,.kl-end){margin-top:clamp(56px,6vw,88px)}
