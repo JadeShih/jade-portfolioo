@@ -397,5 +397,18 @@ CASES={
          dict(tone='yellow',title='What happened next',zh='後續成果',text='延伸核心 Logo 設計，發展多款品牌識別版本、App Icon 與啟動畫面，建立一致的數位產品視覺語彙。透過圖形、色彩與立體質感的整合，讓品牌從識別標誌延伸至實際使用情境，兼顧品牌辨識度與數位介面的視覺一致性。')],
   gallery_style='none',gallery=[],
   after=case_extra.jay33(),
+  next=dict(title='Panasonic 電材型錄',attr='href="./work-34-catalog.html"')),
+ 'work-34-catalog':dict(
+  num='31',tone='cyan',deco=(('flower','pink'),('blob','yellow')),
+  title_en='Panasonic Catalog',title_zh='Panasonic 電材型錄',
+  desc='Jade Shih 作品：Panasonic 2020–2022 年度電材產品型錄，封面視覺與約 150 頁內頁系統化編排。',
+  tags=['平面設計','Panasonic','2020'],tagline='',
+  cover='work-34-Catalog/web-cover',cover_w=2400,cover_h=1600,cover_alt='Panasonic General Catalog 2020–2022 電材型錄封面並排立起，藍色科技光束與空間延伸視覺',
+  meta=[('Client','Panasonic'),('Role','視覺設計・資訊編排'),('Deliverables','型錄'),('Year','2020')],
+  overview='<p>為 Panasonic 打造 2020–2022 年度電材產品型錄，整合旗下多款電設資材與系列商品資訊，透過專業且具科技感的視覺設計，呈現品牌創新、可靠的形象。同時建立清晰的產品分類與閱讀架構，協助消費者及專業人員快速查找商品特色、規格與應用資訊。</p>',
+  cards=[dict(tone='lime',title='What I made',zh='我的設計',text='封面以科技光束與空間延伸的視覺概念，搭配品牌經典藍色調，營造現代、俐落且具未來感的形象。內頁採用模組化網格與系統性編排，整合產品攝影、情境示意、技術圖面與規格資訊，讓大量且複雜的電材資訊更具條理。'),
+         dict(tone='pink',title='What happened next',zh='後續成果',text='提案確認後，與另一名設計師共同完成約 150 頁的完整產品型錄編排，將既有視覺架構延伸至不同產品系列與技術資訊頁面。透過分工協作、版面系統化與細節整合，確保大量頁面在維持品牌一致性的同時，兼顧資訊準確性與閱讀體驗。')],
+  gallery_style='stack',gallery=[dict(tone='lime',img='work-34-Catalog/web-01',cap='封面與內頁',alt='Panasonic 型錄封面與攤開的建築情境內頁'),
+                                 dict(tone='cyan',img='work-34-Catalog/web-02',cap='RISNA 系列內頁',alt='RISNA 系列內頁展開：配線器具搭配示意、產品介紹與尺寸圖')],
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }
