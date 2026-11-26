@@ -787,7 +787,6 @@ html,body{overflow-x:clip}
 
 .kl-store{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:clamp(8px,1vw,14px)}
 .kl-store__item{border-radius:clamp(10px,1.2vw,16px)!important;overflow:hidden;transition:transform .3s var(--ease)}
-.kl-store__item:nth-child(even){margin-top:clamp(20px,3vw,44px)}
 .kl-store__item:hover,.kl-onb__item button:hover,.kl-feat__shots button:hover{transform:translateY(-6px)}
 
 .kl-onb{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:clamp(10px,1.2vw,18px)}
@@ -2268,8 +2267,15 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .kl--jay .kl-steps b{color:var(--jade-sys-color-on-surface)}
 .kl--jay .kl-steps li.is-on button{background:var(--jade-ref-palette-neutral100)!important}
 .kl--jay .kl-onb2__item button{border-color:var(--jade-sys-color-outline-variant,rgba(22,20,58,.12))!important}
-.kl--jay :is(.kl-round,.kl-logo__formula){box-shadow:0 14px 34px rgba(22,20,58,.10)}
 .kl--jay .kl-dot{background:rgba(22,20,58,.18)}
 .kl--jay .kl-dot.is-on{background:var(--jade-sys-color-primary)}
 .kl--jay .kl-title{color:var(--jade-sys-color-on-surface)}
 .kl--jay .kl-end__txt small{color:#fff}
+/* JAY 修改：Logo 公式、色票圖去框線與陰影（透明背景）；Logo 版本圖去框線陰影；商店頁圓角整齊排；結尾區塊高度減半 */
+.kl--jay :is(.kl-round,.kl-plain,.kl-logo__formula){border:0!important;box-shadow:none!important;background:none!important}
+.kl--jay .kl-plain{border-radius:0!important}
+.kl-store{align-items:start}
+.kl-store__item{display:block}
+.kl-store__item img{border-radius:clamp(10px,1.2vw,16px)}
+.kl--jay .kl-end img{aspect-ratio:2400/700;object-fit:cover;object-position:50% 38%}
+@media (max-width:760px){.kl--jay .kl-end img{aspect-ratio:1400/733;object-position:center}.kl--jay .kl-end__txt{top:50%;bottom:auto;transform:translateY(-30%);right:14px;font-size:26px;text-align:left}.kl--jay .kl-end__txt small{font-size:13px;margin-top:6px}}
