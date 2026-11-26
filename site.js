@@ -676,8 +676,7 @@
   var stage=g.querySelector('.desk__stage'),nb=g.querySelector('.desk__nb'),cal=g.querySelector('.desk__cal'),hint=g.querySelector('.desk__hint'),
       lv=[].slice.call(nb.querySelectorAll('.desk__leaf')),L=lv.length,sh=[].slice.call(cal.querySelectorAll('.desk__sheet')),S=sh.length,
       rm=matchMedia('(prefers-reduced-motion:reduce)').matches,mode='idle',np=0,cp=0,tk=0,HINT=hint.textContent;
-  var quick=false; // 放回桌上時紙頁一起闔上，不一張張依序翻
-  function stagger(i,lo,hi,fwd,n){return !quick&&n>1&&!rm&&i>=lo&&i<hi?(fwd?i-lo:hi-1-i)*Math.min(.05,.6/n):0}
+  function stagger(i,lo,hi,fwd,n){return n>1&&!rm&&i>=lo&&i<hi?(fwd?i-lo:hi-1-i)*Math.min(.05,.6/n):0}
   /* 筆記本：攤開時最上面兩頁微微抬起，下面的紙越深越平，書口露出厚度 */
   function lift(k){return np===0||np===L?-Math.min(k*.05,1):6-4*(1-Math.exp(-k/6))}
   /* 效能：只讓最上面幾張紙參與動畫，更深的隱藏且不跑動畫；只在數值有變時才寫入；預先解碼附近頁面的圖 */
@@ -695,10 +694,11 @@
       setv(d,'--dl',stagger(i,lo,hi,np>prev,n)+'s')});
     clearTimeout(tn);tn=setTimeout(function(){lv.forEach(function(d,i){d.classList.toggle('is-far',!nbNear(i))})},wait(n)+100);
     warm(lv,np-3,np+2);return n}
-  function goNb(n){n=Math.max(0,Math.min(L,n));if(n===np)return 0;var pr=np;np=n;return drawNb(pr)}
+  /* 從闔上變攤開（或反過來）時整疊紙的角度都會變：這時全部跟著動畫走，不然下面的表格頁會瞬間跳到正在翻的扉頁前面，閃一下 */
+  function goNb(n){n=Math.max(0,Math.min(L,n));if(n===np)return 0;var pr=np,a=all;np=n;if(pr===0||n===0||pr===L||n===L)all=true;var r=drawNb(pr);all=a;return r}
   /* 桌曆：立起來時整座後仰 20°，背板對稱後仰在 -40°（兩片都碰到桌面），翻過的紙繞頂端線圈轉到 320° 貼著背板外側。
      立起來時最上面那張紙下緣朝觀者抬起最多，下面的紙越深越平，下緣一層層露出來（跟速寫本同樣的厚度做法） */
-  function calLift(k){return mode==='cal'?5-4.2*(1-Math.exp(-k/4)):-k*.12}
+  function calLift(k){return g.classList.contains('is-cal')?5-4.2*(1-Math.exp(-k/4)):-k*.12}
   function calNear(i){return i<cp?cp-1-i<=2:i-cp<=8}
   function drawCal(prev){var lo=Math.min(cp,prev),hi=Math.max(cp,prev),n=hi-lo;
     sh.forEach(function(d,i){var up=i<cp,mov=i>=lo&&i<hi;
@@ -712,12 +712,12 @@
   function open(which){++tk;mode=which;g.classList.add(which==='nb'?'is-nb':'is-cal');
     hint.textContent=which==='nb'?'點右頁往後翻、點左頁往前翻・點空白處放回桌上':'點桌曆翻下一頁・點空白處放回桌上';
     if(which==='nb'){var t=tk;setTimeout(function(){if(t===tk&&mode==='nb')goNb(1)},rm?0:320)}else{all=true;drawCal(cp);all=false}}
-  /* 放回桌上：筆記本跟速寫本一樣，先一張張往回翻、闔上，再回到桌上原位；收合途中多點幾下不會讓它重來或延後。
-     桌曆則是闔起與移回同時進行 */
+  /* 放回桌上：先一張張往回翻到封面（筆記本闔上、桌曆翻回封面），再回到桌上原位；收合途中多點幾下不會讓它重來或延後 */
   function close(){if(mode==='idle'||mode==='closing')return;var t=++tk,m=mode;hint.textContent=HINT;
     if(m==='nb'){mode='closing';var n=goNb(0);
       setTimeout(function(){if(t!==tk)return;g.classList.remove('is-nb');mode='idle'},n?wait(n)-150:0)}
-    else{mode='idle';quick=true;all=true;goCal(0);drawCal(0);quick=false;all=false;g.classList.remove('is-cal')}}
+    else{mode='closing';var c=goCal(0);
+      setTimeout(function(){if(t!==tk)return;g.classList.remove('is-cal');mode='idle';all=true;drawCal(0);all=false},c?wait(c)-150:0)}}
   function spineX(){var r=stage.getBoundingClientRect();return r.left+r.width/2}
   nb.addEventListener('click',function(e){e.stopPropagation();if(mode==='idle'){open('nb');return}if(mode!=='nb')return;
     /* 沒點在紙上（例如翻到封底後右邊的空位）就當成點空白處 */
