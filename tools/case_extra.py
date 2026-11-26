@@ -770,3 +770,38 @@ def envelope32():
           f'<ul class="nt-themes">{t}</ul>{fig("web-01",2400,1840,"Brother 2020 年節紅包袋三款並排：心心相印、喜迎相縫、好彩頭","三款紅包袋")}</section>'
           f'<section class="cs-sec">{head("Front & Back","Opening Detail","正面與背面","正面是產品線條插畫與金色細線，背面延續中式信封的開口結構。")}'
           f'{fig("web-02",2400,1600,"紅包袋正面與背面：正面是裁縫機插畫，背面為信封式開口","正面與背面")}</section>')
+
+def jay33():
+  B='work-33-jay/web-'
+  SH=json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'shapes.json')))
+  def kh(eb,en,zh,lead=''):
+    l=f'<p class="kl-head__lead">{lead}</p>' if lead else ''
+    return f'<header class="kl-head"><p class="kl-eyebrow">{eb}</p><h2 class="kl-title">{en}<small>{zh}</small></h2>{l}</header>'
+  def zoom(name,w,h,alt,group='jay',cls=''):
+    return f'<button type="button" class="{cls}" data-lb="{group}" aria-label="放大檢視：{html.escape(alt)}">{pic(name,w,h,alt)}</button>'
+  store=['商店頁 1：28 年分析師實戰選股公式','商店頁 2：一眼看出夠大、夠好、便宜','商店頁 3：便宜區間直接算給你','商店頁 4：Jay 配置比例一目瞭然','商店頁 5：每一次操作、每一筆觀點即時同步','商店頁 6：自選股一眼看完整體質','商店頁 7：加入 Jay 的投資軍團']
+  sth=''.join(f'<button type="button" class="kl-store__item" data-lb="store" aria-label="放大檢視：{html.escape(a)}">{pic(B+f"store-{i}",536,1167,a)}</button>' for i,a in enumerate(store,1))
+  onb=[(1,776,1675,'啟動畫面','品牌 Logo 與 CMoney 標示'),(2,780,1688,'一鍵量化估值','28 年分析師的選股邏輯'),(3,780,1688,'選股只看 3 件事','市值・體質・估值三大維度'),
+       (4,780,1688,'巨・佳・甜','每檔股票自動檢查是否達標'),(5,780,1688,'即時同步','Jay 的每一筆操作與持倉'),(6,776,1688,'便宜區間','最佳入手區間直接算給你')]
+  return (f'<section class="kl kl--jay" aria-label="JAY 價值選股 品牌與介面設計">'
+    f'<figure class="kl-full kl-kv">{zoom(B+"kv",2398,1306,"JAY 價值選股主視覺：橙金色立體 App Icon 與 InvestWithJay")}</figure>'
+    f'<div class="wrap">'
+    f'<section class="kl-block kl-logo">{kh("Logo concept","J × Arrow","Logo 設計概念")}'
+    f'<div class="kl-logo__grid"><div class="kl-logo__formula"><img src="{P}{B}formula.webp" width="1200" height="328" alt="設計元素：字母 J ＋ 向上箭頭 ＝ JAY 價值選股 Logo" loading="lazy"></div>'
+    f'<p class="kl-logo__txt">Logo 設計以首字母「J」為核心，將其流暢曲線轉化為「盾牌」輪廓，終點向上箭頭則直指上方，代表著增長、提升和向前的強大動力，象徵 Jay 在波動股市中擔任各位的守護者，幫助投資者建立強而有力的股市決策。</p></div>'
+    f'{zoom(B+"logos",1998,998,"Logo 版本：橙色底反白版、淺黃底與白底橫式標準字","jay","kl-round")}</section>'
+    f'<section class="kl-block">{kh("Brand system","Color &amp; Icon","顏色・Icon・字體設定")}{zoom(B+"system",2000,843,"品牌色彩 Primary #F29634、Secondary #FFCD59 與輔助灰階，App Icon 與 Noto Sans 字體設定","jay","kl-round")}</section>'
+    f'</div>'
+    f'<figure class="kl-full kl-mid">{zoom(B+"mid",2000,1144,"APP 啟動畫面手機情境圖：橙黃絲綢背景中的手機")}</figure>'
+    f'<div class="wrap">'
+    f'<section class="kl-block">{kh("App store","Store Screens","APP 商店頁")}<div class="kl-store">{sth}</div></section>'
+    f'<section class="kl-block kl-onb2">'
+    f'<div class="kl-onb2__txt">{kh("Onboarding","First Launch","啟動畫面・新手導覽")}'
+    f'<ol class="kl-steps">'+''.join(f'<li data-i="{j}"><button type="button"><span>{j+1:02d}</span><b>{t}</b><em>{d}</em></button></li>' for j,(n,w,h,t,d) in enumerate(onb))+'</ol>'
+    f'</div>'
+    f'<div class="kl-onb2__track">'+''.join(f'<figure class="kl-onb2__item"><span class="kl-num" aria-hidden="true">{SH["circle"]}<b>{j+1:02d}</b></span><button type="button" data-lb="onb" aria-label="放大檢視：{html.escape(t)}">{pic(B+f"onb-{n}",w,h,t)}</button></figure>' for j,(n,w,h,t,d) in enumerate(onb))+'</div>'
+    f'<div class="kl-dots" role="tablist" aria-label="切換新手導覽頁面"></div>'
+    f'</section>'
+    f'</div>'
+    f'<figure class="kl-full kl-end"><svg class="kl-end__cut" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true" style="color:var(--kl-bg)"><path d="M0 0 H1440 V20 C 1200 64, 960 64, 720 36 S 240 0, 0 40 Z" fill="currentColor"/></svg>{zoom(B+"end",2400,1477,"手持手機，資料夾中的 JAY 價值選股 App Icon").replace("<picture>",'<picture><source media="(max-width:760px)" srcset="'+P+B+'end-m.webp" type="image/webp" width="1108" height="1477"><source media="(max-width:760px)" srcset="'+P+B+'end-m.jpg" width="1108" height="1477">')}<figcaption class="kl-end__txt">That’s a wrap<small>感謝觀看</small></figcaption></figure>'
+    f'</section>')

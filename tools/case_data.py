@@ -384,5 +384,18 @@ CASES={
          dict(tone='yellow',title='What happened next',zh='後續成果',text='這款紅包袋設計讓 Brother 在年節贈禮與品牌溝通上，有了更完整且具記憶點的視覺呈現，也展現出品牌在節慶物件上的延伸能力。相較於一般制式紅包袋，它不只傳遞祝福，也進一步把品牌印象、產品聯想與節慶情境整合在同一個設計載體中。')],
   gallery_style='none',gallery=[],
   extra=case_extra.envelope32(),
+  next=dict(title='JAY 價值選股APP',attr='href="./work-33-jay.html"')),
+ 'work-33-jay':dict(
+  num='30',tone='yellow',body_cls=' cs-body--dark cs-body--jay',deco=(('circle','yellow'),('scallop','coral')),
+  title_en='Jay Value App',title_zh='JAY 價值選股APP',
+  desc='Jade Shih 作品：CMoney「JAY 價值選股」App 品牌 Logo、視覺識別、商店頁與新手導覽設計。',
+  tags=['金融投資','YouTuber Jay','2026'],tagline='',
+  cover='work-33-jay/web-cover',cover_w=2400,cover_h=1600,cover_alt='橙黃絲綢背景中的手機，螢幕是 JAY 價值選股啟動畫面',
+  meta=[('Client','YouTuber Jay'),('Role','APP主視覺規劃'),('Deliverables','Jay價值選股APP'),('Year','2026')],
+  overview='<p>為 CMoney 旗下美股投資分析工具「JAY 價值選股」打造品牌 Logo 與 App 視覺識別。以「又大、又好、又便宜」的價值投資理念為核心，透過系統化數據分析，協助投資者掌握企業體質與合理估值。</p><p>視覺上需兼顧金融工具的專業可信度與操作親和力，建立清晰、易辨識且具記憶點的品牌形象。</p>',
+  cards=[dict(tone='cyan',title='What I made',zh='我的設計',text='以品牌首字母「J」作為 Logo 核心，結合盾牌輪廓與向上箭頭，象徵穩健守護、價值成長及投資決策的正向指引。視覺採用新擬物設計，透過立體厚度、柔和光影與實體按鈕質感，降低中高齡用戶對數位金融工具的操作距離感。色彩選用溫暖的橙金色系，在專業理性的金融形象中注入親和力，傳遞穩健、安心且值得信賴的品牌印象。'),
+         dict(tone='yellow',title='What happened next',zh='後續成果',text='延伸核心 Logo 設計，發展多款品牌識別版本、App Icon 與啟動畫面，建立一致的數位產品視覺語彙。透過圖形、色彩與立體質感的整合，讓品牌從識別標誌延伸至實際使用情境，兼顧品牌辨識度與數位介面的視覺一致性。')],
+  gallery_style='none',gallery=[],
+  after=case_extra.jay33(),
   next=dict(title='國泰金控年報',attr='href="./work-01-report.html"')),
 }

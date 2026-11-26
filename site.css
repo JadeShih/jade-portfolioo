@@ -2257,3 +2257,17 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 /* 淺色頁的展示牆圓點：深色＋主色（瞇瞇眼大叔等） */
 .cs-body:not(.cs-body--ink):not(.cs-body--dark) .hcar .kl-dot{background:rgba(22,20,58,.18)!important}
 .cs-body:not(.cs-body--ink):not(.cs-body--dark) .hcar .kl-dot.is-on{background:var(--jade-sys-color-primary)!important;width:32px}
+
+/* 30 JAY 價值選股：沿用好葉深色架構，改用品牌橙金色 */
+.cs-body--jay{--jade-sys-color-surface:#141414;--jade-sys-color-surface-contrast:#141414;--jade-sys-color-on-surface:#F6F0E6;--jade-sys-color-on-surface-variant:#B5AC9F;--jade-sys-color-primary:#F29634;background:#141414;color:#F6F0E6}
+.cs-body--jay .wave{color:#141414}
+.cs-body--jay .cs-meta__item{border-top-color:#F29634}
+.cs-body--jay .eyebrow{color:#F29634}
+.cs-body--jay .eyebrow::before{background:#F29634}
+.cs-body--jay .cs-overview__body{color:#F6F0E6}
+.cs-body--jay .cs-card__deco{fill:#141414}
+.kl--jay{--kl-bg:#141414;--kl-bg2:#1F1F1F;--kl-ac:#F29634;--kl-tx:#F6F0E6;--kl-mu:#B5AC9F}
+.kl--jay .kl-num svg,.kl--jay .kl-num svg *{fill:#F29634!important;stroke:#141414!important}
+.kl--jay .kl-num b{color:#141414}
+.kl--jay .kl-logo__formula{padding:0!important;border-radius:24px;overflow:hidden}
+.kl--jay .kl-steps li.is-on button{background:rgba(242,150,52,.1)!important}
