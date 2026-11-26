@@ -2238,7 +2238,7 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .desk__stand{position:absolute;inset:0 0 -11% 0;background:#060b2e;border-radius:.3cqw;transform-origin:50% 0;transform:rotateX(-.6deg);transition:transform var(--dur) var(--ease)}
 .desk.is-cal .desk__stand{transform:rotateX(-40deg)}
 /* 左右三角側板：把正面、背板、底座連成一個深藍色的三角柱（高度含底座 = 紙張的 111%，寬 = 高 × sin40°） */
-.desk__side{position:absolute;top:0;width:18.6cqw;height:111%;background:#060b2e;transform-origin:0 0;transform:rotateY(90deg) scaleX(.02);clip-path:polygon(0 0,0 100%,100% 76.6%);opacity:0;transition:transform var(--dur) var(--ease),opacity .3s;pointer-events:none}
+.desk__side{position:absolute;top:0;width:18.6cqw;height:111%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,0 0,100 100,76.6' fill='%23060b2e'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;transform-origin:0 0;transform:rotateY(90deg) scaleX(.02);opacity:0;transition:transform var(--dur) var(--ease),opacity .3s;pointer-events:none}
 .desk__side--l{left:0}
 .desk__side--r{left:100%}
 .desk.is-cal .desk__side{transform:rotateY(90deg);opacity:1}
@@ -2314,3 +2314,19 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .deck.is-dragging,.deck.is-dragging *{cursor:grabbing!important;-webkit-user-select:none;user-select:none}
 /* 首頁精選作品（桌機）：卡片的左緣對齊「Selected Works」標題，--deck-left 由 site.js 量測 */
 @media (min-width:761px){.deck__stage{place-items:center start}.deck__track{margin-left:var(--deck-left,0px)}}
+/* 首頁精選作品、Playground 的藍底加上和首屏一樣的淺色方格線 */
+#work.sec,#playground.sec{--line:color-mix(in srgb,var(--jade-sys-color-on-surface) 9%,transparent);background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;background-position:center top}
+/* 好葉商店圖右側有約 1% 的白邊（圖檔本身），往右放大一點讓圓角框裁掉 */
+.kl-store__item img[src*="kolapp-store"]{transform:scale(1.016);transform-origin:0 50%}
+/* 商店頁（好葉、JAY）手機版：每張縮成容器的 42%，第三張露出一點，提示可以往右滑 */
+@media (max-width:760px){.kl-store{grid-auto-columns:42%}}
+/* 26 手機版：說明文字移到整區桌面圖下方，不壓在圖上擋到主角 */
+@media (max-width:760px){.desk{padding-bottom:52px}.desk__hint{top:calc(100% + 12px);bottom:auto;right:auto;left:50%;transform:translateX(-50%)}}
+/* Prompt Skill 五種 Persona 手機版：每格的兩張圖改成上下排列，一次看一張、圖放大一倍 */
+@media (max-width:700px){.sk-pimgs{grid-template-columns:minmax(0,1fr)}}
+/* Prompt Skill 試玩區手機版：Persona 按鈕改成一行左右滑；「重新抽選構圖」移到圖片下方 */
+@media (max-width:760px){.sk-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-24px;padding:4px 24px;scroll-snap-type:x proximity}.sk-tabs::-webkit-scrollbar{display:none}.sk-tab,.cs-sec .sk-tab{flex:none;scroll-snap-align:start}.sk-panel{display:contents}.sk-out{order:1}.sk-rollwrap{order:2}}
+/* 28 速寫本手機版：標籤只顯示天數數字，字放大 */
+@media (max-width:760px){.sbk__tab-day{display:none}.sbk .sbk__tab{font-size:11px;letter-spacing:0}}
+/* 展場熱點手機版：圓點外觀不變，外圍加一圈看不見的感應範圍（約 48px），比較好點 */
+@media (max-width:760px){.ob-hot .ob-hs__dot::before{content:"";position:absolute;inset:-14px;border-radius:50%}}

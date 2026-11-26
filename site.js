@@ -321,7 +321,10 @@
     }
     function reset(){clear();phone.classList.remove('is-anim');anim.className='gc-anim';page('landing');step('landing')}
     demo.querySelector('.gc-hot').addEventListener('click',play);
-    var rp=demo.querySelector('.gc-replay');if(rp)rp.addEventListener('click',reset);
+    var rp=demo.querySelector('.gc-replay');if(rp)rp.addEventListener('click',function(){reset();
+      /* 手機版手機在步驟卡片上方，按「再玩一次」後捲回手機區（扣掉導覽列高度），才看得到「馬上前往」 */
+      if(matchMedia('(max-width:760px)').matches){var nb=document.querySelector('.jade-navigation-bar'),off=(nb?nb.getBoundingClientRect().bottom:64)+12;
+        window.scrollTo({top:phone.getBoundingClientRect().top+scrollY-off,behavior:reduce?'auto':'smooth'})}});
     reset();
   });
 })();
