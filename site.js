@@ -705,7 +705,7 @@
       d.classList.toggle('is-far',!(calNear(i)||mov));snap(d,mov,up?cp-1-i:i-cp);
       setv(d,'--a',(up?320-(i+1)*.15:calLift(i-cp))+'deg');
       /* 每張紙沿自己的法線再錯開一點點：頂端線圈處幾張紙幾乎重疊，iOS Safari 會分不清前後而露出下面那張 */
-      setv(d,'--z',(up?-(i+1):-(i-cp))*.06+'cqw');
+      setv(d,'--z','calc('+(up?-(i+1):-(i-cp))*.06+'*var(--u))');
       setv(d,'--dl',stagger(i,lo,hi,cp>prev,n)+'s')});
     clearTimeout(tc);tc=setTimeout(function(){sh.forEach(function(d,i){d.classList.toggle('is-far',!calNear(i))})},wait(n)+100);
     warm(sh,cp-1,cp+2);return n}

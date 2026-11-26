@@ -2201,54 +2201,54 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.kl-final-st,.kl-final-st .jade-sticker__shape{animation:none}}
 
 /* 26 年度贈禮互動：滿版桌面，點筆記本或桌曆拿到中央翻閱（尺寸用 cqw，位置對齊桌面圖的合成構圖；結構在 tools/frag/26-desk.html） */
-.desk{container-type:inline-size;width:100vw;margin-left:calc(50% - 50vw);margin-top:clamp(28px,4vw,48px);--dur:.85s;--ease:cubic-bezier(.3,.7,.2,1)}
-.desk__stage{position:relative;height:56.25cqw;background:#2e55a6 url(public/works/work-26-series/gift/desk.jpg) center/cover no-repeat;overflow-x:clip;overflow-y:visible;perspective:200cqw;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.desk{container-type:inline-size;width:100vw;margin-left:calc(50% - 50vw);margin-top:clamp(28px,4vw,48px);--u:1cqw;--dur:.85s;--ease:cubic-bezier(.3,.7,.2,1)}
+.desk__stage{position:relative;height:56.25cqw;background:#2e55a6 url(public/works/work-26-series/gift/desk-2.jpg) center/cover no-repeat;overflow-x:clip;overflow-y:visible;perspective:calc(200*var(--u));user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
 .desk__dim{position:absolute;inset:0;z-index:2;background:rgba(12,14,32,.62);opacity:0;transition:opacity .5s;pointer-events:none}
 .desk.is-nb .desk__dim,.desk.is-cal .desk__dim{opacity:1}
-.desk__nb,.desk__cal{position:absolute;z-index:1;cursor:pointer;outline:none;perspective:160cqw;will-change:transform;transition:transform var(--dur) var(--ease);
-  transform:translate(var(--tx,0cqw),var(--ty,0cqw)) translate(var(--ox,0cqw),var(--oy,0cqw)) rotate(var(--r,0deg)) translate(calc(var(--ox,0cqw) * -1),calc(var(--oy,0cqw) * -1)) translateY(var(--hy,0cqw)) scale(var(--s,1))}
-.desk__nb{left:19.375cqw;top:10.88cqw;width:28.85cqw;height:37.75cqw;transform-origin:0 50%;perspective-origin:0 50%;--ox:14.425cqw;--r:-14.3deg}
-.desk__cal{left:45.5cqw;top:20.54cqw;width:28.9cqw;height:26.07cqw;transform-origin:50% 50%;--r:7.9deg}
-.desk:not(.is-nb):not(.is-cal) .desk__nb:hover,.desk:not(.is-nb):not(.is-cal) .desk__cal:hover,.desk__nb:focus-visible,.desk__cal:focus-visible{--hy:-.6cqw;--s:1.02}
-.desk.is-nb .desk__nb{z-index:3;--tx:30.625cqw;--ty:-3cqw;--r:0deg;--s:1.18;--hy:0cqw}
-.desk.is-cal .desk__cal{z-index:3;--tx:-9.95cqw;--ty:-3.5cqw;--r:0deg;--s:1.1;--hy:0cqw}
+.desk__nb,.desk__cal{position:absolute;z-index:1;cursor:pointer;outline:none;perspective:calc(160*var(--u));will-change:transform;transition:transform var(--dur) var(--ease);
+  transform:translate(var(--tx,calc(0*var(--u))),var(--ty,calc(0*var(--u)))) translate(var(--ox,calc(0*var(--u))),var(--oy,calc(0*var(--u)))) rotate(var(--r,0deg)) translate(calc(var(--ox,calc(0*var(--u))) * -1),calc(var(--oy,calc(0*var(--u))) * -1)) translateY(var(--hy,calc(0*var(--u)))) scale(var(--s,1))}
+.desk__nb{left:calc(19.375*var(--u));top:calc(10.88*var(--u));width:calc(28.85*var(--u));height:calc(37.75*var(--u));transform-origin:0 50%;perspective-origin:0 50%;--ox:calc(14.425*var(--u));--r:-14.3deg}
+.desk__cal{left:calc(45.5*var(--u));top:calc(20.54*var(--u));width:calc(28.9*var(--u));height:calc(26.07*var(--u));transform-origin:50% 50%;--r:7.9deg}
+.desk:not(.is-nb):not(.is-cal) .desk__nb:hover,.desk:not(.is-nb):not(.is-cal) .desk__cal:hover,.desk__nb:focus-visible,.desk__cal:focus-visible{--hy:calc(-.6*var(--u));--s:1.02}
+.desk.is-nb .desk__nb{z-index:3;--tx:calc(30.625*var(--u));--ty:calc(-3*var(--u));--r:0deg;--s:1.18;--hy:calc(0*var(--u))}
+.desk.is-cal .desk__cal{z-index:3;--tx:calc(-9.95*var(--u));--ty:calc(-3.5*var(--u));--r:0deg;--s:1.1;--hy:calc(0*var(--u))}
 .desk.is-nb .desk__cal,.desk.is-cal .desk__nb{pointer-events:none}
 /* 放在桌上時的陰影（厚度由實景照片呈現），hover 時陰影拉長 */
-.desk__block{position:absolute;inset:0;border-radius:.2cqw .8cqw .8cqw .2cqw;transform:translateZ(-.3cqw);transition:box-shadow .35s,opacity .4s;box-shadow:1cqw 1.4cqw 2cqw rgba(30,16,0,.42)}
-.desk__cal .desk__block{inset:auto;left:-.195cqw;top:-1.237cqw;width:29.29cqw;height:30.4cqw;border-radius:.3cqw}
-.desk__nb:hover .desk__block,.desk__cal:hover .desk__block,.desk__nb:focus-visible .desk__block,.desk__cal:focus-visible .desk__block{box-shadow:2cqw 2.8cqw 3.2cqw rgba(30,16,0,.38)}
+.desk__block{position:absolute;inset:0;border-radius:calc(.2*var(--u)) calc(.8*var(--u)) calc(.8*var(--u)) calc(.2*var(--u));transform:translateZ(calc(-.3*var(--u)));transition:box-shadow .35s,opacity .4s;box-shadow:calc(1*var(--u)) calc(1.4*var(--u)) calc(2*var(--u)) rgba(30,16,0,.42)}
+.desk__cal .desk__block{inset:auto;left:calc(-.195*var(--u));top:calc(-1.237*var(--u));width:calc(29.29*var(--u));height:calc(30.4*var(--u));border-radius:calc(.3*var(--u))}
+.desk__nb:hover .desk__block,.desk__cal:hover .desk__block,.desk__nb:focus-visible .desk__block,.desk__cal:focus-visible .desk__block{box-shadow:calc(2*var(--u)) calc(2.8*var(--u)) calc(3.2*var(--u)) rgba(30,16,0,.38)}
 .desk.is-nb .desk__nb .desk__block,.desk.is-cal .desk__cal .desk__block{opacity:0}
 .desk__nb img,.desk__cal img{display:block;width:100%;height:100%;-webkit-user-drag:none}
 /* 實景照片：放在桌上時顯示，拿起來時淡出換成可翻頁的版本（照片的紙張範圍對齊下面的紙張） */
 .desk__photo{position:absolute;pointer-events:none;transition:opacity .3s .05s;will-change:opacity}
-.desk__nb .desk__photo{inset:0;border-radius:.2cqw .5cqw .5cqw .2cqw}
-.desk .desk__cal .desk__photo{left:-.195cqw;top:-1.237cqw;width:29.29cqw;height:30.4cqw}
+.desk__nb .desk__photo{inset:0;border-radius:calc(.2*var(--u)) calc(.5*var(--u)) calc(.5*var(--u)) calc(.2*var(--u))}
+.desk .desk__cal .desk__photo{left:calc(-.195*var(--u));top:calc(-1.237*var(--u));width:calc(29.29*var(--u));height:calc(30.4*var(--u))}
 .desk.is-nb .desk__nb .desk__photo,.desk.is-cal .desk__cal .desk__photo{opacity:0;transition-delay:0s}
 /* 筆記本：紙頁在 desk__book 裡排 3D 前後；實景照片放在外層、不參與 3D 排序（放進去會讓後面的紙頁跑到最上面） */
 .desk__book{position:absolute;inset:0;transform-style:preserve-3d}
 .desk__leaf{position:absolute;inset:0;transform-origin:0 50%;transform-style:preserve-3d;transform:rotateY(var(--a,0deg));transition:transform var(--dur) var(--ease) var(--dl,0s)}
-.desk__face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fbfaf6;border-radius:.2cqw .5cqw .5cqw .2cqw}
-.desk__face--b{transform:rotateY(180deg);border-radius:.5cqw .2cqw .2cqw .5cqw}
+.desk__face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fbfaf6;border-radius:calc(.2*var(--u)) calc(.5*var(--u)) calc(.5*var(--u)) calc(.2*var(--u))}
+.desk__face--b{transform:rotateY(180deg);border-radius:calc(.5*var(--u)) calc(.2*var(--u)) calc(.2*var(--u)) calc(.5*var(--u))}
 .desk__face img{border-radius:inherit}
 .desk__face::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(90deg,rgba(60,40,10,.22),rgba(60,40,10,0) 9%),rgba(20,22,51,var(--sh,0));box-shadow:inset 0 0 0 1px rgba(90,70,40,.12)}
 .desk__face--b::after{background:linear-gradient(270deg,rgba(60,40,10,.22),rgba(60,40,10,0) 9%),rgba(20,22,51,var(--sh,0))}
 /* 三角桌曆：拿起來時立成帳篷狀（深藍底座、黑色支架、頂端線圈），翻過的紙繞線圈翻到背面 */
 .desk__calbody{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:50% 100%;transition:transform var(--dur) var(--ease)}
 .desk.is-cal .desk__calbody{transform:rotateY(14deg) rotateX(20deg)}
-.desk__stand{position:absolute;inset:0 0 -11% 0;background:#060b2e;border-radius:.3cqw;transform-origin:50% 0;transform:rotateX(-.6deg);transition:transform var(--dur) var(--ease)}
+.desk__stand{position:absolute;inset:0 0 -11% 0;background:#060b2e;border-radius:calc(.3*var(--u));transform-origin:50% 0;transform:rotateX(-.6deg);transition:transform var(--dur) var(--ease)}
 .desk.is-cal .desk__stand{transform:rotateX(-40deg)}
 /* 左右三角側板：把正面、背板、底座連成一個深藍色的三角柱（高度含底座 = 紙張的 111%，寬 = 高 × sin40°） */
-.desk__side{position:absolute;top:0;width:18.6cqw;height:111%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,0 0,100 100,76.6' fill='%23060b2e'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;transform-origin:0 0;transform:rotateY(90deg) scaleX(.02);opacity:0;transition:transform var(--dur) var(--ease),opacity .3s;pointer-events:none}
+.desk__side{position:absolute;top:0;width:calc(18.6*var(--u));height:111%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,0 0,100 100,76.6' fill='%23060b2e'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;transform-origin:0 0;transform:rotateY(90deg) scaleX(.02);opacity:0;transition:transform var(--dur) var(--ease),opacity .3s;pointer-events:none}
 .desk__side--l{left:0}
 .desk__side--r{left:100%}
 .desk.is-cal .desk__side{transform:rotateY(90deg);opacity:1}
 .desk__sheet{position:absolute;inset:0;transform-origin:50% 0;transform-style:preserve-3d;transform:rotateX(var(--a,0deg)) translateZ(var(--z,0px));transition:transform var(--dur) var(--ease) var(--dl,0s)}
-.desk__sheet img{position:absolute;inset:0;object-fit:cover;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:.3cqw}
-.desk__sheet::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4%;border-radius:0 0 .3cqw .3cqw;background:linear-gradient(to top,rgba(110,90,60,.35),rgba(110,90,60,0));backface-visibility:hidden;-webkit-backface-visibility:hidden;pointer-events:none} /* 紙張下緣的細陰影，疊在一起時看得出一層層紙邊 */
-.desk__sheet i{position:absolute;inset:0;background:#f1ece2;border-radius:.3cqw;transform:rotateX(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.desk__sheet img{position:absolute;inset:0;object-fit:cover;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:calc(.3*var(--u))}
+.desk__sheet::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4%;border-radius:0 0 calc(.3*var(--u)) calc(.3*var(--u));background:linear-gradient(to top,rgba(110,90,60,.35),rgba(110,90,60,0));backface-visibility:hidden;-webkit-backface-visibility:hidden;pointer-events:none} /* 紙張下緣的細陰影，疊在一起時看得出一層層紙邊 */
+.desk__sheet i{position:absolute;inset:0;background:#f1ece2;border-radius:calc(.3*var(--u));transform:rotateX(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .desk__ring,.desk__base{position:absolute;pointer-events:none;opacity:0;transition:opacity .4s}
-.desk__ring{left:3%;right:3%;top:-5.5%;height:12.7%;transform:translateZ(.25cqw);background:url(public/works/work-26-series/gift/cal-ring.png) center/100% 100% no-repeat}
-.desk__base{left:-1.5%;right:-1.5%;top:97%;height:14%;background:#0b1753;border-radius:0 0 .3cqw .3cqw}
+.desk__ring{left:3%;right:3%;top:-5.5%;height:12.7%;transform:translateZ(calc(.25*var(--u)));background:url(public/works/work-26-series/gift/cal-ring.png) center/100% 100% no-repeat}
+.desk__base{left:-1.5%;right:-1.5%;top:97%;height:14%;background:#0b1753;border-radius:0 0 calc(.3*var(--u)) calc(.3*var(--u))}
 .desk.is-cal .desk__ring,.desk.is-cal .desk__base{opacity:1;transition-delay:.25s}
 .desk{position:relative}
 /* 操作說明只留給讀螢幕軟體（畫面上改用晃動提示可以點） */
@@ -2340,3 +2340,12 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 @media (max-width:760px){.sk-sw{gap:8px}.sk-sw span{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 4px;border-radius:14px;font-size:11px}.sk-sw span::before{position:static;transform:none;flex:none}.sk-rollwrap{justify-self:center;align-self:center}}
 /* 手機版：好葉、Jay 的「Color & Icon」和下面滿版圖的間距縮小；好葉色票圖拿掉深藍描邊 */
 @media (max-width:760px){.kl-mid,.kl--jay .kl-mid{margin-top:36px}.kl .kl-plain{box-shadow:none!important}}
+/* 26 手機版：直式 4:5 桌面背景，筆記本和桌曆放大 1.66 倍（--u 是物件尺寸的單位），位置改成上下錯開；拿起來時也放大 */
+@media (max-width:600px){
+  .desk{--u:1.66cqw}
+  .desk__stage{height:125cqw;background-image:url(public/works/work-26-series/gift/desk-m.jpg)}
+  .desk__nb{left:8cqw;top:8.6cqw}
+  .desk__cal{left:43cqw;top:70.4cqw}
+  .desk.is-nb .desk__nb{--tx:42cqw;--ty:22.5cqw;--s:.96}
+  .desk.is-cal .desk__cal{--tx:-17cqw;--ty:-32cqw;--s:1.5}
+}
