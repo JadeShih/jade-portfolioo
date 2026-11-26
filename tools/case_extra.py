@@ -92,6 +92,7 @@ def kolapp2():
     f'<figure class="kl-full kl-mid">{zoom(B+"8",2000,1144,"APP 啟動畫面手機情境圖")}</figure>'
     f'<div class="wrap">'
     
+    f'<section class="kl-block">{kh("App store","Store Screens","APP 商店頁","7 張商店圖以好葉本人為主角，一張講一個功能。")}<div class="kl-store">'+''.join(f'<button type="button" class="kl-store__item" data-lb="store" aria-label="放大檢視：{html.escape(a)}">{pic(f"work-05-kolapp-store-{i}",416,736,a)}</button>' for i,a in enumerate(['商店頁 1：好葉智能選股主視覺','商店頁 2：好葉持股一次看','商店頁 3：好葉持倉／觀察','商店頁 4：三大選股策略','商店頁 5：個股體質雷達','商店頁 6：APP 用戶專屬互動','商店頁 7：獨家內容全收錄'],1))+'</div></section>'
     f'<section class="kl-block kl-onb2">'
     f'<div class="kl-onb2__txt">{kh("Onboarding","First Launch","登入頁・新手導覽")}'
     f'<ol class="kl-steps">'+''.join(f'<li data-i="{j}"><button type="button"><span>{j+1:02d}</span><b>{t}</b><em>{d}</em></button></li>' for j,(n,t,d) in enumerate(onb))+'</ol>'
