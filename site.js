@@ -691,6 +691,8 @@
     lv.forEach(function(d,i){var up=i<np,k=up?np-1-i:i-np,mov=i>=lo&&i<hi;
       d.classList.toggle('is-far',!(nbNear(i)||mov));snap(d,mov,k);
       setv(d,'--a',(up?-180+lift(k):-lift(k))+'deg');
+      /* 每張紙沿自己的法線往後錯開一點點：書背處好幾張紙幾乎重疊，iOS Safari 會把下面的紙排到前面（翻開時右頁閃出別頁） */
+      setv(d,'--z','calc('+(up?k:-k)*.06+'*var(--u))');
       setv(d,'--dl',stagger(i,lo,hi,np>prev,n)+'s')});
     clearTimeout(tn);tn=setTimeout(function(){lv.forEach(function(d,i){d.classList.toggle('is-far',!nbNear(i))})},wait(n)+100);
     warm(lv,np-3,np+2);return n}

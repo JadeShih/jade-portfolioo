@@ -2226,7 +2226,7 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .desk.is-nb .desk__nb .desk__photo,.desk.is-cal .desk__cal .desk__photo{opacity:0;transition-delay:0s}
 /* 筆記本：紙頁在 desk__book 裡排 3D 前後；實景照片放在外層、不參與 3D 排序（放進去會讓後面的紙頁跑到最上面） */
 .desk__book{position:absolute;inset:0;transform-style:preserve-3d}
-.desk__leaf{position:absolute;inset:0;transform-origin:0 50%;transform-style:preserve-3d;transform:rotateY(var(--a,0deg));transition:transform var(--dur) var(--ease) var(--dl,0s)}
+.desk__leaf{position:absolute;inset:0;transform-origin:0 50%;transform-style:preserve-3d;transform:rotateY(var(--a,0deg)) translateZ(var(--z,0px));transition:transform var(--dur) var(--ease) var(--dl,0s)}
 .desk__face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fbfaf6;border-radius:calc(.2*var(--u)) calc(.5*var(--u)) calc(.5*var(--u)) calc(.2*var(--u))}
 .desk__face--b{transform:rotateY(180deg);border-radius:calc(.5*var(--u)) calc(.2*var(--u)) calc(.2*var(--u)) calc(.5*var(--u))}
 .desk__face img{border-radius:inherit}
