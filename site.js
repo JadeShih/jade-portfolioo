@@ -13,14 +13,16 @@
   document.documentElement.classList.add('has-ycur');
   var x=-100,y=-100,queued=false;
   function draw(){queued=false;c.style.transform='translate3d('+(x-5)+'px,'+(y-3)+'px,0)'}
-  document.addEventListener('mousemove',function(e){
+  // 用 pointer 事件：刮刮樂等元件按下時會擋掉 mousemove，游標才不會卡住
+  document.addEventListener('pointermove',function(e){
+    if(e.pointerType&&e.pointerType!=='mouse')return;
     x=e.clientX;y=e.clientY;c.classList.add('is-on');
     c.classList.toggle('is-link',!!(e.target.closest&&e.target.closest('a,button,[role="button"],label,summary')));
     if(!queued){queued=true;requestAnimationFrame(draw)}
   },{passive:true});
   document.addEventListener('mouseleave',function(){c.classList.remove('is-on')});
-  document.addEventListener('mousedown',function(){c.classList.add('is-down')});
-  document.addEventListener('mouseup',function(){c.classList.remove('is-down')});
+  document.addEventListener('pointerdown',function(){c.classList.add('is-down')});
+  document.addEventListener('pointerup',function(){c.classList.remove('is-down')});
 })();
 
 /* 抵達提示：點貼紙或導覽捲到區塊後，標題做一次「關卡開始」動畫 */
