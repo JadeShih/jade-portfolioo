@@ -2288,3 +2288,10 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .kl--jay .kl-head{margin-bottom:clamp(20px,2.6vw,32px)}
 .kl--jay .kl-logo__grid{margin-bottom:clamp(20px,3vw,36px)}
 .kl--jay :is(.kl-mid,.kl-end){margin-top:clamp(56px,6vw,88px)}
+/* 好葉 3 Directions：Final 標籤改成和 Case 一樣的爆炸形貼紙 */
+.kl-final-st{position:absolute;top:10px;right:10px;z-index:2;width:104px;height:104px;animation:sticker-bob 3.6s ease-in-out infinite alternate}
+.kl-final-st .jade-sticker__shape{transform-origin:50% 50%;animation:cs-st-spin 16s linear infinite}
+.kl-final-st .jade-sticker__label{max-width:none}
+.kl-final-st .jade-sticker__label b{font-size:26px;letter-spacing:.02em;text-transform:uppercase}
+@media (max-width:760px){.kl-final-st{width:84px;height:84px;top:8px;right:8px}.kl-final-st .jade-sticker__label b{font-size:21px}}
+@media (prefers-reduced-motion:reduce){.kl-final-st,.kl-final-st .jade-sticker__shape{animation:none}}

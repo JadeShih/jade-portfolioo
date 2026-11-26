@@ -60,7 +60,7 @@ def kolapp2():
   pc=''
   for k,n,name,desc,final in props:
     sets='|'.join(f'../{P}{B}{24+n-1}-{i}.webp' for i in range(1,4))
-    fin='<span class="kl-prop__final">Final</span>' if final else ''
+    fin=('<span class="jade-sticker kl-final-st" data-shape="burst" data-tone="lime" style="--jade-sticker-rotation:12deg" aria-label="Final 定案"><svg class="jade-sticker__shape" viewBox="0 0 128 128" aria-hidden="true"><polygon points="64.0,2.0 73.2,17.9 87.7,6.7 90.1,24.9 107.8,20.2 103.1,37.9 121.3,40.3 110.1,54.8 126.0,64.0 110.1,73.2 121.3,87.7 103.1,90.1 107.8,107.8 90.1,103.1 87.7,121.3 73.2,110.1 64.0,126.0 54.8,110.1 40.3,121.3 37.9,103.1 20.2,107.8 24.9,90.1 6.7,87.7 17.9,73.2 2.0,64.0 17.9,54.8 6.7,40.3 24.9,37.9 20.2,20.2 37.9,24.9 40.3,6.7 54.8,17.9"/></svg><span class="jade-sticker__label"><b>Final</b></span></span>') if final else ''
     pc+=(f'<article class="kl-prop{" is-final" if final else ""}">'
          f'<span class="kl-prop__img">{pic(B+str(n),1203,740,f"提案 {k.upper()} 款：{name}")}{fin}</span>'
          f'<span class="kl-prop__txt"><b><i>{k.upper()}</i>{name}</b><span>{desc}</span></span></article>')
@@ -628,7 +628,7 @@ def uniform():
          (4,'D','TEAM C 徽章版','同樣以 TEAM C 為核心，改用方框徽章構成，加入紅色點綴。',False)]
   pc=''
   for n,k,name,desc,final in props:
-    fin='<span class="kl-prop__final">Final</span>' if final else ''
+    fin=('<span class="jade-sticker kl-final-st" data-shape="burst" data-tone="lime" style="--jade-sticker-rotation:12deg" aria-label="Final 定案"><svg class="jade-sticker__shape" viewBox="0 0 128 128" aria-hidden="true"><polygon points="64.0,2.0 73.2,17.9 87.7,6.7 90.1,24.9 107.8,20.2 103.1,37.9 121.3,40.3 110.1,54.8 126.0,64.0 110.1,73.2 121.3,87.7 103.1,90.1 107.8,107.8 90.1,103.1 87.7,121.3 73.2,110.1 64.0,126.0 54.8,110.1 40.3,121.3 37.9,103.1 20.2,107.8 24.9,90.1 6.7,87.7 17.9,73.2 2.0,64.0 17.9,54.8 6.7,40.3 24.9,37.9 20.2,20.2 37.9,24.9 40.3,6.7 54.8,17.9"/></svg><span class="jade-sticker__label"><b>Final</b></span></span>') if final else ''
     pc+=(f'<article class="kl-prop un-prop{" is-final" if final else ""}">'
          f'<span class="kl-prop__img">{pic(B+f"kv-{n}",1600,624,f"提案 {k} 款主視覺：{name}")}{fin}</span>'
          f'<span class="kl-prop__txt"><b><i>{k}</i>{name}</b><span>{desc}</span></span></article>')
