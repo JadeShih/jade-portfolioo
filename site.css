@@ -2321,7 +2321,9 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 /* 商店頁（好葉、JAY）手機版：每張縮成容器的 42%，第三張露出一點，提示可以往右滑 */
 @media (max-width:760px){.kl-store{grid-auto-columns:42%}}
 /* 26 手機版：說明文字移到整區桌面圖下方，不壓在圖上擋到主角 */
-@media (max-width:760px){.desk{padding-bottom:52px}.desk__hint{top:calc(100% + 12px);bottom:auto;right:auto;left:50%;transform:translateX(-50%)}}
+/* 提示文字放在 3D 舞台外面（放在裡面時 iOS Safari 合成 3D 圖層會讓它忽隱忽現）；手機版固定排在圖片正下方 */
+.desk{position:relative}
+@media (max-width:760px){.desk__hint{position:static;display:table;margin:12px auto 0;white-space:normal;text-align:center}}
 /* Prompt Skill 五種 Persona 手機版：每格的兩張圖改成上下排列，一次看一張、圖放大一倍 */
 @media (max-width:700px){.sk-pimgs{grid-template-columns:minmax(0,1fr)}}
 /* Prompt Skill 試玩區手機版：Persona 按鈕改成一行左右滑；「重新抽選構圖」移到圖片下方 */
