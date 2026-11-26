@@ -2363,3 +2363,17 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 @keyframes brand-spin{to{transform:rotate(360deg)}}
 .jade-navigation-bar__brand svg{animation:brand-spin 8s linear infinite}
 @media (prefers-reduced-motion:reduce){.jade-navigation-bar__brand svg{animation:none}}
+/* 首頁所有色塊上緣的波浪：一直往左流動像水流。波浪用遮罩切出形狀（遮罩是左右可接續的波形，往左移），顏色沿用各自的 color（區塊底色）；
+   電腦 80px、手機 56px 高，起伏比原本明顯一些。各條波浪錯開起點，不會長得一模一樣 */
+.page-home .wave{--ww:1440px;--wh:80px;height:var(--wh);background-color:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 50 C 240 0, 480 0, 720 50 S 1200 100, 1440 50 V100 H0 Z'/%3E%3C/svg%3E") 0 0/var(--ww) 100% repeat-x;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 50 C 240 0, 480 0, 720 50 S 1200 100, 1440 50 V100 H0 Z'/%3E%3C/svg%3E") 0 0/var(--ww) 100% repeat-x;animation:wave-flow 14s linear infinite}
+.page-home .wave svg{display:none}
+/* 精選作品、Playground 是藍底方格線：波浪也畫格線，從波浪底部（區塊上緣）往上排才對得齊；方格線不跟著流動 */
+.page-home #work.sec>.wave,.page-home #playground.sec>.wave{background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;background-position:center bottom}
+.page-home #work>.wave{animation-delay:-3s}.page-home #brands>.wave{animation-delay:-6s}.page-home #playground>.wave{animation:none} /* Playground 上緣維持靜止的曲線 */.page-home #contact>.wave{animation-delay:-12s}.page-home .foot>.wave{animation-delay:-5s}
+@keyframes wave-flow{to{-webkit-mask-position:calc(-1 * var(--ww)) 0;mask-position:calc(-1 * var(--ww)) 0}}
+/* 首屏底部的內容和裝飾離波浪頂端至少留 40px（電腦波浪 80px、手機 56px），波峰流過時也不會太擠 */
+.page-home .hero{padding-bottom:calc(var(--jade-sys-spacing-16) + 56px)}
+.page-home .deco{bottom:calc(var(--jade-sys-spacing-16) + 56px)}
+@media (max-width:760px){.page-home .wave{--ww:720px;--wh:56px;animation-duration:10s}}
+@media (max-width:760px){.page-home .hero{padding-bottom:calc(var(--jade-sys-spacing-16) + 32px)}}
+@media (prefers-reduced-motion:reduce){.page-home .wave{animation:none}}
