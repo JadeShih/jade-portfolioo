@@ -2242,7 +2242,7 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 .desk__side--l{left:0}
 .desk__side--r{left:100%}
 .desk.is-cal .desk__side{transform:rotateY(90deg);opacity:1}
-.desk__sheet{position:absolute;inset:0;transform-origin:50% 0;transform-style:preserve-3d;transform:rotateX(var(--a,0deg));transition:transform var(--dur) var(--ease) var(--dl,0s)}
+.desk__sheet{position:absolute;inset:0;transform-origin:50% 0;transform-style:preserve-3d;transform:rotateX(var(--a,0deg)) translateZ(var(--z,0px));transition:transform var(--dur) var(--ease) var(--dl,0s)}
 .desk__sheet img{position:absolute;inset:0;object-fit:cover;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:.3cqw}
 .desk__sheet::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4%;border-radius:0 0 .3cqw .3cqw;background:linear-gradient(to top,rgba(110,90,60,.35),rgba(110,90,60,0));backface-visibility:hidden;-webkit-backface-visibility:hidden;pointer-events:none} /* 紙張下緣的細陰影，疊在一起時看得出一層層紙邊 */
 .desk__sheet i{position:absolute;inset:0;background:#f1ece2;border-radius:.3cqw;transform:rotateX(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden}
@@ -2327,8 +2327,12 @@ html.navmenu-lock,html.navmenu-lock body{overflow:hidden}
 /* Prompt Skill 五種 Persona 手機版：每格的兩張圖改成上下排列，一次看一張、圖放大一倍 */
 @media (max-width:700px){.sk-pimgs{grid-template-columns:minmax(0,1fr)}}
 /* Prompt Skill 試玩區手機版：Persona 按鈕改成一行左右滑；「重新抽選構圖」移到圖片下方 */
-@media (max-width:760px){.sk-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-24px;padding:4px 24px;scroll-snap-type:x proximity}.sk-tabs::-webkit-scrollbar{display:none}.sk-tab,.cs-sec .sk-tab{flex:none;scroll-snap-align:start}.sk-panel{display:contents}.sk-out{order:1}.sk-rollwrap{order:2}}
+@media (max-width:760px){.sk-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-24px;padding:4px 24px;scroll-snap-type:x proximity}.sk-tabs::-webkit-scrollbar{display:none}.sk-tabs{scroll-padding-inline:24px}.sk-tab,.cs-sec .sk-tab{flex:none;scroll-snap-align:start}.sk-panel{display:contents}.sk-out{order:1}.sk-rollwrap{order:2}}
 /* 28 速寫本手機版：標籤只顯示天數數字，字放大 */
 @media (max-width:760px){.sbk__tab-day{display:none}.sbk .sbk__tab{font-size:11px;letter-spacing:0}}
 /* 展場熱點手機版：圓點外觀不變，外圍加一圈看不見的感應範圍（約 48px），比較好點 */
 @media (max-width:760px){.ob-hot .ob-hs__dot::before{content:"";position:absolute;inset:-14px;border-radius:50%}}
+/* 手機版：14 色票改成色點在上、色碼在下，三顆平分卡片寬度不超出；重新抽選按鈕置中 */
+@media (max-width:760px){.sk-sw{gap:8px}.sk-sw span{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 4px;border-radius:14px;font-size:11px}.sk-sw span::before{position:static;transform:none;flex:none}.sk-rollwrap{justify-self:center;align-self:center}}
+/* 手機版：好葉、Jay 的「Color & Icon」和下面滿版圖的間距縮小；好葉色票圖拿掉深藍描邊 */
+@media (max-width:760px){.kl-mid,.kl--jay .kl-mid{margin-top:36px}.kl .kl-plain{box-shadow:none!important}}

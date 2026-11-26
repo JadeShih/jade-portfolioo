@@ -315,8 +315,8 @@ def skill():
   demo=(f'<div class="sk-demo" data-personas="{data}">'
         f'<div class="sk-tabs" role="group" aria-label="選擇 Persona">{tabs}</div>'
         f'<div class="sk-demo__body"><div class="sk-panel">'
-        f'<div class="sk-box sk-box--fixed"><p class="sk-box__label"><b>Locked</b>固定元素・不能變</p><div class="sk-sw"></div><ul class="sk-fixed"></ul></div>'
-        f'<div class="sk-box sk-box--var"><p class="sk-box__label"><b>Rolled</b>本次抽選・可以變</p><dl class="sk-var"></dl>'
+        f'<div class="sk-box sk-box--fixed"><p class="sk-box__label"><b>Locked</b>固定元素</p><div class="sk-sw"></div><ul class="sk-fixed"></ul></div>'
+        f'<div class="sk-box sk-box--var"><p class="sk-box__label"><b>Rolled</b>變動元素</p><dl class="sk-var"></dl>'
         f'</div>'
         f'<div class="sk-rollwrap" data-theme="brand"><button type="button" class="jade-primary-button sk-roll"><span>重新抽選構圖</span><span class="jade-primary-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg></span></button></div>'
         f'</div><figure class="sk-out">{imgs}<figcaption>實際產出範例</figcaption></figure></div></div>')
