@@ -472,7 +472,8 @@
   }
   /* 「看全部作品」資料夾：成為目前這張時彈跳一下（電腦版看捲動進度，手機版看資料夾有沒有滑進畫面） */
   var fold=deck.querySelector('.deck__folder'),popOn=false;
-  function pop(v){if(!fold||v===popOn)return;popOn=v;if(v){fold.classList.remove('is-pop');void fold.offsetWidth;fold.classList.add('is-pop')}}
+  function pop(v){if(!fold||v===popOn)return;popOn=v;fold.parentElement.classList.toggle('is-fx',v); // 周圍的小貼紙跟著彈出／縮小消失
+    if(v){fold.classList.remove('is-pop');void fold.offsetWidth;fold.classList.add('is-pop')}}
   if(fold){fold.addEventListener('animationend',function(){fold.classList.remove('is-pop')});
     if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){if(mq.matches)pop(e.intersectionRatio>=.75)})},{root:fold.closest('.deck__track'),threshold:[0,.75]}).observe(fold)} // 以橫向滑動列為準，只看左右露出多少
   function goTo(i,smooth){window.scrollTo({top:top0+span*i/(N-1),behavior:smooth?'smooth':'instant'})}
